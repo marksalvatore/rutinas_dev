@@ -41,10 +41,11 @@ This installs **package.json** with all the dependencies we need and makes npm o
 
 
 #### React Concepts
-Component - a reusable piece of your website, invoked by your html element.
-**/static/js/bundle.js** contains the react code and your app.
-import from 'string', if a string it assumes a node module
-import MyComponent from 
++ Component - a reusable piece of your website, invoked by your html element.
++ **/static/js/bundle.js** contains the react code and your app.
++ import from 'string', if a string it assumes a node module
++ import MyComponent from './some/path/MyComponent';
++ React uses **HTML5 push state**, which can change the URL without reloading the page. I think it can also load only the elements on a page that change (need to verify this).
 
 #### Creating a component
 + Create a class with a render method (required minimum) in index.js
@@ -96,7 +97,7 @@ Simply import a file of *named export* functions:
 The following use of **ref** means that when the input element is rendered onto the page, **storeInput** will be made a reference on the class itself, to that input's value.
 
 ` 
-	<input type="text" required placeholder="Store Name" defaultValue={getFunName()} ref={(input) => { this.storeInput = input } } />
+	<input type="text" required placeholder="Store Name" defaultValue={ getFunName() } ref={(input) => this.storeInput = input } />
 `
 + Two main ways to make **this** point to the component class:
 	* Use constructor component:
@@ -115,7 +116,7 @@ The following use of **ref** means that when the input element is rendered onto 
 	```
 
 #### React Router 4
-You can route pages using the **Redirect component** by importing it from **react-router** or you can use the imperative API of router which is **.transitionTo()**. In order access this function, you have to tell react that you want to use the router in **context** (the router was imported into a parent element) by attaching a **contentTypes** object to the component class:
+You can route pages using the **Redirect** component by importing it from **react-router** or you can use the imperative API of router which is **.transitionTo()**. In order to access this function, you need to surface the router from the parent through **contextTypes**. You basically have to tell react that you want to use the router in _context_ (the router was imported into a parent element so it's there but...) by attaching a **contextTypes** object to the component class:
 
 ```javascript
 StorePicker.contextTypes = {
@@ -128,4 +129,32 @@ Then you can go to a page like this:
 ```javascript
 this.context.router.transitionTo('/store/${storeId}');
 ```
+#### STATE
+A representation of all data in your app. Each component has own state. Think of it as one object (in React that object is called **State**) that contains all the data for some piece (or all) of your application. So to change data on a page, you'd update the State obejct and React will update the DOM. State should be tied to the highest level component that needs access to that data. Set State to your component with a constructor method:
+```javascript
+    constructor() {
+      super(); // inits component so we can use "this"
 
+      this.addFish = this.addFish.bind(this);
+      // getinitialState
+      this.state = {
+        fishes: {},
+        order: {}
+      };
+    }
+```
+In order to enable child components to use a parent's function or state, you have to pass it to the child components via **props**:
+```javascript
+    <Inventory addFish={this.addFish} />
+```
+And to pass that function yet another level down:
+```javascript
+    <AddFishForm addFish={ this.props.addFish }/>
+```
+
+
+
+##### Using React Console
+1. In React tab searchbox, type name of component
+1. select the element
+1. go to console and type ```$r``` to see props for that object
