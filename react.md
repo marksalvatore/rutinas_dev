@@ -1,15 +1,15 @@
 # REACT
 
 #### Links
-[Study Plan!](https://medium.freecodecamp.com/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
-[React Concepts](https://medium.freecodecamp.com/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
-[Handling THIS in React](https://medium.com/@housecor/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
-[Learning Resources](https://github.com/markerikson/react-redux-links)
+* [Study Plan!](https://medium.freecodecamp.com/* a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
+* [React Concepts](https://medium.freecodecamp.com/* the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
+* [Handling THIS in React](https://medium.com/@housecor/* react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
+* [Learning Resources](https://github.com/markerikson/react-redux-links)
 
 #### Setup
 + index.html lives in public/
 + Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released [Create React App](https://github.com/facebookincubator/create-react-app), simplifies tooling to get up and running. It's basically a simple interface on top of WebPack. 
-+ The package.json had already been assembled for this course (not sure why he didn't step us through it).
++ The package.json had already been assembled. See [Create React App](https://github.com/facebookincubator/create-react-app) for how it's put together and how to use it.
 + **src/index.js** is the main application file
 
 #### Steps
@@ -89,7 +89,7 @@ This installs **package.json** with all the dependencies we need and makes npm o
 	+ add `export default StorePicker;`
 
 #### JSX
-Makes it easy to write html inside javascript
+Makes it easy to write html inside javascript, but has no logic or loops, etc.
 + Must be inside return( 'jsx here')
 + You can only return one parent element
 + Comments must go inside that parent element 
@@ -183,4 +183,14 @@ And to pass that function yet another level down:
 
 ---
 
+#### Useful JavaScript
+* Use **Object.keys()** to convert an object of objects to an array of objects so you can loop over them using **.map()**:
+```javascript
+{
+    Object
+    .keys(this.state.fishes)
+    .map(key => <Fish key={key} details={this.state.fishes[key] } />)
+}
+```
+This arrow ( => ) returns what follows.
 
