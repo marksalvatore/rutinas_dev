@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Stateless function (dom only)
+// STATELESS FUNCTION (dom only)
 const Header = (props) => {
 	return (
 		<header className="class">

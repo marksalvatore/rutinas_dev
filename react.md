@@ -98,7 +98,22 @@ Makes it easy to write html inside javascript, but has no logic or loops, etc.
 
 
 #### Stateless Functions
-When you only have to render HTML out to the DOM (only need a render() method), there's no need to import all of React. You'll only need a "stateless functional component". To do that you don't need a class, nor render(). It's customary to use arrow functions to define the functions (components). See [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+When you only need to render HTML out to the DOM, there's no need to import all of React. You'll only need a "stateless functional component". To do that you don't need a class, nor render(). It's customary to use arrow functions to define the functions (components). See [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+```javascript
+import React from 'react';
+
+// STATELESS FUNCTION
+const Header = (props) => {
+    return (
+        <header className='main'>
+            <h1>Site Title</h1>
+            <h3><span>{props.tagline}</span></h3>
+        </header>
+    )
+}
+export default Header;
+```
 
 #### Using React Router 4
 Enables you to show/hide components based on uri
@@ -109,16 +124,23 @@ Enables you to show/hide components based on uri
 + Return `<BrowserRouter>` and be sure to have contents return one parent div, because it kinda works like the JSX return function only wanting one parent element.
 
 #### Helper file 
-It's usefule to create a helper.js for functions that are used globally or throughout your app.
+It's useful to create a helper.js for functions that are used globally or throughout your app.
 Simply import a file of *named export* functions:
 + `import { getFunName } from '../helpers';`
 + Use like this: `defaultValue={getFunName()}`
 
 #### Events
 + **onSubmit** event listens for submit and keyboard enter.
-+ **render()** is bound to its component class, so _this_ refers to the class. However, other functions inside the class but outside render(), are NOT bound. You must bind them manually using **ref**, a way to reference inputs.
++ **render()** is bound to its component class, so _this_ refers to the class when inside render(). However, _this_ is NOT bound outside render(). 
++ 
+```javascript
+constructor() {
+    super(); // constructs base React component with this class and binds *this* to the class
+    this.someMethod = this.someMethod.bind(this);
+}
+```
 
-The following use of **ref** means that when the input element is rendered onto the page, **storeInput** will be made a reference on the class itself, to that input's value.
++ You can also bind _this_ by using **ref**. In the following example, when the input element is rendered on the page, **storeInput** will be made a reference to that input's value, on the class.
 
 ` 
 	<input type="text" required placeholder="Store Name" defaultValue={ getFunName() } ref={(input) => this.storeInput = input } />
@@ -140,7 +162,7 @@ The following use of **ref** means that when the input element is rendered onto 
 	```
 
 #### React Router 4
-You can route pages using the **Redirect** component by importing it from **react-router** or you can use the imperative API of router which is **.transitionTo()**. In order to access this function, you need to surface the router from the parent through **contextTypes**. You basically have to tell react that you want to use the router in _context_ (the router was imported into a parent element so it's there but...) by attaching a **contextTypes** object to the component class:
+You can route pages using the **Redirect** component by importing it from **react-router** or you can use the imperative API of router which is **.transitionTo()**. In order to access this function, you need to surface the router from the parent through **contextTypes**. You basically have to tell react that you want to use the router in _context_ (the router was imported into a parent element so it's there but...) you need to attach a **contextTypes** object to the component class:
 
 ```javascript
 StorePicker.contextTypes = {
@@ -154,7 +176,7 @@ Then you can go to a page like this:
 this.context.router.transitionTo('/store/${storeId}');
 ```
 #### STATE
-A representation of all data in your app. Each component has own state. Think of it as one object (in React that object is called **State**) that contains all the data for some piece (or all) of your application. So to change data on a page, you'd update the State obejct and React will update the DOM. State should be tied to the highest level component that needs access to that data. Set State to your component with a constructor method:
+A representation of all data in your app. Each component has own state. Think of it as one object (in React that object is called **State**) that contains all the data for some piece (or all) of your application. So to change data on a page, you'd update the State object and React will update the DOM. State should be tied to the highest level component that needs access to that data. Set State to your component with a constructor method:
 ```javascript
     constructor() {
       super(); // inits component so we can use "this"
