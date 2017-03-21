@@ -1,4 +1,4 @@
-// This is just some sample data so you don't have to think of your own!
+// module.exports will return this object of fishes to the name used in the import statement.
 module.exports = {
   fish1: {
     name: 'Pacific Halibut',

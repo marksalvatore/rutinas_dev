@@ -1,29 +1,14 @@
 # REACT
 
-#### Markup
-
-+ Images: `![]() "Tool tip"` // Bang is for image, brackets for the alt, and parens for the path
-
-[1]: https://docs.angularjs.org/tutorial/
-+ Code blocks:
-+ 
-```javascript
-function chomp() {
-	var goo = 3;
-	var gle = 5;
-	goo + gle = 6;
-}
-```
-
-#### Tools for course
-+ React **DevTools** for Chrome
-+ Babel package for **Sublime Text** 
-+ Module bundler **WebPack**
-
+#### Links
+[Study Plan!](https://medium.freecodecamp.com/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
+[React Concepts](https://medium.freecodecamp.com/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
+[Handling THIS in React](https://medium.com/@housecor/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
+[Learning Resources](https://github.com/markerikson/react-redux-links)
 
 #### Setup
 + index.html lives in public/
-+ Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released **Create React App**, simplifies tooling to get up and running. It's basically a simple interface on top of WebPack.
++ Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released [Create React App](https://github.com/facebookincubator/create-react-app), simplifies tooling to get up and running. It's basically a simple interface on top of WebPack. 
 + The package.json had already been assembled for this course (not sure why he didn't step us through it).
 + **src/index.js** is the main application file
 
@@ -41,9 +26,48 @@ This installs **package.json** with all the dependencies we need and makes npm o
 
 
 #### React Concepts
-+ Component - a reusable piece of your website, invoked by your html element.
++ React's data flow is **unidirectional**: data can only go from parent components to their children (via **props**, not the other way around.
+
++ Sometimes though, a component needs to react to data that doesn't come from a parent component (such as user input for example). And this is where the **state** comes in.
+
++ A metaphor to understand the difference between props and state is the Etch-A-Sketch, where the color and knob positions are _props_ (inherent to the device) while the drawing itself (not inherent) is the _state_. 
+
++ Note that **a component's state can also be passed on to its own children as a prop**. You can think of this as a big river flowing downhill, with the router, data layer, and various components each adding their own little stream of data to form the main app state.
+
++ Inside a component, state is managed using the **setState** function, which is often called inside an event handler:
+
+```javascript
+    class MyComponent extends React.Component {
+      handleClick = (e) => {
+        this.setState({clicked: true});
+      }
+      render() {
+        return a href="#" onClick={this.handleClick}>Click me /a;
+      }
+    }
+```
+
++ In practice, the vast majority of data in a React app will be a prop. It’s only when you need to accept user input that you’ll use state to handle the change. 
+
++ A **functional component** is a function that takes a props object as argument, and returns a bunch of HTML. Almost like a traditional template, with the key difference that you can still use whatever JavaScript code you need inside that function:
+```javascript
+    const myComponent = props => {
+      return <p>Hello {props.name}! Today is {new Date()}
+    }
+```
+    The consequence of using the functional component syntax is that you lose access to the component methods we just talked about. But it turns out that in practice that’s perfectly fine, since the vast majority of your components probably won’t need them.
+
+    By the way, one of these methods is setState, and this means functional components cannot have state. For that reason they’re often referred to as stateless functional components.
+
+    Since functional components require much less boilerplate code, it makes sense to use them whenever possible. For this reason, most React apps contain a healthy mix of both syntaxes.
+
+    After using React for a while, people started seeing two distinct “flavors” of code appear in their components: one flavor was concerned with UI logic such as showing and hiding thing. And the other was all about data logic, such as loading data from your server.
+
+    This led to the distinction between container and presentational components (also sometimes known as “smart” and “dumb” components). Container components should handle your data, but — and this is the important part — not your UI. Presentational components are just the opposite. You should keep data logic and UI logic in separate components.
+
+
 + **/static/js/bundle.js** contains the react code and your app.
-+ import from 'string', if a string it assumes a node module
++ import from 'string', if a string it assumes it's a node module
 + import MyComponent from './some/path/MyComponent';
 + React uses **HTML5 push state**, which can change the URL without reloading the page. I think it can also load only the elements on a page that change (need to verify this).
 
@@ -143,7 +167,7 @@ A representation of all data in your app. Each component has own state. Think of
       };
     }
 ```
-In order to enable child components to use a parent's function or state, you have to pass it to the child components via **props**:
+In order to enable child components to use a parent's function or state, you have to pass it to the child components via **props**. In React, attributes are known as props (short for “properties”). Props are how components talk to each other:
 ```javascript
     <Inventory addFish={this.addFish} />
 ```
@@ -152,9 +176,11 @@ And to pass that function yet another level down:
     <AddFishForm addFish={ this.props.addFish }/>
 ```
 
-
-
 ##### Using React Console
 1. In React tab searchbox, type name of component
 1. select the element
 1. go to console and type ```$r``` to see props for that object
+
+---
+
+
