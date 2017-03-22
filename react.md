@@ -118,6 +118,7 @@ export default Header;
 #### Using React Router 4
 Enables you to show/hide components based on uri
 + Make a component (stateless function) to be your router. Call that router in index.js (that call is really the first call to your app).
++ Your router will be the parent component for your app.
 + `import React from 'react';`
 + `import { BrowserRouter, Match, Miss } from 'react-router';`
 + import your top level components.
@@ -215,4 +216,41 @@ And to pass that function yet another level down:
 }
 ```
 This arrow ( => ) returns what follows.
+
+#### Firebase
+* After creating a project, select "Database", then "RULES" and change read, write, both to false.
+* Determine which of your states will be kept in Firebase and which in local storage.
+* In order to sync state to firebase, use **Rebase**
+    * Create a new file in src, not as a component, _base.js_
+    * In that file ```import Rebase from 're-base';```
+    * Then create a connection to your firebase db:
+        * Go to Overview on Firebase and click "Add Firebase to your web app". You only need apiKey, authDomain, and databaseURL. Base.js should look like following:
+    ```javascript
+        import Rebase from 're-base';
+
+        const base = Rebase.createClass({
+            apiKey: "AIzaSyAZ2REyj5JyXrnf1UrF3nzq-lifQ_rZ38o",
+            authDomain: "catch-of-the-day-marksalvatore.firebaseapp.com",
+            databaseURL: "https://catch-of-the-day-marksalvatore.firebaseio.com"
+        });
+
+        export default base;
+    ```
+    * Then import base.js into your App component: ```import base from '../base';
+
+    #### React Lifecycle Hooks
+    Use the "componentWillMount" hook. We'll need to create a function of the same name in our App.js. 
+    ```javascript
+    import base from '../base';
+    ...
+    componentWillMount() {
+        this.ref = base.syncState(`${this.props.params.storeId}/fishes`, {
+            context: this,
+            state: 'fishes'
+        })
+    }
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
+    }
+```
 
