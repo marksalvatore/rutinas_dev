@@ -18,7 +18,7 @@ class Fish extends React.Component {
 					<img src={details.image} alt={details.name} />	
 					<h3 className="fish-name">
 						{details.name}
-						<span className="price">{ formatPrice(details.price) }</span>
+						<span className="fish-price">{ formatPrice(details.price) }</span>
 					</h3>
 					<p>
 						{details.desc}
