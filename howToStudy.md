@@ -4,6 +4,7 @@
 
 #### Week 1
 * Learn React (Wes Bos)
+* Learn .reduce() javascript 
 * Read through React Lifecycle Hooks
 * Plow through Udemy React course
 

@@ -13,8 +13,10 @@ class App extends React.Component {
 
     this.addFish = this.addFish.bind(this);
     this.updateFish = this.updateFish.bind(this);
+    this.removeFish = this.removeFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.removeOrder = this.removeOrder.bind(this);
 
     // Attach STATE to this component
     this.state = {
@@ -73,6 +75,13 @@ class App extends React.Component {
   	})
   }
 
+  removeFish(key) {
+  	const fishes = {...this.state.fishes};
+  	// delete fishes[key]; doesn't work with Firebase
+  	fishes[key] = null;
+  	this.setState({ fishes: fishes });
+  }
+
   addToOrder(key) {
   	// take a copy of the existing state
   	const order = {...this.state.order};
@@ -81,6 +90,12 @@ class App extends React.Component {
   	order[key] = order[key] + 1 || 1; // if order[key] doesn't yet exist, 1 will be assigned
 
   	// update state 
+  	this.setState({ order: order });
+  }
+
+  removeOrder(key) {
+  	const order = {...this.state.order};
+  	delete order[key];
   	this.setState({ order: order });
   }
 
@@ -106,12 +121,14 @@ class App extends React.Component {
         	fishes={ this.state.fishes } 
         	order={ this.state.order } 
         	params={ this.props.params } 
+        	removeOrder={this.removeOrder}
         />
         <Inventory 
         	addFish={this.addFish} 
         	loadSamples={this.loadSamples} 
         	fishes={this.state.fishes}
         	updateFish={this.updateFish}
+        	removeFish={this.removeFish}
         />
       </div>
     )
