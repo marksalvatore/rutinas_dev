@@ -21,15 +21,34 @@ class App extends React.Component {
       order: {}
     };
   }
+
   componentWillMount() {
-  	// QUESTION: how can we use this in this context?
+  	// runs right before <App> is rendered
+
+  	// QUESTION: how can we use "this", without binding it in the constructor?
   	this.ref = base.syncState(`${this.props.params.storeId}/fishes`, {
   		context: this,
   		state: 'fishes'
-  	})
+  	});
+
+  	// check if there are orders in local storage
+  	const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
+  	if( localStorageRef ) {
+  		// update <App> order state
+  		this.setState({
+  			order: JSON.parse(localStorageRef)
+  		});
+  	}
   }
   componentWillUnmount() {
   	base.removeBinding(this.ref);
+  }
+
+  // local storage
+  componentWillUpdate(nextProps, nextState) {
+  	console.log("Something changed:");
+  	console.log({nextProps, nextState});
+  	localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
   }
 
   addFish(fish) {
@@ -74,7 +93,11 @@ class App extends React.Component {
           	}
           </ul>
         </div>
-        <Order fishes={ this.state.fishes } order={ this.state.order } />
+        <Order 
+        	fishes={ this.state.fishes } 
+        	order={ this.state.order } 
+        	params={ this.props.params } 
+        />
         <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
       </div>
     )

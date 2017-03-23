@@ -253,4 +253,17 @@ This arrow ( => ) returns what follows.
         base.removeBinding(this.ref);
     }
 ```
-
+#### HTML5 Local Storage
+Use React Lifecycle Methods for this as well:
+* componentWillUpdate 
+    ```javascript
+    componentWillUpdate(nextProps, nextState) {
+        console.log("Something changed:");
+        console.log({nextProps, nextState});
+    }
+    ```
+* In DevTools, click "Application" then Local Storage and your domain name.
+* Local store is key:value 
+* It's like an object that only stores strings (no objects)* 
+* localStorage.setItem('key', 'value');
+* localStorage.getItem('key');

@@ -4,25 +4,29 @@
 
 #### Week 1
 * Learn React (Wes Bos)
+* Read through React Lifecycle Hooks
+* Plow through Udemy React course
 
 #### Week 2
-* Learn Gatsby static site generator
-* Build a static project
+* Learn ES6 (Wes Bos)
+* [Practical ES6](https://ponyfoo.com/books/practical-es6/chapters)
+* Plow through Udemy course
+* Go through your project from week 2 and convert code to ES6.
 
 #### Week 3
 * [Do the 30 Day JS Coding](http://wesbos.com/javascript30/) (Wes Bos FREE)
 
 #### Week 4
-* Learn ES6 (Wes Bos)
-* [Practical ES6](https://ponyfoo.com/books/practical-es6/chapters)
-* Go through your project from week 2 and convert code to ES6.
+* Refresh Wes Bos React 
+* Learn [Gatsby](https://www.netlify.com/blog/2016/02/24/a-step-by-step-guide-gatsby-on-netlify/) static site generator
+* Build a static project
 
 #### Week 5
 * Learn Redux (Wes Bos FREE)
 * [Dan Abramov](https://egghead.io/courses/getting-started-with-redux)
 
 #### Week 6
-* Learn GraphQL  
+* Learn GraphQL (see Udemy course)
 GraphQL itself is just a protocol, but its best implementation right now is probably the Apollo library, which works well with Redux. There is still a lack of instructiona* l material around GraphQL and Apollo, but hopefully the Apollo documentation can help you get started.
 * [Apollo](http://www.apollodata.com/)
 
