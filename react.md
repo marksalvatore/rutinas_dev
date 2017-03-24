@@ -264,6 +264,56 @@ Use React Lifecycle Methods for this as well:
     ```
 * In DevTools, click "Application" then Local Storage and your domain name.
 * Local store is key:value 
-* It's like an object that only stores strings (no objects)* 
+* It's like an object that only stores strings (no objects)
 * localStorage.setItem('key', 'value');
 * localStorage.getItem('key');
+```javascript
+    // local storage
+    componentWillUpdate(nextProps, nextState) {
+        console.log("Something changed:");
+        console.log({nextProps, nextState});
+        localStorage.setItem(`order-${this.props.params.storeId}`, JSON.stringify(nextState.order));
+    }
+```
+
+#### React Animation
+* ```import CSSTransitionGroup from 'react-addons-css-transition-group';```
+* Then swap out the element you want to animate with **CSSTransitionGroup**
+* And add in animation params: component, transitionName, transitionEnterTimeout, transitionLeaveTimeout
+```javascript
+<CSSTransitionGroup 
+    className="order"
+    component="ul" // so CSSTransitionGroup gets rendered out as a ul
+    transitionName="order"
+    transitionEnterTimeout={500}
+    transitionLeaveTimeout={500}
+>
+```
+* React injects two classes (an A and B point) when the element is rendered (_order-enter, _order-leave-active_) and two classes when it's removed (_order-enter, _order-leave-active_). You can then transition from A to B:
+```css
+    .order-enter {
+        transition: all 0.5s;
+        // Initial state
+        transform: translateX(-120%); // start from out of view
+        max-height: 0; 
+        padding: 0 !important; 
+        &.order-enter-active {
+            // Final state
+            transform: translateX(0); // end up in view
+            max-height: 60px; 
+            padding: 2em 0 !important;
+        }
+    }
+
+    .order-leave {
+        transition: all 0.5s;
+        transform: translateX(0);
+        &.order-leave-active {
+            transform: translateX(120%);
+            max-height: 0;
+            padding: 0;
+        }
+    }
+
+```
+

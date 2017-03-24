@@ -7,6 +7,8 @@
 * Learn .reduce() javascript 
 * Read through React Lifecycle Hooks
 * Plow through Udemy React course
+* Read Wes' Sublime: Moving, Selecting, Expanding and Wrapping
+* and: Running, Testing and Deploying with Build Systems
 
 #### Week 2
 * Learn ES6 (Wes Bos)
