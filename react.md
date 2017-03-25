@@ -374,3 +374,11 @@ constructor() {
     }
 }
 ```
+#### How to publish
+* ```npm run build```
+* add path to home in package.json  
+
+    ```"homepage": "http://go/catch",```
+* add basename to your router tag with the folder name if you're not serving it from root. 
+
+    ``` <BrowserRouter basename="/catchoftheday"> ```
