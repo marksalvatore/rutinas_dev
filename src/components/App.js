@@ -9,7 +9,7 @@ import base from '../base';
 
 class App extends React.Component {
   constructor() {
-    super(); // inits component so we can use "this"
+    super(); // inits component so we can use "this" for the component
 
     this.addFish = this.addFish.bind(this);
     this.updateFish = this.updateFish.bind(this);
@@ -18,7 +18,7 @@ class App extends React.Component {
     this.addToOrder = this.addToOrder.bind(this);
     this.removeOrder = this.removeOrder.bind(this);
 
-    // Attach STATE to this component
+    // Attach STATE to the main App component
     this.state = {
       fishes: {},
       order: {}
@@ -77,7 +77,7 @@ class App extends React.Component {
 
   removeFish(key) {
   	const fishes = {...this.state.fishes};
-  	// delete fishes[key]; doesn't work with Firebase
+  	// delete fishes[key]; this doesn't work with Firebase
   	fishes[key] = null;
   	this.setState({ fishes: fishes });
   }
@@ -133,6 +133,10 @@ class App extends React.Component {
       </div>
     )
   }
+}
+
+App.propTypes = {
+  params: React.PropTypes.object.isRequired
 }
 
 export default App;

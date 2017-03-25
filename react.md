@@ -1,11 +1,11 @@
 # REACT
 
 #### Links
-* [Study Plan!](https://medium.freecodecamp.com/* a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
-* [React Concepts](https://medium.freecodecamp.com/* the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
-* [Handling THIS in React](https://medium.com/@housecor/* react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
+* [React Docs](https://facebook.github.io/react/docs/hello-world.html)
+* [Study Plan!](https://medium.freecodecamp.com/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
+* [Understanding React](https://medium.freecodecamp.com/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
+* [Handling THIS in React](https://medium.com/@housecor/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
 * [Learning Resources](https://github.com/markerikson/react-redux-links)
-
 #### Setup
 + index.html lives in public/
 + Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released [Create React App](https://github.com/facebookincubator/create-react-app), simplifies tooling to get up and running. It's basically a simple interface on top of WebPack. 
@@ -314,6 +314,15 @@ Use React Lifecycle Methods for this as well:
             padding: 0;
         }
     }
-
 ```
+
+#### PropTypes 
+* Validate the data that enters our components (like data types). Just add a 
+function below your component:
+```javascript
+    ComponentName.propTypes = {
+        myString: React.PropTypes.string.isRequired
+    }
+```
+* This will error (development only) if the rules are not met.
 
