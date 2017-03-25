@@ -192,11 +192,12 @@ A representation of all data in your app. Each component has own state. Think of
 ```
 In order to enable child components to use a parent's function or state, you have to pass it to the child components via **props**. In React, attributes are known as props (short for “properties”). Props are how components talk to each other:
 ```javascript
-    <Inventory addFish={this.addFish} />
+    <Inventory addFish={this.addFish} >
 ```
+
 And to pass that function yet another level down:
 ```javascript
-    <AddFishForm addFish={ this.props.addFish }/>
+    <AddFishForm addFish={ this.props.addFish } >
 ```
 
 ##### Using React Console
@@ -209,13 +210,12 @@ And to pass that function yet another level down:
 #### Useful JavaScript
 * Use **Object.keys()** to convert an object of objects to an array of objects so you can loop over them using **.map()**:
 ```javascript
-{
+{   
     Object
     .keys(this.state.fishes)
-    .map(key => <Fish key={key} details={this.state.fishes[key] } />)
+    .map( key => <Fish key={key} details={this.state.fishes[key] } > )
 }
 ```
-This arrow ( => ) returns what follows.
 
 #### Firebase
 * After creating a project, select "Database", then "RULES" and change read, write, both to false.
@@ -326,3 +326,51 @@ function below your component:
 ```
 * This will error (development only) if the rules are not met.
 
+#### Authentication with Firebase
+Review video #24. There's a lot to it.
+* Go to Firebase Authentication tab and set up your "sign-in providers", like Github, Twitter, Facebook, etc.
+* Register a new OAuth application each provider you want to use, copying the API key and secret from each into your selected providers on Firebase.
+    * [Github](https://github.com/settings/applications/new)
+    * [Facebook](https://developers.facebook.com/apps)
+    * [Twitter](https://apps.twitter.com/)
+* Then within the component you want authorizaion, create a method to render out the buttons for those providers:
+ ```javascript
+ renderLogin() {
+    return (
+        <div>
+            <nav className="login"></nav>
+            <h2>Inventory</h2>
+            <p>Sign in to manager your store.</p>
+                <button className="github" onClick="{ () => this.authenticate('github')}">Log in with GitHub</button>
+                <button className="twitter" onClick="{ () => this.authenticate('twitter')}">Log in with Twitter</button>
+                <button className="facebook" onClick="{ () => this.authenticate('facebook')}">Log in with Facebook</button>
+        </div>/
+    );
+ }
+```
+* Add a state to the constructor.  
+```javascript
+constructor() {
+    ...
+
+    this.state = {
+        uid: null,
+        owner: null
+    }
+}
+```
+* Be sure to set your rules on firebase. 
+```javascript
+{
+    "rules": {
+        // won't let people delete an existing room
+        ".write": "!data.exists()",
+        ".read": true,
+        "$room" : {
+          // only the store owner can edit the data
+          ".write" : "newData.child('owner').val() === auth.uid",
+          ".read" : true
+        }
+    }
+}
+```
