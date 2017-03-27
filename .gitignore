@@ -1,4 +1,6 @@
+.*
+!.gitignore
 ReactCourseFiles/
 *.sublime-*
 *copy.*
-build/
+
