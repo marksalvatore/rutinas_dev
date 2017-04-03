@@ -1,46 +1,36 @@
-# REACT
+# React Tutorial _Catch of the Day_
 
-#### Tutorial (March 2017)
-Based on Wes Bos's _Catch of the Day_ tutorial
-
-___
-
-#### Links
-* [React Docs](https://facebook.github.io/react/docs/hello-world.html)
-* [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
-* [JS Study Plan!](https://medium.freecodecamp.com/a-study-plan-to-cure-javascript-fatigue-8ad3a54f2eb1#.coq3crkvq)
-* [Understanding React](https://medium.freecodecamp.com/the-5-things-you-need-to-know-to-understand-react-a1dbd5d114a3#.ipn319q06)
-* [Handling THIS in React](https://medium.com/@housecor/react-binding-patterns-5-approaches-for-handling-this-92c651b5af56#.k1is072c8)
-* [Learning Resources](https://github.com/markerikson/react-redux-links)
+**~/Sites/catchoftheday** - contains files built from the master branch of reactcourse(rc) to push out to salvatore.us/catchoftheday.
+**~/Sites/reactcourse** - The _master_ branch contains my finished ejected version of the tutorial. The _dev_ branch contains the working dev files for go/rc 
 
 #### Setup
-+ index.html lives in public/
-+ Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released [Create React App](https://github.com/facebookincubator/create-react-app), which simplifies tooling to get up and running. It's basically a simple interface on top of WebPack. 
-+ The package.json comes assembled. See [Create React App](https://github.com/facebookincubator/create-react-app) for details.
-+ **src/index.js** is the main application file
+* index.html lives in public/
+* Instead of calling required files from index.html, we'll use a "module bundler" to import them with ES6 from index.js. **WebPack** is the favorite bundler among *React'ers*. Since it's a pain to set up, Facebook released [Create React App](https://github.com/facebookincubator/create-react-app), which simplifies tooling to get up and running. It's basically a simple interface on top of WebPack. 
+* The package.json comes assembled. See [Create React App](https://github.com/facebookincubator/create-react-app) for details.
+* **src/index.js** is the main application file
 
 #### Steps
-+ run `npm init`
-+ run `npm create-react-app`
+* run `npm init`
+* run `npm create-react-app`
 This installs **package.json** with all the dependencies we need and makes npm our task runner:  
-    + npm start
-    + npm watch
-    + npm build
-    + npm eject
-+ run `npm start` to open the app on http://localhost:3000
-+ The component we'll build will eventually get placed in the components directory, but we can begin building it in **index.js**
-+ Open index.js and add `import React from 'react';` This will save the react object installed by WebPack, to the variable React. The actual React code will be in /static/js/bundle.js. Anything you add to index.js will be included in bundle.js.
+    * npm start
+    * npm watch
+    * npm build
+    * npm eject
+* run `npm start` to open the app on http://localhost:3000
+* The component we'll build will eventually get placed in the components directory, but we can begin building it in **index.js**
+* Open index.js and add `import React from 'react';` This will save the react object installed by WebPack, to the variable React. The actual React code will be in /static/js/bundle.js. Anything you add to index.js will be included in bundle.js.
 
 #### React Concepts
-+ React's data flow is **unidirectional**: data can only go from parent components to their children via **props**, not the other way around.
+* React's data flow is **unidirectional**: data can only go from parent components to their children via **props**, not the other way around.
 
-+ Sometimes though, a component needs to react to data that doesn't come from a parent component (such as user input for example). And this is where the **state** comes in.
+* Sometimes though, a component needs to react to data that doesn't come from a parent component (such as user input for example). And this is where the **state** comes in.
 
-+ A metaphor to understand the difference between props and state is the Etch-A-Sketch, where the color and knob positions are _props_ (inherent to the device) while the drawing itself (not inherent) is the _state_. 
+* A metaphor to understand the difference between props and state is the Etch-A-Sketch, where the color and knob positions are _props_ (inherent to the device) while the drawing itself (not inherent) is the _state_. 
 
-+ Note that **a component's state can also be passed on to its children as a prop**. You can think of this as a big river flowing downhill, with the router, data layer, and various components each adding their own little stream of data to form the main app state.
+* Note that **a component's state can also be passed on to its children as a prop**. You can think of this as a big river flowing downhill, with the router, data layer, and various components each adding their own little stream of data to form the main app state.
 
-+ Inside a component, state is managed using the **setState** function, which is often called inside an event handler:
+* Inside a component, state is managed using the **setState** function, which is often called inside an event handler:
 
 ```javascript
     class MyComponent extends React.Component {
@@ -53,9 +43,9 @@ This installs **package.json** with all the dependencies we need and makes npm o
     }
 ```
 
-+ In practice, the vast majority of data in a React app will be a prop. It’s only when you need to accept user input that you’ll use state to handle the change. 
+* In practice, the vast majority of data in a React app will be a prop. It’s only when you need to accept user input that you’ll use state to handle the change. 
 
-+ A **functional component** is a function that takes a props object as argument, and returns a bunch of HTML. Almost like a traditional template, with the key difference that you can still use whatever JavaScript code you need inside that function:
+* A **functional component** is a function that takes a props object as argument, and returns a bunch of HTML. Almost like a traditional template, with the key difference that you can still use whatever JavaScript code you need inside that function:
 ```javascript
     const myComponent = props => {
       return <p>Hello {props.name}! Today is {new Date()}
@@ -71,13 +61,13 @@ This installs **package.json** with all the dependencies we need and makes npm o
 
     This led to the distinction between **container components** and **presentational components** (also sometimes known as _smart_ and _dumb_ components). Container components should handle your data, but not your UI. Presentational components should keep your data and data logic, but not logic for the UI.
 
-+ **/static/js/bundle.js** contains the react code and your app.
-+ import from **'string'** If a string it assumes it's a node module
-+ import MyComponent from './some/path/MyComponent';
-+ React uses **HTML5 push state**, which can change the URL without reloading the page.
+* **/static/js/bundle.js** contains the react code and your app.
+* import from **'string'** If a string it assumes it's a node module
+* import MyComponent from './some/path/MyComponent';
+* React uses **HTML5 push state**, which can change the URL without reloading the page.
 
 #### Creating a component
-+ Create a class with a render method (required minimum) in index.js
+* Create a class with a render method (required minimum) in index.js
 ```javascript
 class StorePicker extends React.Component {  
     render(){  
@@ -86,24 +76,24 @@ class StorePicker extends React.Component {
 }
 ```
 
-+ Then render (display) your component:
+* Then render (display) your component:
 ```javascript
 render(<StorePicker/>, document.querySelector('#main'));
 ```
-+ Put component in its own file
-    + ./components/MyComponent.js 
-    + add `import React from 'react';`
-    + add a stylesheet `import '../css/style.css';`
-    + add class for MyComponent
-    + add `export default StorePicker;`
+* Put component in its own file
+    * ./components/MyComponent.js 
+    * add `import React from 'react';`
+    * add a stylesheet `import '../css/style.css';`
+    * add class for MyComponent
+    * add `export default StorePicker;`
 
 #### JSX
 Makes it easy to write html inside javascript, but has no logic or loops, etc.
-+ Must be inside return( 'jsx here')
-+ You can only return one parent element
-+ Comments must go inside that parent element 
-+ Comments go inside brackets `{ /* comment here */ }`
-+ All html tags must terminate like `<br/>`
+* Must be inside return( 'jsx here')
+* You can only return one parent element
+* Comments must go inside that parent element 
+* Comments go inside brackets `{ /* comment here */ }`
+* All html tags must terminate like `<br/>`
 
 #### Stateless Functions
 When you only need to render HTML out to the DOM, there's no need to import all of React. You'll only need a **stateless functional component**. To do that you don't need a class, nor render(). It's customary to use arrow functions to define the functions (components). See [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
@@ -125,13 +115,13 @@ export default Header;
 
 #### Using React Router 4
 Enables you to show/hide components based on uri
-+ Make a stateless function component to be your router. Call that router in index.js (that call is really the first call to your app).
-+ index.js -> router.js -> app.js -> other components which -> their children, etc.
-+ Your router will be the parent component for your app.
-+ `import React from 'react';`
-+ `import { BrowserRouter, Match, Miss } from 'react-router';`
-+ import your top level components.
-+ Return `<BrowserRouter>` and be sure to have contents return one parent div, because it kinda works like the JSX return function only wanting one parent element.
+* Make a stateless function component to be your router. Call that router in index.js (that call is really the first call to your app).
+* index.js -> router.js -> app.js -> other components which -> their children, etc.
+* Your router will be the parent component for your app.
+* `import React from 'react';`
+* `import { BrowserRouter, Match, Miss } from 'react-router';`
+* import your top level components.
+* Return `<BrowserRouter>` and be sure to have contents return one parent div, because it kinda works like the JSX return function only wanting one parent element.
 
 ```javascript
 import React from 'react';

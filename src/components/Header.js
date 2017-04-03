@@ -1,6 +1,6 @@
 import React from 'react';
 
-// STATELESS FUNCTION (dom only)
+
 const Header = (props) => {
   return (
     <header className="top">
@@ -19,6 +19,6 @@ const Header = (props) => {
 
 Header.propTypes = {
   tagline: React.PropTypes.string.isRequired
-}
+};
 
 export default Header;
