@@ -4,21 +4,19 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 
 import './css/style.css';
 import App from './components/App';
-import StorePicker from './components/StorePicker';
+import Instructions from './components/Instructions';
 import NotFound from './components/NotFound';
-
-// const repo = `/${window.location.pathname.split('/')[1]}`;
 
 const Root = () => {
   return (
     <BrowserRouter>
       <div>
-        <Match exactly pattern="/" component={StorePicker} />
-        <Match pattern="/store/:storeId" component={App} />
+        <Match exactly pattern="/" component={App} />
+        <Match pattern="/instructions" component={Instructions} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>
   )
 }
 
-render(<Root/>, document.querySelector('#main'));
+render(<Root/>, document.querySelector('#root'));
