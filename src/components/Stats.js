@@ -1,16 +1,16 @@
 import React from 'react';
 import Nav from './Nav';
 
-class NotFound extends React.Component {
+class Stats extends React.Component {
   render() {
     return (
     	<div className="Page">
 
     	  <Nav />
           
-          <div className="Page-title">Page not found</div>
+          <div className="Page-title">My Drill Statistics</div>
           <div className="Page-text">
-            <p>Whoops! Was that mis-cue?</p>
+            <p>Impressive!</p>
           </div>
 
 
@@ -19,4 +19,4 @@ class NotFound extends React.Component {
   }
 }
 
-export default NotFound;
+export default Stats;

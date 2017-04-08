@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router';
 
 import eightball from '../../public/images/eightball.png';
+import Nav from './Nav';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className="Page">
+
+        <Nav />
+
         <div className="App-title">Routines</div>
         <div className="App-byline">Improve your pool game.</div>
         <div className="App-logo">
@@ -15,17 +20,13 @@ class App extends React.Component {
           Create practice routines from the drills
           <br/>you choose, and monitor your progress.
         </div>
-        <div className="App-menu">
-          <div className="App-menu-item">Instructions</div>
-          <div className="App-menu-item">Routines</div>
-          <div className="App-menu-item">New Routine</div>
+
+        <div className="getStarted">
+           <Link to="/instructions">Get started</Link>
         </div>
       </div>
     );
   }
 }
 
-
 export default App;
-
-

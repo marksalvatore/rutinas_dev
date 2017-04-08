@@ -60,6 +60,20 @@ img {
   max-width: 100%;
 }
 
+li {
+  padding-bottom: .5rem;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  color: blue;
+}
+a:active {
+    color: gray;
+}
 /* ===========================================
    Helper classes
    ======================================== */
@@ -94,57 +108,103 @@ img {
 }
 
 
-.App {
+
+/****************************
+   Page
+  ***************************/
+.Page {
+  font-size: 1.8rem;
+  font-family: "Eurostile";
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: "Eurostile";
 }
-.App-title {
+.Page-title {
   font-size: 4rem;
+}
+.Page-subtitle {
+  margin: 1rem 0 .5rem 0;
+  font-size: 2.5rem;
+}
+.Page-text {
+  padding: 1rem;
+  width: 75%;
+  max-width: 50rem;
+}
+.Page-window {
+  border: 3px solid goldenrod;
+  padding: 1em;
+  width: 80vw;
+  max-width: 50rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+
+
+/****************************
+   App
+  ***************************/
+.App-title {
+  font-size: 5rem;
   text-transform: uppercase;
-  margin-top: 1rem;
 }
 .App-byline {
-  font-size: 1.8rem;
+  font-size: 2.1rem;
 }
 .App-logo {
-  margin: 2rem 0 1rem 0;
+  margin: 2rem 0;
   text-align: center;
+  width: 150px;
 }
 .App-description {
-  font-size: 1.5em;
+  font-size: 1.8rem;
 }
-.App-menu {
+
+/****************************
+   Nav
+  ***************************/
+.Nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  /*position: fixed;*/
+  width: 100vw;
+  margin-bottom: 1rem;
 }
-.App-menu-item {
+.Nav-top {
+  /*top: 0;*/
+}
+.Nav-bot {
+  /*bottom: 0*/;
+}
+.Nav-item {
   border: 1px solid #ccc;
   border-left: none;
   font-size: 1.5rem;
   padding: 1em;
 }
-.App-menu-item:first-child {
+.Nav-item:first-child {
   border-left: 1px solid #ccc;
 }
-.App-menu-item:hover {
+.Nav-item:hover {
   background: #ccc;
   color: #000;
 }
-.App-menu-item:active {
+.Nav-item:active {
   background: #999;
   color: #fff;
 }
 
 
-
-
+/****************************
+   Refactor later
+  ***************************/
+.getStarted {
+  margin: 2rem;
+}
 
 
 /*
