@@ -24,6 +24,8 @@ class App extends React.Component {
         <div className="getStarted">
            <Link to="/instructions">Get started</Link>
         </div>
+
+        
       </div>
     );
   }

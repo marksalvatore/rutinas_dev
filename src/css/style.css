@@ -205,6 +205,9 @@ a:active {
 .getStarted {
   margin: 2rem;
 }
+img.drill {
+  max-width: 30rem;
+}
 
 
 /*

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import DrillNav from './DrillNav';
-import drill from '../../public/images/fund-2.png';
+import drill from '../../public/images/fund-2.svg';
 
 class Drill extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class Drill extends React.Component {
             <Nav />
 
             <div className="Page-title">Safety Drill 3</div>
-            <img src={drill} alt="drill" />
+            <img className="drill" src={drill} alt="drill" />
             <div className="Page-subtitle">Rules</div>
             <div className="Page-text">
             <p>With CB on the head spot and OB on the foot spot, shoot CB straight into OB. The objective is to make OB rebound and strike CB squarely so it rolls back toward the head spot (one straight line).</p>
