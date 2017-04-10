@@ -210,7 +210,7 @@ a:active {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
-    border: 3px solid #eee;
+    border: 3px solid #ccc;
   }
   .drill-frame-item { 
     padding: .5rem;
@@ -228,6 +228,7 @@ a:active {
 
   }
   .drill-frame-item .button {
+    margin-top: 1rem;
     width: 100%;
     padding: .5rem;
     color: #497ADB;

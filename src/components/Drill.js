@@ -7,19 +7,20 @@ import drill from '../../public/images/fund-2.svg';
 class Drill extends React.Component {
   constructor() {
       super();
-
       this.saveAction = this.saveAction.bind(this);
       this.cancelAction = this.cancelAction.bind(this);
   }
 
   saveAction() {
-      console.log("Entering score now");
+      //console.log("Entering score now");
+      // we'll have to pass in an id later
+      this.context.router.transitionTo(`/score`);
   }
-
   cancelAction() {
-      console.log("Canceling score now");
+      //console.log("Canceling score now");
+      // we'll have to pass in an id later
+      this.context.router.transitionTo(`/routine`);
   }
-
 
   render() {
     return (
@@ -45,5 +46,10 @@ class Drill extends React.Component {
     )
   }
 }
+
+Drill.contextTypes = {
+  router: React.PropTypes.object
+}
+
 
 export default Drill;

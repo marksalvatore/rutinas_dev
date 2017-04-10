@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router'
 
 import drill1 from '../../public/images/fund-1.svg';
 import drill2 from '../../public/images/fund-2.svg';
@@ -17,11 +18,16 @@ class NewRoutine extends React.Component {
   }
 
   saveAction() {
-      console.log("Saving a new routine now");
+      //console.log("Saving a new routine now");
+      // we'll have to pass in an id later
+      this.context.router.transitionTo(`/routines`);
+
   }
 
   cancelAction() {
-      console.log("Canceling new routine");
+      //console.log("Canceling new routine");
+      this.context.router.transitionTo(`/`);
+
   }
 
   render() {
@@ -70,6 +76,10 @@ class NewRoutine extends React.Component {
     	</div>
     )
   }
+}
+
+NewRoutine.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default NewRoutine;

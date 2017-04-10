@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import drillData from '../../data-drills.json';
 import eightball from '../../public/images/eightball.png';
 import Nav from './Nav';
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      drillData: drillData
+    };
+  }
+
   render() {
     return (
       <div className="Page">
@@ -24,7 +33,6 @@ class App extends React.Component {
         <div className="getStarted">
            <Link to="/instructions">Get started</Link>
         </div>
-
         
       </div>
     );
