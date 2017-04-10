@@ -6,7 +6,7 @@ import drill3 from '../../public/images/fund-3.svg';
 import drill4 from '../../public/images/fund-4.svg';
 
 import DrillFilter from './DrillFilter';
-import SaveRoutine from './SaveRoutine';
+import NewRoutineButtons from './NewRoutineButtons';
 
 class NewRoutine extends React.Component {
   render() {
@@ -51,7 +51,7 @@ class NewRoutine extends React.Component {
              </div>
     	  </div>
 
-          <SaveRoutine />
+          <NewRoutineButtons />
 
     	</div>
     )

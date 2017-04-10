@@ -19,7 +19,7 @@ const Router = () => {
         <Match exactly pattern="/" component={App} />
         <Match pattern="/instructions" component={Instructions} />
         <Match pattern="/routines" component={Routines} />
-        <Match pattern="/new-routine" component={NewRoutine} />
+        <Match pattern="/new" component={NewRoutine} />
         <Match pattern="/routine" component={Routine} />
         <Match pattern="/drill" component={Drill} />
         <Match pattern="/stats" component={Stats} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-class SaveRoutine extends React.Component {
+class NewRoutineButtons extends React.Component {
   render() {
     return (
 			<div className="button-bar">
@@ -12,4 +12,4 @@ class SaveRoutine extends React.Component {
   }
 }
 
-export default SaveRoutine;
+export default NewRoutineButtons;
