@@ -4,7 +4,7 @@ import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
 import drill from '../../public/images/fund-2.svg';
 
-class Drill extends React.Component {
+class DrillDetail extends React.Component {
   constructor() {
       super();
       this.saveAction = this.saveAction.bind(this);
@@ -47,9 +47,9 @@ class Drill extends React.Component {
   }
 }
 
-Drill.contextTypes = {
+DrillDetail.contextTypes = {
   router: React.PropTypes.object
 }
 
 
-export default Drill;
+export default DrillDetail;

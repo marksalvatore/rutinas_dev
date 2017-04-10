@@ -6,7 +6,7 @@ import Instructions from './Instructions';
 import Routines from './Routines';
 import NewRoutine from './NewRoutine';
 import Routine from './Routine';
-import Drill from './Drill';
+import DrillDetail from './DrillDetail';
 import Stats from './Stats';
 import Score from './Score';
 import Save from './Save';
@@ -21,7 +21,7 @@ const Router = () => {
         <Match pattern="/routines" component={Routines} />
         <Match pattern="/new" component={NewRoutine} />
         <Match pattern="/routine" component={Routine} />
-        <Match pattern="/drill" component={Drill} />
+        <Match pattern="/drill" component={DrillDetail} />
         <Match pattern="/stats" component={Stats} />
         <Match pattern="/score" component={Score} />
         <Match pattern="/save" component={Save} />
