@@ -243,9 +243,9 @@ a:active {
   }
 
 /****************************
-   NewRoutineButtons
+   ButtonGroup
   ***************************/
-/*  .button-bar {
+/*  .button-group {
     display: flex;
     justify-content: space-around;
     width: 75vw;
@@ -255,14 +255,15 @@ a:active {
 
  */
 
-  .button-bar {
+  .button-group {
+    margin-top: 3rem;
     position: relative;
-    bottom: -2rem;
+    bottom: 2rem;
     right: 2rem;
     width: 100vw;
     text-align: right;
   }
-  .button-bar button:not(:first-child) {
+  .button-group button:not(:first-child) {
     margin-left: 2em;
   }
 
@@ -283,7 +284,7 @@ a:active {
  ***************************************/
 @media screen and (min-width: 40rem) {
   /*html {background: goldenrod; }*/
-  .button-bar {
+  .button-group {
     max-width: 50rem;
   }
 }

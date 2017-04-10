@@ -6,14 +6,29 @@ import drill3 from '../../public/images/fund-3.svg';
 import drill4 from '../../public/images/fund-4.svg';
 
 import DrillFilter from './DrillFilter';
-import NewRoutineButtons from './NewRoutineButtons';
+import ButtonGroup from './ButtonGroup';
 
 class NewRoutine extends React.Component {
+  constructor() {
+      super();
+
+      this.saveAction = this.saveAction.bind(this);
+      this.cancelAction = this.cancelAction.bind(this);
+  }
+
+  saveAction() {
+      console.log("Saving a new routine now");
+  }
+
+  cancelAction() {
+      console.log("Canceling new routine");
+  }
+
   render() {
     return (
     	<div className="Page">
 
-          <DrillFilter />
+        <DrillFilter />
 
     	  <div className="drill-frame-wrapper">
              <div className="drill-frame-instr">
@@ -51,8 +66,7 @@ class NewRoutine extends React.Component {
              </div>
     	  </div>
 
-          <NewRoutineButtons />
-
+        <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
     	</div>
     )
   }
