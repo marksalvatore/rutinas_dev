@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import dbconnect from '../rebase';
-import drills from '../../data-drills.json';
+import drillsData from '../../data-drills.json';
 import Drill from './Drill';
 import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
@@ -14,11 +14,9 @@ class NewRoutine extends React.Component {
     this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
-    this.StoreObject = this.StoreObject.bind(this);
+    this.storeObject = this.storeObject.bind(this);
     this.getStoredObject = this.getStoredObject.bind(this);
     this.getSelectedDrills = this.getSelectedDrills.bind(this);
-    //this.storeDrills = this.storeDrills.bind(this);
-    //this.getStoredDrills = this.getStoredDrills.bind(this);
 
     this.state = {
       drills: {},
@@ -38,13 +36,13 @@ class NewRoutine extends React.Component {
 
   loadDrills() {
     // load from localStorage, else from json
-    if(!localStorage.getItem('drillId')) {
-      this.setState({drills: drills});
-      //this.storeDrills();
+    if(!localStorage.getItem('drills')) {
+      this.storeObject('drills', drillsData);
+      this.setState({drills: drillsData});
       console.log('populated for first time');
     } 
     else {
-      //this.getStoredDrills();
+      this.setState({drills: this.getStoredObject('drills')});
       console.log('taken from localStorage');
     }
   }
@@ -53,8 +51,9 @@ class NewRoutine extends React.Component {
     const newRoutineObj = this.makeNewRoutineObj();
     this.storeNewRoutine(newRoutineObj);
 
+    console.log(this.getStoredObject('routines'));
+
     // go to new routine page
-    console.log('going to a specific routine');
     this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
   }
 
@@ -89,52 +88,24 @@ class NewRoutine extends React.Component {
       // Add new Routine to array
       storedRoutines.push(newRoutine);
       // store the updated set of Routines
-      this.StoreObject("routines", storedRoutines);
+      this.storeObject("routines", storedRoutines);
 
     } else {
       // Just need to put newRoutine into a one element array before storing
       let arr = [];
       arr[0] = newRoutine;
-      this.StoreObject("routines", arr);
+      this.storeObject("routines", arr);
     }
   }
 
 
-  StoreObject(key, obj) {
-      const jsonObject = JSON.stringify(obj);
-      localStorage.setItem(key, jsonObject);
+  storeObject(key, obj) {
+    localStorage.setItem(key, JSON.stringify(obj));
   }
 
   getStoredObject(key) {
-      const json_string = localStorage.getItem(key);
-      const obj = JSON.parse(json_string)
-      return obj;
+    return JSON.parse(localStorage.getItem(key));
   }
-
-
-
-
-
-
-/*  storeDrills() {
-    // loop array
-    for( let drillItem of drills ){ 
-      // loop object
-      for( let prop of Object.keys(drillItem) ){ 
-        let value = drillItem[prop];
-        console.log(`${prop}: ${value}`);
-        localStorage.setItem(`${prop}`, `${value}`);
-      }
-    }
-  }
-
-  getStoredDrills() {
-    console.log('getting storage');
-    //var someItem = localStorage.getItem('someItem');
-  }
-
-
-*/
  
 
   render() {
@@ -161,7 +132,7 @@ class NewRoutine extends React.Component {
   }
 }
 
-// Allows using the parent router for methods that link to another screen
+// Allows using the parent router for methods that link to another page
 // See saveAction() and cancelAction()
 NewRoutine.contextTypes = {
   router: React.PropTypes.object

@@ -7,6 +7,11 @@ class Routines extends React.Component {
   constructor() {
     super();
 
+   this.state = {
+     drills: {},
+     routines: {}
+   };
+
   }
 
 
@@ -19,7 +24,7 @@ class Routines extends React.Component {
 
           // NEED TO get values from storage and loop over
 
-          
+
           <div className="Page-title">My Routines</div>
           <div className="Page-text">
             <ul className="List">
