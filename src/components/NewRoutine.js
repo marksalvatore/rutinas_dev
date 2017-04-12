@@ -51,14 +51,11 @@ class NewRoutine extends React.Component {
 
   saveAction() {
     const newRoutineObj = this.makeNewRoutineObj();
-    const selectedDrills = this.getSelectedDrills();
-
-    // Add selectedDrills array to newRoutineObj
-
+    this.storeNewRoutine(newRoutineObj);
 
     // go to new routine page
     console.log('going to a specific routine');
-    //this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
+    this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
   }
 
   cancelAction() {
@@ -73,33 +70,35 @@ class NewRoutine extends React.Component {
       "id": `${id}`,
       "title" : `Routine #${timestamp}`
     }
+    const selectedDrills = this.getSelectedDrills();
+    // Add selectedDrills array to newRoutine
+
+    return newRoutine;
+  }
+
+  getSelectedDrills() {
+    //console.log("getting selected drills");
+  }
 
 
-    // ADD NEW Routine to storage
-
+  storeNewRoutine(newRoutine) {
     // get routines from storage
     let storedRoutines = this.getStoredObject("routines");
 
     if (storedRoutines !== null) {
-
       // Add new Routine to array
       storedRoutines.push(newRoutine);
-      
       // store the updated set of Routines
       this.StoreObject("routines", storedRoutines);
 
-      console.log(this.getStoredObject('routines'));
-
     } else {
-
       // Just need to put newRoutine into a one element array before storing
       let arr = [];
       arr[0] = newRoutine;
       this.StoreObject("routines", arr);
     }
-
-    return newRoutine;
   }
+
 
   StoreObject(key, obj) {
       const jsonObject = JSON.stringify(obj);
@@ -113,16 +112,6 @@ class NewRoutine extends React.Component {
   }
 
 
-
-
-
-
-
-
-
-  getSelectedDrills() {
-    console.log("getting selected drills");
-  }
 
 
 

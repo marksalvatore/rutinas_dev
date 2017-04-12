@@ -16,15 +16,19 @@ class Routines extends React.Component {
 
     	  <Nav />
           
+
+          // NEED TO get values from storage and loop over
+
+          
           <div className="Page-title">My Routines</div>
           <div className="Page-text">
             <ul className="List">
-                <li className="Item"><Link to="/routine">Defensive practice</Link></li>
-                <li className="Item"><Link to="/routine">Safeties to master</Link></li>
-                <li className="Item"><Link to="/routine">Hardest cuts</Link></li>
-                <li className="Item"><Link to="/routine">Problem shots</Link></li>
-                <li className="Item"><Link to="/routine">Straight stroke!</Link></li>
-                <li className="Item"><Link to="/routine">Learning table speed</Link></li>
+                <li className="Item"><Link to="/routine/123">Defensive practice</Link></li>
+                <li className="Item"><Link to="/routine/123">Safeties to master</Link></li>
+                <li className="Item"><Link to="/routine/123">Hardest cuts</Link></li>
+                <li className="Item"><Link to="/routine/123">Problem shots</Link></li>
+                <li className="Item"><Link to="/routine/123">Straight stroke!</Link></li>
+                <li className="Item"><Link to="/routine/123">Learning table speed</Link></li>
             </ul>
           </div>
 
