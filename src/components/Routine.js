@@ -10,10 +10,11 @@ class Routine extends React.Component {
 
         <Nav />
         
-        <div className="Page-title">Safeties to master</div>
+        <div className="Page-title">my routine</div>
         <div className="Page-subtitle">Drills for this routine:</div>
           <ul className="List">
-              <li className="Item"><Link to="/drill">Saftey Drill 1</Link></li>
+
+              <li className="Item"><Link to="/drill/:drillId">Saftey Drill 1</Link></li>
               <li className="Item"><Link to="/drill">Saftey Drill 2</Link></li>
               <li className="Item"><Link to="/drill">Saftey Drill 3</Link></li>
               <li className="Item"><Link to="/drill">Saftey Drill 4</Link></li>

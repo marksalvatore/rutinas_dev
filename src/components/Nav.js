@@ -5,7 +5,7 @@ class Nav extends React.Component {
   render() {
     return (
     	<div className="Nav">
-    	  <div className="Nav-item"><Link to="/stats">My Stats</Link></div>
+    	  <div className="Nav-item"><Link to="/info">Info</Link></div>
     	  <div className="Nav-item"><Link to="/routines">My Routines</Link></div>
     	  <div className="Nav-item"><Link to="/new">NEW Routine</Link></div>
     	</div>

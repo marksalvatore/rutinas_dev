@@ -4,6 +4,12 @@ import { Link } from 'react-router';
 import Nav from './Nav';
 
 class Routines extends React.Component {
+  constructor() {
+    super();
+
+  }
+
+
   render() {
     return (
         <div className="Page">

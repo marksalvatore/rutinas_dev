@@ -1,12 +1,12 @@
 import React from 'react';
 import Nav from './Nav';
 
-class Instructions extends React.Component {
+class Info extends React.Component {
   render() {
     return (
         <div className="Page">
 
-    	  <Nav />
+        <Nav />
 
           <div className="Page-title">Instructions</div>
           <div className="Page-text">
@@ -16,10 +16,12 @@ class Instructions extends React.Component {
                 <p>NOTE: It's good to practice the drill and become comfortable with it, before testing yourself.</p>
           </div>
 
+          <div className="Page-title">About</div>
+          <div className="Page-text">Thanks to...</div>
 
-    	</div>
+      </div>
     )
   }
 }
 
-export default Instructions;
+export default Info;

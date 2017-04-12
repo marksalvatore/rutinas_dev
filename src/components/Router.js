@@ -2,12 +2,11 @@ import React from 'react';
 import { BrowserRouter, Match, Miss } from 'react-router';
 
 import App from './App';
-import Instructions from './Instructions';
 import Routines from './Routines';
 import NewRoutine from './NewRoutine';
 import Routine from './Routine';
 import DrillDetail from './DrillDetail';
-import Stats from './Stats';
+import Info from './Info';
 import Score from './Score';
 import Save from './Save';
 import NotFound from './NotFound';
@@ -17,12 +16,11 @@ const Router = () => {
     <BrowserRouter>
       <div>
         <Match exactly pattern="/" component={App} />
-        <Match pattern="/instructions" component={Instructions} />
         <Match pattern="/routines" component={Routines} />
         <Match pattern="/new" component={NewRoutine} />
-        <Match pattern="/routine" component={Routine} />
+        <Match pattern="/routine/:routineId" component={Routine} />
         <Match pattern="/drill" component={DrillDetail} />
-        <Match pattern="/stats" component={Stats} />
+        <Match pattern="/info" component={Info} />
         <Match pattern="/score" component={Score} />
         <Match pattern="/save" component={Save} />
         <Miss component={NotFound} />

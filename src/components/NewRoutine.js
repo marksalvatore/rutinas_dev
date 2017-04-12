@@ -1,34 +1,152 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router'
 
-import drill1 from '../../public/images/fund-1.svg';
-import drill2 from '../../public/images/fund-2.svg';
-import drill3 from '../../public/images/fund-3.svg';
-import drill4 from '../../public/images/fund-4.svg';
-
+//import dbconnect from '../rebase';
+import drills from '../../data-drills.json';
+import Drill from './Drill';
 import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
 
 class NewRoutine extends React.Component {
   constructor() {
-      super();
+    super();
 
-      this.saveAction = this.saveAction.bind(this);
-      this.cancelAction = this.cancelAction.bind(this);
+    this.saveAction = this.saveAction.bind(this);
+    this.cancelAction = this.cancelAction.bind(this);
+    this.loadDrills = this.loadDrills.bind(this);
+    this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
+    this.StoreObject = this.StoreObject.bind(this);
+    this.getStoredObject = this.getStoredObject.bind(this);
+    this.getSelectedDrills = this.getSelectedDrills.bind(this);
+    //this.storeDrills = this.storeDrills.bind(this);
+    //this.getStoredDrills = this.getStoredDrills.bind(this);
+
+    this.state = {
+      drills: {},
+      routines: {}
+    };
+  }
+
+  componentWillMount() {
+    this.loadDrills();
+  }
+
+  // runs when props/state changes ( after set.state() )
+  componentWillUpdate(nextProps, nextState) {
+    console.log("something changed");
+    console.log({nextProps, nextState});
+  }
+
+  loadDrills() {
+    // load from localStorage, else from json
+    if(!localStorage.getItem('drillId')) {
+      this.setState({drills: drills});
+      //this.storeDrills();
+      console.log('populated for first time');
+    } 
+    else {
+      //this.getStoredDrills();
+      console.log('taken from localStorage');
+    }
   }
 
   saveAction() {
-      //console.log("Saving a new routine now");
-      // we'll have to pass in an id later
-      this.context.router.transitionTo(`/routines`);
+    const newRoutineObj = this.makeNewRoutineObj();
+    const selectedDrills = this.getSelectedDrills();
 
+    // Add selectedDrills array to newRoutineObj
+
+
+    // go to new routine page
+    console.log('going to a specific routine');
+    //this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
   }
 
   cancelAction() {
-      //console.log("Canceling new routine");
-      this.context.router.transitionTo(`/`);
-
+    this.context.router.transitionTo(`/`);
   }
+
+  makeNewRoutineObj() {
+    // use timestamp for unique id
+    const timestamp = Date.now();
+    const id = `${timestamp}`;
+    const newRoutine = {
+      "id": `${id}`,
+      "title" : `Routine #${timestamp}`
+    }
+
+
+    // ADD NEW Routine to storage
+
+    // get routines from storage
+    let storedRoutines = this.getStoredObject("routines");
+
+    if (storedRoutines !== null) {
+
+      // Add new Routine to array
+      storedRoutines.push(newRoutine);
+      
+      // store the updated set of Routines
+      this.StoreObject("routines", storedRoutines);
+
+      console.log(this.getStoredObject('routines'));
+
+    } else {
+
+      // Just need to put newRoutine into a one element array before storing
+      let arr = [];
+      arr[0] = newRoutine;
+      this.StoreObject("routines", arr);
+    }
+
+    return newRoutine;
+  }
+
+  StoreObject(key, obj) {
+      const jsonObject = JSON.stringify(obj);
+      localStorage.setItem(key, jsonObject);
+  }
+
+  getStoredObject(key) {
+      const json_string = localStorage.getItem(key);
+      const obj = JSON.parse(json_string)
+      return obj;
+  }
+
+
+
+
+
+
+
+
+
+  getSelectedDrills() {
+    console.log("getting selected drills");
+  }
+
+
+
+
+/*  storeDrills() {
+    // loop array
+    for( let drillItem of drills ){ 
+      // loop object
+      for( let prop of Object.keys(drillItem) ){ 
+        let value = drillItem[prop];
+        console.log(`${prop}: ${value}`);
+        localStorage.setItem(`${prop}`, `${value}`);
+      }
+    }
+  }
+
+  getStoredDrills() {
+    console.log('getting storage');
+    //var someItem = localStorage.getItem('someItem');
+  }
+
+
+*/
+ 
 
   render() {
     return (
@@ -41,34 +159,10 @@ class NewRoutine extends React.Component {
                  Select drills for new Routine
              </div>
              <div className="drill-frame">
-                <div className="drill-frame-item">
-                    <div className="drill-frame-item-title">
-                        Speed Control
-                    </div>
-                    <img src={drill1} alt="this drill" />
-                    <div className="button">Select this drill</div>
-                </div>
-                <div className="drill-frame-item">
-                    <div className="drill-frame-item-title">
-                        Straight Stroke
-                    </div>
-                    <img src={drill2} alt="this drill" />
-                    <div className="button">Select this drill</div>
-                </div>
-                <div className="drill-frame-item">
-                    <div className="drill-frame-item-title">
-                        Short Straight Stop
-                    </div>
-                    <img src={drill3} alt="this drill" />
-                    <div className="button">Select this drill</div>
-                </div>
-                <div className="drill-frame-item">
-                    <div className="drill-frame-item-title">
-                        Long Straight Stop
-                    </div>
-                    <img src={drill4} alt="this drill" />
-                    <div className="button">Select this drill</div>
-                </div>
+               { Object
+                   .keys(this.state.drills)
+                   .map(key => <Drill key={key} details={this.state.drills[key]} />)
+               }
              </div>
     	  </div>
 
@@ -78,6 +172,8 @@ class NewRoutine extends React.Component {
   }
 }
 
+// Allows using the parent router for methods that link to another screen
+// See saveAction() and cancelAction()
 NewRoutine.contextTypes = {
   router: React.PropTypes.object
 }
