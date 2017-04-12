@@ -5,6 +5,7 @@ import drillsData from '../../data-drills.json';
 import Drill from './Drill';
 import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
+import { storeObject, getStoredObject } from '../helpers';
 
 class NewRoutine extends React.Component {
   constructor() {
@@ -14,8 +15,6 @@ class NewRoutine extends React.Component {
     this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
-    this.storeObject = this.storeObject.bind(this);
-    this.getStoredObject = this.getStoredObject.bind(this);
     this.getSelectedDrills = this.getSelectedDrills.bind(this);
 
     this.state = {
@@ -37,12 +36,12 @@ class NewRoutine extends React.Component {
   loadDrills() {
     // load from localStorage, else from json
     if(!localStorage.getItem('drills')) {
-      this.storeObject('drills', drillsData);
+      storeObject('drills', drillsData);
       this.setState({drills: drillsData});
       console.log('populated for first time');
     } 
     else {
-      this.setState({drills: this.getStoredObject('drills')});
+      this.setState({drills: getStoredObject('drills')});
       console.log('taken from localStorage');
     }
   }
@@ -51,7 +50,7 @@ class NewRoutine extends React.Component {
     const newRoutineObj = this.makeNewRoutineObj();
     this.storeNewRoutine(newRoutineObj);
 
-    console.log(this.getStoredObject('routines'));
+    console.log(getStoredObject('routines'));
 
     // go to new routine page
     this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
@@ -79,34 +78,24 @@ class NewRoutine extends React.Component {
     //console.log("getting selected drills");
   }
 
-
   storeNewRoutine(newRoutine) {
     // get routines from storage
-    let storedRoutines = this.getStoredObject("routines");
+    let storedRoutines = getStoredObject("routines");
 
     if (storedRoutines !== null) {
       // Add new Routine to array
       storedRoutines.push(newRoutine);
       // store the updated set of Routines
-      this.storeObject("routines", storedRoutines);
+      storeObject("routines", storedRoutines);
 
     } else {
       // Just need to put newRoutine into a one element array before storing
       let arr = [];
       arr[0] = newRoutine;
-      this.storeObject("routines", arr);
+      storeObject("routines", arr);
     }
   }
 
-
-  storeObject(key, obj) {
-    localStorage.setItem(key, JSON.stringify(obj));
-  }
-
-  getStoredObject(key) {
-    return JSON.parse(localStorage.getItem(key));
-  }
- 
 
   render() {
     return (
