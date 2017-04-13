@@ -1,28 +1,39 @@
 import React from 'react';
-import { Link } from 'react-router';
 
-import Nav from './Nav';
+
+import NoItems from './NoItems';
 
 class Routine extends React.Component {
-  render() {
-    return (
-      <div className="Page">
+  constructor() {
+    super();
 
-        <Nav />
-        
-        <div className="Page-title">my routine</div>
-        <div className="Page-subtitle">Drills for this routine:</div>
-          <ul className="List">
-
-              <li className="Item"><Link to="/drill/:drillId">Saftey Drill 1</Link></li>
-              <li className="Item"><Link to="/drill">Saftey Drill 2</Link></li>
-              <li className="Item"><Link to="/drill">Saftey Drill 3</Link></li>
-              <li className="Item"><Link to="/drill">Saftey Drill 4</Link></li>
-          </ul>
-
-    	</div>
-    )
+    this.goToRoutine = this.goToRoutine.bind(this);
   }
+
+  goToRoutine(e) {
+    e.preventDefault();
+    const id = e.target.dataset.id
+    this.context.router.transitionTo(`/routine/${id}`);
+  }
+
+  render() {
+    const { details } = this.props;
+    // QUESTION - why imagePath doesn't link to image?
+    // const imagePath = `../../public/images/${details.category}-${details.imageId}.svg`;
+      return (
+        <div className="drill-frame-item">
+            <div className="drill-frame-item-title">
+                <a href="#" data-id={details.id} onClick={this.goToRoutine}>{details.title}</a>
+            </div>
+        </div>
+       );
+  }
+}
+
+// Allows using the parent router for methods that link to another page
+// See saveAction() and cancelAction()
+Routine.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default Routine;

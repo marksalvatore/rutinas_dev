@@ -1,43 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router';
 
 import Nav from './Nav';
+import Routine from './Routine';
+import { getStoredObject } from '../helpers';
 
 class Routines extends React.Component {
   constructor() {
     super();
 
-   this.state = {
-     drills: {},
-     routines: {}
-   };
+    this.loadRoutines = this.loadRoutines.bind(this);
 
+    this.state = {
+      drills: {},
+      routines: {}
+    };
   }
 
+  componentWillMount() {
+    this.loadRoutines();
+  }
+
+  loadRoutines() {
+    if(!localStorage.getItem('routines')) {
+    } 
+    else {
+      this.setState({routines: getStoredObject('routines')});
+      console.log('Set up routines from local storage');
+    }
+  }
 
   render() {
     return (
         <div className="Page">
 
     	  <Nav />
-          
-
-          // NEED TO get values from storage and loop over
-
 
           <div className="Page-title">My Routines</div>
           <div className="Page-text">
+      
             <ul className="List">
-                <li className="Item"><Link to="/routine/123">Defensive practice</Link></li>
-                <li className="Item"><Link to="/routine/123">Safeties to master</Link></li>
-                <li className="Item"><Link to="/routine/123">Hardest cuts</Link></li>
-                <li className="Item"><Link to="/routine/123">Problem shots</Link></li>
-                <li className="Item"><Link to="/routine/123">Straight stroke!</Link></li>
-                <li className="Item"><Link to="/routine/123">Learning table speed</Link></li>
+                { Object
+                    .keys(this.state.routines)
+                    .map(key => 
+                    <Routine 
+                      key={key} 
+                      details={this.state.routines[key]} 
+                      />)
+                }
             </ul>
           </div>
-
-
     	</div>
     )
   }
