@@ -34,11 +34,11 @@ class NewRoutine extends React.Component {
     if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
-      console.log('populated for first time');
+      console.log('Drills loaded from json file');
     } 
     else {
       this.setState({drills: getStoredObject('drills')});
-      console.log('taken from localStorage');
+      console.log('Drills loaded from localStorage');
     }
   }
 
