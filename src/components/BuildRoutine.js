@@ -15,11 +15,14 @@ class NewRoutine extends React.Component {
     this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
-    this.getSelectedDrills = this.getSelectedDrills.bind(this);
+    this.toggleSelected = this.toggleSelected.bind(this);
+    this.setFilter = this.setFilter.bind(this);
 
     this.state = {
       drills: {},
-      routines: {}
+      routines: {},
+      selectedDrills: [],
+      selectedTags: []
     };
   }
 
@@ -27,12 +30,13 @@ class NewRoutine extends React.Component {
     this.loadDrills();
   }
 
-  // runs when props/state changes ( after set.state() )
+/*  
+// runs when props/state changes ( after set.state() )
   componentWillUpdate(nextProps, nextState) {
     console.log("something changed");
     console.log({nextProps, nextState});
   }
-
+*/
   loadDrills() {
     // load from localStorage, else from json
     if(!localStorage.getItem('drills')) {
@@ -50,8 +54,6 @@ class NewRoutine extends React.Component {
     const newRoutineObj = this.makeNewRoutineObj();
     this.storeNewRoutine(newRoutineObj);
 
-    console.log(getStoredObject('routines'));
-
     // go to new routine page
     this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
   }
@@ -68,14 +70,35 @@ class NewRoutine extends React.Component {
       "id": `${id}`,
       "title" : `Routine #${timestamp}`
     }
-    const selectedDrills = this.getSelectedDrills();
-    // Add selectedDrills array to newRoutine
+
+    // Add selectedDrills to newRoutine
 
     return newRoutine;
   }
 
-  getSelectedDrills() {
-    //console.log("getting selected drills");
+  toggleSelected(e) {
+    const id = e.target.dataset.id;
+    let selectedDrills = [...this.state.selectedDrills];
+
+    if ( this.state.selectedDrills.indexOf(id) !== -1 ) {
+      // remove item
+      const index = this.state.selectedDrills.indexOf(id);
+      selectedDrills.splice(index, 1);
+
+    } else {
+      // add item
+      selectedDrills = [...this.state.selectedDrills, id];
+    }
+    
+    // Console array in callback, after state gets updated
+    this.setState({ selectedDrills }, function() {
+      console.log('selectedDrills: ', this.state.selectedDrills);
+    }); 
+  }
+
+  setFilter(filter) {
+    this.setState({selectedTags  : filter})
+    this.props.onChangeFilter(filter);
   }
 
   storeNewRoutine(newRoutine) {
@@ -110,7 +133,12 @@ class NewRoutine extends React.Component {
              <div className="drill-frame">
                { Object
                    .keys(this.state.drills)
-                   .map(key => <Drill key={key} details={this.state.drills[key]} />)
+                   .map(key => 
+                     <Drill 
+                       key={key} 
+                       details={this.state.drills[key]}
+                       toggleSelected={this.toggleSelected}
+                       />)
                }
              </div>
     	  </div>

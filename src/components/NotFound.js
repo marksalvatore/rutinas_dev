@@ -10,7 +10,7 @@ class NotFound extends React.Component {
           
           <div className="Page-title">Page not found</div>
           <div className="Page-text">
-            <p>Whoops! Was that mis-cue?</p>
+            <p>Whoops! Was that a mis-cue?</p>
           </div>
 
 

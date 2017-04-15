@@ -180,7 +180,7 @@ a:active {
   .Nav-item:first-child {
     border-left: 1px solid #ccc;
   }
-  .Nav-item:hover {
+  .Nav-item:hover, .active {
     background: #ccc;
     color: #000;
   }
@@ -189,8 +189,9 @@ a:active {
     color: #fff;
   }
 
+
 /****************************
-   Drill Frame on NewRoutine
+   Window of drill diagrams (BuildRoutine)
   ***************************/
   .drill-frame-wrapper {
     text-align: center;
@@ -216,7 +217,9 @@ a:active {
     padding: .5rem;
     border: 0px solid black;
     margin-right: .7rem;
-
+  }
+  .drill-frame-item-selected {
+    background: orange;
   }
   .drill-frame-item img {
     max-width: 30rem;
@@ -244,18 +247,8 @@ a:active {
   }
 
 /****************************
-   ButtonGroup
+   ButtonGroup - save, cancel, etc
   ***************************/
-/*  .button-group {
-    display: flex;
-    justify-content: space-around;
-    width: 75vw;
-    margin-top: 3rem;
-    border: 1px solid red;
-   }
-
- */
-
   .button-group {
     margin-top: 3rem;
     position: relative;
@@ -267,6 +260,7 @@ a:active {
   .button-group button:not(:first-child) {
     margin-left: 2em;
   }
+
 
 /****************************
    Refactor later

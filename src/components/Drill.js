@@ -2,6 +2,7 @@ import React from 'react';
 
 
 class Drill extends React.Component {
+
   render() {
     const { details } = this.props;
     // QUESTION - why imagePath doesn't link to image?
@@ -12,10 +13,13 @@ class Drill extends React.Component {
               {details.title}
           </div>
           <img src={details.url} alt={details.title} />
-          <div className="button">Select this drill</div>
+          <div className="button" onClick={this.props.toggleSelection} data-id={details.id}>Select this drill</div>
       </div>
      )
   }
 }
 
 export default Drill;
+
+
+
