@@ -10,10 +10,9 @@ class Info extends React.Component {
 
           <div className="Page-title">Instructions</div>
           <div className="Page-text">
-            <p>Just click <strong>new routine</strong> and select from any of the 11 categories, all the drills you want to add.</p>
-            <p>To score your routine, click routines and select the routine you want to work with. Then click on the drill you want to shoot and click enter score. Just enter the number of attempts you made and how many points your scored according to the scoring instructions for that drill.</p>
-                <p>Click stats to see how your drill performance is progressing.</p>
-                <p>NOTE: It's good to practice the drill and become comfortable with it, before testing yourself.</p>
+            <p>Click <strong>Build a Routine</strong> to create a set of drills you'd like to practice. Then select the specific drills you want to include in your new routine.</p>
+            <p>Your new routine will display in <strong>My Routines</strong>. Select the routine you want to practice. Then select the title of the drill you want to try and click <strong>Enter Score</strong> to record your results. Enter the number of attempts and how many points you made according to the scoring instructions for that drill.</p>
+
           </div>
 
           <div className="Page-title">About</div>
