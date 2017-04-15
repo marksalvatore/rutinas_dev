@@ -13,7 +13,7 @@ class Drill extends React.Component {
               {details.title}
           </div>
           <img src={details.url} alt={details.title} />
-          <div className="button" onClick={this.props.toggleSelection} data-id={details.id}>Select this drill</div>
+          <div className="button" onClick={this.props.toggleSelectItem} data-id={details.id}>Select this drill</div>
       </div>
      )
   }

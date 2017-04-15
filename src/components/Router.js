@@ -3,7 +3,7 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 
 import App from './App';
 import Routines from './Routines';
-import BuildRoutine from './BuildRoutine';
+import NewRoutine from './NewRoutine';
 import RoutineDetail from './RoutineDetail';
 import DrillDetail from './DrillDetail';
 import Info from './Info';
@@ -17,7 +17,7 @@ const Router = () => {
       <div>
         <Match exactly pattern="/" component={App} />
         <Match pattern="/routines" component={Routines} />
-        <Match pattern="/new" component={BuildRoutine} />
+        <Match pattern="/new" component={NewRoutine} />
         <Match pattern="/routine/:routineId" component={RoutineDetail} />
         <Match pattern="/drill" component={DrillDetail} />
         <Match pattern="/info" component={Info} />

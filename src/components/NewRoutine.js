@@ -15,8 +15,7 @@ class NewRoutine extends React.Component {
     this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
-    this.toggleSelected = this.toggleSelected.bind(this);
-    this.setFilter = this.setFilter.bind(this);
+    this.toggleSelectItem = this.toggleSelectItem.bind(this);
 
     this.state = {
       drills: {},
@@ -30,13 +29,6 @@ class NewRoutine extends React.Component {
     this.loadDrills();
   }
 
-/*  
-// runs when props/state changes ( after set.state() )
-  componentWillUpdate(nextProps, nextState) {
-    console.log("something changed");
-    console.log({nextProps, nextState});
-  }
-*/
   loadDrills() {
     // load from localStorage, else from json
     if(!localStorage.getItem('drills')) {
@@ -76,8 +68,10 @@ class NewRoutine extends React.Component {
     return newRoutine;
   }
 
-  toggleSelected(e) {
+  toggleSelectItem(e) {
+    console.log(e);
     const id = e.target.dataset.id;
+    console.log(id);
     let selectedDrills = [...this.state.selectedDrills];
 
     if ( this.state.selectedDrills.indexOf(id) !== -1 ) {
@@ -87,18 +81,13 @@ class NewRoutine extends React.Component {
 
     } else {
       // add item
-      selectedDrills = [...this.state.selectedDrills, id];
+      selectedDrills.push(id);
     }
     
-    // Console array in callback, after state gets updated
+    // Set state and console array in callback, after state gets updated
     this.setState({ selectedDrills }, function() {
       console.log('selectedDrills: ', this.state.selectedDrills);
     }); 
-  }
-
-  setFilter(filter) {
-    this.setState({selectedTags  : filter})
-    this.props.onChangeFilter(filter);
   }
 
   storeNewRoutine(newRoutine) {
@@ -137,7 +126,7 @@ class NewRoutine extends React.Component {
                      <Drill 
                        key={key} 
                        details={this.state.drills[key]}
-                       toggleSelected={this.toggleSelected}
+                       toggleSelectItem={this.toggleSelectItem}
                        />)
                }
              </div>
