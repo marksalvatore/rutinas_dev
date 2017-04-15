@@ -1,7 +1,8 @@
 import React from 'react';
 
 import Nav from './Nav';
-import Routine from './Routine';
+//import NoItems from './NoItems';
+import RoutineListItem from './RoutineListItem';
 import { getStoredObject } from '../helpers';
 
 class Routines extends React.Component {
@@ -11,7 +12,6 @@ class Routines extends React.Component {
     this.loadRoutines = this.loadRoutines.bind(this);
 
     this.state = {
-      drills: {},
       routines: {}
     };
   }
@@ -21,11 +21,8 @@ class Routines extends React.Component {
   }
 
   loadRoutines() {
-    if(!localStorage.getItem('routines')) {
-    } 
-    else {
+    if(localStorage.getItem('routines')) {
       this.setState({routines: getStoredObject('routines')});
-      console.log('Set up routines from local storage');
     }
   }
 
@@ -42,7 +39,7 @@ class Routines extends React.Component {
                 { Object
                     .keys(this.state.routines)
                     .map(key => 
-                    <Routine 
+                    <RoutineListItem 
                       key={key} 
                       details={this.state.routines[key]} 
                       />)

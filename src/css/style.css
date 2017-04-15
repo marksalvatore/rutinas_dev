@@ -180,7 +180,7 @@ a:active {
   .Nav-item:first-child {
     border-left: 1px solid #ccc;
   }
-  .Nav-item:hover, .active {
+  .Nav-item:hover {
     background: #ccc;
     color: #000;
   }
@@ -228,7 +228,6 @@ a:active {
     font-size: 2rem;
     padding-bottom: .5rem;
     color: #497ADB;
-
   }
   .drill-frame-item .button {
     margin-top: 1rem;
@@ -246,6 +245,10 @@ a:active {
     color: #497ADB;
   }
 
+  .drill-frame-item .button.active {
+    background: goldenrod;
+    color: #497ADB;  
+  }
 /****************************
    ButtonGroup - save, cancel, etc
   ***************************/

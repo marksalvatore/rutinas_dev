@@ -47,7 +47,7 @@ class NewRoutine extends React.Component {
     this.storeNewRoutine(newRoutineObj);
 
     // go to new routine page
-    this.context.router.transitionTo(`/routines/${newRoutineObj.id}`);
+    this.context.router.transitionTo(`/routines`);
   }
 
   cancelAction() {
@@ -60,26 +60,34 @@ class NewRoutine extends React.Component {
     const id = `${timestamp}`;
     const newRoutine = {
       "id": `${id}`,
-      "title" : `Routine #${timestamp}`
+      "title" : `Routine #${timestamp}`,
+      "drills": this.state.selectedDrills
     }
-
-    // Add selectedDrills to newRoutine
-
     return newRoutine;
   }
 
+
   toggleSelectItem(e) {
-    console.log(e);
     const id = e.target.dataset.id;
-    console.log(id);
+    const index = e.target.dataset.index;
     let selectedDrills = [...this.state.selectedDrills];
+    let drills = {...this.state.drills};
 
     if ( this.state.selectedDrills.indexOf(id) !== -1 ) {
+      const itemIndexToRemove = this.state.selectedDrills.indexOf(id);
+
+      // remove "active" css class by setting drill.selected to false
+      drills[index].selected = false;
+      this.setState({ drills });
+
       // remove item
-      const index = this.state.selectedDrills.indexOf(id);
-      selectedDrills.splice(index, 1);
+      selectedDrills.splice(itemIndexToRemove, 1);
 
     } else {
+      // add "active" css class by setting selected to true
+      drills[index].selected = true;
+      this.setState({ drills });
+
       // add item
       selectedDrills.push(id);
     }
@@ -88,6 +96,7 @@ class NewRoutine extends React.Component {
     this.setState({ selectedDrills }, function() {
       console.log('selectedDrills: ', this.state.selectedDrills);
     }); 
+
   }
 
   storeNewRoutine(newRoutine) {
@@ -125,6 +134,7 @@ class NewRoutine extends React.Component {
                    .map(key => 
                      <Drill 
                        key={key} 
+                       index={key}
                        details={this.state.drills[key]}
                        toggleSelectItem={this.toggleSelectItem}
                        />)

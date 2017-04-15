@@ -1,9 +1,8 @@
 import React from 'react';
 
-
 import NoItems from './NoItems';
 
-class Routine extends React.Component {
+class RoutineListItem extends React.Component {
   constructor() {
     super();
 
@@ -23,7 +22,7 @@ class Routine extends React.Component {
       return (
         <div className="drill-frame-item">
             <div className="drill-frame-item-title">
-                <a href="#" data-id={details.id} onClick={this.goToRoutine}>{details.title}</a>
+                <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
             </div>
         </div>
        );
@@ -32,8 +31,8 @@ class Routine extends React.Component {
 
 // Allows using the parent router for methods that link to another page
 // See saveAction() and cancelAction()
-Routine.contextTypes = {
+RoutineListItem.contextTypes = {
   router: React.PropTypes.object
 }
 
-export default Routine;
+export default RoutineListItem;
