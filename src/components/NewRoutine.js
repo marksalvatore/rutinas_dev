@@ -61,7 +61,7 @@ class NewRoutine extends React.Component {
     const newRoutine = {
       "id": `${id}`,
       "title" : `Routine #${timestamp}`,
-      "drills": this.state.selectedDrills
+      "drillIds": this.state.selectedDrills
     }
     return newRoutine;
   }

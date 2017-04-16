@@ -18,11 +18,11 @@ const Router = () => {
         <Match exactly pattern="/" component={App} />
         <Match pattern="/new" component={NewRoutine} />
         <Match pattern="/routines" component={Routines} />
-        <Match pattern="/routine/:routineId" component={RoutineDetail} />
-        <Match pattern="/drill/:drillId" component={DrillDetail} />
+        <Match pattern="/routine/:id" component={RoutineDetail} />
+        <Match pattern="/drill/:id" component={DrillDetail} />
         <Match pattern="/drill" component={DrillDetail} />
         <Match pattern="/info" component={Info} />
-        <Match pattern="/score" component={Score} />
+        <Match pattern="/score/:id" component={Score} />
         <Match pattern="/save" component={Save} />
         <Miss component={NotFound} />
       </div>

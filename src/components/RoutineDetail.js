@@ -2,66 +2,102 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import Nav from './Nav';
-//import NoItems from './NoItems';
+import drillsData from '../../data-drills.json';
 import DrillListItem from './DrillListItem';
-import { getStoredObject } from '../helpers';
+import { getStoredObject, storeObject } from '../helpers';
 
 class RoutineDetail extends React.Component {
   constructor() {
     super();
 
+    this.loadRoutines = this.loadRoutines.bind(this);
+    this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
+    this.getRoutineValue = this.getRoutineValue.bind(this);
     this.goToDrill = this.goToDrill.bind(this);
 
     this.state = {
-      routines: {}
+      routines: {},
+      drills: {},
+      routineDrills: {}
     };
   }
 
   componentWillMount() {
-    this.loadRoutines();
+    this.loadDrills();
+    this.loadRoutines(); // also loades routineDrills
+  }
+
+  loadDrills() {
+    // load from localStorage, else from json
+    if(!localStorage.getItem('drills')) {
+      storeObject('drills', drillsData);
+      this.setState({drills: drillsData});
+      console.log('Drills loaded from json file');
+    } 
+    else {
+      this.setState({drills: getStoredObject('drills')});
+      console.log('Drills loaded from localStorage');
+    }
   }
 
   loadRoutines() {
     if(localStorage.getItem('routines')) {
-      this.setState({routines: getStoredObject('routines')});
+      this.setState({routines: getStoredObject('routines')}, function(){
+        this.loadRoutineDrills(); // load after routines, because required
+      });
     }
   }
 
-  getRoutineTitle() {
-    let routineId = this.props.params.routineId;
-    let arr = [...this.state.routines];
-    let rObj = arr.find( obj => obj.id === routineId);
-    return rObj.title;
+  loadRoutineDrills() {
+    let id = this.props.params.id;
+    let arr = this.state.routines;
+    // find our routine from routines
+    let obj = arr.find( obj => obj.id === id);
+    // extract the drills array from that routine
+    let routineDrillIds = obj.drillIds;
 
+    let routineDrillObjects = [];
+    for( let id of routineDrillIds ){
+        // push drill object onto our array from drills
+        routineDrillObjects.push(this.state.drills.find( obj => obj.id === id));
+    }
+    this.setState({ routineDrills: routineDrillObjects }, function() {
+      console.log('routineDrills: ', this.state.routineDrills);
+    }); 
   }
+
+  getRoutineValue(val='id') {
+    let arr = this.state.routines;
+    let id = this.props.params.id;
+    let obj = arr.find( obj => obj.id === id);
+    return obj[val];
+  }
+
   goToDrill(e) {
     e.preventDefault();
-
-    //const id = e.target.dataset.id
-    //this.context.router.transitionTo(`/drill/${id}`);
+    const id = e.target.dataset.id
+    console.log('Going to page id: ', id);
+    this.context.router.transitionTo(`/drill/${id}`);
   }
 
   render() {
-    
     return (
       <div className="Page">
 
         <Nav />
         
-        <div className="Page-title">{this.getRoutineTitle()}</div>
+        <div className="Page-title">{this.getRoutineValue('title')}</div>
         <div className="Page-subtitle">Drills for this routine:</div>
           <ul className="List">
-             {/* You need to figure out how to get the drill-id from routines
-              so in DrillListItem you can link to the drill*/}
-              { Object
-                  .keys(this.state.routines)
-                  .map(key => 
-                  <DrillListItem 
-                    key={key} 
-                    details={this.state.routines[key]} 
-                    goToDrill={this.goToDrill}
-                   />)
-              }
+          { Object
+              .keys(this.state.routineDrills)
+              .map(key => 
+              <DrillListItem 
+                key={key} 
+                details={this.state.routineDrills[key]} 
+                goToDrill={this.goToDrill}
+                />)
+          }
           </ul>
     	</div>
     )

@@ -2,47 +2,80 @@ import React from 'react';
 
 import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
-import drill from '../../public/images/fund-2.svg';
+import drillDiagram from '../../public/images/fund-2.svg';
+import drillsData from '../../data-drills.json';
+import { getStoredObject, storeObject } from '../helpers';
 
 class DrillDetail extends React.Component {
   constructor() {
-      super();
-      this.saveAction = this.saveAction.bind(this);
-      this.cancelAction = this.cancelAction.bind(this);
+    super();
+
+    this.saveAction = this.saveAction.bind(this);
+    this.cancelAction = this.cancelAction.bind(this);
+    this.getDrillValue = this.getDrillValue.bind(this);
+    this.loadDrills = this.loadDrills.bind(this);
+
+    this.state = {
+      drills: {}
+    };
+  }
+
+  componentWillMount() {
+    this.loadDrills();
+  }
+
+  loadDrills() {
+    // load from localStorage, else from json
+    if(!localStorage.getItem('drills')) {
+      storeObject('drills', drillsData);
+      this.setState({drills: drillsData});
+      console.log('Drills loaded from json file');
+    } 
+    else {
+      this.setState({drills: getStoredObject('drills')});
+      console.log('Drills loaded from localStorage');
+    }
+  }
+
+  getDrillValue(val) {
+    let arr = this.state.drills;
+    let id = this.props.params.id;
+    let obj = arr.find( obj => obj.id === id);
+    return obj[val];
   }
 
   saveAction() {
-      //console.log("Entering score now");
-      // we'll have to pass in an id later
-      this.context.router.transitionTo(`/score`);
+    //console.log("Entering score now");
+    // we'll have to pass in an id later
+    this.context.router.transitionTo(`/score`);
   }
+
   cancelAction() {
-      //console.log("Canceling score now");
-      // we'll have to pass in an id later
-      this.context.router.transitionTo(`/routine`);
+    history.back();
   }
 
   render() {
     return (
     	<div className="Page">
 
-            <Nav />
+        <Nav />
 
-            <div className="Page-title">Safety Drill 3</div>
-            <img className="drill-diagram" src={drill} alt="drill" />
-            <div className="Page-subtitle">Rules</div>
-            <div className="Page-text">
-            <p>With CB on the head spot and OB on the foot spot, shoot CB straight into OB. The objective is to make OB rebound and strike CB squarely so it rolls back toward the head spot (one straight line).</p>
-            </div>
-            <div className="Page-subtitle">Scoring</div>
-            <div className="Page-text">
-            <p>1 point if the OB hits the CB on rebound. 2 points if the OB remains below the CB after it hits the CB. 3 points if the CB travels a straight path toward the head spot after the OB strikes it.</p>            
-            <p>1 point if the OB hits the CB on rebound. 2 points if the OB remains below the CB after it hits the CB. 3 points if the CB travels a straight path toward the head spot after the OB strikes it.</p>
-            </div>
+        <div className="Page-title">{this.getDrillValue('title')}</div>
+        <img className="drill-diagram" src={drillDiagram} alt="drill" />
 
-            <ButtonGroup saveLabel="Enter Score" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
-
+        <div className="Page-subtitle">Rules</div>
+        <div className="Page-text">
+          <p>{this.getDrillValue('rules')}</p>
         </div>
+
+        <div className="Page-subtitle">Scoring</div>
+        <div className="Page-text">
+          <p>{this.getDrillValue('scoring')}</p>
+        </div>
+
+        <ButtonGroup saveLabel="Enter Score" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
+
+      </div>
     )
   }
 }

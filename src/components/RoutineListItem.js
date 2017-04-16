@@ -1,7 +1,5 @@
 import React from 'react';
 
-import NoItems from './NoItems';
-
 class RoutineListItem extends React.Component {
   constructor() {
     super();
@@ -17,15 +15,13 @@ class RoutineListItem extends React.Component {
 
   render() {
     const { details } = this.props;
-    // QUESTION - why imagePath doesn't link to image?
-    // const imagePath = `../../public/images/${details.category}-${details.imageId}.svg`;
-      return (
-        <div className="drill-frame-item">
-            <div className="drill-frame-item-title">
-                <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
-            </div>
-        </div>
-       );
+    return (
+      <div className="drill-frame-item">
+          <div className="drill-frame-item-title">
+              <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
+          </div>
+      </div>
+     );
   }
 }
 
