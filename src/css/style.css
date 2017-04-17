@@ -37,6 +37,10 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  margin: 0 1rem;
+}
+
 button {
   padding: .3rem .8rem;
   border: 1px solid rgba(0,0,0, .1);
@@ -65,15 +69,9 @@ li {
 }
 
 a {
-  color: black;
   text-decoration: none;
 }
-a:hover {
-  color: blue;
-}
-a:active {
-    color: gray;
-}
+
 /* ===========================================
    Helper classes
    ======================================== */
@@ -108,6 +106,42 @@ a:active {
 }
 
 
+/****************************
+   Nav
+  ***************************/
+  .Nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /*position: fixed;*/
+    width: 100vw;
+    margin-bottom: 2rem;
+  }
+  .Nav-top {
+    /*top: 0;*/
+  }
+  .Nav-bot {
+    /*bottom: 0*/;
+  }
+  .Nav-item {
+    border: 1px solid #ccc;
+    border-left: none;
+    font-size: 1.5rem;
+    padding: 1em;
+  }
+  .Nav-item:first-child {
+    border-left: 1px solid #ccc;
+  }
+  .Nav-item:hover {
+    background: #ccc;
+    color: #000;
+  }
+  .Nav-item:active {
+    background: #999;
+    color: #fff;
+  }
+
 
 /****************************
    Page
@@ -122,10 +156,11 @@ a:active {
   }
   .Page-title {
     font-size: 4rem;
+    margin-bottom: 2rem;
   }
   .Page-subtitle {
-    margin: 1rem 0 .5rem 0;
-    font-size: 2.5rem;
+    margin: 2rem 0 .5rem 0;
+    font-size: 3rem;
   }
   .Page-text {
     padding: 1rem;
@@ -151,42 +186,6 @@ a:active {
   }
   .App-description {
     font-size: 1.8rem;
-  }
-
-/****************************
-   Nav
-  ***************************/
-  .Nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    /*position: fixed;*/
-    width: 100vw;
-    margin-bottom: 1rem;
-  }
-  .Nav-top {
-    /*top: 0;*/
-  }
-  .Nav-bot {
-    /*bottom: 0*/;
-  }
-  .Nav-item {
-    border: 1px solid #ccc;
-    border-left: none;
-    font-size: 1.5rem;
-    padding: 1em;
-  }
-  .Nav-item:first-child {
-    border-left: 1px solid #ccc;
-  }
-  .Nav-item:hover {
-    background: #ccc;
-    color: #000;
-  }
-  .Nav-item:active {
-    background: #999;
-    color: #fff;
   }
 
 
@@ -272,7 +271,12 @@ a:active {
     margin: 2rem;
   }
 
-
+  button.getStarted a {
+    color: white;
+  }
+  button.getStarted a:hover {
+    color: goldenrod;
+  }
 
 
 

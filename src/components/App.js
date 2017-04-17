@@ -21,9 +21,9 @@ class App extends React.Component {
           <br/>you choose, and monitor your progress.
         </div>
 
-        <div className="getStarted">
-           <Link to="/instructions">Get started</Link>
-        </div>
+        <button className="getStarted">
+           <Link to="/info">Get started</Link>
+        </button>
         
       </div>
     );
