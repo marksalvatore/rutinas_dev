@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 
 import Nav from './Nav';
 import drillsData from '../../data-drills.json';
@@ -7,6 +7,7 @@ import DrillListItem from './DrillListItem';
 import { getStoredObject, storeObject } from '../helpers';
 
 class RoutineDetail extends React.Component {
+  // called by: RoutineListItem
   constructor() {
     super();
 
@@ -24,7 +25,7 @@ class RoutineDetail extends React.Component {
 
   componentWillMount() {
     this.loadDrills();
-    this.loadRoutines(); // also loades routineDrills
+    this.loadRoutines(); // also loads routineDrills
   }
 
   loadDrills() {
@@ -61,9 +62,8 @@ class RoutineDetail extends React.Component {
         // push drill object onto our array from drills
         routineDrillObjects.push(this.state.drills.find( obj => obj.id === id));
     }
-    this.setState({ routineDrills: routineDrillObjects }, function() {
-      console.log('routineDrills: ', this.state.routineDrills);
-    }); 
+
+    this.setState({ routineDrills: routineDrillObjects }); 
   }
 
   getRoutineValue(val='id') {

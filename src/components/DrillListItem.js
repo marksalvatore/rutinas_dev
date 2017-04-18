@@ -1,7 +1,7 @@
 import React from 'react';
 
-
 class DrillListItem extends React.Component {
+  // called by: RoutineDetails
 
   render() {
     const { details } = this.props;
