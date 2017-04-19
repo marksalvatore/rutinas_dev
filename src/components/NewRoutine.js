@@ -11,8 +11,8 @@ class NewRoutine extends React.Component {
   constructor() {
     super();
 
-    this.actionToSave = this.actionToSave.bind(this);
-    this.actionToCancel = this.actionToCancel.bind(this);
+    this.saveAction = this.saveAction.bind(this);
+    this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
@@ -42,7 +42,7 @@ class NewRoutine extends React.Component {
     }
   }
 
-  actionToSave() {
+  saveAction() {
     const newRoutineObj = this.makeNewRoutineObj();
     this.storeNewRoutine(newRoutineObj);
 
@@ -50,7 +50,7 @@ class NewRoutine extends React.Component {
     this.context.router.transitionTo(`/routines`);
   }
 
-  actionToCancel() {
+  cancelAction() {
     this.context.router.transitionTo(`/`);
   }
 
@@ -93,9 +93,7 @@ class NewRoutine extends React.Component {
     }
     
     // Set state and console array in callback, after state gets updated
-    this.setState({ selectedDrills }, function() {
-      console.log('selectedDrills: ', this.state.selectedDrills);
-    }); 
+    this.setState({ selectedDrills }); 
 
   }
 
@@ -142,14 +140,14 @@ class NewRoutine extends React.Component {
              </div>
     	  </div>
 
-        <ButtonGroup saveLabel="Save Routine" actionToSave={this.actionToSave} cancelLabel="Back" actionToCancel={this.actionToCancel} />
+        <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
     	</div>
     )
   }
 }
 
 // Allows using the parent router for methods that link to another page
-// See actionToSave() and actionToCancel()
+// See saveAction() and cancelAction()
 NewRoutine.contextTypes = {
   router: React.PropTypes.object
 }

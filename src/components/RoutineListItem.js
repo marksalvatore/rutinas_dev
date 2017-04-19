@@ -27,7 +27,7 @@ class RoutineListItem extends React.Component {
 }
 
 // Allows using the parent router for methods that link to another page
-// See actionToSave() and actionToCancel()
+// See saveAction() and cancelAction()
 RoutineListItem.contextTypes = {
   router: React.PropTypes.object
 }

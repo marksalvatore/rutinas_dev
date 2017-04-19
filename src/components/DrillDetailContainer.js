@@ -10,8 +10,8 @@ class DrillDetailContainer extends React.Component {
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
-    this.actionToSave = this.actionToSave.bind(this);
-    this.actionToCancel = this.actionToCancel.bind(this);
+    this.saveAction = this.saveAction.bind(this);
+    this.cancelAction = this.cancelAction.bind(this);
 
     this.state = {
       drill: {}
@@ -26,11 +26,11 @@ class DrillDetailContainer extends React.Component {
     // load from json, or storage if already loaded
     if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
-      console.log('Drill set from JSON:'); 
+      console.log('Drills loaded from JSON:'); 
       return drillsData;
 
     } else {
-      console.log('Drill is set from Storage:');
+      console.log('Drills loaded from localStorage:');
       return getStoredObject('drills'); 
     }
   }
@@ -39,17 +39,15 @@ class DrillDetailContainer extends React.Component {
     let drills = this.getDrills();
     let id = this.props.params.id;
     let drill = drills.find( obj => obj.id === id);
-    this.setState({ drill }, function(){
-      console.log(this.state.drill);
-    });
+    this.setState({ drill });
   }
 
-  actionToSave() {
+  saveAction() {
     let id = this.props.params.id;
     this.context.router.transitionTo(`/score/${id}`);
   }
 
-  actionToCancel() {
+  cancelAction() {
     history.back();
   }
 
@@ -57,8 +55,8 @@ class DrillDetailContainer extends React.Component {
     return (
         <DrillDetail 
           drill={this.state.drill}
-          actionToSave={this.actionToSave}
-          actionToCancel={this.actionToCancel}
+          saveAction={this.saveAction}
+          cancelAction={this.cancelAction}
         />
     )
   }

@@ -33,11 +33,9 @@ class RoutineDetail extends React.Component {
     if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
-      console.log('Drills loaded from json file');
     } 
     else {
       this.setState({drills: getStoredObject('drills')});
-      console.log('Drills loaded from localStorage');
     }
   }
 
@@ -105,7 +103,7 @@ class RoutineDetail extends React.Component {
 }
 
 // Allows using the parent router for methods that link to another page
-// See actionToSave() and actionToCancel()
+// See saveAction() and cancelAction()
 RoutineDetail.contextTypes = {
   router: React.PropTypes.object
 }

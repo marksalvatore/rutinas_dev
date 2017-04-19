@@ -5,8 +5,8 @@ import React from 'react';
 const ButtonGroup = (props) => {
   return (
 		<div className="button-group">
-			<button onClick={props.actionToCancel}>{props.cancelLabel}</button>
-			<button onClick={props.actionToSave}>{props.saveLabel}</button>
+			<button onClick={props.cancelAction}>{props.cancelLabel}</button>
+			<button onClick={props.saveAction}>{props.saveLabel}</button>
 		</div>    
 	)
 }
