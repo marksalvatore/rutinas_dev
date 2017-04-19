@@ -3,4 +3,4 @@
 ReactCourseFiles/
 *.sublime-*
 *copy.*
-
+build/
