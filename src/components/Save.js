@@ -11,7 +11,7 @@ class Save extends React.Component {
 
         <div className="Page-title">Saved!</div>
         <div className="Page-text">
-          <p>Your score has been saved. See <strong>statistics</strong> to see how you're progressing.</p>
+          <p>Your scored X for this drill. Your average score for this drill is xx.</p>
         </div>
 
 

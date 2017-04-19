@@ -10,7 +10,7 @@ class Score extends React.Component {
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
-    this.addToScores = this.addToScores.bind(this);
+    this.storeScore = this.storeScore.bind(this);
     this.createScore = this.createScore.bind(this);
     this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
@@ -47,7 +47,7 @@ class Score extends React.Component {
     e.preventDefault();
     let id = this.props.params.id;
     let scoreObj = this.createScore(id);
-    this.addToScores(scoreObj);
+    this.storeScore(scoreObj);
     this.scoreForm.reset();
     this.context.router.transitionTo(`/save/${id}`);
   }
@@ -66,14 +66,22 @@ class Score extends React.Component {
     return scoreObj;
   }
 
-  addToScores(scoreObj) {
-    let scores = {...this.state.scores};
-    const timestamp = Date.now();
- 
-    scores[`score-${timestamp}`] = scoreObj;
-    this.setState({ scores }, function(){
-      console.log(this.state.scores);
-    });
+  storeScore(scoreObj) {
+    // get scores from storage
+    let storedScores = getStoredObject("scores");
+
+    if (storedScores !== null) {
+      // Add new score to array
+      storedScores.push(scoreObj);
+      // store the updated set of Scores
+      storeObject("scores", storedScores);
+
+    } else {
+      // Just need to put scoreObj into a one element array before storing
+      let arr = [];
+      arr[0] = scoreObj;
+      storeObject("scores", arr);
+    }
   }
 
   render() {

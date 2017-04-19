@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Nav from './Nav';
-//import NoItems from './NoItems';
 import RoutineListItem from './RoutineListItem';
 import { getStoredObject } from '../helpers';
 

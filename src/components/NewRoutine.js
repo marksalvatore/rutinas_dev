@@ -20,8 +20,7 @@ class NewRoutine extends React.Component {
     this.state = {
       drills: {},
       routines: {},
-      selectedDrills: [],
-      selectedTags: []
+      selectedDrills: []
     };
   }
 
