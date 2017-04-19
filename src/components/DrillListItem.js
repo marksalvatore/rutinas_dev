@@ -17,7 +17,7 @@ class DrillListItem extends React.Component {
 }
 
 // Allows using the parent router for methods that link to another page
-// See saveAction() and cancelAction()
+// See actionToSave() and actionToCancel()
 DrillListItem.contextTypes = {
   router: React.PropTypes.object
 }

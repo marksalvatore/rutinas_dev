@@ -1,20 +1,22 @@
 import React from 'react';
 
-import DrillDetail from './DrillDetail';
+import Score from './Score';
 import drillsData from '../../data-drills.json';
 import { getStoredObject, storeObject } from '../helpers';
 
-class DrillDetailContainer extends React.Component {
+class ScoreContainer extends React.Component {
   constructor() {
     super();
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
+    this.enterAction = this.enterAction.bind(this);
     this.actionToSave = this.actionToSave.bind(this);
     this.actionToCancel = this.actionToCancel.bind(this);
 
     this.state = {
-      drill: {}
+      drill: {},
+      scores: {}
     };
   }
 
@@ -46,7 +48,7 @@ class DrillDetailContainer extends React.Component {
 
   actionToSave() {
     let id = this.props.params.id;
-    this.context.router.transitionTo(`/score/${id}`);
+    this.context.router.transitionTo(`/save/${id}`);
   }
 
   actionToCancel() {
@@ -55,7 +57,7 @@ class DrillDetailContainer extends React.Component {
 
   render() {
     return (
-        <DrillDetail 
+        <Score 
           drill={this.state.drill}
           actionToSave={this.actionToSave}
           actionToCancel={this.actionToCancel}
@@ -64,9 +66,9 @@ class DrillDetailContainer extends React.Component {
   }
 }
 
-DrillDetailContainer.contextTypes = {
+ScoreContainer.contextTypes = {
   router: React.PropTypes.object
 }
 
 
-export default DrillDetailContainer;
+export default ScoreContainer;

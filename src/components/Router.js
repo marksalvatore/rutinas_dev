@@ -7,7 +7,7 @@ import NewRoutine from './NewRoutine';
 import RoutineDetail from './RoutineDetail';
 import DrillDetailContainer from './DrillDetailContainer';
 import Info from './Info';
-import Score from './Score';
+import ScoreContainer from './ScoreContainer';
 import Save from './Save';
 import NotFound from './NotFound';
 
@@ -21,10 +21,9 @@ const Router = () => {
         <Match pattern="/routines" component={Routines} />
         <Match pattern="/routine/:id" component={RoutineDetail} />
         <Match pattern="/drill/:id" component={DrillDetailContainer} />
-        <Match pattern="/drill" component={DrillDetailContainer} />
         <Match pattern="/info" component={Info} />
-        <Match pattern="/score/:id" component={Score} />
-        <Match pattern="/save" component={Save} />
+        <Match pattern="/score/:id" component={ScoreContainer} />
+        <Match pattern="/save/:id" component={Save} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>

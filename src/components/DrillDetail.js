@@ -25,7 +25,7 @@ class DrillDetail extends React.Component {
         <p>{drill.scoring}</p>
         </div>
 
-        <ButtonGroup saveLabel="Enter Score" saveAction={this.props.saveAction} cancelLabel="Back" cancelAction={this.props.cancelAction} />
+        <ButtonGroup saveLabel="Enter Score" actionToSave={this.props.actionToSave} cancelLabel="Back" actionToCancel={this.props.actionToCancel} />
 
       </div>
     )
