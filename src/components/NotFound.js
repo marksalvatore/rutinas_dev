@@ -9,8 +9,8 @@ class NotFound extends React.Component {
     	  <Nav />
           
           <div className="Page-title">Page not found</div>
-          <div className="Page-text">
-            <p>Whoops! Was that a mis-cue?</p>
+          <div className="Page-subtitle">
+            <p>Whoops!<br /> What was that? ...a mis-cue?</p>
           </div>
 
 

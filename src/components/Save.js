@@ -1,10 +1,12 @@
+/* eslint-disable */
 import React from 'react';
 
 import { getStoredObject } from '../helpers';
 
 import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
-import Stats from './Stats';
+//import Stats from './Stats';
+//import History from './History';
 
 class Save extends React.Component {
   constructor() {
@@ -14,6 +16,8 @@ class Save extends React.Component {
     this.getAverageScore = this.getAverageScore.bind(this);
     this.getAllScores = this.getAllScores.bind(this);
     this.getDrillScores = this.getDrillScores.bind(this);
+    this.saveAction = this.saveAction.bind(this);
+    this.cancelAction = this.cancelAction.bind(this);
 
     this.state = {
       recentScore: 0,
@@ -23,8 +27,10 @@ class Save extends React.Component {
 
   componentWillMount() {
     let scoresForDrill = this.getDrillScores();
+
     let recentScoreObj = this.getRecentScore(scoresForDrill);
     this.setState({ recentScore: recentScoreObj.score });
+
     let averageScore = this.getAverageScore(scoresForDrill); 
     this.setState({ averageScore: averageScore });
   }
@@ -34,11 +40,10 @@ class Save extends React.Component {
     let scoresForDrill = [];
     let allScores = this.getAllScores();
     // find all all Scores for this drill
-    if(allScores) {
+    if( allScores ) {
       allScores.map((obj) => {
         if (obj.id === id) {
            scoresForDrill.push(obj);
-           return true;
         }
       });
     }
@@ -65,6 +70,7 @@ class Save extends React.Component {
     scoresForDrill.map((obj) => {
       return total += obj.score;
     });
+
     if(total) {
       average = total / scoresForDrill.length;
       console.log("Average score: ", average);
@@ -75,7 +81,7 @@ class Save extends React.Component {
 
   saveAction() {
     let id = this.props.params.id;
-    this.context.router.transitionTo(`/stats/${id}`);
+    this.context.router.transitionTo(`/history/${id}`);
   }
 
   cancelAction() {
@@ -100,5 +106,10 @@ class Save extends React.Component {
     )
   }
 }
+
+Save.contextTypes = {
+  router: React.PropTypes.object
+}
+
 
 export default Save;
