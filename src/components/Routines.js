@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
@@ -32,7 +33,7 @@ class Routines extends React.Component {
     	  <Nav />
 
           <div className="Page-title">My Routines</div>
-          <div className="Page-text">[ + ADD ROUTINE ]
+          <div className="Page-text">[ + <Link to="/new">Add Routine</Link> ]
       
             <ul className="List">
                 { Object
