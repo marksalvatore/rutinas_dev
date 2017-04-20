@@ -2,14 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import eightball from '../../public/images/eightball.png';
-import Nav from './Nav';
 
 class App extends React.Component {
   render() {
     return (
       <div className="Page">
-
-        <Nav />
 
         <div className="App-title">Routines</div>
         <div className="App-byline">Improve your pool game.</div>

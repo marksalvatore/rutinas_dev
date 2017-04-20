@@ -6,9 +6,9 @@ class Nav extends React.Component {
     return (
     	<div className="Nav">
     	  <div className="Nav-item"><Link to="/info">Help</Link></div>
-    	  {/*<div className="Nav-item"><Link to="/info">Info</Link></div>*/}
+    	  <div className="Nav-item"><Link to="/stats">Stats</Link></div>
     	  <div className="Nav-item"><Link to="/routines">Routines</Link></div>
-    	  <div className="Nav-item"><Link to="/new">Create Routine</Link></div>
+    	  {/*<div className="Nav-item"><Link to="/new">Create Routine</Link></div>*/}
     	</div>
     )
   }

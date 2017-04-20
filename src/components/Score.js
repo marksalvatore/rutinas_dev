@@ -93,10 +93,12 @@ class Score extends React.Component {
         <div className="Page-title">{this.state.drill.title}</div>
         
         <form ref={(input) => this.scoreForm = input} onSubmit={(e) => this.saveAction(e)}>
-          <input ref={(input) => this.points = input} type="text" placeholder="Number of points "/>
-          <input ref={(input) => this.attempts = input} type="text" placeholder="Number of attempts"/>
-          <button onClick={this.cancelAction}>Back</button>
-          <button type="submit">Save Score</button>
+          <input type="number" ref={(input) => this.points = input} type="text" placeholder="# of points "/>
+          <input type="number" ref={(input) => this.attempts = input} type="text" placeholder="# of attempts"/>
+          <div className="button-group">
+            <button onClick={this.cancelAction}>Back</button>
+            <button type="submit">Save Score</button>
+           </div>
         </form>
 
       </div>    

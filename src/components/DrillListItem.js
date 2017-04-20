@@ -9,7 +9,7 @@ class DrillListItem extends React.Component {
       return (
         <div className="drill-frame-item">
             <div className="drill-frame-item-title">
-                <a href="#" data-id={details.id} onClick={this.props.goToDrill}>{details.title}</a>
+                <a href="#" data-id={details.id} onClick={this.props.goToDrill}>{details.title}</a> [ stats ] [ edit ] [ delete ]
             </div>
         </div>
        );

@@ -32,7 +32,7 @@ class Routines extends React.Component {
     	  <Nav />
 
           <div className="Page-title">My Routines</div>
-          <div className="Page-text">
+          <div className="Page-text">[ + ADD ROUTINE ]
       
             <ul className="List">
                 { Object

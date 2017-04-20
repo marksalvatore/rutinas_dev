@@ -19,7 +19,7 @@ class RoutineListItem extends React.Component {
     return (
       <div className="drill-frame-item">
           <div className="drill-frame-item-title">
-              <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
+              <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a> [ edit ] [ delete ]
           </div>
       </div>
      );

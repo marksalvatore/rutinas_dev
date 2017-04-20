@@ -24,7 +24,7 @@ class DrillDetail extends React.Component {
         <div className="Page-text">
         <p>{drill.scoring}</p>
         </div>
-
+        
         <ButtonGroup saveLabel="Enter Score" saveAction={this.props.saveAction} cancelLabel="Back" cancelAction={this.props.cancelAction} />
 
       </div>

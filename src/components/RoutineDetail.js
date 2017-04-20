@@ -85,7 +85,8 @@ class RoutineDetail extends React.Component {
         <Nav />
         
         <div className="Page-title">{this.getRoutineValue('title')}</div>
-        <div className="Page-subtitle">Drills for this routine:</div>
+        <div className="Page-text">[ + ADD DRILL ]</div>
+        
           <ul className="List">
           { Object
               .keys(this.state.routineDrills)

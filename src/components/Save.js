@@ -59,7 +59,9 @@ class Save extends React.Component {
     let scoresForDrill = this.getDrillScores();
     let total = 0;
     let average = 0;
-    scoresForDrill.map((obj) => total += obj.score);
+    scoresForDrill.map((obj) => {
+      return total += obj.score;
+    });
     if(total) {
       average = total / scoresForDrill.length;
       console.log("Average score: ", average);
