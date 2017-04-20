@@ -1,9 +1,77 @@
 import React from 'react';
 
 import Nav from './Nav';
+import { getStoredObject } from '../helpers';
 
 class Save extends React.Component {
+  constructor() {
+    super();
+
+    this.getRecentScore = this.getRecentScore.bind(this);
+    this.getAverageScore = this.getAverageScore.bind(this);
+    this.getAllScores = this.getAllScores.bind(this);
+    this.getDrillScores = this.getDrillScores.bind(this);
+
+    this.state = {
+      recentScore: 0,
+      averageScore: 0
+    }
+  }
+
+  componentWillMount() {
+    let scoresForDrill = this.getDrillScores();
+    let recentScore = this.getRecentScore(scoresForDrill);
+    this.setState({ recentScore });
+    let averageScore = this.getAverageScore(scoresForDrill); 
+    this.setState({ averageScore });
+  }
+
+  getDrillScores() {
+    let id = this.props.params.id;
+    let scoresForDrill = [];
+    let allScores = this.getAllScores();
+    // find all allScores for this drill
+    if(allScores) {
+      allScores.map((obj) => {
+        if (obj.id === id) {
+           scoresForDrill.push(obj);
+           return true;
+        }
+      });
+    }
+    return scoresForDrill;
+  }
+
+  getAllScores() {
+    if(localStorage.getItem('scores')) {
+      return getStoredObject('scores'); 
+    }
+    return false;
+  }
+
+  getRecentScore() {
+    let scoresForDrill = this.getDrillScores();
+    console.log("RecentScore: ", scoresForDrill[scoresForDrill.length - 1]);
+    return scoresForDrill[scoresForDrill.length - 1];
+  }
+
+  getAverageScore() {
+    let scoresForDrill = this.getDrillScores();
+    let total = 0;
+    let average = 0;
+    scoresForDrill.map((obj) => total += obj.score);
+    if(total) {
+      average = total / scoresForDrill.length;
+      console.log("Average score: ", average);
+      return average;
+    }
+    return false;
+  }
+
+
+
   render() {
+  
     return (
     	<div className="Page">
 
@@ -11,10 +79,8 @@ class Save extends React.Component {
 
         <div className="Page-title">Saved!</div>
         <div className="Page-text">
-          <p>Your scored X for this drill. Your average score for this drill is xx.</p>
+          <p>Your scored x for this drill. Your average score for this drill is xx.</p>
         </div>
-
-
 
     	</div>
     )
