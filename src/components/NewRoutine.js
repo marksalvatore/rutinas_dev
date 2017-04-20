@@ -59,9 +59,11 @@ class NewRoutine extends React.Component {
     // use timestamp for unique id
     const timestamp = Date.now();
     const id = `${timestamp}`;
+    const substring = id.substr(id.length - 4);
+
     const newRoutine = {
       "id": `${id}`,
-      "title" : `Routine #${timestamp}`,
+      "title" : `Routine::${substring}`,
       "drillIds": this.state.selectedDrills
     }
     return newRoutine;
