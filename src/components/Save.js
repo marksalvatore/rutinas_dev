@@ -15,22 +15,22 @@ class Save extends React.Component {
     this.state = {
       recentScore: 0,
       averageScore: 0
-    }
+    };
   }
 
   componentWillMount() {
     let scoresForDrill = this.getDrillScores();
-    let recentScore = this.getRecentScore(scoresForDrill);
-    this.setState({ recentScore });
+    let recentScoreObj = this.getRecentScore(scoresForDrill);
+    this.setState({ recentScore: recentScoreObj.score });
     let averageScore = this.getAverageScore(scoresForDrill); 
-    this.setState({ averageScore });
+    this.setState({ averageScore: averageScore });
   }
 
   getDrillScores() {
     let id = this.props.params.id;
     let scoresForDrill = [];
     let allScores = this.getAllScores();
-    // find all allScores for this drill
+    // find all all Scores for this drill
     if(allScores) {
       allScores.map((obj) => {
         if (obj.id === id) {
@@ -79,7 +79,7 @@ class Save extends React.Component {
 
         <div className="Page-title">Saved!</div>
         <div className="Page-text">
-          <p>Your scored x for this drill. Your average score for this drill is xx.</p>
+          <p>Your scored {Math.floor(this.state.recentScore * 100)}% for this drill. Your average score for this drill is {Math.floor(this.state.averageScore * 100)}%.</p>
         </div>
 
     	</div>

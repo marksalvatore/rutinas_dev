@@ -14,7 +14,7 @@ class App extends React.Component {
         <div className="App-title">Routines</div>
         <div className="App-byline">Improve your pool game.</div>
         <div className="App-logo">
-          <img src={eightball} alt="Eight Ball" />
+          <img src={eightball} alt="Eight Ball" width="100"/>
         </div>
         <div className="App-description">
           Create practice routines from the drills
