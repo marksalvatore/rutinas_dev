@@ -1,7 +1,10 @@
 import React from 'react';
 
-import Nav from './Nav';
 import { getStoredObject } from '../helpers';
+
+import Nav from './Nav';
+import ButtonGroup from './ButtonGroup';
+import Stats from './Stats';
 
 class Save extends React.Component {
   constructor() {
@@ -70,7 +73,14 @@ class Save extends React.Component {
     return false;
   }
 
+  saveAction() {
+    let id = this.props.params.id;
+    this.context.router.transitionTo(`/stats/${id}`);
+  }
 
+  cancelAction() {
+    history.back();
+  }
 
   render() {
   
@@ -83,6 +93,8 @@ class Save extends React.Component {
         <div className="Page-text">
           <p>Your scored {Math.floor(this.state.recentScore * 100)}% for this drill. Your average score for this drill is {Math.floor(this.state.averageScore * 100)}%.</p>
         </div>
+
+        <ButtonGroup saveLabel="History" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
 
     	</div>
     )

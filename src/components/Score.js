@@ -45,11 +45,13 @@ class Score extends React.Component {
 
   saveAction(e) {
     e.preventDefault();
-    let id = this.props.params.id;
-    let scoreObj = this.createScore(id);
-    this.storeScore(scoreObj);
-    this.scoreForm.reset();
-    this.context.router.transitionTo(`/save/${id}`);
+    if( parseInt(this.attempts.value, 10) > 0 && parseInt(this.points.value, 10) > 0) {
+      let id = this.props.params.id;
+      let scoreObj = this.createScore(id);
+      this.storeScore(scoreObj);
+      this.scoreForm.reset();
+      this.context.router.transitionTo(`/save/${id}`);
+    }
   }
 
   cancelAction() {

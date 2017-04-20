@@ -11,7 +11,7 @@ class Stats extends React.Component {
 
           <div className="Page-title">Statistics</div>
           <div className="Page-text">
-            <p>Your stats for all of your routines and drills.</p>
+            <p>Your stats for this drill over time.</p>
 
           </div>
 

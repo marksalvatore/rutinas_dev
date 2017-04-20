@@ -42,11 +42,13 @@ class NewRoutine extends React.Component {
   }
 
   saveAction() {
-    const newRoutineObj = this.makeNewRoutineObj();
-    this.storeNewRoutine(newRoutineObj);
+    if ( this.state.selectedDrills.length > 0 ) {
+      const newRoutineObj = this.makeNewRoutineObj();
+      this.storeNewRoutine(newRoutineObj);
 
-    // go to new routine page
-    this.context.router.transitionTo(`/routines`);
+      // go to new routine page
+      this.context.router.transitionTo(`/routines`);
+    }
   }
 
   cancelAction() {
