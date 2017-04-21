@@ -149,7 +149,7 @@ class NewRoutine extends React.Component {
   }
 }
 
-// Allows using the parent router for methods that link to another page
+// Allows using the parent router for methods that need to link to another page
 // See saveAction() and cancelAction()
 NewRoutine.contextTypes = {
   router: React.PropTypes.object

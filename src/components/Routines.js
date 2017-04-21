@@ -3,13 +3,16 @@ import { Link } from 'react-router';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
-import { getStoredObject } from '../helpers';
+import { getStoredObject, storeObject } from '../helpers';
+
 
 class Routines extends React.Component {
   constructor() {
     super();
 
     this.loadRoutines = this.loadRoutines.bind(this);
+    this.editRoutine = this.editRoutine.bind(this);
+    this.deleteRoutine = this.deleteRoutine.bind(this);
 
     this.state = {
       routines: {}
@@ -26,6 +29,22 @@ class Routines extends React.Component {
     }
   }
 
+  editRoutine(e) {
+    const id = e.target.dataset.id
+    this.context.router.transitionTo(`/routine/${id}`);
+  }
+
+  deleteRoutine(e) {
+    const id = e.target.dataset.id // routine id
+    let storedRoutines = getStoredObject("routines");
+    //delete this routine by not returning it
+    storedRoutines = storedRoutines.filter(e => e.id !== id);
+    storeObject("routines", storedRoutines);
+    this.setState({ routines : storedRoutines });
+    console.log("Deleted Routine: ", id);
+  }
+
+
   render() {
     return (
         <div className="Page">
@@ -41,7 +60,9 @@ class Routines extends React.Component {
                     .map(key => 
                     <RoutineListItem 
                       key={key} 
-                      details={this.state.routines[key]} 
+                      details={this.state.routines[key]}
+                      deleteRoutine={this.deleteRoutine}
+                      editRoutine={this.editRoutine}
                       />)
                 }
             </ul>
@@ -49,6 +70,12 @@ class Routines extends React.Component {
     	</div>
     )
   }
+}
+
+// Allows using the parent router for methods that need to link to another page
+// See saveAction() and cancelAction()
+Routines.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default Routines;
