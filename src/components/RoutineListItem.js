@@ -19,12 +19,12 @@ class RoutineListItem extends React.Component {
     const { details } = this.props;
     const title = <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
     const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteRoutine(e)}>Delete</button>
-    const editButton = <button data-id={details.id} onClick={(e) => this.props.editRoutine(e)}>Edit</button>
+    /*const editButton = <button data-id={details.id} onClick={(e) => this.props.editRoutine(e)}>Edit</button>*/
 
     return (
       <div className="drill-frame-item">
           <div className="drill-frame-item-title">
-               {title} {editButton} {deleteButton}
+               {title} {deleteButton}
           </div>
       </div>
      );

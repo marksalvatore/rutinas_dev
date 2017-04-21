@@ -25,7 +25,8 @@ class Routines extends React.Component {
 
   loadRoutines() {
     if(localStorage.getItem('routines')) {
-      this.setState({routines: getStoredObject('routines')});
+      let routines = getStoredObject('routines');
+      this.setState({ routines });
     }
   }
 
@@ -38,9 +39,9 @@ class Routines extends React.Component {
     const id = e.target.dataset.id // routine id
     let storedRoutines = getStoredObject("routines");
     //delete this routine by not returning it
-    storedRoutines = storedRoutines.filter(e => e.id !== id);
-    storeObject("routines", storedRoutines);
-    this.setState({ routines : storedRoutines });
+    let remainingStoredRoutines = storedRoutines.filter(item => item.id !== id);
+    storeObject("routines", remainingStoredRoutines);
+    this.setState({ routines : remainingStoredRoutines });
     console.log("Deleted Routine: ", id);
   }
 
