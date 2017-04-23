@@ -107,12 +107,16 @@ class RoutineDetail extends React.Component {
       // Add back the edited drillIds property to targetRoutineObj and set to drillIdsLite
       targetRoutineObj.drillIds = drillIdsLite;
 
+      // Push the target routine back onto storedRoutinesLite
       storedRoutinesLite.push(targetRoutineObj);
     }
 
-    // Save storedRoutinesLite to localStorage and to state
-    storeObject("routines", storedRoutinesLite);
-    this.setState({ routines : storedRoutinesLite }, function(){
+    // Change name of storedRoutinesLite to storedRoutines
+    storedRoutines = storedRoutinesLite;
+
+    // Save storedRoutines to localStorage and to state
+    storeObject("routines", storedRoutines);
+    this.setState({ routines : storedRoutines }, function(){
       // Make sure to update routineDrills for the child component AFTER routines sets state,
       // because routineDrills depends on data from routines.
       this.loadRoutineDrills();
