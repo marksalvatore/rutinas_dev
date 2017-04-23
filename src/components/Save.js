@@ -12,8 +12,8 @@ class Save extends React.Component {
   constructor() {
     super();
 
-    this.getRecentScore = this.getRecentScore.bind(this);
-    this.getAverageScore = this.getAverageScore.bind(this);
+    this.getRecentDrillScore = this.getRecentDrillScore.bind(this);
+    this.getAverageDrillScore = this.getAverageDrillScore.bind(this);
     this.getAllScores = this.getAllScores.bind(this);
     this.getDrillScores = this.getDrillScores.bind(this);
     this.saveAction = this.saveAction.bind(this);
@@ -28,11 +28,11 @@ class Save extends React.Component {
   componentWillMount() {
     let scoresForDrill = this.getDrillScores();
 
-    let recentScoreObj = this.getRecentScore(scoresForDrill);
-    this.setState({ recentScore: recentScoreObj.score });
+    let recentScore = this.getRecentDrillScore(scoresForDrill);
+    this.setState({ recentScore });
 
-    let averageScore = this.getAverageScore(scoresForDrill); 
-    this.setState({ averageScore: averageScore });
+    let averageScore = this.getAverageDrillScore(scoresForDrill); 
+    this.setState({ averageScore });
   }
 
   getDrillScores() {
@@ -43,7 +43,7 @@ class Save extends React.Component {
     if( allScores ) {
       allScores.map((obj) => {
         if (obj.id === id) {
-           scoresForDrill.push(obj);
+           scoresForDrill = obj.scores;
         }
       });
     }
@@ -57,22 +57,25 @@ class Save extends React.Component {
     return false;
   }
 
-  getRecentScore() {
+  getRecentDrillScore() {
     let scoresForDrill = this.getDrillScores();
-    console.log("RecentScore: ", scoresForDrill[scoresForDrill.length - 1]);
-    return scoresForDrill[scoresForDrill.length - 1];
+    let recentScore = scoresForDrill[scoresForDrill.length - 1];
+    console.log("RecentScore: ", recentScore.points / recentScore.attempts);
+    return recentScore.points / recentScore.attempts;
   }
 
-  getAverageScore() {
+  getAverageDrillScore() {
     let scoresForDrill = this.getDrillScores();
-    let total = 0;
+    let totalPoints = 0;
+    let totalAttempts = 0;
     let average = 0;
     scoresForDrill.map((obj) => {
-      return total += obj.score;
+      totalPoints += obj.points;
+      totalAttempts += obj.attempts;
     });
 
-    if(total) {
-      average = total / scoresForDrill.length;
+    if( totalPoints > 0 ) {
+      average = totalPoints / totalAttempts;
       console.log("Average score: ", average);
       return average;
     }

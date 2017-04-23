@@ -11,7 +11,7 @@ class Score extends React.Component {
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
     this.storeScore = this.storeScore.bind(this);
-    this.createScore = this.createScore.bind(this);
+    this.createDrillScoreObj = this.createDrillScoreObj.bind(this);
     this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
 
@@ -43,14 +43,23 @@ class Score extends React.Component {
     this.setState({ drill });
   }
 
+  getAllScores() {
+    if(localStorage.getItem('scores')) {
+      return getStoredObject('scores'); 
+    }
+    return false;
+  }
+
   saveAction(e) {
     e.preventDefault();
     if( parseInt(this.attempts.value, 10) > 0 && parseInt(this.points.value, 10) > 0) {
-      let id = this.props.params.id;
-      let scoreObj = this.createScore(id);
-      this.storeScore(scoreObj);
+      let drillId = this.props.params.id;
+      let drillScoreObj = this.createDrillScoreObj(drillId);
+
+      this.storeScore(drillScoreObj);
       this.scoreForm.reset();
-      this.context.router.transitionTo(`/save/${id}`);
+      console.log(drillScoreObj);
+      this.context.router.transitionTo(`/save/${drillId}`);
     }
   }
 
@@ -58,15 +67,49 @@ class Score extends React.Component {
     history.back();
   }
 
-  createScore(id) {
-    const result = parseInt(this.points.value, 10) / parseInt(this.attempts.value, 10);
-    
-    const scoreObj = {
-      id: id,
-      score: result
+  createDrillScoreObj(drillId) {
+    let drillScoreObj = null;
+    const timestamp = Date.now();
+    const points = parseInt(this.points.value, 10);
+    const attempts = parseInt(this.attempts.value, 10);
+    const allScores = this.getAllScores();
+
+    // Get drillScoreObj from allScores if exists
+    if( allScores ) {
+      allScores.map((obj) => {
+        if (obj.id === drillId) {
+           drillScoreObj = obj;
+        }
+      });
     }
-    return scoreObj;
+
+    if( drillScoreObj ) {
+      // Update existing scores in drillScoreObj
+      console.log("drillScoreObj exists");
+      let newScore = {
+        id: `score-${timestamp}`,
+        points: points,
+        attempts: attempts,
+        date: timestamp
+      }
+      drillScoreObj.scores[drillScoreObj.scores.length] = newScore;
+
+    } else {
+      // Create scores object
+      console.log("drillScoreObj doesn't exist");
+      drillScoreObj = {
+        id: drillId,
+        scores: [{
+           id: `score-${timestamp}`,
+           points: points,
+           attempts: attempts,
+           date: timestamp
+        }]
+      }
+    }
+    return drillScoreObj;
   }
+
 
   storeScore(scoreObj) {
     // get scores from storage
@@ -75,7 +118,7 @@ class Score extends React.Component {
     if (storedScores !== null) {
       // Add new score to array
       storedScores.push(scoreObj);
-      // store the updated set of Scores
+      // Store the updated set of Scores
       storeObject("scores", storedScores);
 
     } else {
