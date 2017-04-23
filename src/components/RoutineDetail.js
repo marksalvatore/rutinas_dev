@@ -15,6 +15,7 @@ class RoutineDetail extends React.Component {
     this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
     this.getRoutineValue = this.getRoutineValue.bind(this);
     this.deleteDrill = this.deleteDrill.bind(this);
+    this.deleteRoutine = this.deleteRoutine.bind(this);
     this.getHistory = this.getHistory.bind(this);
     this.goToDrill = this.goToDrill.bind(this);
 
@@ -83,6 +84,17 @@ class RoutineDetail extends React.Component {
     this.context.router.transitionTo(`/drill/${id}`);
   }
 
+  deleteRoutine() {
+    let id = this.props.params.id;
+    let storedRoutines = getStoredObject("routines");
+    //delete this routine by not returning it
+    let remainingStoredRoutines = storedRoutines.filter(item => item.id !== id);
+    storeObject("routines", remainingStoredRoutines);
+    this.setState({ routines : remainingStoredRoutines });
+    this.context.router.transitionTo(`/routines`);
+    console.log("Deleted Routine: ", id);
+  }
+
   deleteDrill(e, routineId) {
     /* The drills for a routine are stored with the routine as drillIds[]. They are also kept in state as routineDrills. If you delete a drill, it must be deleted from both places. Code smell! */
 
@@ -109,20 +121,23 @@ class RoutineDetail extends React.Component {
 
       // Push the target routine back onto storedRoutinesLite
       storedRoutinesLite.push(targetRoutineObj);
+
+      // Change name of storedRoutinesLite to storedRoutines
+      storedRoutines = storedRoutinesLite;
+
+      // Save storedRoutines to localStorage and to state
+      storeObject("routines", storedRoutines);
+      this.setState({ routines : storedRoutines }, function(){
+        // Make sure to update routineDrills for the child component AFTER routines sets state,
+        // because routineDrills depends on data from routines.
+        this.loadRoutineDrills();
+      });
+      console.log("Deleted Drill: ", drillId, " from Routine: ", routineId);
+
+    } else {
+      this.deleteRoutine();
     }
 
-    // Change name of storedRoutinesLite to storedRoutines
-    storedRoutines = storedRoutinesLite;
-
-    // Save storedRoutines to localStorage and to state
-    storeObject("routines", storedRoutines);
-    this.setState({ routines : storedRoutines }, function(){
-      // Make sure to update routineDrills for the child component AFTER routines sets state,
-      // because routineDrills depends on data from routines.
-      this.loadRoutineDrills();
-    });
-
-    console.log("Deleted Drill: ", drillId, " from Routine: ", routineId);
   }
 
 
