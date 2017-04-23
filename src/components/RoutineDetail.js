@@ -95,10 +95,11 @@ class RoutineDetail extends React.Component {
     console.log("Deleted Routine: ", id);
   }
 
-  deleteDrill(e, routineId) {
+  deleteDrill(e) {
     /* The drills for a routine are stored with the routine as drillIds[]. They are also kept in state as routineDrills. If you delete a drill, it must be deleted from both places. Code smell! */
 
     const drillId = e.target.dataset.id // drill id
+    let routineId = this.props.params.id;
     let storedRoutines = getStoredObject("routines");
 
     // Get the target routine into an object by itself

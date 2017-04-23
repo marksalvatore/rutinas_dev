@@ -5,10 +5,9 @@ class DrillListItem extends React.Component {
 
   render() {
     const { details } = this.props;
-    const routineId = this.props.params.id;
     if( details ) {
       const title = <a href="#"  data-id={details.id} onClick={this.props.goToDrill}>{details.title}</a>
-      const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteDrill(e, routineId)}>Delete</button>
+      const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteDrill(e)}>Delete</button>
       const statsButton = <button data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
 
       return (
@@ -28,7 +27,6 @@ class DrillListItem extends React.Component {
         </div>
        );
     }
-
    }
 }
 
