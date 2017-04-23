@@ -60,6 +60,12 @@ button:active {
   border: 1px solid white;
 }
 
+/*crud action buttons (delete)*/
+button[data-id] {
+  font-size: .5em;
+}
+
+
 img {
   max-width: 100%;
 }
@@ -249,7 +255,7 @@ a {
     color: #497ADB;  
   }
 /****************************
-   ButtonGroup - save, cancel, etc
+   ButtonGroup 
   ***************************/
   .button-group {
     display: block;
@@ -263,6 +269,8 @@ a {
   .button-group button:not(:first-child) {
     margin-left: 2em;
   }
+
+
 
 /****************************
    Form

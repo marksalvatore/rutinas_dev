@@ -6,18 +6,30 @@ class DrillListItem extends React.Component {
   render() {
     const { details } = this.props;
     const routineId = this.props.params.id;
-    const title = <a href="#"  data-id={details.id} onClick={this.props.goToDrill}>{details.title}</a>
-    const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteDrill(e, routineId)}>Delete</button>
-    const editButton = <button data-id={details.id} onClick={(e) => this.props.editDrill(e, routineId)}>Edit</button>
+    if( details ) {
+      const title = <a href="#"  data-id={details.id} onClick={this.props.goToDrill}>{details.title}</a>
+      const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteDrill(e, routineId)}>Delete</button>
+      const statsButton = <button data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
 
       return (
         <div className="drill-frame-item">
             <div className="drill-frame-item-title">
-                 {title} [ stats ] {editButton} {deleteButton}
+                 {title} {statsButton} {deleteButton}
             </div>
         </div>
        );
-  }
+
+    } else {
+      return (
+        <div className="drill-frame-item">
+            <div className="drill-frame-item-title">
+                 There are no drills in this routine.
+            </div>
+        </div>
+       );
+    }
+
+   }
 }
 
 export default DrillListItem;

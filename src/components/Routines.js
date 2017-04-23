@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+//import { Link } from 'react-router';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
@@ -11,7 +11,7 @@ class Routines extends React.Component {
     super();
 
     this.loadRoutines = this.loadRoutines.bind(this);
-    this.editRoutine = this.editRoutine.bind(this);
+    this.addRoutine = this.addRoutine.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
 
     this.state = {
@@ -30,11 +30,6 @@ class Routines extends React.Component {
     }
   }
 
-  editRoutine(e) {
-    const id = e.target.dataset.id
-    this.context.router.transitionTo(`/routine/${id}`);
-  }
-
   deleteRoutine(e) {
     const id = e.target.dataset.id // routine id
     let storedRoutines = getStoredObject("routines");
@@ -45,15 +40,22 @@ class Routines extends React.Component {
     console.log("Deleted Routine: ", id);
   }
 
+  addRoutine() {
+    this.context.router.transitionTo('/new');
+  }
 
   render() {
+
+    const addButton = <button onClick={() => this.addRoutine()}>+ Add Routine</button>
+
     return (
         <div className="Page">
 
-    	  <Nav />
+        <Nav />
 
           <div className="Page-title">My Routines</div>
-          <div className="Page-text">[ + <Link to="/new">Add Routine</Link> ]
+             
+             {addButton}
       
             <ul className="List">
                 { Object
@@ -63,12 +65,11 @@ class Routines extends React.Component {
                       key={key} 
                       details={this.state.routines[key]}
                       deleteRoutine={this.deleteRoutine}
-                      editRoutine={this.editRoutine}
                       />)
                 }
             </ul>
-          </div>
-    	</div>
+         
+      </div>
     )
   }
 }
