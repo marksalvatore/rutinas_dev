@@ -4,7 +4,7 @@ import React from 'react';
 import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
 
-import { getStoredObject } from '../helpers';
+import { getStoredObject, getAllScores } from '../helpers';
 
 class Save extends React.Component {
   constructor() {
@@ -12,7 +12,6 @@ class Save extends React.Component {
 
     this.getRecentDrillScore = this.getRecentDrillScore.bind(this);
     this.getAverageDrillScore = this.getAverageDrillScore.bind(this);
-    this.getAllScores = this.getAllScores.bind(this);
     this.getDrillScores = this.getDrillScores.bind(this);
     this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
@@ -36,7 +35,7 @@ class Save extends React.Component {
   getDrillScores() {
     let id = this.props.params.id;
     let scoresForDrill = [];
-    let allScores = this.getAllScores();
+    let allScores = getAllScores();
     // find all all Scores for this drill
     if( allScores ) {
       allScores.map((obj) => {
@@ -46,13 +45,6 @@ class Save extends React.Component {
       });
     }
     return scoresForDrill;
-  }
-
-  getAllScores() {
-    if(localStorage.getItem('scores')) {
-      return getStoredObject('scores'); 
-    }
-    return false;
   }
 
   getRecentDrillScore() {

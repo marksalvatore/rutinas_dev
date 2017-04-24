@@ -6,26 +6,17 @@ import Nav from './Nav';
 import StatsListItem from './StatsListItem';
 import NoItems from './NoItems';
 
-import { getStoredObject } from '../helpers';
+import { getStoredObject, getAllScores } from '../helpers';
 
 class Stats extends React.Component {
   constructor() {
     super();
 
-    this.getAllScores = this.getAllScores.bind(this);
     this.getAverageAllScores = this.getAverageAllScores.bind(this);
   }
 
- 
-  getAllScores() {
-    if(localStorage.getItem('scores')) {
-      return getStoredObject('scores'); 
-    }
-    return false;
-  }
-
   getAverageAllScores() {
-    const allScores = this.getAllScores();
+    const allScores = getAllScores();
     let totalPoints = 0;
     let totalAttempts = 0;
     allScores.map( obj => {
@@ -37,9 +28,8 @@ class Stats extends React.Component {
     return totalPoints / totalAttempts * 100;
   }
 
-
   render() {
-    const allScores = this.getAllScores();
+    const allScores = getAllScores();
     console.log("Does at least one score exist? ", allScores);
 
     if( allScores ) {
@@ -79,8 +69,6 @@ class Stats extends React.Component {
         </div>
       )
     }
-
-
   }
 }
 

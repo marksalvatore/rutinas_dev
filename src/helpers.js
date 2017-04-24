@@ -13,10 +13,6 @@ export function getStoredObject(key) {
 	return false; 
 }
 
-export function removeStore(key) {
-	localStorage.removeItem(key);
-}
-
 export function storageAvailable(type='localStorage') {
 	try {
 		var storage = window[type],
@@ -28,4 +24,11 @@ export function storageAvailable(type='localStorage') {
 	catch(e) {
 		return false;
 	}
+}
+
+export function getAllScores() {
+  if(localStorage.getItem('scores')) {
+    return getStoredObject('scores'); 
+  }
+  return false;
 }

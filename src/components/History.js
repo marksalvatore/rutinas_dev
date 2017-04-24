@@ -6,7 +6,7 @@ import Nav from './Nav';
 import HistoryListItem from './HistoryListItem';
 import NoItems from './NoItems';
 
-import { getStoredObject } from '../helpers';
+import { getStoredObject, getAllScores } from '../helpers';
 
 class History extends React.Component {
   constructor() {
@@ -14,21 +14,13 @@ class History extends React.Component {
 
     this.getDrillScoreObj = this.getDrillScoreObj.bind(this);
     this.getDrillScoreAverage = this.getDrillScoreAverage.bind(this);
-
-  }
-
-  getAllScores() {
-    if(localStorage.getItem('scores')) {
-      return getStoredObject('scores'); 
-    }
-    return false;
   }
 
   getDrillScoreObj() {
     const drillId = this.props.params.id;
     let drillScoreObj = null;
     
-    const allScores = this.getAllScores();
+    const allScores = getAllScores();
 
     // Get drillScoreObj from allScores if exists
     if( allScores ) {

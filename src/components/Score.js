@@ -4,7 +4,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import drillsData from '../../data-drills.json';
-import { getStoredObject, storeObject } from '../helpers';
+import { getStoredObject, storeObject, getAllScores } from '../helpers';
 
 class Score extends React.Component {
   constructor() {
@@ -46,13 +46,6 @@ class Score extends React.Component {
     this.setState({ drill });
   }
 
-  getAllScores() {
-    if(localStorage.getItem('scores')) {
-      return getStoredObject('scores'); 
-    }
-    return false;
-  }
-
   getStringDate(dateObj) {
     const day = dateObj.getDate();
     const year = dateObj.getFullYear();
@@ -68,7 +61,7 @@ class Score extends React.Component {
     date = this.getStringDate(date);
     const points = parseInt(this.points.value, 10);
     const attempts = parseInt(this.attempts.value, 10);
-    const allScores = this.getAllScores();
+    const allScores = getAllScores();
 
     // Get drillScoreObj from allScores if exists
     if( allScores ) {
