@@ -80,7 +80,8 @@ class History extends React.Component {
           <div className="Page-title">History</div>
           <div className="Page-subtitle">{drillScoreObj.id}</div>
           <div className="Page-text">
-             <NoItems />
+             <NoItems 
+               message={`Items will display here as scores are entered for this drill.`}/>
           </div>
 
         </div>

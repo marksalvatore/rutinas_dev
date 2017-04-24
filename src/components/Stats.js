@@ -63,7 +63,7 @@ class Stats extends React.Component {
 
             <div className="Page-title">Stats</div>
             <div className="Page-text">
-               <NoItems />
+              <NoItems message={`Items will display here as scores are entered for drills.`}/>
             </div>
 
         </div>

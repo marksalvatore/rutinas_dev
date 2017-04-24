@@ -1,7 +1,6 @@
 export function storeObject(key, obj) {
   if( storageAvailable('localStorage') ) {
   	localStorage.setItem(key, JSON.stringify(obj));
-  	return true;
   } 
   return false;
 }
