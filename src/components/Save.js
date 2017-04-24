@@ -1,12 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 
-import { getStoredObject } from '../helpers';
-
 import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
-//import Stats from './Stats';
-//import History from './History';
+
+import { getStoredObject } from '../helpers';
 
 class Save extends React.Component {
   constructor() {
@@ -60,7 +58,7 @@ class Save extends React.Component {
   getRecentDrillScore() {
     let scoresForDrill = this.getDrillScores();
     let recentScore = scoresForDrill[scoresForDrill.length - 1];
-    console.log("RecentScore: ", recentScore.points / recentScore.attempts);
+    console.log("RecentScore: ", (recentScore.points / recentScore.attempts * 100).toFixed(0) + "%");
     return recentScore.points / recentScore.attempts;
   }
 
@@ -76,7 +74,7 @@ class Save extends React.Component {
 
     if( totalPoints > 0 ) {
       average = totalPoints / totalAttempts;
-      console.log("Average score: ", average);
+      console.log("Average score: ", (average * 100 ).toFixed(0) + "%");
       return average;
     }
     return false;

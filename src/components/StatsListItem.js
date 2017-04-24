@@ -1,13 +1,14 @@
+/* eslint-disable */
+
 import React from 'react';
 
 class StatsListItem extends React.Component {
-  // called by: History
+  // child of: Stats
   constructor() {
   	super();
 
   	this.getAverageOfScores = this.getAverageOfScores.bind(this);
   }
-
 
   getAverageOfScores(scoresArr) {
     let totalPoints = 0;
@@ -18,7 +19,6 @@ class StatsListItem extends React.Component {
      });
     return totalPoints / totalAttempts * 100;
   }
-
 
   render() {
 

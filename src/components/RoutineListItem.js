@@ -1,7 +1,7 @@
 import React from 'react';
 
 class RoutineListItem extends React.Component {
-  // called by: Routines
+  // child of: Routines
   constructor() {
     super();
 

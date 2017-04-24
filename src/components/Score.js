@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import React from 'react';
 
 import Nav from './Nav';
 import drillsData from '../../data-drills.json';
-import { getStoredObject, storeObject, removeStore } from '../helpers';
+import { getStoredObject, storeObject } from '../helpers';
 
 class Score extends React.Component {
   constructor() {
@@ -49,23 +51,6 @@ class Score extends React.Component {
       return getStoredObject('scores'); 
     }
     return false;
-  }
-
-  saveAction(e) {
-    e.preventDefault();
-    if( this.attempts.value > 0 && this.points.value > 0) {
-      let drillId = this.props.params.id;
-      let drillScoreObj = this.createDrillScoreObj();
-
-      this.storeDrillScoreObj(drillScoreObj);
-      this.scoreForm.reset();
-      console.log(drillScoreObj);
-      this.context.router.transitionTo(`/save/${drillId}`);
-    }
-  }
-
-  cancelAction() {
-    history.back();
   }
 
   getStringDate(dateObj) {
@@ -118,18 +103,9 @@ class Score extends React.Component {
         }]
       }
     }
-    console.log(drillScoreObj);
     return drillScoreObj;
   }
 
-/*  
-  dateFromTimestamp(timestamp) {
-    let utcSeconds = timestamp;
-    let date = new Date(0); // 0 sets the date to the epoch
-    date.setUTCSeconds(utcSeconds);
-    return date;
-  }
-*/
   storeDrillScoreObj(drillScoreObj) {
     // get scores from storage
     let storedScores = getStoredObject("scores");
@@ -151,6 +127,23 @@ class Score extends React.Component {
       storeObject("scores", arr);
     }
   }
+
+  saveAction(e) {
+    e.preventDefault();
+    if( this.attempts.value > 0 && this.points.value > 0) {
+      let drillId = this.props.params.id;
+      let drillScoreObj = this.createDrillScoreObj();
+
+      this.storeDrillScoreObj(drillScoreObj);
+      this.scoreForm.reset();
+      this.context.router.transitionTo(`/save/${drillId}`);
+    }
+  }
+
+  cancelAction() {
+    history.back();
+  }
+
 
   render() {
     return (

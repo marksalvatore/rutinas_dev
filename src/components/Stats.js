@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 
 import Nav from './Nav';
@@ -32,16 +34,13 @@ class Stats extends React.Component {
         totalAttempts += s.attempts;
       });
     }); 
-    console.log("totalPoints: ", totalPoints);
-    console.log("totalAttempts: ", totalAttempts);
     return totalPoints / totalAttempts * 100;
-
   }
 
 
   render() {
     const allScores = this.getAllScores();
-    console.log("allScores: ", allScores);
+    console.log("Does at least one score exist? ", allScores);
 
     if( allScores ) {
       const averageAll = this.getAverageAllScores();

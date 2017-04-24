@@ -1,7 +1,7 @@
 import React from 'react';
 
 class HistoryListItem extends React.Component {
-  // called by: History
+  // child of: History
 
   render() {
 

@@ -7,7 +7,7 @@ import DrillListItem from './DrillListItem';
 import { getStoredObject, storeObject } from '../helpers';
 
 class RoutineDetail extends React.Component {
-  // called by: RoutineListItem
+  // child of: RoutineListItem
   constructor() {
     super();
 
