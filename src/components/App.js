@@ -25,7 +25,6 @@ class App extends React.Component {
       return <Routines />
     }
   }
-
 }
 
 export default App;

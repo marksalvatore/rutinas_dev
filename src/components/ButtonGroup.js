@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 // Composed component function 
 const ButtonGroup = (props) => {
@@ -23,5 +23,14 @@ const ButtonGroup = (props) => {
 		</div>    
 	)
 }
+
+ButtonGroup.propTypes = {
+  saveAction: PropTypes.func.isRequired,
+  cancelAction: PropTypes.func.isRequired,
+  miscButton: PropTypes.func,
+  saveLabel: PropTypes.string.isRequired,
+  cancelLabel: PropTypes.string.isRequired,
+  miscLabel: PropTypes.string
+};
 
 export default ButtonGroup;

@@ -3,7 +3,8 @@ import React from 'react';
 //import dbconnect from '../rebase';
 import drillsData from '../../data-drills.json';
 import Drill from './Drill';
-import DrillFilter from './DrillFilter';
+import Nav from './Nav';
+//import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
 import { storeObject, getStoredObject } from '../helpers';
 
@@ -123,7 +124,8 @@ class NewRoutine extends React.Component {
     return (
     	<div className="Page">
 
-        <DrillFilter />
+        {/*<DrillFilter />*/}
+        <Nav />
 
     	  <div className="drill-frame-wrapper">
              <div className="drill-frame-instr">
