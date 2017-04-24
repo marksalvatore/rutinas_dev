@@ -12,6 +12,7 @@ class Score extends React.Component {
     this.setDrill = this.setDrill.bind(this);
     this.storeScore = this.storeScore.bind(this);
     this.createDrillScoreObj = this.createDrillScoreObj.bind(this);
+    this.getStringDate = this.getStringDate.bind(this);
     this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
 
@@ -67,9 +68,17 @@ class Score extends React.Component {
     history.back();
   }
 
+  getStringDate(dateObj) {
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const month = dateObj.getMonth();
+    return year + '-' + month + '-' + day;
+  }
   createDrillScoreObj(drillId) {
     let drillScoreObj = null;
-    const timestamp = Date.now();
+    const timestampId = Date.now();
+    let date = new Date();
+    date = this.getStringDate(date);
     const points = parseInt(this.points.value, 10);
     const attempts = parseInt(this.attempts.value, 10);
     const allScores = this.getAllScores();
@@ -87,10 +96,10 @@ class Score extends React.Component {
       // Update existing scores in drillScoreObj
       console.log("drillScoreObj exists");
       let newScore = {
-        id: `score-${timestamp}`,
+        id: `score-${timestampId}`,
         points: points,
         attempts: attempts,
-        date: timestamp
+        date: date
       }
       drillScoreObj.scores[drillScoreObj.scores.length] = newScore;
 
@@ -100,17 +109,24 @@ class Score extends React.Component {
       drillScoreObj = {
         id: drillId,
         scores: [{
-           id: `score-${timestamp}`,
+           id: `score-${timestampId}`,
            points: points,
            attempts: attempts,
-           date: timestamp
+           date: date
         }]
       }
     }
     return drillScoreObj;
   }
 
-
+/*  
+  dateFromTimestamp(timestamp) {
+    let utcSeconds = timestamp;
+    let date = new Date(0); // 0 sets the date to the epoch
+    date.setUTCSeconds(utcSeconds);
+    return date;
+  }
+*/
   storeScore(scoreObj) {
     // get scores from storage
     let storedScores = getStoredObject("scores");
