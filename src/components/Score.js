@@ -2,7 +2,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import drillsData from '../../data-drills.json';
-import { getStoredObject, storeObject } from '../helpers';
+import { getStoredObject, storeObject, removeStore } from '../helpers';
 
 class Score extends React.Component {
   constructor() {
@@ -10,7 +10,7 @@ class Score extends React.Component {
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
-    this.storeScore = this.storeScore.bind(this);
+    this.storeDrillScoreObj = this.storeDrillScoreObj.bind(this);
     this.createDrillScoreObj = this.createDrillScoreObj.bind(this);
     this.getStringDate = this.getStringDate.bind(this);
     this.saveAction = this.saveAction.bind(this);
@@ -53,11 +53,11 @@ class Score extends React.Component {
 
   saveAction(e) {
     e.preventDefault();
-    if( parseInt(this.attempts.value, 10) > 0 && parseInt(this.points.value, 10) > 0) {
+    if( this.attempts.value > 0 && this.points.value > 0) {
       let drillId = this.props.params.id;
-      let drillScoreObj = this.createDrillScoreObj(drillId);
+      let drillScoreObj = this.createDrillScoreObj();
 
-      this.storeScore(drillScoreObj);
+      this.storeDrillScoreObj(drillScoreObj);
       this.scoreForm.reset();
       console.log(drillScoreObj);
       this.context.router.transitionTo(`/save/${drillId}`);
@@ -74,7 +74,9 @@ class Score extends React.Component {
     const month = dateObj.getMonth();
     return year + '-' + month + '-' + day;
   }
-  createDrillScoreObj(drillId) {
+
+  createDrillScoreObj() {
+    let drillId = this.props.params.id;
     let drillScoreObj = null;
     const timestampId = Date.now();
     let date = new Date();
@@ -116,6 +118,7 @@ class Score extends React.Component {
         }]
       }
     }
+    console.log(drillScoreObj);
     return drillScoreObj;
   }
 
@@ -127,20 +130,24 @@ class Score extends React.Component {
     return date;
   }
 */
-  storeScore(scoreObj) {
+  storeDrillScoreObj(drillScoreObj) {
     // get scores from storage
     let storedScores = getStoredObject("scores");
 
-    if (storedScores !== null) {
-      // Add new score to array
-      storedScores.push(scoreObj);
+    if (storedScores) {
+
+      // remove original drillScoreObj
+      let storedScoresLite = storedScores.filter( key => key.id !== drillScoreObj.id);
+
+      // Add new drillScoreObj to storedScoresLite
+      storedScoresLite.push(drillScoreObj);
       // Store the updated set of Scores
-      storeObject("scores", storedScores);
+      storeObject("scores", storedScoresLite);
 
     } else {
-      // Just need to put scoreObj into a one element array before storing
+      // Just need to put drillScoreObj into a one element array before storing
       let arr = [];
-      arr[0] = scoreObj;
+      arr[0] = drillScoreObj;
       storeObject("scores", arr);
     }
   }

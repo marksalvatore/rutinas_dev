@@ -13,7 +13,11 @@ export function getStoredObject(key) {
 	return false; 
 }
 
-export function storageAvailable(type) {
+export function removeStore(key) {
+	localStorage.removeItem(key);
+}
+
+export function storageAvailable(type='localStorage') {
 	try {
 		var storage = window[type],
 			x = '__storage_test__';
