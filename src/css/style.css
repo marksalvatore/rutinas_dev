@@ -132,13 +132,13 @@ a {
   }
   .Nav-item {
     border: 1px solid #ccc;
-    border-left: none;
+    border-top: none;
+
     font-size: 1.5rem;
     padding: 1em;
   }
-  .Nav-item:first-child {
-    border-left: 1px solid #ccc;
-  }
+
+
   .Nav-item:hover {
     background: #ccc;
     color: #000;
