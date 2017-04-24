@@ -5,7 +5,7 @@ const NoItems = (props) => {
     	<div className="Page">
         <div className="Page-text">
         <h2>Oops!</h2>
-          <p>No items to display! You'll need to create a Routine before it displays here.</p>
+          <p>No items to display! You'll need to enter a score for this drill before it can display.</p>
         </div>
     	</div>
     )

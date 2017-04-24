@@ -8,9 +8,7 @@ class HistoryListItem extends React.Component {
   	const score = this.props.score;
 
     return (
-
-         <li>{this.props.date} -  {score.toFixed(0)}%</li>
-
+      <li>{this.props.date} -  {score.toFixed(0)}%</li>
      );
    }
 }

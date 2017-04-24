@@ -2,6 +2,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import HistoryListItem from './HistoryListItem';
+import NoItems from './NoItems';
 
 import { getStoredObject } from '../helpers';
 
@@ -38,10 +39,8 @@ class History extends React.Component {
         console.log(drillScoreObj);
         return drillScoreObj;
       }
-      console.log("no scores 1");
       return false;
     }
-    console.log("no scores 2");
     return false;
   }
 
@@ -59,32 +58,46 @@ class History extends React.Component {
 
   render() {
     const drillScoreObj = this.getDrillScoreObj();
-    const average = this.getDrillScoreAverage();
 
-    return (
-        <div className="Page">
+    if( drillScoreObj ) {
+      const average = this.getDrillScoreAverage();
+      return (
+          <div className="Page">
 
-        <Nav />
+          <Nav />
 
-          <div className="Page-title">History</div>
-          <div className="Page-subtitle">{drillScoreObj.id}</div>
-          <div className="Page-text">Average: {average.toFixed(0)}%
-            {
-              drillScoreObj.scores.map( (key) => 
-                <HistoryListItem 
-                  key={key.id}
-                  date={key.date}
-                  score={ key.points / key.attempts * 100 }
+            <div className="Page-title">History</div>
+            <div className="Page-subtitle">{drillScoreObj.id}</div>
+            <div className="Page-text">
+              Average: { average ? average.toFixed(0) : '0'}%
+              {
+                drillScoreObj.scores.map( (key) => 
+                  <HistoryListItem 
+                    key={key.id}
+                    date={key.date}
+                    score={ key.points / key.attempts * 100 }
+                  /> )
+              }
+            </div>
+        </div>
+      )
+    } else {
+      return (
+          <div className="Page">
 
-                /> )
-            
-            }
-          </div>
+          <Nav />
+
+            <div className="Page-title">History</div>
+            <div className="Page-subtitle">{drillScoreObj.id}</div>
+            <div className="Page-text">
+               <NoItems />
+            </div>
+
+        </div>
+      )
+    }
 
 
-
-      </div>
-    )
   }
 }
 
