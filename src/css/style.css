@@ -39,35 +39,17 @@ html {
 
 body {
   margin: 0 1rem;
+  font-family: "Eurostile";
+  font-size: 1.8rem;
 }
-
-button {
-  padding: .3rem .8rem;
-  border: 1px solid rgba(0,0,0, .1);
-  background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
-  border-radius: .5rem;
-  box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
-  text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
-  color: white;
-  font-size: 100%;
-  line-height: 1.5;
-}
-button:hover {
-  color: goldenrod;
-}
-button:active {
-  color: #ccc;
-  border: 1px solid white;
-}
-
-/*crud action buttons (delete)*/
-button[data-id] {
-  font-size: .5em;
-}
-
 
 img {
   max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li {
@@ -111,6 +93,67 @@ a {
   opacity: 1;
 }
 
+button {
+  padding: .8rem .8rem;
+  border: 1px solid rgba(0,0,0, .1);
+  background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+  border-radius: .5rem;
+  box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
+  text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
+  color: white;
+  font-size: 100%;
+  line-height: 1.5;
+}
+button:hover {
+  color: goldenrod;
+}
+button:active {
+  color: #ccc;
+  border: 1px solid white;
+}
+
+/*crud action buttons (delete)*/
+button[data-id] {
+  font-size: .5em;
+}
+
+
+/****************************
+   Pages
+  ***************************/
+  .Page {
+    display: block;
+    width: 100%;
+    text-align: center;
+    /*border:1px solid red;*/
+/*    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+*/  
+  
+  }
+
+
+  .Page-title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+  .Page-subtitle {
+    margin: 2rem 0 .5rem 0;
+    font-size: 3rem;
+  }
+
+  h3 {
+     font-size: 2.5rem;
+     margin: 1rem 0 .5rem 1rem;
+   }
+
+  .Page-text {
+    padding: 1rem;
+    width: 75%;
+    max-width: 50rem;
+  }
+
 
 /****************************
    Nav
@@ -150,32 +193,6 @@ a {
 
 
 /****************************
-   Page
-  ***************************/
-  .Page {
-    font-size: 1.8rem;
-    font-family: "Eurostile";
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .Page-title {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-  }
-  .Page-subtitle {
-    margin: 2rem 0 .5rem 0;
-    font-size: 3rem;
-  }
-  .Page-text {
-    padding: 1rem;
-    width: 75%;
-    max-width: 50rem;
-  }
-
-
-/****************************
    App
   ***************************/
   .App-title {
@@ -199,26 +216,43 @@ a {
    Window of drill diagrams (NewRoutine)
   ***************************/
   .drill-frame-wrapper {
-    text-align: center;
+    display: flex;  
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
    }
 
-  .drill-frame-instr {
-     margin: 1rem 0 .5rem 1rem;
-     font-size: 2.5rem;
-   }
+  .drill-frame-list {
+    flex-grow: 1;
+    flex-basis: 40%;
+    align-self: flex-start;
+    max-width: 15rem;
+    padding: 2em 0 0 .8em;
+    /*border: 1px solid green;*/
+  }
+
+  .drill-frame-list li {
+    margin: 0;
+    margin-left: 1em;
+    padding-bottom: .5rem;
+    text-align: left;
+  }
 
   .drill-frame {
-    display: flex;
-    margin: 0 .5rem;
+    flex-grow: 0;
+    flex-basis: 60%; 
+    max-height: 75vh;
+    max-width: 18rem;
+
     padding: .5rem 1rem;
-    width: 90vw;
-    max-width: 50rem;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     white-space: nowrap;
-    border: 3px solid #ccc;
+    
   }
+
   .drill-frame-item { 
+    
     padding: .5rem;
     border: 0px solid black;
     margin-right: .7rem;
@@ -227,7 +261,7 @@ a {
     background: orange;
   }
   .drill-frame-item img {
-    max-width: 30rem;
+    max-width: 15rem;
   }
   .drill-frame-item-title {
     font-size: 2rem;
@@ -237,7 +271,7 @@ a {
   .drill-frame-item .button {
     margin-top: 1rem;
     width: 100%;
-    padding: .5rem;
+    padding: .8rem;
     color: #497ADB;
     border: 2px solid #497ADB;
     text-align: center;
@@ -254,17 +288,24 @@ a {
     background: goldenrod;
     color: #497ADB;  
   }
+
+
+
+  hr.drill {
+    margin-top: 2rem;
+      height: 12px;
+      border: 0;
+      box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+  }
+
+
 /****************************
    ButtonGroup 
   ***************************/
   .button-group {
     display: block;
-    margin-top: 4rem;
-    position: relative;
-    bottom: 2rem;
-    right: 2rem;
-    width: 100vw;
-    text-align: right;
+    margin: 2rem auto 0 auto; 
+  
   }
   .button-group button:not(:first-child) {
     margin-left: 2em;

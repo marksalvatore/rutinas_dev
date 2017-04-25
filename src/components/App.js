@@ -20,8 +20,10 @@ class App extends React.Component {
 
   render() {
     if ( this.isNewUser() ) {
+      console.log("User is new. Load drills from file.");
        return <GetStarted />
     } else {
+      console.log("User is returning. Load drills from storage.");
       return <Routines />
     }
   }

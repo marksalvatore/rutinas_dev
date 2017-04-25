@@ -3,7 +3,7 @@ import React from 'react';
 //import dbconnect from '../rebase';
 import drillsData from '../../data-drills.json';
 import Drill from './Drill';
-import Nav from './Nav';
+//import Nav from './Nav';
 //import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
 import { storeObject, getStoredObject } from '../helpers';
@@ -80,7 +80,7 @@ class NewRoutine extends React.Component {
     if ( this.state.selectedDrills.indexOf(id) !== -1 ) {
       const itemIndexToRemove = this.state.selectedDrills.indexOf(id);
 
-      // remove "active" css class by setting drill.selected to false
+      // remove "active" css class by setting selected to false
       drills[index].selected = false;
       this.setState({ drills });
 
@@ -88,6 +88,7 @@ class NewRoutine extends React.Component {
       selectedDrills.splice(itemIndexToRemove, 1);
 
     } else {
+
       // add "active" css class by setting selected to true
       drills[index].selected = true;
       this.setState({ drills });
@@ -124,28 +125,34 @@ class NewRoutine extends React.Component {
     return (
     	<div className="Page">
 
+        {/*<Nav />*/}
         {/*<DrillFilter />*/}
-        <Nav />
 
-    	  <div className="drill-frame-wrapper">
-             <div className="drill-frame-instr">
-                 Select drills for new Routine
-             </div>
-             <div className="drill-frame">
-               { Object
-                   .keys(this.state.drills)
-                   .map(key => 
-                     <Drill 
-                       key={key} 
-                       index={key}
-                       details={this.state.drills[key]}
-                       toggleSelectItem={this.toggleSelectItem}
-                       />)
-               }
-             </div>
+        <h3>Select drills for Routine</h3>
+
+        <div className="drill-frame-wrapper">
+          <div className="drill-frame dropShadow">
+             { Object
+                 .keys(this.state.drills)
+                 .map(key => 
+                   <Drill 
+                     key={key} 
+                     index={key}
+                     details={this.state.drills[key]}
+                     toggleSelectItem={this.toggleSelectItem}
+                     />)
+             }
+           </div>
+
+           <div className="drill-frame-list">
+             <ul>
+               <li>drill titlesomedrill title</li>
+               <li>some drill title</li>
+             </ul>
+           </div>
     	  </div>
 
-        <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
+        <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />
     	</div>
     )
   }
