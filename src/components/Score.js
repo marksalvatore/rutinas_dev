@@ -88,6 +88,7 @@ class Score extends React.Component {
       console.log("drillScoreObj doesn't exist");
       drillScoreObj = {
         id: drillId,
+        title: this.state.drill.title,
         scores: [{
            id: `score-${timestampId}`,
            points: points,

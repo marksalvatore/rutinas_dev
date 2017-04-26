@@ -58,7 +58,7 @@ class History extends React.Component {
           <Nav />
 
           <div className="Page-title">History</div>
-          <div className="Page-subtitle">{drillScoreObj.id}</div>
+          <div className="Page-subtitle">{drillScoreObj.title}</div>
           <div className="Page-text">
             Average: { average ? average.toFixed(0) : '0'}%
             {
@@ -78,7 +78,7 @@ class History extends React.Component {
           <Nav />
 
           <div className="Page-title">History</div>
-          <div className="Page-subtitle">{drillScoreObj.id}</div>
+          <div className="Page-subtitle">{drillScoreObj.title}</div>
           <div className="Page-text">
              <NoItems 
                message={`Items will display here as scores are entered for this drill.`}/>
