@@ -33,7 +33,6 @@ class Routines extends React.Component {
   deleteRoutine(e) {
     const id = e.target.dataset.id // routine id
     let storedRoutines = getStoredObject("routines");
-    //delete this routine by not returning it
     let remainingStoredRoutines = storedRoutines.filter(item => item.id !== id);
     storeObject("routines", remainingStoredRoutines);
     this.setState({ routines : remainingStoredRoutines });

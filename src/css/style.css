@@ -115,6 +115,7 @@ button:active {
 /*crud action buttons (delete)*/
 button[data-id] {
   font-size: .5em;
+  padding: .3em .5em;
 }
 
 
@@ -252,7 +253,6 @@ button[data-id] {
   }
 
   .drill-frame-item { 
-    
     padding: .5rem;
     border: 0px solid black;
     margin-right: .7rem;
@@ -289,9 +289,7 @@ button[data-id] {
     color: #497ADB;  
   }
 
-
-
-  hr.drill {
+  hr.drill { /* used in drill-frame */
     margin-top: 2rem;
       height: 12px;
       border: 0;

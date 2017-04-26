@@ -6,6 +6,7 @@ import Drill from './Drill';
 //import Nav from './Nav';
 //import DrillFilter from './DrillFilter';
 import ButtonGroup from './ButtonGroup';
+import DrillListTitle from './DrillListTitle';
 import { storeObject, getStoredObject } from '../helpers';
 
 class NewRoutine extends React.Component {
@@ -65,7 +66,7 @@ class NewRoutine extends React.Component {
     const newRoutine = {
       "id": `${id}`,
       "title" : `Routine::${substring}`,
-      "drillIds": this.state.selectedDrills
+      "rDrills": this.state.selectedDrills
     }
     return newRoutine;
   }
@@ -74,32 +75,51 @@ class NewRoutine extends React.Component {
   toggleSelectItem(e) {
     const id = e.target.dataset.id;
     const index = e.target.dataset.index;
-    let selectedDrills = [...this.state.selectedDrills];
-    let drills = {...this.state.drills};
 
-    if ( this.state.selectedDrills.indexOf(id) !== -1 ) {
-      const itemIndexToRemove = this.state.selectedDrills.indexOf(id);
+    let selectedDrillsCopy = [...this.state.selectedDrills];
+    let drills = [...this.state.drills];
+    let alreadySelected = selectedDrillsCopy.filter(obj => obj.id === id);
+    console.log("id", id);
+    console.log("index", index);
+    console.log("alreadySelected: ", alreadySelected);
 
+    let drillItem = null;
+    let selectedDrills = [];
+
+    if ( alreadySelected.length  ) {
+      console.log("alreadySelected.length", alreadySelected.length);
       // remove "active" css class by setting selected to false
       drills[index].selected = false;
       this.setState({ drills });
 
-      // remove item
-      selectedDrills.splice(itemIndexToRemove, 1);
+      // remove item from state
+      selectedDrills = selectedDrillsCopy.filter(obj => obj.id !== id);
 
     } else {
 
       // add "active" css class by setting selected to true
       drills[index].selected = true;
       this.setState({ drills });
+      console.log("Set " + id + " .selected to TRUE");
+      console.log("Set drills to state: ", this.state.drills);
 
       // add item
-      selectedDrills.push(id);
+      drillItem = {
+        id: id,
+        title: drills[index].title
+      }
+      console.log("drillItem", drillItem);
+      console.log("selectedDrillsCopy before push: ", selectedDrillsCopy);
+      selectedDrillsCopy.push(drillItem);
+      console.log("selectedDrillsCopy after push: ", selectedDrillsCopy);
+      selectedDrills = [...selectedDrillsCopy];
     }
     
     // Set state and console array in callback, after state gets updated
-    this.setState({ selectedDrills }); 
-
+    this.setState({ selectedDrills }, function(){
+      console.log("selectedDrills", selectedDrills);
+    }); 
+   
   }
 
   storeNewRoutine(newRoutine) {
@@ -122,6 +142,8 @@ class NewRoutine extends React.Component {
 
 
   render() {
+    let selectedDrills = [...this.state.selectedDrills];
+
     return (
     	<div className="Page">
 
@@ -146,8 +168,15 @@ class NewRoutine extends React.Component {
 
            <div className="drill-frame-list">
              <ul>
-               <li>drill titlesomedrill title</li>
-               <li>some drill title</li>
+               {
+                 selectedDrills.map( key => 
+                   <DrillListTitle 
+                     key={key.id}
+                     id={key.id}
+                     title={key.title}
+                   />)
+
+               }
              </ul>
            </div>
     	  </div>

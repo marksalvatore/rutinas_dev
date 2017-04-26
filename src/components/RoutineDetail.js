@@ -11,6 +11,7 @@ class RoutineDetail extends React.Component {
   constructor() {
     super();
 
+    this.loadDrills = this.loadDrills.bind(this);
     this.loadRoutines = this.loadRoutines.bind(this);
     this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
     this.getRoutineValue = this.getRoutineValue.bind(this);
@@ -45,24 +46,32 @@ class RoutineDetail extends React.Component {
   loadRoutines() {
     if(localStorage.getItem('routines')) {
       this.setState({routines: getStoredObject('routines')}, function(){
-        this.loadRoutineDrills(); // load after routines, because required
+        let result = this.loadRoutineDrills(); // load after routines, because required
+        console.log("loadRoutineDrills() completed? ", result);
       });
     }
   }
 
   loadRoutineDrills() {
-    let id = this.props.params.id;
+    let id = this.props.params.id; // routineId
     let routines = this.state.routines;
-    // find our routine from routines
+    // find this routine from routines
     let routineObj = routines.find(obj => obj.id === id);
-    // extract the drills array from that routine
-    let routineDrillIds = routineObj.drillIds;
-    let routineDrillObjects = [];
-    for( let id of routineDrillIds ){
-        // push drill object onto our array from drills
-        routineDrillObjects.push(this.state.drills.find(obj => obj.id === id));
+    // extract rDrillsArray from that routine
+    let rDrillsArray = routineObj.rDrills;
+    // loop over ids to find matching object in drills
+    let drills = [...this.state.drills];
+    let routineDrills = [];
+    for( let item of rDrillsArray ) {
+      let drillObj = drills.find( obj => obj.id === item.id);
+      drillObj = {
+       id: drillObj.id,
+       title: drillObj.title
+      }
+      routineDrills.push(drillObj);
     }
-    this.setState({ routineDrills: routineDrillObjects }); 
+    this.setState({ routineDrills }); 
+    return true;
   }
 
   getRoutineValue(objProp='id') {
@@ -96,7 +105,7 @@ class RoutineDetail extends React.Component {
   }
 
   deleteDrill(e) {
-    /* The drills for a routine are stored with the routine as drillIds[]. They are also kept in state as routineDrills. If you delete a drill, it must be deleted from both places. Code smell! */
+    /* The drills for a routine are stored with the routine as rDrills[]. They are also kept in state as routineDrills. If you delete a drill, it must be deleted from both places. Code smell! */
 
     const drillId = e.target.dataset.id // drill id
     let routineId = this.props.params.id;
@@ -106,19 +115,19 @@ class RoutineDetail extends React.Component {
     let targetRoutineArr = storedRoutines.filter(item => item.id === routineId);
     let targetRoutineObj = targetRoutineArr[0];
 
-    // storedRoutinesLite will contain all routines except our target. We'll add back our target routine after deleting the drill from its drillIds array, if it it has any left.
+    // storedRoutinesLite will contain all routines except our target. We'll add back our target routine after deleting the drill from its rDrills array, if it it has any left.
     let storedRoutinesLite = storedRoutines.filter(item => item.id !== routineId);
 
-    // Delete the target drill from the drillIds array in the targetRoutineObj
-    let drillIdsLite = targetRoutineObj.drillIds.filter(value => value !== drillId);
+    // Delete the target drill from the rDrills array in the targetRoutineObj
+    let rDrillsLite = targetRoutineObj.rDrills.filter(value => value !== drillId);
 
     // Continue processing the targetRoutineObj only if there are drills remaining to warrent re-pushing the routine back onto storedRoutinesLite.
-    if( drillIdsLite.length ) {
-      // Delete the drillIds property from targetRoutineObj
-      delete targetRoutineObj.drillIds;
+    if( rDrillsLite.length ) {
+      // Delete the rDrills property from targetRoutineObj
+      delete targetRoutineObj.rDrills;
 
-      // Add back the edited drillIds property to targetRoutineObj and set to drillIdsLite
-      targetRoutineObj.drillIds = drillIdsLite;
+      // Add back the edited rDrills property to targetRoutineObj and set to rDrillsLite
+      targetRoutineObj.rDrills = rDrillsLite;
 
       // Push the target routine back onto storedRoutinesLite
       storedRoutinesLite.push(targetRoutineObj);
@@ -143,6 +152,7 @@ class RoutineDetail extends React.Component {
 
 
   render() {
+
     return (
       <div className="Page">
 
@@ -150,7 +160,7 @@ class RoutineDetail extends React.Component {
         
         <div className="Page-title">{this.getRoutineValue('title')}</div>
         
-          <ul className="List">
+          <div className="List">
           { Object
               .keys(this.state.routineDrills)
               .map(key => 
@@ -163,7 +173,7 @@ class RoutineDetail extends React.Component {
                 params={this.props.params}
               />)
           }
-          </ul>
+          </div>
     	</div>
     )
   }
