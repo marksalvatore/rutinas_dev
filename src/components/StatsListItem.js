@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import React from 'react';
 
 class StatsListItem extends React.Component {

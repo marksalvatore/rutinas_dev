@@ -23,14 +23,14 @@ const ButtonGroup = (props) => {
 		</div>    
 	)
 }
-
+/*
 ButtonGroup.propTypes = {
-/*  saveAction: PropTypes.func.isRequired,
+  saveAction: PropTypes.func.isRequired,
   cancelAction: PropTypes.func.isRequired,
   miscButton: PropTypes.func,
   saveLabel: PropTypes.string.isRequired,
   cancelLabel: PropTypes.string.isRequired,
-  miscLabel: PropTypes.string*/
+  miscLabel: PropTypes.string
 };
-
+*/
 export default ButtonGroup;

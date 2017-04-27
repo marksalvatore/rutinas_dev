@@ -4,7 +4,6 @@ import drillsData from '../../data-drills.json';
 
 import ButtonGroup from './ButtonGroup';
 import Drill from './Drill';
-//import DrillFilter from './DrillFilter';
 import DrillListTitle from './DrillListTitle';
 
 import { storeObject, getStoredObject } from '../helpers';
@@ -65,16 +64,11 @@ class NewRoutine extends React.Component {
 
     let selectedDrillsCopy = [...this.state.selectedDrills];
     let drills = [...this.state.drills];
-    let alreadySelected = selectedDrillsCopy.filter(obj => obj.id === id);
-    console.log("id", id);
-    console.log("index", index);
-    console.log("alreadySelected: ", alreadySelected);
-
+    let currentlySelected = selectedDrillsCopy.filter(obj => obj.id === id);
     let drillItem = null;
     let selectedDrills = [];
 
-    if ( alreadySelected.length  ) {
-      console.log("alreadySelected.length", alreadySelected.length);
+    if ( currentlySelected.length  ) {
       // remove "active" css class by setting selected to false
       drills[index].selected = false;
       this.setState({ drills });
@@ -87,18 +81,13 @@ class NewRoutine extends React.Component {
       // add "active" css class by setting selected to true
       drills[index].selected = true;
       this.setState({ drills });
-      console.log("Set " + id + " .selected to TRUE");
-      console.log("Set drills to state: ", this.state.drills);
 
       // add item
       drillItem = {
         id: id,
         title: drills[index].title
       }
-      console.log("drillItem", drillItem);
-      console.log("selectedDrillsCopy before push: ", selectedDrillsCopy);
       selectedDrillsCopy.push(drillItem);
-      console.log("selectedDrillsCopy after push: ", selectedDrillsCopy);
       selectedDrills = [...selectedDrillsCopy];
     }
     
@@ -106,6 +95,7 @@ class NewRoutine extends React.Component {
     this.setState({ selectedDrills }, function(){
       console.log("selectedDrills", selectedDrills);
     }); 
+ 
   }
 
   storeNewRoutine(newRoutine) {
@@ -145,9 +135,6 @@ class NewRoutine extends React.Component {
 
     return (
       <div className="Page">
-
-        {/*<Nav />*/}
-        {/*<DrillFilter />*/}
 
         <h2 className="titleHeading">New Routine</h2>
 

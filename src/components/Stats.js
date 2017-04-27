@@ -1,10 +1,9 @@
 /* eslint-disable */
-
 import React from 'react';
 
 import Nav from './Nav';
-import StatsListItem from './StatsListItem';
 import NoItems from './NoItems';
+import StatsListItem from './StatsListItem';
 
 import { getStoredObject, getAllScores } from '../helpers';
 
@@ -30,7 +29,6 @@ class Stats extends React.Component {
 
   render() {
     const allScores = getAllScores();
-    console.log("Does at least one score exist? ", allScores);
 
     if( allScores ) {
       const averageAll = this.getAverageAllScores();
@@ -42,7 +40,7 @@ class Stats extends React.Component {
 
             <h2 className="titleHeading">Stats</h2>
             <h2 className="heading2 color">Average of all drills: <span className="big">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></h2>
-            <div className="list">
+            <div className="list-equalLength">
               <br />
               {
                 allScores.map( (key) => 

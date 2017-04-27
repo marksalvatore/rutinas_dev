@@ -1,9 +1,9 @@
 import React from 'react';
-//import { Link } from 'react-router';
 
-import Nav from './Nav';
 import drillsData from '../../data-drills.json';
 import DrillListItem from './DrillListItem';
+import Nav from './Nav';
+
 import { getStoredObject, storeObject } from '../helpers';
 
 class RoutineDetail extends React.Component {
@@ -11,14 +11,14 @@ class RoutineDetail extends React.Component {
   constructor() {
     super();
 
-    this.loadDrills = this.loadDrills.bind(this);
-    this.loadRoutines = this.loadRoutines.bind(this);
-    this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
-    this.getRoutineValue = this.getRoutineValue.bind(this);
     this.deleteDrill = this.deleteDrill.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.getHistory = this.getHistory.bind(this);
+    this.getRoutineValue = this.getRoutineValue.bind(this);
     this.goToDrill = this.goToDrill.bind(this);
+    this.loadDrills = this.loadDrills.bind(this);
+    this.loadRoutines = this.loadRoutines.bind(this);
+    this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
 
     this.state = {
       routines: {},
@@ -30,78 +30,6 @@ class RoutineDetail extends React.Component {
   componentWillMount() {
     this.loadDrills();
     this.loadRoutines(); // also loads routineDrills
-  }
-
-  loadDrills() {
-    // load from localStorage, else from json
-    if(!localStorage.getItem('drills')) {
-      storeObject('drills', drillsData);
-      this.setState({drills: drillsData});
-    } 
-    else {
-      this.setState({drills: getStoredObject('drills')});
-    }
-  }
-
-  loadRoutines() {
-    if(localStorage.getItem('routines')) {
-      this.setState({routines: getStoredObject('routines')}, function(){
-        let result = this.loadRoutineDrills(); // load after routines, because required
-        console.log("loadRoutineDrills() completed? ", result);
-      });
-    }
-  }
-
-  loadRoutineDrills() {
-    let id = this.props.params.id; // routineId
-    let routines = this.state.routines;
-    // find this routine from routines
-    let routineObj = routines.find(obj => obj.id === id);
-    // extract rDrillsArray from that routine
-    let rDrillsArray = routineObj.rDrills;
-    // loop over ids to find matching object in drills
-    let drills = [...this.state.drills];
-    let routineDrills = [];
-    for( let item of rDrillsArray ) {
-      let drillObj = drills.find( obj => obj.id === item.id);
-      drillObj = {
-       id: drillObj.id,
-       title: drillObj.title
-      }
-      routineDrills.push(drillObj);
-    }
-    this.setState({ routineDrills }); 
-    return true;
-  }
-
-  getRoutineValue(objProp='id') {
-    // used only to get title of routine
-    let routines = this.state.routines;
-    let id = this.props.params.id;
-    let routineObj = routines.find( obj => obj.id === id);
-    return routineObj[objProp];
-  }
-
-  getHistory(e) {
-    let id = e.target.dataset.id;
-    this.context.router.transitionTo(`/history/${id}`);
-  }
-
-  goToDrill(e) {
-    const id = e.target.dataset.id
-    console.log('Going to page id: ', id);
-    this.context.router.transitionTo(`/drill/${id}`);
-  }
-
-  deleteRoutine() {
-    let id = this.props.params.id;
-    let storedRoutines = getStoredObject("routines");
-    //delete this routine by not returning it
-    let remainingStoredRoutines = storedRoutines.filter(item => item.id !== id);
-    storeObject("routines", remainingStoredRoutines);
-    this.setState({ routines : remainingStoredRoutines });
-    this.context.router.transitionTo(`/routines`);
-    console.log("Deleted Routine: ", id);
   }
 
   deleteDrill(e) {
@@ -148,6 +76,79 @@ class RoutineDetail extends React.Component {
       this.deleteRoutine();
     }
   }
+
+  deleteRoutine() {
+    let id = this.props.params.id;
+    let storedRoutines = getStoredObject("routines");
+    //delete this routine by not returning it
+    let remainingStoredRoutines = storedRoutines.filter(item => item.id !== id);
+    storeObject("routines", remainingStoredRoutines);
+    this.setState({ routines : remainingStoredRoutines });
+    this.context.router.transitionTo(`/routines`);
+    console.log("Deleted Routine: ", id);
+  }
+
+  getHistory(e) {
+    let id = e.target.dataset.id;
+    this.context.router.transitionTo(`/history/${id}`);
+  }
+
+  getRoutineValue(objProp='id') {
+    // used only to get title of routine
+    let routines = this.state.routines;
+    let id = this.props.params.id;
+    let routineObj = routines.find( obj => obj.id === id);
+    return routineObj[objProp];
+  }
+
+  goToDrill(e) {
+    const id = e.target.dataset.id
+    this.context.router.transitionTo(`/drill/${id}`);
+    console.log('Displaying drill id: ', id);
+  }
+
+  loadDrills() {
+    // load from localStorage, else from json
+    if(!localStorage.getItem('drills')) {
+      storeObject('drills', drillsData);
+      this.setState({drills: drillsData});
+    } 
+    else {
+      this.setState({drills: getStoredObject('drills')});
+    }
+  }
+
+  loadRoutines() {
+    if(localStorage.getItem('routines')) {
+      this.setState({routines: getStoredObject('routines')}, function(){
+        this.loadRoutineDrills(); // load after routines, because required
+        console.log("Routine drills loaded.");
+      });
+    }
+  }
+
+  loadRoutineDrills() {
+    let id = this.props.params.id; // routineId
+    let routines = this.state.routines;
+    // find this routine from routines
+    let routineObj = routines.find(obj => obj.id === id);
+    // extract rDrillsArray from that routine
+    let rDrillsArray = routineObj.rDrills;
+    // loop over ids to find matching object in drills
+    let drills = [...this.state.drills];
+    let routineDrills = [];
+    for( let item of rDrillsArray ) {
+      let drillObj = drills.find( obj => obj.id === item.id);
+      drillObj = {
+       id: drillObj.id,
+       title: drillObj.title
+      }
+      routineDrills.push(drillObj);
+    }
+    this.setState({ routineDrills }); 
+    return true;
+  }
+
 
   render() {
 

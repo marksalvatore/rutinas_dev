@@ -66,6 +66,12 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+a:visited {
+  color: #497ADB;
+}
+a:hover {
+  color: #ccc;
+}
 
 strong {
   color: #497ADB;
@@ -95,6 +101,7 @@ strong {
 }
 .big {
   font-size: 3rem;
+  margin-right: .5rem;
 }
 .dropShadow {
   -webkit-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
@@ -166,15 +173,14 @@ button[data-id] {
     /*bottom: 0*/;
   }
   .Nav-item {
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-top: none;
-
     font-size: 1.5rem;
     padding: 1em;
+
     background: #497ADB;
     color: white;
   }
-
 
   .Nav-item:hover {
     background: #ccc;
@@ -229,16 +235,23 @@ button[data-id] {
     text-align: center;
   }
   .logo img {
-    width: 150px;
+    width: 250px;
   }
 
-  .text {
+  .text-center {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.8rem;
+    max-width: 50rem;
+  }
+  
+  .text, .text-left {
     text-align: left;
     margin: 0 auto;
     font-size: 1.8rem;
     max-width: 50rem;
   }
- 
+  
 
   .list {
     margin-top: 2rem;

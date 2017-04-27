@@ -1,18 +1,17 @@
 import React from 'react';
-//import { Link } from 'react-router';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
-import { getStoredObject, storeObject } from '../helpers';
 
+import { getStoredObject, storeObject } from '../helpers';
 
 class Routines extends React.Component {
   constructor() {
     super();
 
-    this.loadRoutines = this.loadRoutines.bind(this);
     this.addRoutine = this.addRoutine.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
+    this.loadRoutines = this.loadRoutines.bind(this);
 
     this.state = {
       routines: {}
@@ -23,11 +22,8 @@ class Routines extends React.Component {
     this.loadRoutines();
   }
 
-  loadRoutines() {
-    if(localStorage.getItem('routines')) {
-      let routines = getStoredObject('routines');
-      this.setState({ routines });
-    }
+  addRoutine() {
+    this.context.router.transitionTo('/new');
   }
 
   deleteRoutine(e) {
@@ -39,8 +35,11 @@ class Routines extends React.Component {
     console.log("Deleted Routine: ", id);
   }
 
-  addRoutine() {
-    this.context.router.transitionTo('/new');
+  loadRoutines() {
+    if(localStorage.getItem('routines')) {
+      let routines = getStoredObject('routines');
+      this.setState({ routines });
+    }
   }
 
   render() {

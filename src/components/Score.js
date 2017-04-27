@@ -1,22 +1,24 @@
 /* eslint-disable */
-
 import React from 'react';
 
-import Nav from './Nav';
 import drillsData from '../../data-drills.json';
+
+import Nav from './Nav';
+
 import { getStoredObject, storeObject, getAllScores } from '../helpers';
 
 class Score extends React.Component {
   constructor() {
     super();
 
+    this.createDrillScoreObj = this.createDrillScoreObj.bind(this);
     this.getDrills = this.getDrills.bind(this);
+    this.getStringDate = this.getStringDate.bind(this);
     this.setDrill = this.setDrill.bind(this);
     this.storeDrillScoreObj = this.storeDrillScoreObj.bind(this);
-    this.createDrillScoreObj = this.createDrillScoreObj.bind(this);
-    this.getStringDate = this.getStringDate.bind(this);
-    this.saveAction = this.saveAction.bind(this);
+
     this.cancelAction = this.cancelAction.bind(this);
+    this.saveAction = this.saveAction.bind(this);
 
     this.state = {
       drill: {},
@@ -26,31 +28,6 @@ class Score extends React.Component {
 
   componentWillMount() {
     this.setDrill();
-  }
-
-  getDrills() {
-    // load from json, or storage if already loaded
-    if(!localStorage.getItem('drills')) {
-      storeObject('drills', drillsData);
-      return drillsData;
-
-    } else {
-      return getStoredObject('drills'); 
-    }
-  }
-
-  setDrill() {
-    let drills = this.getDrills();
-    let id = this.props.params.id;
-    let drill = drills.find( obj => obj.id === id);
-    this.setState({ drill });
-  }
-
-  getStringDate(dateObj) {
-    const day = dateObj.getDate();
-    const year = dateObj.getFullYear();
-    const month = dateObj.getMonth();
-    return year + '-' + month + '-' + day;
   }
 
   createDrillScoreObj() {
@@ -74,7 +51,7 @@ class Score extends React.Component {
 
     if( drillScoreObj ) {
       // Update existing scores in drillScoreObj
-      console.log("drillScoreObj exists");
+      console.log("Other scores exist for this drill.");
       let newScore = {
         id: `score-${timestampId}`,
         points: points,
@@ -85,7 +62,7 @@ class Score extends React.Component {
 
     } else {
       // Create scores object
-      console.log("drillScoreObj doesn't exist");
+      console.log("This is the first scoring for this drill.");
       drillScoreObj = {
         id: drillId,
         title: this.state.drill.title,
@@ -98,6 +75,31 @@ class Score extends React.Component {
       }
     }
     return drillScoreObj;
+  }
+
+  getDrills() {
+    // load from json, or storage if already loaded
+    if(!localStorage.getItem('drills')) {
+      storeObject('drills', drillsData);
+      return drillsData;
+
+    } else {
+      return getStoredObject('drills'); 
+    }
+  }
+
+  getStringDate(dateObj) {
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+    const month = dateObj.getMonth();
+    return year + '-' + month + '-' + day;
+  }
+
+  setDrill() {
+    let drills = this.getDrills();
+    let id = this.props.params.id;
+    let drill = drills.find( obj => obj.id === id);
+    this.setState({ drill });
   }
 
   storeDrillScoreObj(drillScoreObj) {
@@ -122,6 +124,10 @@ class Score extends React.Component {
     }
   }
 
+  cancelAction() {
+    history.back();
+  }
+
   saveAction(e) {
     e.preventDefault();
     if( this.attempts.value > 0 && this.points.value > 0) {
@@ -133,11 +139,6 @@ class Score extends React.Component {
       this.context.router.transitionTo(`/save/${drillId}`);
     }
   }
-
-  cancelAction() {
-    history.back();
-  }
-
 
   render() {
     return (

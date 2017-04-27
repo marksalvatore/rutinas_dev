@@ -4,3 +4,5 @@ ReactCourseFiles/
 *.sublime-*
 *copy.*
 build/
+
+src/components/Nav2.js

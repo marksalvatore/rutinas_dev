@@ -1,10 +1,9 @@
 /* eslint-disable */
-
 import React from 'react';
 
-import Nav from './Nav';
-import HistoryListItem from './HistoryListItem';
 import ButtonGroup from './ButtonGroup';
+import HistoryListItem from './HistoryListItem';
+import Nav from './Nav';
 import NoItems from './NoItems';
 
 import { getStoredObject, getAllScores } from '../helpers';
@@ -15,6 +14,8 @@ class History extends React.Component {
 
     this.getDrillScoreObj = this.getDrillScoreObj.bind(this);
     this.getDrillScoreAverage = this.getDrillScoreAverage.bind(this);
+    
+    this.cancelAction = this.cancelAction.bind(this);
   }
 
   getDrillScoreObj() {

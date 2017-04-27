@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
+import Nav from './Nav';
 
 class DrillDetail extends React.Component {
   render() {
     const { drill } = this.props;
-    return (
 
+    return (
       <div className="Page">
 
         <Nav />
@@ -26,7 +26,6 @@ class DrillDetail extends React.Component {
         </div>
         
         <ButtonGroup saveLabel="Enter Score" saveAction={this.props.saveAction} cancelLabel="Back" cancelAction={this.props.cancelAction} />
-
       </div>
     )
   }

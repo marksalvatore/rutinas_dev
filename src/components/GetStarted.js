@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import eightball from '../../public/images/eightball.png';
+//import logo from '../../public/images/eightball.png';
+import logo from '../../public/images/safe-3.svg';
 
 class GetStarted extends React.Component {
 
@@ -13,7 +14,7 @@ class GetStarted extends React.Component {
         <h1 className="heading1">Routines</h1>
         <h2 className="heading2">Improve your pool game.</h2>
         <div className="logo">
-          <img src={eightball} alt="Eight Ball" />
+          <img src={logo} alt="Routines logo" />
         </div>
         <div className="description">
           <p>Create practice routines from the drills

@@ -1,7 +1,9 @@
 import React from 'react';
 
-import DrillDetail from './DrillDetail';
 import drillsData from '../../data-drills.json';
+
+import DrillDetail from './DrillDetail';
+
 import { getStoredObject, storeObject } from '../helpers';
 
 class DrillDetailContainer extends React.Component {
@@ -10,6 +12,7 @@ class DrillDetailContainer extends React.Component {
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
+
     this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
 
@@ -26,11 +29,9 @@ class DrillDetailContainer extends React.Component {
     // load from json, or storage if already loaded
     if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
-      console.log('Drills loaded from JSON:'); 
       return drillsData;
 
     } else {
-      console.log('Drills loaded from localStorage:');
       return getStoredObject('drills'); 
     }
   }

@@ -1,8 +1,8 @@
 /* eslint-disable */
 import React from 'react';
 
-import Nav from './Nav';
 import ButtonGroup from './ButtonGroup';
+import Nav from './Nav';
 
 import { getStoredObject, getAllScores } from '../helpers';
 
@@ -10,11 +10,12 @@ class Save extends React.Component {
   constructor() {
     super();
 
-    this.getRecentDrillScore = this.getRecentDrillScore.bind(this);
     this.getAverageDrillScore = this.getAverageDrillScore.bind(this);
     this.getDrillScores = this.getDrillScores.bind(this);
-    this.saveAction = this.saveAction.bind(this);
+    this.getRecentDrillScore = this.getRecentDrillScore.bind(this);
+    
     this.cancelAction = this.cancelAction.bind(this);
+    this.saveAction = this.saveAction.bind(this);
 
     this.state = {
       recentScore: 0,
@@ -30,6 +31,24 @@ class Save extends React.Component {
 
     let averageScore = this.getAverageDrillScore(scoresForDrill); 
     this.setState({ averageScore });
+  }
+
+  getAverageDrillScore() {
+    let scoresForDrill = this.getDrillScores();
+    let totalPoints = 0;
+    let totalAttempts = 0;
+    let average = 0;
+    scoresForDrill.map((obj) => {
+      totalPoints += obj.points;
+      totalAttempts += obj.attempts;
+    });
+
+    if( totalPoints > 0 ) {
+      average = totalPoints / totalAttempts;
+      console.log("Average score: ", (average * 100 ).toFixed(0) + "%");
+      return average;
+    }
+    return false;
   }
 
   getDrillScores() {
@@ -54,31 +73,13 @@ class Save extends React.Component {
     return recentScore.points / recentScore.attempts;
   }
 
-  getAverageDrillScore() {
-    let scoresForDrill = this.getDrillScores();
-    let totalPoints = 0;
-    let totalAttempts = 0;
-    let average = 0;
-    scoresForDrill.map((obj) => {
-      totalPoints += obj.points;
-      totalAttempts += obj.attempts;
-    });
-
-    if( totalPoints > 0 ) {
-      average = totalPoints / totalAttempts;
-      console.log("Average score: ", (average * 100 ).toFixed(0) + "%");
-      return average;
-    }
-    return false;
+  cancelAction() {
+    history.back();
   }
 
   saveAction() {
     let id = this.props.params.id;
     this.context.router.transitionTo(`/history/${id}`);
-  }
-
-  cancelAction() {
-    history.back();
   }
 
   render() {
