@@ -11,10 +11,10 @@ class GetStarted extends React.Component {
     return (
       <div className="Splash">
 
-        <h1 className="heading1">Routines</h1>
-        <h2 className="heading2">Improve your pool game.</h2>
+        <h1 className="heading1">Rutinas</h1>
+        <h2 className="byline">Improve your pool game.</h2>
         <div className="logo">
-          <img src={logo} alt="Routines logo" />
+          <img src={logo} alt="Rutinas logo" />
         </div>
         <div className="description">
           <p>Create practice routines from the drills

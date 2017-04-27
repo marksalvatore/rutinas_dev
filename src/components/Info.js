@@ -13,7 +13,7 @@ class Info extends React.Component {
           <h2 className="heading2 color">Instructions</h2>
 
           <div className="text">
-            <p><Link to="/splash"><em className="big">Routines</em></Link> is an app to assist you when you practice pool. It contains more than 50 drills you can group into one or more routines. You can then record and monitor your progress performing each of those drills.</p>
+            <p><Link to="/splash"><em className="big">Rutinas</em></Link> is an app to assist you when you practice pool. It contains more than 50 drills you can group into one or more routines. You can then record and monitor your progress performing each of those drills.</p>
             <p>Click the <strong>+ New</strong> tab to create a routine.</p>
             <p>Then select the specific drills to include in your new routine.</p>
             <p>The routines you create will display in the <strong>Routines</strong> tab. Select the routine you want to practice, then click the <strong>Drill</strong> button to see an illustration of the drill, its rules for performing it, as well as notes on how to score it.</p> <p>Click <strong>Enter Score</strong> to record the number of points you scored along with the corresponding number of attempts.</p>
