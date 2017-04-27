@@ -105,23 +105,35 @@ class RoutineDetail extends React.Component {
   }
 
   deleteDrill(e) {
-    /* The drills for a routine are stored with the routine as rDrills[]. They are also kept in state as routineDrills. If you delete a drill, it must be deleted from both places. Code smell! */
+    /* The drills for a routine are stored with the routine as rDrills[]. They are also loaded into state as routineDrills. If you delete a drill, it must be deleted from both places. */
 
-    const drillId = e.target.dataset.id // drill id
-    let routineId = this.props.params.id;
+    const drillId = e.target.dataset.id;
+
+    console.log("drillId: ", drillId);
+
+    const routineId = this.props.params.id;
+
+    console.log("routineId: ", routineId);
+
     let storedRoutines = getStoredObject("routines");
 
     // Get the target routine into an object by itself
-    let targetRoutineArr = storedRoutines.filter(item => item.id === routineId);
-    let targetRoutineObj = targetRoutineArr[0];
+    const targetRoutineArr = storedRoutines.filter(obj => obj.id === routineId);
+    const targetRoutineObj = targetRoutineArr[0];
 
-    // storedRoutinesLite will contain all routines except our target. We'll add back our target routine after deleting the drill from its rDrills array, if it it has any left.
-    let storedRoutinesLite = storedRoutines.filter(item => item.id !== routineId);
+    console.log("targetRoutineObj: ", targetRoutineObj);
+
+    // storedRoutinesLite will contain all routines except our target. We'll the target back after deleting the drill from its rDrills array, if it it has any left.
+    let storedRoutinesLite = storedRoutines.filter(obj => obj.id !== routineId);
+
+    console.log("storedRoutinesLite: ", storedRoutinesLite);
 
     // Delete the target drill from the rDrills array in the targetRoutineObj
-    let rDrillsLite = targetRoutineObj.rDrills.filter(value => value !== drillId);
+    let rDrillsLite = targetRoutineObj.rDrills.filter(obj => obj.id !== drillId);
 
-    // Continue processing the targetRoutineObj only if there are drills remaining to warrent re-pushing the routine back onto storedRoutinesLite.
+    console.log("rDrillsLite: ", rDrillsLite);
+
+    // If there are any drills left after deleting that last one, push the routine back onto storedRoutinesLite. Otherwise, we don't need the routine anymore. Leaving it out effectively deletes it.
     if( rDrillsLite.length ) {
       // Delete the rDrills property from targetRoutineObj
       delete targetRoutineObj.rDrills;
@@ -158,9 +170,9 @@ class RoutineDetail extends React.Component {
 
         <Nav />
         
-        <div className="Page-title">{this.getRoutineValue('title')}</div>
+        <h2 className="titleHeading">{this.getRoutineValue('title')}</h2>
         
-          <div className="List">
+          <div className="list">
           { Object
               .keys(this.state.routineDrills)
               .map(key => 
@@ -179,7 +191,7 @@ class RoutineDetail extends React.Component {
   }
 }
 
-// Allows using the parent router for methods that need to link to another page
+// Allows using the parent router for methods that need to link to another component
 // See saveAction() and cancelAction()
 RoutineDetail.contextTypes = {
   router: React.PropTypes.object
