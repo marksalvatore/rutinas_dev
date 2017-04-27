@@ -10,7 +10,7 @@ class Info extends React.Component {
 
           <Nav />
 
-          <h2 className="heading2 color">Instructions</h2>
+          <h2 className="heading2 color">Information & Instructions</h2>
 
           <div className="text">
             <p><Link to="/splash"><em className="big">Rutinas</em></Link> is an app to assist you when you practice pool. It contains more than 50 drills you can group into one or more routines. You can then record and monitor your progress performing each of those drills.</p>
