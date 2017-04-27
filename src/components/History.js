@@ -4,6 +4,7 @@ import React from 'react';
 
 import Nav from './Nav';
 import HistoryListItem from './HistoryListItem';
+import ButtonGroup from './ButtonGroup';
 import NoItems from './NoItems';
 
 import { getStoredObject, getAllScores } from '../helpers';
@@ -48,6 +49,10 @@ class History extends React.Component {
     return totalPoints / totalAttempts * 100;
   }
 
+  cancelAction() {
+    history.back();
+  }
+
   render() {
     const drillScoreObj = this.getDrillScoreObj();
 
@@ -57,12 +62,12 @@ class History extends React.Component {
         <div className="Page">
           <Nav />
 
-          <div className="Page-title">History</div>
-          <div className="Page-subtitle">{drillScoreObj.title}</div>
-          <div className="Page-text">
-            Average: { average ? average.toFixed(0) : '0'}%
-            {
-              drillScoreObj.scores.map( (key) => 
+          <h2 className="titleHeading">{drillScoreObj.title}</h2>
+          <h3 className="subTitleHeading">History
+          <div>Average: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div></h3>
+  
+          <div className="list-equalLength">
+            { drillScoreObj.scores.map( (key) => 
                 <HistoryListItem 
                   key={key.id}
                   date={key.date}
@@ -70,6 +75,7 @@ class History extends React.Component {
                 /> )
             }
           </div>
+          <ButtonGroup cancelLabel="Back" cancelAction={this.cancelAction} />
         </div>
       )
     } else {
@@ -77,9 +83,9 @@ class History extends React.Component {
         <div className="Page">
           <Nav />
 
-          <div className="Page-title">History</div>
-          <div className="Page-subtitle">{drillScoreObj.title}</div>
-          <div className="Page-text">
+          <h2 className="titleHeading">History</h2>
+          <div>{drillScoreObj.title}</div>
+          <div className="text">
              <NoItems 
                message={`Items will display here as scores are entered for this drill.`}/>
           </div>

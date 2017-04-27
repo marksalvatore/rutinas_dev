@@ -13,7 +13,6 @@ class Drill extends React.Component {
                onClick={this.props.toggleSelectItem} 
                data-id={details.id}
                data-index={index}
-
           >Select this drill</div>
           <hr className="drill" />
       </div>

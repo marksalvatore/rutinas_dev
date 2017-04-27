@@ -8,16 +8,16 @@ class GetStarted extends React.Component {
   render() {
 
     return (
-      <div className="Page">
+      <div className="Splash">
 
-        <div className="App-title">Routines</div>
-        <div className="App-byline">Improve your pool game.</div>
-        <div className="App-logo">
-          <img src={eightball} alt="Eight Ball" width="100"/>
+        <h1 className="heading1">Routines</h1>
+        <h2 className="heading2">Improve your pool game.</h2>
+        <div className="logo">
+          <img src={eightball} alt="Eight Ball" />
         </div>
-        <div className="App-description">
-          Create practice routines from the drills
-          <br/>you choose, and monitor your progress.
+        <div className="description">
+          <p>Create practice routines from the drills
+          <br/>you choose, and monitor your progress.</p>
         </div>
 
         <button className="getStarted">

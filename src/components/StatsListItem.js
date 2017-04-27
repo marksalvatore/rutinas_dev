@@ -21,11 +21,11 @@ class StatsListItem extends React.Component {
   }
 
   render() {
-
+    const { details } = this.props;
   	const average = this.getAverageOfScores(this.props.scores);
 
     return (
-      <li>{this.props.drillId} - {average.toFixed(0)}%</li>
+      <div>{details.title} - <span className="color">{average.toFixed(0)}%</span></div>
      );
    }
 }

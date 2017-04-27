@@ -12,16 +12,16 @@ class DrillDetail extends React.Component {
 
         <Nav />
 
-        <div className="Page-title">{drill.title}</div>
+        <h2 className="titleHeading">{drill.title}</h2>
         <img className="drill-diagram" src={drill.url} alt={drill.title} />
 
-        <div className="Page-subtitle">Rules</div>
-        <div className="Page-text">
+        <h2 className="heading2 color">Rules</h2>
+        <div className="text">
         <p>{drill.rules}</p>
         </div>
 
-        <div className="Page-subtitle">Scoring</div>
-        <div className="Page-text">
+        <h2 className="heading2 color">Scoring</h2>
+        <div className="text">
         <p>{drill.scoring}</p>
         </div>
         

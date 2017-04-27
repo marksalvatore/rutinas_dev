@@ -17,20 +17,21 @@ class RoutineListItem extends React.Component {
 
   render() {
     const { details } = this.props;
-    const title = <a href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
+    const title = <a className="titleAnchor" href="#" data-id={details.id} data-title={details.title}onClick={this.goToRoutine}>{details.title}</a>
     const deleteButton = <button data-id={details.id} onClick={(e) => this.props.deleteRoutine(e)}>Delete</button>
+    const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => this.goToRoutine(e)}>View</button>
 
     return (
       <div className="drill-frame-item">
           <div className="drill-frame-item-title">
-               {title} {deleteButton}
+               {title} {viewButton} {deleteButton}
           </div>
       </div>
      );
   }
 }
 
-// Allows using the parent router for methods that need to link to another page
+// Allows using the parent router for methods that need to link to another component
 // See saveAction() and cancelAction()
 RoutineListItem.contextTypes = {
   router: React.PropTypes.object

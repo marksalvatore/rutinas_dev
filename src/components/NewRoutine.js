@@ -1,23 +1,24 @@
 import React from 'react';
 
-//import dbconnect from '../rebase';
 import drillsData from '../../data-drills.json';
-import Drill from './Drill';
-//import Nav from './Nav';
-//import DrillFilter from './DrillFilter';
+
 import ButtonGroup from './ButtonGroup';
+import Drill from './Drill';
+//import DrillFilter from './DrillFilter';
 import DrillListTitle from './DrillListTitle';
+
 import { storeObject, getStoredObject } from '../helpers';
 
 class NewRoutine extends React.Component {
   constructor() {
     super();
 
-    this.saveAction = this.saveAction.bind(this);
-    this.cancelAction = this.cancelAction.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
+
+    this.cancelAction = this.cancelAction.bind(this);
+    this.saveAction = this.saveAction.bind(this);
 
     this.state = {
       drills: {},
@@ -41,20 +42,7 @@ class NewRoutine extends React.Component {
       this.setState({drills: getStoredObject('drills')});
       console.log('Drills loaded from localStorage');
     }
-  }
-
-  saveAction() {
-    if ( this.state.selectedDrills.length > 0 ) {
-      const newRoutineObj = this.makeNewRoutineObj();
-      this.storeNewRoutine(newRoutineObj);
-
-      // go to new routine page
-      this.context.router.transitionTo(`/routines`);
-    }
-  }
-
-  cancelAction() {
-    this.context.router.transitionTo(`/`);
+    return true;
   }
 
   makeNewRoutineObj() {
@@ -70,7 +58,6 @@ class NewRoutine extends React.Component {
     }
     return newRoutine;
   }
-
 
   toggleSelectItem(e) {
     const id = e.target.dataset.id;
@@ -119,7 +106,6 @@ class NewRoutine extends React.Component {
     this.setState({ selectedDrills }, function(){
       console.log("selectedDrills", selectedDrills);
     }); 
-   
   }
 
   storeNewRoutine(newRoutine) {
@@ -140,44 +126,55 @@ class NewRoutine extends React.Component {
     }
   }
 
+  cancelAction() {
+    this.context.router.transitionTo(`/`);
+  }
+
+  saveAction() {
+    if ( this.state.selectedDrills.length > 0 ) {
+      const newRoutineObj = this.makeNewRoutineObj();
+      this.storeNewRoutine(newRoutineObj);
+
+      // go to new routine page
+      this.context.router.transitionTo(`/routines`);
+    }
+  }
 
   render() {
     let selectedDrills = [...this.state.selectedDrills];
 
     return (
-    	<div className="Page">
+      <div className="Page">
 
         {/*<Nav />*/}
         {/*<DrillFilter />*/}
 
-        <h3>Select drills for Routine</h3>
+        <h2 className="titleHeading">New Routine</h2>
 
         <div className="drill-frame-wrapper">
+
           <div className="drill-frame dropShadow">
              { Object
-                 .keys(this.state.drills)
-                 .map(key => 
-                   <Drill 
-                     key={key} 
-                     index={key}
-                     details={this.state.drills[key]}
-                     toggleSelectItem={this.toggleSelectItem}
-                     />)
+               .keys(this.state.drills)
+               .map(key => 
+                 <Drill 
+                   key={key} 
+                   index={key}
+                   details={this.state.drills[key]}
+                   toggleSelectItem={this.toggleSelectItem}
+                   />)
              }
            </div>
 
-           <div className="drill-frame-list">
-             <ul>
-               {
-                 selectedDrills.map( key => 
+           <div className="drill-frame-sideList">
+    
+               {selectedDrills.map( key => 
                    <DrillListTitle 
                      key={key.id}
                      id={key.id}
                      title={key.title}
                    />)
-
                }
-             </ul>
            </div>
     	  </div>
 
@@ -187,8 +184,7 @@ class NewRoutine extends React.Component {
   }
 }
 
-// Allows using the parent router for methods that need to link to another page
-// See saveAction() and cancelAction()
+// Allows using the parent router for methods that need to link to another component
 NewRoutine.contextTypes = {
   router: React.PropTypes.object
 }

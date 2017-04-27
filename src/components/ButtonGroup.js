@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 // Composed component function 
 const ButtonGroup = (props) => {
@@ -25,12 +25,12 @@ const ButtonGroup = (props) => {
 }
 
 ButtonGroup.propTypes = {
-  saveAction: PropTypes.func.isRequired,
+/*  saveAction: PropTypes.func.isRequired,
   cancelAction: PropTypes.func.isRequired,
   miscButton: PropTypes.func,
   saveLabel: PropTypes.string.isRequired,
   cancelLabel: PropTypes.string.isRequired,
-  miscLabel: PropTypes.string
+  miscLabel: PropTypes.string*/
 };
 
 export default ButtonGroup;

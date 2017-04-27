@@ -8,6 +8,7 @@ class Nav extends React.Component {
     	  <Link to="/info"><div className="Nav-item first">Help</div></Link>
     	  <Link to="/stats"><div className="Nav-item">Stats</div></Link>
     	  <Link to="/routines"><div className="Nav-item">Routines</div></Link>
+    	  <Link to="/new"><div className="Nav-item">+ New</div></Link>
     	</div>
     )
   }

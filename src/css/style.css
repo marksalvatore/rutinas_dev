@@ -5,6 +5,10 @@
 @-o-viewport { width: device-width }
 @viewport { width: device-width }
 
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Jura');
+
 html {
   /* Set font size to 62.5% so rems are in base 10. Rems are not relative to their parent, so 1.6rem will always yield 16 pixels, etc. Keeping fonts and widths of margins/paddings in rems (and/or percentages) provides flexibility while maintaining proportionality.
 
@@ -39,8 +43,10 @@ html {
 
 body {
   margin: 0 1rem;
-  font-family: "Eurostile";
+  margin-bottom: 4rem;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.8rem;
+  line-height: 1.2;
 }
 
 img {
@@ -58,6 +64,12 @@ li {
 
 a {
   text-decoration: none;
+  cursor: pointer;
+}
+
+strong {
+  color: #497ADB;
+  font-weight: 700;
 }
 
 /* ===========================================
@@ -77,6 +89,12 @@ a {
 }
 .show {
    display:block;
+}
+.color {
+  color: #497ADB;
+}
+.big {
+  font-size: 3rem;
 }
 .dropShadow {
   -webkit-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
@@ -115,46 +133,19 @@ button:active {
 /*crud action buttons (delete)*/
 button[data-id] {
   font-size: .5em;
-  padding: .3em .5em;
+  padding: .3rem .5rem;
+  margin-left: .5rem;
 }
 
 
 /****************************
    Pages
   ***************************/
-  .Page {
+  .Page, .Splash {
     display: block;
     width: 100%;
     text-align: center;
-    /*border:1px solid red;*/
-/*    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-*/  
-  
   }
-
-
-  .Page-title {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-  }
-  .Page-subtitle {
-    margin: 2rem 0 .5rem 0;
-    font-size: 3rem;
-  }
-
-  h3 {
-     font-size: 2.5rem;
-     margin: 1rem 0 .5rem 1rem;
-   }
-
-  .Page-text {
-    padding: 1rem;
-    width: 75%;
-    max-width: 50rem;
-  }
-
 
 /****************************
    Nav
@@ -180,6 +171,8 @@ button[data-id] {
 
     font-size: 1.5rem;
     padding: 1em;
+    background: #497ADB;
+    color: white;
   }
 
 
@@ -193,23 +186,82 @@ button[data-id] {
   }
 
 
-/****************************
-   App
-  ***************************/
-  .App-title {
-    font-size: 5rem;
+
+  h1.heading1 {
+    font-family: 'Jura', sans-serif;
+    font-size: 6.7rem;
+    color: #497ADB;
     text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
   }
-  .App-byline {
-    font-size: 2.1rem;
+  h2.heading2 {
+    font-family: 'Jura', sans-serif;
+    font-size: 2.5rem;
+    font-weight: normal;
+    margin: 0;
   }
-  .App-logo {
+
+  h2.titleHeading {
+    font-family: 'Jura', sans-serif;
+    font-size: 4rem;
+    color: #497ADB;
+    font-weight: 700;
+    margin: 0;
+  }
+  h3.subTitleHeading {
+    font-size: 3rem;
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .Splash h2.heading2 {
+    margin-top: -1rem;
+  }
+  .Splash .description {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .logo {
     margin: 2rem 0;
     text-align: center;
+  }
+  .logo img {
     width: 150px;
   }
-  .App-description {
+
+  .text {
+    text-align: left;
+    margin: 0 auto;
     font-size: 1.8rem;
+    max-width: 50rem;
+  }
+ 
+
+  .list {
+    margin-top: 2rem;
+    margin: 0 auto;
+    text-align: left;
+    /*Following two are hacky. They keep the illusion of a centered list*/
+    max-width: 50rem;
+    padding-left: 8rem; 
+  }
+  .list-equalLength {
+    margin-top: 2rem;
+    margin: 0 auto;
+  }
+
+  .drill-diagram {
+    margin: 2rem 0;
+  }
+
+  a.titleAnchor {
+    color: #666;
+  }
+  a.titleAnchor:hover {
+    color: #ccc;
   }
 
 
@@ -223,20 +275,25 @@ button[data-id] {
     align-items: center;
    }
 
-  .drill-frame-list {
+  .drill-frame-sideList {
     flex-grow: 1;
     flex-basis: 40%;
     align-self: flex-start;
-    max-width: 15rem;
+    max-width: 18rem;
     padding: 2em 0 0 .8em;
     /*border: 1px solid green;*/
+
   }
 
-  .drill-frame-list li {
+  .drill-frame-sideList {
+    font-size: 1.7rem;
     margin: 0;
     margin-left: 1em;
     padding-bottom: .5rem;
     text-align: left;
+  }
+
+  .drill-frame-list li {
   }
 
   .drill-frame {
@@ -244,7 +301,7 @@ button[data-id] {
     flex-basis: 60%; 
     max-height: 75vh;
     max-width: 18rem;
-
+    margin-top: 2rem;
     padding: .5rem 1rem;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -319,8 +376,8 @@ button[data-id] {
   }
   input {
     display: block;
-    width: 8em;
-    font-size: 4rem;
+    width: 6em;
+    font-size: 3rem;
     margin: .5rem auto;
     margin-bottom: 0;
   }
@@ -329,7 +386,7 @@ button[data-id] {
    Refactor later
   ***************************/
   .getStarted {
-    margin: 2rem;
+    margin-top: 4rem;
   }
 
   button.getStarted a {

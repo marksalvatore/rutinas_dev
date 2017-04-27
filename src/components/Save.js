@@ -88,9 +88,10 @@ class Save extends React.Component {
 
         <Nav />
 
-        <div className="Page-title">Saved!</div>
-        <div className="Page-text">
-          <p>Your scored {Math.floor(this.state.recentScore * 100)}% for this drill. Your average score for this drill is {Math.floor(this.state.averageScore * 100)}%.</p>
+        <h2 className="titleHeading">Saved!</h2>
+        <div className="text">
+          <p>Your scored {Math.floor(this.state.recentScore * 100)}% for this drill.
+          Your average score for this drill is {Math.floor(this.state.averageScore * 100)}%.</p>
         </div>
 
         <ButtonGroup saveLabel="History" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />

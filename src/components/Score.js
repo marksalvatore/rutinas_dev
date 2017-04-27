@@ -145,7 +145,7 @@ class Score extends React.Component {
 
         <Nav />
 
-        <div className="Page-title">{this.state.drill.title}</div>
+        <h2 className="titleHeading">{this.state.drill.title}</h2>
         
         <form ref={(input) => this.scoreForm = input} onSubmit={(e) => this.saveAction(e)}>
           <input type="number" ref={(input) => this.points = input} placeholder="# of points "/>

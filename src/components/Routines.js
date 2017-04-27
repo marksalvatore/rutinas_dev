@@ -45,21 +45,18 @@ class Routines extends React.Component {
 
   render() {
 
-    const addButton = <button onClick={() => this.addRoutine()}>+ Add Routine</button>
-
     return (
         <div className="Page">
 
-        <Nav />
+          <Nav />
 
-          <div className="Page-title">My Routines</div>
-             
-             {addButton}
-      
-            <ul className="List">
+          <h2 className="titleHeading">All Routines</h2>
+
+            <ul className="list-equalLength">
                 { Object
                     .keys(this.state.routines)
                     .map(key => 
+                      
                     <RoutineListItem 
                       key={key} 
                       details={this.state.routines[key]}
@@ -67,14 +64,13 @@ class Routines extends React.Component {
                       />)
                 }
             </ul>
-         
       </div>
     )
   }
 }
 
-// Allows using the parent router for methods that need to link to another page
-// See saveAction() and cancelAction()
+// Allows using the parent router for methods that need to link to another component
+// See addRoutine()
 Routines.contextTypes = {
   router: React.PropTypes.object
 }

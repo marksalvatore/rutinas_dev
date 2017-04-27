@@ -40,15 +40,15 @@ class Stats extends React.Component {
 
           <Nav />
 
-            <div className="Page-title">Stats</div>
-            <div className="Page-subtitle">Average of all drills: { averageAll ? averageAll.toFixed(0) : '0'}%</div>
-            <div className="Page-text">
-              
+            <h2 className="titleHeading">Stats</h2>
+            <h2 className="heading2 color">Average of all drills: <span className="big">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></h2>
+            <div className="list">
+              <br />
               {
                 allScores.map( (key) => 
                   <StatsListItem 
                     key={key.id}
-                    drillId={key.id}
+                    details={key}
                     scores={key.scores}
                   /> )
               }
@@ -61,8 +61,8 @@ class Stats extends React.Component {
 
           <Nav />
 
-            <div className="Page-title">Stats</div>
-            <div className="Page-text">
+            <h2 className="titleHeading">Stats</h2>
+            <div className="text">
               <NoItems message={`Items will display here as scores are entered for drills.`}/>
             </div>
 
