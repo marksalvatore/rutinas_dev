@@ -24,6 +24,7 @@ const Router = () => {
         <Match pattern="/info" component={Info} />
         <Match pattern="/new" component={NewRoutine} />
         <Match pattern="/routines" component={Routines} />
+        <Match pattern="/rutinas" component={App} />
         <Match pattern="/routine/:id" component={RoutineDetail} />
         <Match pattern="/save/:id" component={Save} />
         <Match pattern="/score/:id" component={Score} />
