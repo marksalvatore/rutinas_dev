@@ -1,6 +1,6 @@
 /*----------------------------------------
-  Base html elements style directives
- */
+  Base styles
+*/
 
 @-webkit-viewport { width: device-width }
 @-moz-viewport { width: device-width }
@@ -13,22 +13,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 html {
-   /* Set font size to 62.5% so rems are in base 10. Rems are not relative to their parent, so 1.6rem will always yield 16 pixels, etc. Keeping fonts and widths of margins/paddings in rems (and/or percentages) provides flexibility while maintaining proportionality.
-
-     - Use rem for fonts margin/padding
-     - Use percentages for height/width
-     - Avoid px, pt
-     - Use px only for media queries
-
-   px/rem conversion is base 10:
-
-     12px == 1.2rem
-     24px == 2.4rem
-     100px == 10rem
-     etc...
-
-     The only exception to this is with rem/em in media queries. A rem or em will equal 16px regardless of font-size setting.
-   */
+	 /* Set font size to 62.5% so rems are in base 10. Rems are not relative to their parent, so 1.6rem will always yield 16 pixels, etc.
+	 */
 	font-size: 62.5%;
 	line-height: 1.1;
 
@@ -39,90 +25,86 @@ html {
 	-webkit-text-size-adjust: none;
 }
 
- *, *:before, *:after {
+*, *:before, *:after {
 	box-sizing: inherit;
- }
+}
 
-
- img {
-	max-width: 100%;
- }
-
-
- a {
+a {
 	color: #497ADB;
 	cursor: pointer;
 	text-decoration: none;
- }
+}
 
- a:visited {
+a:visited {
 	color: #497ADB;
- }
+}
 
- a:hover {
+a:hover {
 	color: #ccc;
- }
+}
 
- body {
+body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.7rem;
 	line-height: 1.2;
 	margin: 0 1rem;
 	margin-bottom: 4rem;
- }
+}
 
- button {
-   padding: .8rem .8rem;
-   border: 1px solid rgba(0,0,0, .1);
-   background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
-   border-radius: .5rem;
-   box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
-   text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
-   color: white;
-   font-size: 100%;
-   line-height: 1.5;
- }
- button:hover {
-   color: goldenrod;
- }
- button:active {
-   color: #ccc;
-   border: 1px solid white;
- }
+button {
+	padding: .8rem .8rem;
+	border: 1px solid rgba(0,0,0, .1);
+	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+	border-radius: .5rem;
+	box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
+	text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
+	color: white;
+	font-size: 100%;
+	line-height: 1.5;
+}
+button:hover {
+	color: goldenrod;
+}
+button:active {
+	color: #ccc;
+	border: 1px solid white;
+}
 
- /*crud action buttons (delete)*/
- button[data-id] {
-   font-size: .5em;
-   padding: .3rem .5rem;
-   margin-left: .2rem;
- }
+/*crud action buttons (delete)*/
+button[data-id] {
+	font-size: .5em;
+	padding: .3rem .5rem;
+	margin-left: .2rem;
+}
 
- em {
+em {
 	font-style: italic;
- }
+}
 
-
- h2 {
+h2 {
 	color: #497ADB;
 	font-family: 'Jura', sans-serif;
 	font-size: 2.5rem;
 	font-weight: normal;
 	margin: 0;
- }
+}
 
+img {
+	max-width: 100%;
+}
 
- li {
+li {
 	padding-bottom: .5rem;
 	list-style-type: none;
- }
+}
 
- strong {
+strong {
 	color: #497ADB;
 	font-weight: 700;
- }
+}
 
- ul {
+ul {
 	margin: 0;
 	padding: 0;
- }
+}
 

@@ -6,7 +6,7 @@ import '../css/Nav.css';
 class Nav extends React.Component {
   render() {
     return (
-        <nav id="Nav">
+        <nav className="Nav">
             <Link to="/info"><div>Info</div></Link>
             <Link to="/stats"><div>Stats</div></Link>
             <Link to="/routines"><div>Routines</div></Link>

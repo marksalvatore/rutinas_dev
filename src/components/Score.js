@@ -142,7 +142,7 @@ class Score extends React.Component {
 
   render() {
     return (
-      <section id="Score">
+      <section className="Score">
 
         <Nav />
 

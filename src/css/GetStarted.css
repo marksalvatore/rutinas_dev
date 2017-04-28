@@ -5,25 +5,25 @@
 @import 'base.css';
 @import 'helpers.css';
 
-#GetStarted {
+.GetStarted {
   font-size: 1.6rem;
   text-align: center;
   width: 100%;
 }
 
-#GetStarted button {
+.GetStarted button {
   margin-top: 4rem;
 }
 
-#GetStarted button a, #GetStarted button a:visited {
+.GetStarted button a, .GetStarted button a:visited {
   color: white;
 }
 
-#GetStarted button a:hover {
+.GetStarted button a:hover {
   color: goldenrod;
 }
 
-#GetStarted h1 {
+.GetStarted h1 {
   color: #497ADB;
   font-family: 'Jura', sans-serif;
   font-size: 6.7rem;
@@ -32,7 +32,7 @@
   text-transform: uppercase;
 }
 
-#GetStarted h2 {
+.GetStarted h2 {
   font-family: 'Jura', sans-serif;
   font-size: 2.2rem;
   font-weight: normal;
@@ -40,11 +40,11 @@
   margin-top: -1rem;
 }
 
-#GetStarted .logo {
+.GetStarted .logo {
   margin: 2rem 0;
   text-align: center;
 }
 
-#GetStarted .logo img {
+.GetStarted .logo img {
   width: 250px;
 }

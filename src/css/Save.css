@@ -1,23 +1,27 @@
 /*----------------
-  Stats
+  Save
  */
 
  @import 'base.css';
  @import 'helpers.css';
 
- .Stats {
+ .Save {
 	text-align: center;
  }
 
- .Stats h2 {
+ .Save h2 {
  	font-size: 3rem;
  }
 
- .Stats h3 {
+ .Save h3 {
  	font-weight: normal;
  	margin: 1rem 0;
  }
 
-.Stats  h2 + div {
+.Save  h2 + div {
 	margin-bottom: 2rem;
+}
+
+.Save .text-left {
+	width: 27rem;
 }

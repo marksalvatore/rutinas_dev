@@ -5,16 +5,16 @@ import Nav from './Nav';
 class NotFound extends React.Component {
   render() {
     return (
-    	<div className="Page">
+    	<section className="NotFound">
 
     	  <Nav />
           
-          <h2 className="heading2">Page not found</h2>
-          <div className="text-center">
+          <h2>Page not found</h2>
+          <div className="text-left">
             <p>Whoops!<br /> Ball in hand!</p>
           </div>
 
-    	</div>
+    	</section>
     )
   }
 }

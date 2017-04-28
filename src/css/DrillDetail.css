@@ -4,15 +4,15 @@
 
  @import 'helpers.css';
 
- #DrillDetail {
+ .DrillDetail {
  	text-align: center;
  }
 
- #DrillDetail h2 {
+ .DrillDetail h2 {
  	font-size: 3rem;
  }
 
- #DrillDetail h3 {
+ .DrillDetail h3 {
  	color: #497ADB;
  	font-family: 'Jura', sans-serif;
  	font-size: 2.5rem;
@@ -20,11 +20,11 @@
  	margin: 0;
  }
 
- #DrillDetail .text-left {
+ .DrillDetail .text-left {
  	width: 30rem;
  }
 
- #DrillDetail .diagram {
+ .DrillDetail .diagram {
    margin: 2rem 0;
    width: 90%;
  }

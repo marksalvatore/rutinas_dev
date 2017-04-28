@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react';
 
+import '../css/Save.css';
 import ButtonGroup from './ButtonGroup';
 import Nav from './Nav';
-
 import { getStoredObject, getAllScores } from '../helpers';
 
 class Save extends React.Component {
@@ -85,19 +85,19 @@ class Save extends React.Component {
   render() {
   
     return (
-    	<div className="Page">
+    	<section className="Save">
 
         <Nav />
 
-        <h2 className="titleHeading">Saved!</h2>
-        <div className="text">
-          <p>Your scored {Math.floor(this.state.recentScore * 100)}% for this drill.
-          Your average score for this drill is {Math.floor(this.state.averageScore * 100)}%.</p>
+        <h2>Saved!</h2>
+        <div className="text-left">
+          <p>Your scored <strong>{Math.floor(this.state.recentScore * 100)}%</strong> for this drill.</p>
+          <p>Your running average score for this drill so far is <strong>{Math.floor(this.state.averageScore * 100)}%</strong>.</p>
         </div>
 
         <ButtonGroup saveLabel="History" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
 
-    	</div>
+    	</section>
     )
   }
 }

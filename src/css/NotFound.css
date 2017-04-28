@@ -1,11 +1,9 @@
 /*----------------
-  Info
+  NotFound
  */
 
- @import 'base.css';
  @import 'helpers.css';
 
- .Info {
-	font-size: 1.6rem;
+ .NotFound {
 	text-align: center;
  }

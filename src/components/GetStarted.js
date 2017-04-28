@@ -9,7 +9,7 @@ class GetStarted extends React.Component {
   render() {
 
     return (
-      <section id="GetStarted">
+      <section className="GetStarted">
 
         <h1>Rutinas</h1>
         <h2>Improve your pool game.</h2>

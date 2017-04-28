@@ -8,7 +8,7 @@ class DrillDetail extends React.Component {
     const { drill } = this.props;
 
     return (
-      <section id="DrillDetail">
+      <section className="DrillDetail">
 
         <Nav />
 

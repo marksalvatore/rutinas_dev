@@ -154,7 +154,7 @@ class RoutineDetail extends React.Component {
   render() {
 
     return (
-      <section id="RoutineDetail">
+      <section className="RoutineDetail">
 
         <Nav />
         

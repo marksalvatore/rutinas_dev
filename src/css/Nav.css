@@ -2,7 +2,7 @@
   Nav
  */
 
- #Nav {
+ .Nav {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -11,7 +11,7 @@
 	width: 100vw;
  }
 
- #Nav div {
+ .Nav div {
 	background: #497ADB;
 	border: 1px solid #ddd;
 	border-top: none;
@@ -20,12 +20,12 @@
 	padding: 1em;
  }
 
- #Nav div:hover {
+ .Nav div:hover {
 	background: #ccc;
 	color: #000;
  }
 
- #Nav div:active {
+ .Nav div:active {
 	background: #999;
 	color: #fff;
  }

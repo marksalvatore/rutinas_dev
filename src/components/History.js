@@ -61,7 +61,7 @@ class History extends React.Component {
     if( drillScoreObj ) {
       const average = this.getDrillScoreAverage();
       return (
-        <section id="History">
+        <section className="History">
           <Nav />
 
           <h2>{drillScoreObj.title}</h2>
@@ -81,7 +81,7 @@ class History extends React.Component {
       )
     } else {
       return (
-        <section id="History">
+        <section className="History">
 
           <Nav />
 

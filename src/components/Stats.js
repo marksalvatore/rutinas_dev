@@ -35,7 +35,7 @@ class Stats extends React.Component {
       const averageAll = this.getAverageAllScores();
 
       return (
-          <section id="Stats">
+          <section className="Stats">
 
           <Nav />
 
@@ -56,7 +56,7 @@ class Stats extends React.Component {
       )
     } else {
       return (
-          <section id="Stats">
+          <section className="Stats">
 
           <Nav />
 

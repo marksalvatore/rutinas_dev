@@ -135,7 +135,7 @@ class NewRoutine extends React.Component {
     let selectedDrills = [...this.state.selectedDrills];
 
     return (
-      <section id="NewRoutine">
+      <section className="NewRoutine">
 
         <h2>New Routine</h2>
 

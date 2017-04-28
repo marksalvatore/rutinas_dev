@@ -4,23 +4,23 @@
 
 @import 'helpers.css';
 
-#NewRoutine {
+.NewRoutine {
 	text-align: center;
 }
 
-#NewRoutine h2 {
+.NewRoutine h2 {
 	font-size: 3rem;
 	margin: 1rem 0 2rem;
 }
 
-#NewRoutine .wrapper {
+.NewRoutine .wrapper {
 	display: flex;  
 	align-items: center;
 	flex-direction: row;
 	justify-content: center;
  }
 
-#NewRoutine .frame {
+.NewRoutine .frame {
 	align-self: flex-start;
 	flex-basis: 55%; 
 	flex-grow: 0;
@@ -32,7 +32,7 @@
 	white-space: nowrap;
 }
 
-#NewRoutine .frame-list {
+.NewRoutine .frame-list {
 	align-self: flex-start;
 	flex-basis: 45%;
 	flex-grow: 1;
@@ -43,28 +43,28 @@
 	text-align: left;
 }
 
-#NewRoutine .frame-list-title {
+.NewRoutine .frame-list-title {
 	color: orange;
 	margin: 1rem 0;
 	text-align: center;
 }
 
-#NewRoutine .item { 
+.NewRoutine .item { 
 	padding: .5rem;
 	margin-right: .7rem;
 }
 
-#NewRoutine .item img {
+.NewRoutine .item img {
 	min-width: 12rem;
 }
 
-#NewRoutine .item-title {
+.NewRoutine .item-title {
 	font-size: 1.4rem;
 	padding-bottom: .5rem;
 	color: #497ADB;
 }
 
-#NewRoutine .item-button {
+.NewRoutine .item-button {
 	background: white;
 	border: 2px solid #497ADB;
 	border-radius: 1rem;
@@ -76,21 +76,21 @@
 	width: 100%;
 }
 
-#NewRoutine .item-button:hover {
+.NewRoutine .item-button:hover {
 	background: goldenrod;
 	color: #497ADB;
 }
 
-#NewRoutine .item-button.active {
+.NewRoutine .item-button.active {
 	background: goldenrod;
 	color: #497ADB;  
 }
 
-#NewRoutine .selected {
+.NewRoutine .selected {
 	background: orange;
 }
 
-#NewRoutine hr { 
+.NewRoutine hr { 
 	margin-top: 2rem;
 	height: 12px;
 	border: 0;
