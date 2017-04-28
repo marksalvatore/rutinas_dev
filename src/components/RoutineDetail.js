@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../css/RoutineDetail.css';
 import drillsData from '../../data-drills.json';
 import DrillListItem from './DrillListItem';
 import Nav from './Nav';
@@ -7,7 +8,7 @@ import Nav from './Nav';
 import { getStoredObject, storeObject } from '../helpers';
 
 class RoutineDetail extends React.Component {
-  // child of: RoutineListItem
+
   constructor() {
     super();
 
@@ -153,13 +154,13 @@ class RoutineDetail extends React.Component {
   render() {
 
     return (
-      <div className="Page">
+      <section id="RoutineDetail">
 
         <Nav />
         
-        <h2 className="titleHeading">{this.getRoutineValue('title')}</h2>
+        <h2>{this.getRoutineValue('title')}</h2>
         
-          <div className="list">
+          <ul className="text-left">
           { Object
               .keys(this.state.routineDrills)
               .map(key => 
@@ -172,9 +173,10 @@ class RoutineDetail extends React.Component {
                 params={this.props.params}
               />)
           }
-          </div>
+          </ul>
+          <br />
 
-    	</div>
+    	</section>
     )
   }
 }

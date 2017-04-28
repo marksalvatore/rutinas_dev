@@ -1,9 +1,7 @@
 import React from 'react';
 
 import drillsData from '../../data-drills.json';
-
 import DrillDetail from './DrillDetail';
-
 import { getStoredObject, storeObject } from '../helpers';
 
 class DrillDetailContainer extends React.Component {

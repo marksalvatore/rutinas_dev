@@ -1,0 +1,19 @@
+/*----------------
+  RoutineDetail
+ */
+
+ @import 'base.css';
+ @import 'helpers.css';
+
+ #RoutineDetail {
+	text-align: center;
+ }
+
+ #RoutineDetail h2 {
+	margin-bottom: 2rem;
+ }
+
+ #RoutineDetail .text-left {
+ 	font-size: 1.5rem;
+ 	width: 30rem;
+ }

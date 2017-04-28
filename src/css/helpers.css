@@ -25,6 +25,19 @@
 	box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
 }
 
+.text-center {
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	text-align: center;
+}
+
+.text-left {
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	text-align: left;
+	width: 25rem;
+}
+
 .textShadow {
 	text-shadow: .3rem .3rem .5rem #000000;
 }
