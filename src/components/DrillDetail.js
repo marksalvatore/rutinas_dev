@@ -13,7 +13,7 @@ class DrillDetail extends React.Component {
         <Nav />
 
         <h2>{drill.title}</h2>
-        <img className="drill-diagram" src={drill.url} alt={drill.title} />
+        <img className="diagram" src={drill.url} alt={drill.title} />
 
         <h3>Rules</h3>
         <div className="text-left">

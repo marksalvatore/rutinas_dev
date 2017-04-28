@@ -82,24 +82,6 @@ button[data-id] {
     margin: 0 auto;
   }
 
-  .drill-diagram {
-    margin: 2rem 0;
-  }
-
-
-
-
-/****************************
-   ButtonGroup 
-  ***************************/
-  .button-group {
-    display: block;
-    margin: 2rem auto 0 auto; 
-  
-  }
-  .button-group button:not(:first-child) {
-    margin-left: 2em;
-  }
 
 
 

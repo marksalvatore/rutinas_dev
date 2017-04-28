@@ -1,0 +1,15 @@
+/*----------------
+  ButtonGroup
+ */
+
+ @import 'base.css';
+ @import 'helpers.css';
+
+ .button-group {
+   display: block;
+   margin: 2rem auto 0 auto; 
+ }
+ 
+ .button-group button:not(:first-child) {
+   margin-left: 2em;
+ }

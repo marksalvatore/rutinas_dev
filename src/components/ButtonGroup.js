@@ -1,6 +1,8 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 
+import '../css/ButtonGroup.css';
+
 // Composed component function 
 const ButtonGroup = (props) => {
 	let cancelButton, saveButton, miscButton = null;
