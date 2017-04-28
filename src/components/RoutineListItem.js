@@ -22,7 +22,7 @@ class RoutineListItem extends React.Component {
     const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => this.goToRoutine(e)}>View</button>
 
     return (
-      <li>{title} {viewButton} {deleteButton}</li>
+      <li>{title} {deleteButton}</li>
      );
   }
 }
