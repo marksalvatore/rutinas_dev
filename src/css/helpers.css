@@ -3,19 +3,28 @@
 */
 
 .big {
-  font-size: 3rem;
-  margin-right: .5rem;
+	font-size: 3rem;
+	margin-right: .5rem;
 }
 
 .bold {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .center {
-  text-align: center;
+	text-align: center;
 }
 
 .color {
-  color: #497ADB;
+	color: #497ADB;
 }
 
+.dropShadow {
+	-webkit-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
+	-moz-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
+	box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
+}
+
+.textShadow {
+	text-shadow: .3rem .3rem .5rem #000000;
+}

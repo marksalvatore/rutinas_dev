@@ -2,10 +2,12 @@
   Routines
  */
 
-/*@import 'helpers.css';*/
+@import 'base.css';
 
 #Routines {
-  font-size: 1.6rem;
-  text-align: center;
-  width: 100%;
+	text-align: center;
+}
+
+#Routines h2 {
+	margin-bottom: 2rem;
 }

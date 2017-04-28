@@ -1,22 +1,4 @@
 
-/* ===========================================
-   Helper classes
-   ======================================== */
-
-.dropShadow {
-  -webkit-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
-  -moz-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
-  box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
-}
-.textShadow {
-   text-shadow: .3rem .3rem .5rem #000000;
-}
-.disable {
-  opacity: .3;
-}
-.enable {
-  opacity: 1;
-}
 
 button {
   padding: .8rem .8rem;
@@ -52,43 +34,6 @@ button[data-id] {
     display: block;
     width: 100%;
     text-align: center;
-  }
-
-/****************************
-   Nav
-  ***************************/
-  .Nav {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    /*position: fixed;*/
-    width: 100vw;
-    margin-bottom: 2rem;
-  }
-  .Nav-top {
-    /*top: 0;*/
-  }
-  .Nav-bot {
-    /*bottom: 0*/;
-  }
-  .Nav-item {
-    border: 1px solid #ddd;
-    border-top: none;
-    font-size: 1.5rem;
-    padding: 1em;
-
-    background: #497ADB;
-    color: white;
-  }
-
-  .Nav-item:hover {
-    background: #ccc;
-    color: #000;
-  }
-  .Nav-item:active {
-    background: #999;
-    color: #fff;
   }
 
 
@@ -152,80 +97,6 @@ button[data-id] {
 /****************************
    Window of drill diagrams (NewRoutine)
   ***************************/
-  .drill-frame-wrapper {
-    display: flex;  
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-   }
-
-  .drill-frame-sideList {
-    flex-grow: 1;
-    flex-basis: 40%;
-    align-self: flex-start;
-    max-width: 15rem;
-    padding: 2rem 0 0 .2rem;
-    font-size: 1.2rem;
-    /*border: 1px solid green;*/
-    margin: 0 0 0 1rem;
-    text-align: left;
-  }
-
-  .drill-frame {
-    flex-grow: 0;
-    flex-basis: 60%; 
-    max-height: 75vh;
-    max-width: 18rem;
-    margin-top: 2rem;
-    padding: .5rem 1rem;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    white-space: nowrap;
-    
-  }
-
-  .drill-frame-item { 
-    padding: .5rem;
-    margin-right: .7rem;
-  }
-  .drill-frame-item-selected {
-    background: orange;
-  }
-  .drill-frame-item img {
-   min-width: 12rem;
-  }
-  .drill-frame-item-title {
-    font-size: 1.5rem;
-    padding-bottom: .5rem;
-    color: #497ADB;
-  }
-  .drill-frame-item .button {
-    margin-top: 1rem;
-    width: 100%;
-    padding: .8rem;
-    color: #497ADB;
-    border: 2px solid #497ADB;
-    text-align: center;
-    border-radius: 1rem;
-    background: white;
-  }
-  .drill-frame-item .button:hover {
-    /*background: #497ADB;*/
-    background: goldenrod;
-    color: #497ADB;
-  }
-
-  .drill-frame-item .button.active {
-    background: goldenrod;
-    color: #497ADB;  
-  }
-
-  hr.drill { /* used in drill-frame */
-    margin-top: 2rem;
-      height: 12px;
-      border: 0;
-      box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
-  }
 
 
 /****************************

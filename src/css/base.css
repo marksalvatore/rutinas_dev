@@ -1,5 +1,5 @@
-/*----------------
-  Global style directives for Rutinas
+/*----------------------------------------
+  Base html elements style directives
  */
 
 @-webkit-viewport { width: device-width }
@@ -48,14 +48,15 @@ html {
 	max-width: 100%;
  }
 
-/* ul {
+ ul {
    margin: 0;
    padding: 0;
  }
 
  li {
    padding-bottom: .5rem;
- }*/
+   list-style-type: none;
+ }
 
  a {
 	color: #497ADB;

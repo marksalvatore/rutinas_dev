@@ -1,0 +1,99 @@
+/*----------------
+  NewRoutine
+ */
+
+@import 'helpers.css';
+
+#NewRoutine {
+	text-align: center;
+}
+
+#NewRoutine h2 {
+	font-size: 3rem;
+	margin: 1rem 0 2rem;
+}
+
+#NewRoutine .wrapper {
+	display: flex;  
+	align-items: center;
+	flex-direction: row;
+	justify-content: center;
+ }
+
+#NewRoutine .frame {
+	align-self: flex-start;
+	flex-basis: 55%; 
+	flex-grow: 0;
+	max-height: 75vh;
+	max-width: 18rem;
+	padding: .5rem 1rem;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	white-space: nowrap;
+}
+
+#NewRoutine .frame-list {
+	align-self: flex-start;
+	flex-basis: 45%;
+	flex-grow: 1;
+	font-size: 1.2rem;
+	margin: 0 0 0 1rem;
+	max-width: 15rem;
+	padding: 0 0 0 .2rem;
+	text-align: left;
+}
+
+#NewRoutine .frame-list-title {
+	color: orange;
+	margin: 1rem 0;
+	text-align: center;
+}
+
+#NewRoutine .item { 
+	padding: .5rem;
+	margin-right: .7rem;
+}
+
+#NewRoutine .item img {
+	min-width: 12rem;
+}
+
+#NewRoutine .item-title {
+	font-size: 1.4rem;
+	padding-bottom: .5rem;
+	color: #497ADB;
+}
+
+#NewRoutine .item-button {
+	background: white;
+	border: 2px solid #497ADB;
+	border-radius: 1rem;
+	color: #497ADB;
+	font-size: 1.5rem;
+	margin-top: 1rem;
+	padding: .8rem;
+	text-align: center;
+	width: 100%;
+}
+
+#NewRoutine .item-button:hover {
+	background: goldenrod;
+	color: #497ADB;
+}
+
+#NewRoutine .item-button.active {
+	background: goldenrod;
+	color: #497ADB;  
+}
+
+#NewRoutine .selected {
+	background: orange;
+}
+
+#NewRoutine hr { 
+	margin-top: 2rem;
+	height: 12px;
+	border: 0;
+	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+

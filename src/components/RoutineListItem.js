@@ -22,9 +22,8 @@ class RoutineListItem extends React.Component {
     const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => this.goToRoutine(e)}>View</button>
 
     return (
-      <div className="drill-frame-item">
-          {title} {viewButton} {deleteButton}
-      </div>
+      <li>{title} {viewButton} {deleteButton}</li>
+      
      );
   }
 }

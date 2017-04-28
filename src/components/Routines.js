@@ -50,9 +50,9 @@ class Routines extends React.Component {
 
           <Nav />
 
-          <h2 className="titleHeading">All Routines</h2>
+          <h2>All Routines</h2>
 
-            <ul className="list-equalLength">
+            <ul className="text-center">
                 { Object
                     .keys(this.state.routines)
                     .map(key => 

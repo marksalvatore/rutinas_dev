@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../css/NewRoutine.css';
 import drillsData from '../../data-drills.json';
 
 import ButtonGroup from './ButtonGroup';
@@ -134,13 +135,13 @@ class NewRoutine extends React.Component {
     let selectedDrills = [...this.state.selectedDrills];
 
     return (
-      <div className="Page">
+      <section id="NewRoutine">
 
-        <h2 className="titleHeading">New Routine</h2>
+        <h2>New Routine</h2>
 
-        <div className="drill-frame-wrapper">
+        <div className="wrapper">
 
-          <div className="drill-frame dropShadow">
+          <div className="frame dropShadow">
              { Object
                .keys(this.state.drills)
                .map(key => 
@@ -153,8 +154,8 @@ class NewRoutine extends React.Component {
              }
            </div>
 
-           <div className="drill-frame-sideList">
-    
+           <div className="frame-list dropShadow">
+               <div className="frame-list-title">Selected Drills</div>
                {selectedDrills.map( key => 
                    <DrillListTitle 
                      key={key.id}
@@ -162,11 +163,12 @@ class NewRoutine extends React.Component {
                      title={key.title}
                    />)
                }
+               <br />
            </div>
     	  </div>
 
         <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />
-    	</div>
+    	</section>
     )
   }
 }
