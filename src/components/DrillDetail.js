@@ -8,25 +8,25 @@ class DrillDetail extends React.Component {
     const { drill } = this.props;
 
     return (
-      <div className="Page">
+      <section id="DrillDetail">
 
         <Nav />
 
-        <h2 className="titleHeading">{drill.title}</h2>
+        <h2>{drill.title}</h2>
         <img className="drill-diagram" src={drill.url} alt={drill.title} />
 
-        <h2 className="heading2 color">Rules</h2>
-        <div className="text">
+        <h3>Rules</h3>
+        <div className="text-left">
         <p>{drill.rules}</p>
         </div>
 
-        <h2 className="heading2 color">Scoring</h2>
-        <div className="text">
+        <h3>Scoring</h3>
+        <div className="text-left">
         <p>{drill.scoring}</p>
         </div>
         
         <ButtonGroup saveLabel="Enter Score" saveAction={this.props.saveAction} cancelLabel="Back" cancelAction={this.props.cancelAction} />
-      </div>
+      </section>
     )
   }
 }

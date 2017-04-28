@@ -1,6 +1,7 @@
 import React from 'react';
 
 import drillsData from '../../data-drills.json';
+import '../css/DrillDetail.css';
 import DrillDetail from './DrillDetail';
 import { getStoredObject, storeObject } from '../helpers';
 

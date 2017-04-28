@@ -1,0 +1,26 @@
+/*----------------
+  DrillDetail
+ */
+
+ @import 'helpers.css';
+
+ #DrillDetail {
+ 	text-align: center;
+ }
+
+ #DrillDetail h2 {
+ 	font-size: 3rem;
+ }
+
+ #DrillDetail h3 {
+ 	color: #497ADB;
+ 	font-family: 'Jura', sans-serif;
+ 	font-size: 2.5rem;
+ 	font-weight: normal;
+ 	margin: 0;
+ }
+
+ #DrillDetail .text-left {
+ 	width: 30rem;
+ }
+
