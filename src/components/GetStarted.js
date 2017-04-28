@@ -21,9 +21,7 @@ class GetStarted extends React.Component {
           <br/>you choose, and monitor your progress.</p>
         </div>
 
-        <button>
-           <Link to="/info">Get started</Link>
-        </button>
+        <Link to="/info"><button>Get Started</button></Link>
         
       </section>
     );
