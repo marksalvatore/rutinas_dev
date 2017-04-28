@@ -1,0 +1,23 @@
+/*----------------
+  Stats
+ */
+
+ @import 'base.css';
+ @import 'helpers.css';
+
+ #Stats {
+	text-align: center;
+ }
+
+ #Stats h2 {
+ 	font-size: 3rem;
+ }
+
+ #Stats h3 {
+ 	font-weight: normal;
+ 	margin: 1rem 0;
+ }
+
+#Stats  h2 + div {
+	margin-bottom: 2rem;
+}

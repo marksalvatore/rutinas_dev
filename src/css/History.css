@@ -1,0 +1,14 @@
+/*----------------
+  History
+ */
+
+ @import 'base.css';
+ @import 'helpers.css';
+
+ #History {
+	text-align: center;
+ }
+
+#History  h2 + div {
+	margin-bottom: 2rem;
+}

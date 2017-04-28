@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 
+import '../css/History.css';
 import ButtonGroup from './ButtonGroup';
 import HistoryListItem from './HistoryListItem';
 import Nav from './Nav';
@@ -60,14 +61,13 @@ class History extends React.Component {
     if( drillScoreObj ) {
       const average = this.getDrillScoreAverage();
       return (
-        <div className="Page">
+        <section id="History">
           <Nav />
 
-          <h2 className="titleHeading">{drillScoreObj.title}</h2>
-          <h3 className="subTitleHeading">History
-          <div>Average: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div></h3>
+          <h2>{drillScoreObj.title}</h2>
+          <div>Combined: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div>
   
-          <div className="list-equalLength">
+          <ul className="text-center">
             { drillScoreObj.scores.map( (key) => 
                 <HistoryListItem 
                   key={key.id}
@@ -75,23 +75,24 @@ class History extends React.Component {
                   score={ key.points / key.attempts * 100 }
                 /> )
             }
-          </div>
+          </ul>
           <ButtonGroup cancelLabel="Back" cancelAction={this.cancelAction} />
-        </div>
+        </section>
       )
     } else {
       return (
-        <div className="Page">
+        <section id="History">
+
           <Nav />
 
-          <h2 className="titleHeading">History</h2>
+          <h2>History</h2>
           <div>{drillScoreObj.title}</div>
-          <div className="text">
+          <div className="text-left">
              <NoItems 
                message={`Items will display here as scores are entered for this drill.`}/>
           </div>
 
-        </div>
+        </section>
       )
     }
   }

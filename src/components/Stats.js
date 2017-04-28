@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 
+import '../css/Stats.css';
 import Nav from './Nav';
 import NoItems from './NoItems';
 import StatsListItem from './StatsListItem';
@@ -34,13 +35,13 @@ class Stats extends React.Component {
       const averageAll = this.getAverageAllScores();
 
       return (
-          <div className="Page">
+          <section id="Stats">
 
           <Nav />
 
-            <h2 className="titleHeading">Stats</h2>
-            <h2 className="heading2 color">Average of all drills: <span className="big">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></h2>
-            <div className="list-equalLength">
+            <h2>Stats</h2>
+            <div>Combined Drills: <span className="big color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
+            <div className="text-left">
               <br />
               {
                 allScores.map( (key) => 
@@ -51,20 +52,20 @@ class Stats extends React.Component {
                   /> )
               }
             </div>
-        </div>
+        </section>
       )
     } else {
       return (
-          <div className="Page">
+          <section id="Stats">
 
           <Nav />
 
-            <h2 className="titleHeading">Stats</h2>
-            <div className="text">
+            <h2>Stats</h2>
+            <div className="text-center">
               <NoItems message={`Items will display here as scores are entered for drills.`}/>
             </div>
 
-        </div>
+        </section>
       )
     }
   }
