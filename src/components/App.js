@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   render() {
-    // Always to to GetStarted until I can learn why isNewUser() seems to work only locally.
+    // Always open to GetStarted until I can learn why isNewUser() seems to work only locally.
     //if ( this.isNewUser() ) {
     if ( true ) {
       console.log("User is new. Load drills from file.");

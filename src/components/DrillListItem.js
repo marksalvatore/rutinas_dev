@@ -14,18 +14,14 @@ class DrillListItem extends React.Component {
 
       return (
         <div className="drill-frame-item">
-            <div className="drill-frame-item-title">
-                 {title} {drillButton} {statsButton} {deleteButton}
-            </div>
+            {title} {drillButton} {statsButton} {deleteButton}
         </div>
        );
 
     } else {
       return (
         <div className="drill-frame-item">
-            <div className="drill-frame-item-title">
-                 There are no drills in this routine.
-            </div>
+            There are no drills in this routine.
         </div>
        );
     }

@@ -1,0 +1,32 @@
+/*----------------
+  Nav
+ */
+
+ #Nav {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 2rem;
+	width: 100vw;
+ }
+
+ #Nav div {
+	background: #497ADB;
+	border: 1px solid #ddd;
+	border-top: none;
+	color: white;
+	font-size: 1.5rem;
+	padding: 1em;
+ }
+
+ #Nav div:hover {
+	background: #ccc;
+	color: #000;
+ }
+
+ #Nav div:active {
+	background: #999;
+	color: #fff;
+ }
+

@@ -1,0 +1,21 @@
+/* -------------
+   Helpers
+*/
+
+.big {
+  font-size: 3rem;
+  margin-right: .5rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.color {
+  color: #497ADB;
+}
+

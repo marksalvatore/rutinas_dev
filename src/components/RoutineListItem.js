@@ -23,9 +23,7 @@ class RoutineListItem extends React.Component {
 
     return (
       <div className="drill-frame-item">
-          <div className="drill-frame-item-title">
-               {title} {viewButton} {deleteButton}
-          </div>
+          {title} {viewButton} {deleteButton}
       </div>
      );
   }

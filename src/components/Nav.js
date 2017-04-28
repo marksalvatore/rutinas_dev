@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import '../css/Nav.css';
+
 class Nav extends React.Component {
   render() {
     return (
-    	<div className="Nav">
-    	  <Link to="/info"><div className="Nav-item">Info</div></Link>
-    	  <Link to="/stats"><div className="Nav-item">Stats</div></Link>
-    	  <Link to="/routines"><div className="Nav-item">Routines</div></Link>
-    	  <Link to="/new" activeClassName="active"><div className="Nav-item">+ New</div></Link>
-    	</div>
+        <nav id="Nav">
+            <Link to="/info"><div>Info</div></Link>
+            <Link to="/stats"><div>Stats</div></Link>
+            <Link to="/routines"><div>Routines</div></Link>
+            <Link to="/new"><div>+ New</div></Link>
+        </nav>
     )
   }
 }

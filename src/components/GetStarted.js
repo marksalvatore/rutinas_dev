@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-//import logo from '../../public/images/eightball.png';
+import '../css/GetStarted.css';
 import logo from '../../public/images/safe-3.svg';
 
 class GetStarted extends React.Component {
@@ -9,23 +9,23 @@ class GetStarted extends React.Component {
   render() {
 
     return (
-      <div className="Splash">
+      <section id="GetStarted">
 
-        <h1 className="heading1">Rutinas</h1>
-        <h2 className="byline">Improve your pool game.</h2>
+        <h1>Rutinas</h1>
+        <h2>Improve your pool game.</h2>
         <div className="logo">
           <img src={logo} alt="Rutinas logo" />
         </div>
-        <div className="description">
+        <div className="center">
           <p>Create practice routines from the drills
           <br/>you choose, and monitor your progress.</p>
         </div>
 
-        <button className="getStarted">
+        <button>
            <Link to="/info">Get started</Link>
         </button>
         
-      </div>
+      </section>
     );
   }
 }

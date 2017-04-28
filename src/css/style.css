@@ -1,108 +1,8 @@
-/* base */
-@-webkit-viewport { width: device-width }
-@-moz-viewport { width: device-width }
-@-ms-viewport { width: device-width }
-@-o-viewport { width: device-width }
-@viewport { width: device-width }
-
-/* fonts */
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
-@import url('https://fonts.googleapis.com/css?family=Jura');
-
-html {
-  /* Set font size to 62.5% so rems are in base 10. Rems are not relative to their parent, so 1.6rem will always yield 16 pixels, etc. Keeping fonts and widths of margins/paddings in rems (and/or percentages) provides flexibility while maintaining proportionality.
-
-    - Use rem for fonts margin/padding
-    - Use percentages for height/width
-    - Avoid px, pt
-    - Use px only for media queries
-
-  px/rem conversion is base 10:
-
-    12px == 1.2rem
-    24px == 2.4rem
-    100px == 10rem
-    etc...
-
-    The only exception to this is with rem/em in media queries. A rem or em will equal 16px regardless of font-size setting.
-  */
-  font-size: 62.5%;
-  line-height: 1.1;
-
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-html {
-  -webkit-text-size-adjust: none;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0 1rem;
-  margin-bottom: 4rem;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.8rem;
-  line-height: 1.2;
-}
-
-img {
-  max-width: 100%;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  padding-bottom: .5rem;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-a:visited {
-  color: #497ADB;
-}
-a:hover {
-  color: #ccc;
-}
-
-strong {
-  color: #497ADB;
-  font-weight: 700;
-}
 
 /* ===========================================
    Helper classes
    ======================================== */
-.hide {
-  display: none !important;
-}
-.grayscale {
-  opacity: .5; /* next/prev nav buttons */
-}
-.italic {
-  font-style: italic;
-}
-.bold {
-  font-weight: 700;
-}
-.show {
-   display:block;
-}
-.color {
-  color: #497ADB;
-}
-.big {
-  font-size: 3rem;
-  margin-right: .5rem;
-}
+
 .dropShadow {
   -webkit-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
   -moz-box-shadow: 0 .6rem 1.1rem 0 rgba(0,0,0,0.44);
@@ -141,14 +41,14 @@ button:active {
 button[data-id] {
   font-size: .5em;
   padding: .3rem .5rem;
-  margin-left: .5rem;
+  margin-left: .2rem;
 }
 
 
 /****************************
    Pages
   ***************************/
-  .Page, .Splash {
+  .Page {
     display: block;
     width: 100%;
     text-align: center;
@@ -221,52 +121,16 @@ button[data-id] {
     margin: 0;
     margin-bottom: 2.5rem;
   }
-  .byline {
-    font-family: 'Jura', sans-serif;
-    font-size: 2.2rem;
-    font-weight: normal;
-    margin: 0;
-    margin-top: -1rem;
-  }
 
-  .Splash h2.heading2 {
-    margin-top: -1rem;
-  }
-  .Splash .description {
-    font-size: 1.8rem;
-    text-align: center;
-  }
 
-  .logo {
-    margin: 2rem 0;
-    text-align: center;
-  }
-  .logo img {
-    width: 250px;
-  }
-
-  .text-center {
-    text-align: center;
-    margin: 0 auto;
-    font-size: 1.8rem;
-    max-width: 50rem;
-  }
-  
-  .text, .text-left {
-    text-align: left;
-    margin: 0 auto;
-    font-size: 1.8rem;
-    max-width: 50rem;
-  }
-  
 
   .list {
-    margin-top: 2rem;
+    font-size: 1.2rem;
+    margin-top: 3rem;
     margin: 0 auto;
     text-align: left;
-    /*Following two are hacky. They keep the illusion of a centered list*/
     max-width: 50rem;
-    padding-left: 8rem; 
+    padding-left: .5rem; 
   }
   .list-equalLength {
     margin-top: 2rem;
@@ -299,21 +163,12 @@ button[data-id] {
     flex-grow: 1;
     flex-basis: 40%;
     align-self: flex-start;
-    max-width: 18rem;
-    padding: 2em 0 0 .8em;
+    max-width: 15rem;
+    padding: 2rem 0 0 .2rem;
+    font-size: 1.2rem;
     /*border: 1px solid green;*/
-
-  }
-
-  .drill-frame-sideList {
-    font-size: 1.7rem;
-    margin: 0;
-    margin-left: 1em;
-    padding-bottom: .5rem;
+    margin: 0 0 0 1rem;
     text-align: left;
-  }
-
-  .drill-frame-list li {
   }
 
   .drill-frame {
@@ -331,17 +186,16 @@ button[data-id] {
 
   .drill-frame-item { 
     padding: .5rem;
-    border: 0px solid black;
     margin-right: .7rem;
   }
   .drill-frame-item-selected {
     background: orange;
   }
   .drill-frame-item img {
-    max-width: 15rem;
+   min-width: 12rem;
   }
   .drill-frame-item-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-bottom: .5rem;
     color: #497ADB;
   }
@@ -400,20 +254,6 @@ button[data-id] {
     font-size: 3rem;
     margin: .5rem auto;
     margin-bottom: 0;
-  }
-
-/****************************
-   Refactor later
-  ***************************/
-  .getStarted {
-    margin-top: 4rem;
-  }
-
-  button.getStarted a {
-    color: white;
-  }
-  button.getStarted a:hover {
-    color: goldenrod;
   }
 
 

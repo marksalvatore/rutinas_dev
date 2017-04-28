@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../css/Routines.css';
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
 
@@ -45,7 +46,7 @@ class Routines extends React.Component {
   render() {
 
     return (
-        <div className="Page">
+        <section id="Routines">
 
           <Nav />
 
@@ -63,7 +64,7 @@ class Routines extends React.Component {
                       />)
                 }
             </ul>
-      </div>
+      </section>
     )
   }
 }

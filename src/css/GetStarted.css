@@ -1,0 +1,50 @@
+/*----------------
+  GetStarted
+ */
+
+@import 'globals.css';
+@import 'helpers.css';
+
+#GetStarted {
+  font-size: 1.6rem;
+  text-align: center;
+  width: 100%;
+}
+
+#GetStarted button {
+  margin-top: 4rem;
+}
+
+#GetStarted button a, #GetStarted button a:visited {
+  color: white;
+}
+
+#GetStarted button a:hover {
+  color: goldenrod;
+}
+
+#GetStarted h1 {
+  color: #497ADB;
+  font-family: 'Jura', sans-serif;
+  font-size: 6.7rem;
+  font-weight: normal;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+#GetStarted h2 {
+  font-family: 'Jura', sans-serif;
+  font-size: 2.2rem;
+  font-weight: normal;
+  margin: 0;
+  margin-top: -1rem;
+}
+
+#GetStarted .logo {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+#GetStarted .logo img {
+  width: 250px;
+}

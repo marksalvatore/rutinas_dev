@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+import '../css/Info.css';
 import Nav from './Nav';
 
 class Info extends React.Component {
   render() {
     return (
-        <div className="Page">
+        <section id="Info">
 
           <Nav />
 
-          <h2 className="heading2 color">Information & Instructions</h2>
+          <h2>Info & Instructions</h2>
 
-          <div className="text">
+          <div className="text-left">
             <p><Link to="/splash"><em className="big">Rutinas</em></Link> is an app to assist you when you practice pool. It contains more than 50 drills you can group into one or more routines. You can then record and monitor your progress performing each of those drills.</p>
             <p>Click the <strong>+ New</strong> tab to create a routine.</p>
             <p>Then select the specific drills to include in your new routine.</p>
@@ -24,13 +25,13 @@ class Info extends React.Component {
           </div>
  
 
-          <h2 className="heading2 color">About</h2>
-          <div className="text">
-            <p>This app was built using React, JSON, and the Web Storage API. The drill diagrams were created with, and served by, the super awesome pool table diagraming tool at <a className="color" href="http://pad.chalkysticks.com">pad.chalkysticks.com</a>.</p>
-            <p>Conceived, designed and developed by <strong><a className="color" href="mailto:mark@salvatore.us">Mark Salvatore</a></strong> in April 2017.</p>
+          <h2>About</h2>
+          <div className="text-left">
+            <p>This app was built using React, JSON, and the Web Storage API. The drill diagrams were created with, and served by, the super awesome pool table diagraming tool at <a href="http://pad.chalkysticks.com">pad.chalkysticks.com</a>.</p>
+            <p>Conceived, designed and developed by <strong><a href="http://www.salvatore.us">Mark Salvatore</a></strong> in April 2017.</p>
           </div>
 
-        </div>
+        </section>
     )
   }
 }
