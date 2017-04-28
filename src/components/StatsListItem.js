@@ -19,12 +19,16 @@ class StatsListItem extends React.Component {
     return totalPoints / totalAttempts * 100;
   }
 
+
+
+
   render() {
     const { details } = this.props;
   	const average = this.getAverageOfScores(this.props.scores);
+    const historyButton = <button data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
 
     return (
-      <div>{details.title} - <span className="color">{average.toFixed(0)}%</span></div>
+      <div>{details.title} - <span className="color">{average.toFixed(0)}%</span> {historyButton} </div>
      );
    }
 }

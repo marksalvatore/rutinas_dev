@@ -13,6 +13,7 @@ class Stats extends React.Component {
     super();
 
     this.getAverageAllScores = this.getAverageAllScores.bind(this);
+    this.getHistory = this.getHistory.bind(this);
   }
 
   getAverageAllScores() {
@@ -26,6 +27,11 @@ class Stats extends React.Component {
       });
     }); 
     return totalPoints / totalAttempts * 100;
+  }
+
+  getHistory(e) {
+    let id = e.target.dataset.id;
+    this.context.router.transitionTo(`/history/${id}`);
   }
 
   render() {
@@ -49,6 +55,7 @@ class Stats extends React.Component {
                     key={key.id}
                     details={key}
                     scores={key.scores}
+                    getHistory={this.getHistory}
                   /> )
               }
             </div>
@@ -69,6 +76,10 @@ class Stats extends React.Component {
       )
     }
   }
+}
+
+Stats.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default Stats;

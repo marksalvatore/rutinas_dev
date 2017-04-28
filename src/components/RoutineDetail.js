@@ -182,7 +182,6 @@ class RoutineDetail extends React.Component {
 }
 
 // Allows using the parent router for methods that need to link to another component
-// See saveAction() and cancelAction()
 RoutineDetail.contextTypes = {
   router: React.PropTypes.object
 }
