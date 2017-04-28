@@ -2,7 +2,7 @@
 import React from 'react';
 
 import drillsData from '../../data-drills.json';
-
+import '../css/Score.css';
 import Nav from './Nav';
 
 import { getStoredObject, storeObject, getAllScores } from '../helpers';
@@ -142,22 +142,22 @@ class Score extends React.Component {
 
   render() {
     return (
-      <div className="Page">
+      <section id="Score">
 
         <Nav />
 
-        <h2 className="titleHeading">{this.state.drill.title}</h2>
+        <h2>{this.state.drill.title}</h2>
         
         <form ref={(input) => this.scoreForm = input} onSubmit={(e) => this.saveAction(e)}>
-          <input type="number" ref={(input) => this.points = input} placeholder="# of points "/>
-          <input type="number" ref={(input) => this.attempts = input} placeholder="# of attempts"/>
+          <input type="number" ref={(input) => this.points = input} placeholder="points" autoFocus={true} />
+          <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
           <div className="button-group">
             <button onClick={this.cancelAction}>Back</button>
             <button type="submit">Save Score</button>
            </div>
         </form>
 
-      </div>    
+      </section>    
     )
   }
 }

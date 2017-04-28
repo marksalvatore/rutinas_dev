@@ -71,6 +71,32 @@ html {
 	margin-bottom: 4rem;
  }
 
+ button {
+   padding: .8rem .8rem;
+   border: 1px solid rgba(0,0,0, .1);
+   background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+   border-radius: .5rem;
+   box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
+   text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
+   color: white;
+   font-size: 100%;
+   line-height: 1.5;
+ }
+ button:hover {
+   color: goldenrod;
+ }
+ button:active {
+   color: #ccc;
+   border: 1px solid white;
+ }
+
+ /*crud action buttons (delete)*/
+ button[data-id] {
+   font-size: .5em;
+   padding: .3rem .5rem;
+   margin-left: .2rem;
+ }
+
  em {
 	font-style: italic;
  }

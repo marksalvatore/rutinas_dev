@@ -11,6 +11,14 @@
 	font-weight: 700;
 }
 
+.button-group {
+  margin: 2rem auto 0 auto; 
+}
+
+.button-group button:not(:first-child) {
+  margin-left: 2em;
+}
+
 .center {
 	text-align: center;
 }
