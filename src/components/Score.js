@@ -130,7 +130,7 @@ class Score extends React.Component {
 
   saveAction(e) {
     e.preventDefault();
-    if( this.attempts.value > 0 && this.points.value > 0) {
+    if( !isNaN(this.attempts.value) && this.attempts.value > 0 && !isNaN(this.points.value) && this.points.value >= 0) {
       let drillId = this.props.params.id;
       let drillScoreObj = this.createDrillScoreObj();
 
