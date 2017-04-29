@@ -47,7 +47,7 @@ class Stats extends React.Component {
 
             <h2>Stats</h2>
             <div>Combined Drills: <span className="big color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
-            <div className="text-left">
+            <ul className="text-left">
               <br />
               {
                 allScores.map( (key) => 
@@ -58,7 +58,7 @@ class Stats extends React.Component {
                     getHistory={this.getHistory}
                   /> )
               }
-            </div>
+            </ul>
         </section>
       )
     } else {
