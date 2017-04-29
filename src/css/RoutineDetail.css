@@ -4,6 +4,7 @@
 
  @import 'base.css';
  @import 'helpers.css';
+ @import 'animation.css';
 
  .RoutineDetail {
 	text-align: center;

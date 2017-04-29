@@ -5,7 +5,6 @@ import '../css/Stats.css';
 import Nav from './Nav';
 import NoItems from './NoItems';
 import StatsListItem from './StatsListItem';
-
 import { getStoredObject, getAllScores } from '../helpers';
 
 class Stats extends React.Component {
@@ -47,7 +46,7 @@ class Stats extends React.Component {
 
             <h2>Stats</h2>
             <div>Combined Drills: <span className="big color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
-            <ul className="text-left">
+            <ul className="text-left pullDown">
               <br />
               {
                 allScores.map( (key) => 

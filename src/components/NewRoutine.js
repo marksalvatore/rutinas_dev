@@ -144,7 +144,7 @@ class NewRoutine extends React.Component {
 
         <div className="wrapper">
 
-          <ul className="frame dropShadow">
+          <ul className="frame dropShadow slideExpandUp">
              { Object
                .keys(this.state.drills)
                .map(key => 
@@ -157,7 +157,7 @@ class NewRoutine extends React.Component {
              }
            </ul>
 
-           <ul className="frame-list dropShadow">
+           <ul className="frame-list">
                <div className="frame-list-title">Selected Drills</div>
                {selectedDrills.map( key => 
                    <DrillListTitle 

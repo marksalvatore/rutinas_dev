@@ -34,6 +34,7 @@
 
 .NewRoutine .frame-list {
 	align-self: flex-start;
+	border: 1px solid #ccc;
 	flex-basis: 45%;
 	flex-grow: 1;
 	font-family: 'Jura', sans-serif;

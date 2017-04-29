@@ -4,6 +4,7 @@
 
  @import 'base.css';
  @import 'helpers.css';
+ @import 'animation.css';
 
  .History {
 	text-align: center;

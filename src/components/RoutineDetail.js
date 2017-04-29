@@ -160,7 +160,7 @@ class RoutineDetail extends React.Component {
         
         <h2>{this.getRoutineValue('title')}</h2>
         
-          <ul className="text-left">
+          <ul className="text-left pullDown">
           { Object
               .keys(this.state.routineDrills)
               .map(key => 

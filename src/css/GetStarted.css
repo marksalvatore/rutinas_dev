@@ -4,6 +4,7 @@
 
 @import 'base.css';
 @import 'helpers.css';
+@import 'animation.css';
 
 .GetStarted {
   font-size: 1.6rem;
@@ -24,6 +25,7 @@
 }
 
 .GetStarted h1 {
+  visibility: hidden;
   color: #497ADB;
   font-family: 'Jura', sans-serif;
   font-size: 6.7rem;
