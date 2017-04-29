@@ -144,7 +144,7 @@ class NewRoutine extends React.Component {
 
         <div className="wrapper">
 
-          <div className="frame dropShadow">
+          <ul className="frame dropShadow">
              { Object
                .keys(this.state.drills)
                .map(key => 
@@ -155,9 +155,9 @@ class NewRoutine extends React.Component {
                    toggleSelectItem={this.toggleSelectItem}
                    />)
              }
-           </div>
+           </ul>
 
-           <div className="frame-list dropShadow">
+           <ul className="frame-list dropShadow">
                <div className="frame-list-title">Selected Drills</div>
                {selectedDrills.map( key => 
                    <DrillListTitle 
@@ -169,7 +169,7 @@ class NewRoutine extends React.Component {
                <div className="wrapper">
                  <button className="boo" onClick={this.saveAction}>Save Routine</button>
                </div>
-           </div>
+           </ul>
     	  </div>
 
         {/*<ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />*/}

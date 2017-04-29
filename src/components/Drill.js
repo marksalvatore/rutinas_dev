@@ -4,7 +4,7 @@ class Drill extends React.Component {
   render() {
     const { details, index } = this.props;
     return (
-      <div className="item">
+      <li className="item">
           <div className="item-title">
               {details.title}
           </div>
@@ -15,7 +15,7 @@ class Drill extends React.Component {
                data-index={index}
           >Select this drill</div>
           <hr />
-      </div>
+      </li>
      )
   }
 }

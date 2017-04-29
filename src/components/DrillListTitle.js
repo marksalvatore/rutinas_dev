@@ -4,7 +4,7 @@ class DrillListTitle extends React.Component {
   // child of: NewRoutine
   render() {
       return (
-        <div>+ {this.props.title}</div> 
+        <li>+ {this.props.title}</li> 
        );
   }
 }
