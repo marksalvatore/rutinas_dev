@@ -3,9 +3,10 @@ import React from 'react';
 import '../css/NewRoutine.css';
 import drillsData from '../../data-drills.json';
 
-import ButtonGroup from './ButtonGroup';
+//import ButtonGroup from './ButtonGroup';
 import Drill from './Drill';
 import DrillListTitle from './DrillListTitle';
+import Nav from './Nav';
 
 import { storeObject, getStoredObject } from '../helpers';
 
@@ -136,6 +137,8 @@ class NewRoutine extends React.Component {
 
     return (
       <section className="NewRoutine">
+
+        <Nav />
 
         <h2>New Routine</h2>
 

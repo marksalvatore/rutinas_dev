@@ -10,7 +10,7 @@
 
 .NewRoutine h2 {
 	font-size: 3rem;
-	margin: 1rem 0 1rem;
+	margin-bottom: 1rem;
 }
 
 .NewRoutine .wrapper {
@@ -24,7 +24,7 @@
 	align-self: flex-start;
 	flex-basis: 55%; 
 	flex-grow: 0;
-	max-height: 85vh;
+	max-height: 80vh;
 	max-width: 18rem;
 	padding: .5rem 1rem;
 	overflow-y: scroll;
