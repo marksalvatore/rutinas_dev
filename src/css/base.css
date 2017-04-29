@@ -63,7 +63,7 @@ button {
 	line-height: 1.5;
 }
 button:hover {
-	color: goldenrod;
+	color: gold;
 }
 button:active {
 	color: #ccc;

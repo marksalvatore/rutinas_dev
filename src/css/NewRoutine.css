@@ -10,7 +10,7 @@
 
 .NewRoutine h2 {
 	font-size: 3rem;
-	margin: 1rem 0 2rem;
+	margin: 1rem 0 1rem;
 }
 
 .NewRoutine .wrapper {
@@ -24,7 +24,7 @@
 	align-self: flex-start;
 	flex-basis: 55%; 
 	flex-grow: 0;
-	max-height: 70vh;
+	max-height: 85vh;
 	max-width: 18rem;
 	padding: .5rem 1rem;
 	overflow-y: scroll;
@@ -36,22 +36,26 @@
 	align-self: flex-start;
 	flex-basis: 45%;
 	flex-grow: 1;
-	font-size: 1.2rem;
+	font-family: 'Jura', sans-serif;
+	font-size: 1.1rem;
 	margin: 0 0 0 1rem;
 	max-width: 15rem;
-	padding: 0 0 0 .2rem;
+	padding: 0 0 0 1rem;
 	text-align: left;
 }
 
 .NewRoutine .frame-list-title {
-	color: orange;
+	color: #ccc;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.3rem;
 	margin: 1rem 0;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 .NewRoutine .item { 
-	padding: .5rem;
 	margin-right: .7rem;
+	padding: .5rem;
 }
 
 .NewRoutine .item img {
@@ -59,9 +63,9 @@
 }
 
 .NewRoutine .item-title {
+	color: #497ADB;
 	font-size: 1.4rem;
 	padding-bottom: .5rem;
-	color: #497ADB;
 }
 
 .NewRoutine .item-button {
@@ -77,23 +81,26 @@
 }
 
 .NewRoutine .item-button:hover {
-	background: goldenrod;
+	background: gold;
 	color: #497ADB;
 }
 
 .NewRoutine .item-button.active {
-	background: goldenrod;
+	background: gold;
 	color: #497ADB;  
-}
-
-.NewRoutine .selected {
-	background: orange;
 }
 
 .NewRoutine hr { 
 	margin-top: 2rem;
-	height: 12px;
+	height: 3px;
 	border: 0;
-	box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+	box-shadow: inset 0 3px 3px -3px rgba(0, 0, 0, 0.5);
 }
 
+.NewRoutine .wrapper {
+	width: 100%;
+}
+
+.NewRoutine .boo {
+	margin: 1rem auto;
+}

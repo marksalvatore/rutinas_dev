@@ -17,7 +17,7 @@ class NewRoutine extends React.Component {
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
 
-    this.cancelAction = this.cancelAction.bind(this);
+    //this.cancelAction = this.cancelAction.bind(this);
     this.saveAction = this.saveAction.bind(this);
 
     this.state = {
@@ -117,10 +117,10 @@ class NewRoutine extends React.Component {
     }
   }
 
-  cancelAction() {
+/*  cancelAction() {
     this.context.router.transitionTo(`/`);
   }
-
+*/
   saveAction() {
     if ( this.state.selectedDrills.length > 0 ) {
       const newRoutineObj = this.makeNewRoutineObj();
@@ -163,11 +163,14 @@ class NewRoutine extends React.Component {
                      title={key.title}
                    />)
                }
-               <br />
+               <div className="wrapper">
+                 <button className="boo" onClick={this.saveAction}>Save Routine</button>
+               </div>
            </div>
     	  </div>
 
-        <ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />
+        {/*<ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />*/}
+    
     	</section>
     )
   }
