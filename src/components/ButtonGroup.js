@@ -8,7 +8,7 @@ const ButtonGroup = (props) => {
 	let cancelButton, saveButton, miscButton = null;
 
 	if(props.cancelAction) {
-		cancelButton = <button onClick={props.cancelAction}>{props.cancelLabel}</button>
+		cancelButton = <button className="btn-secondary" onClick={props.cancelAction}>{props.cancelLabel}</button>
 	}
 	if(props.miscAction) {
 		miscButton = <button onClick={props.miscAction}>{props.miscLabel}</button>

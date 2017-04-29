@@ -152,7 +152,7 @@ class Score extends React.Component {
           <input type="number" ref={(input) => this.points = input} placeholder="points" autoFocus={true} />
           <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
           <div className="button-group">
-            <button onClick={this.cancelAction}>Back</button>
+            <button className="btn-secondary" onClick={this.cancelAction}>Back</button>
             <button type="submit">Save Score</button>
            </div>
         </form>
