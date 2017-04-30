@@ -2,7 +2,7 @@
   "name": "routines",
   "version": "17.04.30-0",
   "private": true,
-  "homepage": "http://www.salvatore.us/rutinas",
+  "homepage": "http://rutinas.salvatore.us",
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "babel-eslint": "^7.1.1",
