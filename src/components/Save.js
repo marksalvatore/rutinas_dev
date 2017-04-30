@@ -2,9 +2,8 @@
 import React from 'react';
 
 import '../css/Save.css';
-import ButtonGroup from './ButtonGroup';
-import Nav from './Nav';
-import { getStoredObject, getAllScores } from '../helpers';
+import SaveRender from './SaveRender';
+import { getAllScores } from '../helpers';
 
 class Save extends React.Component {
   constructor() {
@@ -83,21 +82,13 @@ class Save extends React.Component {
   }
 
   render() {
-  
     return (
-    	<section className="Save">
-
-        <Nav />
-
-        <h2 className="hatch">Saved!</h2>
-        <div className="text-left">
-          <p>Your scored <strong>{Math.floor(this.state.recentScore * 100)}%</strong> for this drill.</p>
-          <p>Your running average score for this drill so far is <strong>{Math.floor(this.state.averageScore * 100)}%</strong>.</p>
-        </div>
-
-        <ButtonGroup saveLabel="History" saveAction={this.saveAction} cancelLabel="Back" cancelAction={this.cancelAction} />
-
-    	</section>
+      <SaveRender 
+      recentScore={this.state.recentScore}
+      averageScore={this.state.averageScore}
+      saveAction={this.saveAction}
+      cancelAction={this.cancelAction}
+      />
     )
   }
 }
@@ -105,6 +96,5 @@ class Save extends React.Component {
 Save.contextTypes = {
   router: React.PropTypes.object
 }
-
 
 export default Save;

@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import '../css/ButtonGroup.css';
 
@@ -25,14 +25,14 @@ const ButtonGroup = (props) => {
 		</div>    
 	)
 }
-/*
+
 ButtonGroup.propTypes = {
-  saveAction: PropTypes.func.isRequired,
-  cancelAction: PropTypes.func.isRequired,
+  saveAction: PropTypes.func,
+  cancelAction: PropTypes.func,
   miscButton: PropTypes.func,
-  saveLabel: PropTypes.string.isRequired,
-  cancelLabel: PropTypes.string.isRequired,
+  saveLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
   miscLabel: PropTypes.string
 };
-*/
+
 export default ButtonGroup;

@@ -3,7 +3,7 @@ import React from 'react';
 
 import drillsData from '../../data-drills.json';
 import '../css/Score.css';
-import Nav from './Nav';
+import ScoreRender from './ScoreRender';
 
 import { getStoredObject, storeObject, getAllScores } from '../helpers';
 
@@ -30,14 +30,14 @@ class Score extends React.Component {
     this.setDrill();
   }
 
-  createDrillScoreObj() {
+  createDrillScoreObj(points, attempts) {
     let drillId = this.props.params.id;
     let drillScoreObj = null;
     const timestampId = Date.now();
     let date = new Date();
     date = this.getStringDate(date);
-    const points = parseInt(this.points.value, 10);
-    const attempts = parseInt(this.attempts.value, 10);
+    points = parseInt(points, 10);
+    attempts = parseInt(attempts, 10);
     const allScores = getAllScores();
 
     // Get drillScoreObj from allScores if exists
@@ -130,34 +130,25 @@ class Score extends React.Component {
 
   saveAction(e) {
     e.preventDefault();
-    if( !isNaN(this.attempts.value) && this.attempts.value > 0 && !isNaN(this.points.value) && this.points.value >= 0) {
+    let points = document.querySelector('[placeholder="points"]').value;
+    let attempts = document.querySelector('[placeholder="attempts"]').value;
+    if( !isNaN(attempts) && attempts > 0 && !isNaN(points) && points >= 0) {
       let drillId = this.props.params.id;
-      let drillScoreObj = this.createDrillScoreObj();
+      let drillScoreObj = this.createDrillScoreObj(points, attempts);
 
       this.storeDrillScoreObj(drillScoreObj);
-      this.scoreForm.reset();
+      //document.querySelector('form').reset();
       this.context.router.transitionTo(`/save/${drillId}`);
     }
   }
 
   render() {
     return (
-      <section className="Score">
-
-        <Nav />
-
-        <h2>{this.state.drill.title}</h2>
-        
-        <form ref={(input) => this.scoreForm = input} onSubmit={(e) => this.saveAction(e)}>
-          <input type="number" ref={(input) => this.points = input} placeholder="points" autoFocus={true} />
-          <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
-          <div className="button-group">
-            <button className="btn-secondary" onClick={this.cancelAction}>Back</button>
-            <button type="submit">Save Score</button>
-           </div>
-        </form>
-
-      </section>    
+      <ScoreRender 
+        drillTitle={this.state.drill.title} 
+        saveAction={this.saveAction}
+        cancelAction={this.cancelAction}
+      />
     )
   }
 }

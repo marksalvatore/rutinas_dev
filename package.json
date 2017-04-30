@@ -1,6 +1,6 @@
 {
   "name": "routines",
-  "version": "17.04.29-1",
+  "version": "17.04.30-0",
   "private": true,
   "homepage": "http://www.salvatore.us/rutinas",
   "devDependencies": {
@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "history": "4.2.0",
+    "prop-types": "^15.5.8",
     "re-base": "2.2.0",
-    "react": "15.3.2",
-    "react-addons-css-transition-group": "15.3.2",
-    "react-dom": "15.3.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
     "react-router": "4.0.0-alpha.4"
   },
   "scripts": {

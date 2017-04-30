@@ -2,11 +2,7 @@ import React from 'react';
 
 import '../css/NewRoutine.css';
 import drillsData from '../../data-drills.json';
-
-//import ButtonGroup from './ButtonGroup';
-import Drill from './Drill';
-import DrillListTitle from './DrillListTitle';
-import Nav from './Nav';
+import NewRoutineRender from './NewRoutineRender';
 
 import { storeObject, getStoredObject } from '../helpers';
 
@@ -17,8 +13,6 @@ class NewRoutine extends React.Component {
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
-
-    //this.cancelAction = this.cancelAction.bind(this);
     this.saveAction = this.saveAction.bind(this);
 
     this.state = {
@@ -118,10 +112,6 @@ class NewRoutine extends React.Component {
     }
   }
 
-/*  cancelAction() {
-    this.context.router.transitionTo(`/`);
-  }
-*/
   saveAction() {
     if ( this.state.selectedDrills.length > 0 ) {
       const newRoutineObj = this.makeNewRoutineObj();
@@ -133,53 +123,18 @@ class NewRoutine extends React.Component {
   }
 
   render() {
-    let selectedDrills = [...this.state.selectedDrills];
-
     return (
-      <section className="NewRoutine">
-
-        <Nav />
-
-        <h2>New Routine</h2>
-
-        <div className="wrapper">
-
-          <ul className="frame dropShadow slideExpandUp">
-             { Object
-               .keys(this.state.drills)
-               .map(key => 
-                 <Drill 
-                   key={key} 
-                   index={key}
-                   details={this.state.drills[key]}
-                   toggleSelectItem={this.toggleSelectItem}
-                   />)
-             }
-           </ul>
-
-           <ul className="frame-list">
-               <div className="frame-list-title">Selected Drills</div>
-               {selectedDrills.map( key => 
-                   <DrillListTitle 
-                     key={key.id}
-                     id={key.id}
-                     title={key.title}
-                   />)
-               }
-               <div className="wrapper">
-                 <button className="boo" onClick={this.saveAction}>Save Routine</button>
-               </div>
-           </ul>
-    	  </div>
-
-        {/*<ButtonGroup saveLabel="Save Routine" saveAction={this.saveAction} cancelLabel="Cancel" cancelAction={this.cancelAction} />*/}
-    
-    	</section>
+      <NewRoutineRender 
+        selectedDrills={[...this.state.selectedDrills]}
+        drills={[...this.state.drills]}
+        toggleSelectItem={this.toggleSelectItem}
+        saveAction={this.saveAction}
+      />
     )
   }
 }
 
-// Allows using the parent router for methods that need to link to another component
+// Allows using the parent router in methods that need to link to another component
 NewRoutine.contextTypes = {
   router: React.PropTypes.object
 }

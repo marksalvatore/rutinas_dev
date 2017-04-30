@@ -4,6 +4,7 @@ import React from 'react';
 import '../css/History.css';
 import ButtonGroup from './ButtonGroup';
 import HistoryListItem from './HistoryListItem';
+import HistoryRender from './HistoryRender';
 import Nav from './Nav';
 import NoItems from './NoItems';
 
@@ -15,7 +16,6 @@ class History extends React.Component {
 
     this.getDrillScoreObj = this.getDrillScoreObj.bind(this);
     this.getDrillScoreAverage = this.getDrillScoreAverage.bind(this);
-    
     this.cancelAction = this.cancelAction.bind(this);
   }
 
@@ -56,46 +56,16 @@ class History extends React.Component {
   }
 
   render() {
-    const drillScoreObj = this.getDrillScoreObj();
-
-    if( drillScoreObj ) {
-      const average = this.getDrillScoreAverage();
-      return (
-        <section className="History">
-          <Nav />
-
-          <h2>{drillScoreObj.title}</h2>
-          <div>Combined: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div>
-  
-          <ul className="text-center pullDown">
-            { drillScoreObj.scores.map( (key) => 
-                <HistoryListItem 
-                  key={key.id}
-                  date={key.date}
-                  score={ key.points / key.attempts * 100 }
-                /> )
-            }
-          </ul>
-          <ButtonGroup cancelLabel="Back" cancelAction={this.cancelAction} />
-        </section>
-      )
-    } else {
-      return (
-        <section className="History">
-
-          <Nav />
-
-          <h2>History</h2>
-          <div>{drillScoreObj.title}</div>
-          <div className="text-left">
-             <NoItems 
-               message={`Items will display here as scores are entered for this drill.`}/>
-          </div>
-
-        </section>
-      )
-    }
+    return ( 
+      <HistoryRender 
+        getDrillScoreObj = {this.getDrillScoreObj}
+        getDrillScoreAverage = {this.getDrillScoreAverage}
+        cancelAction = {this.cancelAction}
+      /> 
+    )
+   
   }
+ 
 }
 
 export default History;

@@ -2,8 +2,7 @@ import React from 'react';
 
 import '../css/RoutineDetail.css';
 import drillsData from '../../data-drills.json';
-import DrillListItem from './DrillListItem';
-import Nav from './Nav';
+import RoutineDetailRender from './RoutineDetailRender';
 
 import { getStoredObject, storeObject } from '../helpers';
 
@@ -150,38 +149,20 @@ class RoutineDetail extends React.Component {
     return true;
   }
 
-
   render() {
-
     return (
-      <section className="RoutineDetail">
-
-        <Nav />
-        
-        <h2>{this.getRoutineValue('title')}</h2>
-        
-          <ul className="text-left pullDown">
-          { Object
-              .keys(this.state.routineDrills)
-              .map(key => 
-              <DrillListItem 
-                key={key} 
-                details={this.state.routineDrills[key]} 
-                goToDrill={this.goToDrill}
-                deleteDrill={this.deleteDrill}
-                getHistory={this.getHistory}
-                params={this.props.params}
-              />)
-          }
-          </ul>
-          <br />
-
-    	</section>
+      <RoutineDetailRender 
+      getRoutineValue={this.getRoutineValue}
+      routineDrills={[...this.state.routineDrills]}
+      goToDrill={this.goToDrill}
+      deleteDrill={this.deleteDrill}
+      getHistory={this.getHistory}
+      params={this.props.params}
+      />
     )
   }
 }
 
-// Allows using the parent router for methods that need to link to another component
 RoutineDetail.contextTypes = {
   router: React.PropTypes.object
 }

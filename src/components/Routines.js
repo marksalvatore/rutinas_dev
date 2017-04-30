@@ -1,9 +1,7 @@
 import React from 'react';
 
 import '../css/Routines.css';
-import Nav from './Nav';
-import RoutineListItem from './RoutineListItem';
-
+import RoutinesRender from './RoutinesRender';
 import { getStoredObject, storeObject } from '../helpers';
 
 class Routines extends React.Component {
@@ -44,33 +42,15 @@ class Routines extends React.Component {
   }
 
   render() {
-
     return (
-        <section className="Routines">
-
-          <Nav />
-
-          <h2>All Routines</h2>
-
-            <ul className="text-center">
-                { Object
-                    .keys(this.state.routines)
-                    .map(key => 
-                      
-                    <RoutineListItem 
-                      key={key} 
-                      details={this.state.routines[key]}
-                      deleteRoutine={this.deleteRoutine}
-                      />)
-                }
-            </ul>
-      </section>
+      <RoutinesRender 
+        routines={[...this.state.routines]}
+        deleteRoutine={this.deleteRoutine}
+      />
     )
   }
 }
 
-// Allows using the parent router for methods that need to link to another component
-// See addRoutine()
 Routines.contextTypes = {
   router: React.PropTypes.object
 }
