@@ -1,6 +1,6 @@
 {
   "name": "routines",
-  "version": "17.04.30-0",
+  "version": "17.04.30",
   "private": true,
   "homepage": "http://rutinas.salvatore.us",
   "devDependencies": {
