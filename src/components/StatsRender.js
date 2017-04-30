@@ -20,7 +20,7 @@ class StatsRender extends React.Component {
 
             <h2>Stats</h2>
             <div>Combined Drills: <span className="big color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
-            <ul className="text-left pullDown">
+            <ul className="text-left anim-pullDown">
               <br />
               {
                 allScores.map( (key) => 

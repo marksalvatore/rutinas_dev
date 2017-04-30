@@ -11,7 +11,7 @@ class GetStarted extends React.Component {
     return (
       <section className="GetStarted">
 
-        <h1 className="slideDown">Rutinas</h1>
+        <h1 className="anim-slideDown">Rutinas</h1>
         <h2>Improve your pool game.</h2>
         <div className="logo">
           <img src={logo} alt="Rutinas logo" />
@@ -21,7 +21,7 @@ class GetStarted extends React.Component {
           <br/>you choose, and monitor your progress.</p>
         </div>
 
-        <Link to="/info"><button className="bigEntrance">Get Started</button></Link>
+        <Link to="/info"><button className="anim-zoomIn">Get Started</button></Link>
         
       </section>
     );

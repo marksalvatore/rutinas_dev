@@ -17,7 +17,7 @@ class NewRoutineRender extends React.Component {
 
           <div className="wrapper">
 
-            <ul className="frame dropShadow slideExpandUp">
+            <ul className="frame dropShadow anim-slideUpExpand">
                { Object
                  .keys(this.props.drills)
                  .map(key => 
