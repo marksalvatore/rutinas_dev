@@ -12,7 +12,7 @@ class SaveRender extends React.Component {
 
         <Nav />
 
-        <h2 className="anim-vibrate">Saved!</h2>
+        <h2 className="anim-slideRight">Saved!</h2>
         <div className="text-left">
           <p>Your scored <strong>{Math.floor(this.props.recentScore * 100)}%</strong> for this drill.</p>
           <p>Your running average score for this drill so far is <strong>{Math.floor(this.props.averageScore * 100)}%</strong>.</p>

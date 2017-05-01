@@ -73,6 +73,36 @@
 
 
 /*----------------------
+  slideRight
+ ---------------------*/
+.anim-slideRight{
+	animation-name: slideRight;
+	-webkit-animation-name: slideRight;	
+
+	animation-duration: .5s;	
+	-webkit-animation-duration: .5s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;	
+}
+
+@keyframes slideRight {
+	0% {transform: translateX(-150%);}
+	50%{transform: translateX(8%);}
+	100% {transform: translateX(0%);}
+}
+
+@-webkit-keyframes slideRight {
+	0% {transform: translateX(-150%);}
+	50%{transform: translateX(8%);}
+	100% {transform: translateX(0%);}
+}
+
+
+
+/*----------------------
   slideUpExpand
  ---------------------*/
 .anim-slideUpExpand {
@@ -114,11 +144,11 @@
 
 
 /*----------------------
-  vibrate
+  shake
  ---------------------*/
- .anim-vibrate{
- 	animation-name: vibrate;
- 	-webkit-animation-name: vibrate;
+ .anim-shake{
+ 	animation-name: shake;
+ 	-webkit-animation-name: shake;
 
  	animation-duration: .3s;
  	-webkit-animation-duration: .3s;
@@ -130,7 +160,7 @@
  	-webkit-transform-origin: 50% 100%;
  }
 
- @keyframes vibrate {
+ @keyframes shake {
  	0% {transform: translateY(0%) scaleY(1) scaleX(1);}
  	10% {transform: translateY(-80%) scaleY(1) scaleX(1);}
  	15% {transform: translateY(-40%) scaleY(1) scaleX(1);}
@@ -145,7 +175,7 @@
  	100% {transform: translateY(0%) scaleY(1) scaleX(1);}
  }
 
- @-webkit-keyframes vibrate {
+ @-webkit-keyframes shake {
  	0% {transform: translateY(0%) scaleY(1) scaleX(1);}
  	10% {transform: translateY(-80%) scaleY(1) scaleX(1);}
  	15% {transform: translateY(-40%) scaleY(1) scaleX(1);}
