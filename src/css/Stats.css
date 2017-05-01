@@ -10,15 +10,20 @@
 	text-align: center;
  }
 
- .Stats h2 {
- 	font-size: 3rem;
- }
-
- .Stats h3 {
- 	font-weight: normal;
- 	margin: 1rem 0;
- }
-
 .Stats  h2 + div {
-	margin-bottom: 2rem;
+	margin: 1rem 0 1rem 0;
 }
+
+.Stats .wrapper {
+	background: #eee;
+	border: 1px solid #ccc;
+	padding: 1.3rem;
+	padding-bottom: 1.5rem;
+}
+
+.Stats li {
+	margin-bottom: 2rem;
+	font-size: 1.2rem;
+}
+
+

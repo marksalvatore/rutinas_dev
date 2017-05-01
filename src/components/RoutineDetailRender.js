@@ -13,7 +13,7 @@ class RoutineDetailRender extends React.Component {
         
         <h2>{this.props.getRoutineValue('title')}</h2>
         
-          <ul className="text-left anim-pullDown">
+          <ul className="text-center anim-pullDown">
           { Object
               .keys(this.props.routineDrills)
               .map(key => 

@@ -23,7 +23,7 @@ class HistoryRender extends React.Component {
           <Nav />
 
           <h2>{drillScoreObj.title}</h2>
-          <div>Combined: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div>
+          <div>History: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div>
   
           <ul className="text-center anim-pullDown">
             { drillScoreObj.scores.map( (key) => 
