@@ -23,12 +23,17 @@ class Info extends React.Component {
             </p>
             <p>For convenience, you might decide to put all drills into one routine, or opt to group the drills into multiple routines. It doesn't matter that a drill is placed in multiple routines. Scores will always apply to that specific drill, regardless of which routine contains it. Likewise, deleting a drill or a routine will not impact past drill scores.</p>
           </div>
+
+          <h2>Tips</h2>
+          <div className="text-left">
+            <p>The app asks for the number of points you scored and the number of attempts it took you. A simple way to keep score in your head while playing, is to start with some number of balls on the table (say ten), then just count the number of attempts it took to make them all.</p>
+          </div>
  
 
           <h2>About</h2>
           <div className="text-left">
             <p>This app was built using React, JSON, and the Web Storage API. The drill diagrams were created with, and served by, the super awesome pool table diagraming tool at <a href="http://pad.chalkysticks.com">pad.chalkysticks.com</a>.</p>
-            <p>Conceived, designed and developed by <strong><a href="http://www.salvatore.us">Mark Salvatore</a></strong> in April 2017.</p>
+            <p>Conceived, designed and developed by <strong><a href="http://www.salvatore.us">Mark Salvatore</a></strong>. April 2017.</p>
           </div>
 
         </section>
