@@ -27,8 +27,11 @@ class NewRoutine extends React.Component {
   }
 
   loadDrills() {
-    // load from localStorage, else from json
-    if(!localStorage.getItem('drills')) {
+    storeObject('drills', drillsData);
+    this.setState({drills: drillsData});
+    console.log('Drills loaded from json file');
+
+/*    if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
       console.log('Drills loaded from json file');
@@ -36,7 +39,7 @@ class NewRoutine extends React.Component {
     else {
       this.setState({drills: getStoredObject('drills')});
       console.log('Drills loaded from localStorage');
-    }
+    }*/
     return true;
   }
 
