@@ -3,6 +3,7 @@ import React from 'react';
 class Drill extends React.Component {
   render() {
     const { details, index } = this.props;
+    const buttonText = details.selected === true ? 'Selected' : 'Select this drill';
     return (
       <li className="item">
           <div className="item-title">
@@ -13,7 +14,7 @@ class Drill extends React.Component {
                onClick={this.props.toggleSelectItem} 
                data-id={details.id}
                data-index={index}
-          >Select this drill</div>
+          >{buttonText}</div>
           <hr />
       </li>
      )
