@@ -1,18 +1,17 @@
 import React from 'react';
 
 import drillsData from '../../data-drills.json';
-import '../css/DrillDetail.css';
-import DrillDetailRender from './DrillDetailRender';
+import '../css/DrillSetup.css';
+import DrillSetupRender from './DrillSetupRender';
 import { getStoredObject, storeObject } from '../helpers';
 
-class DrillDetail extends React.Component {
+class DrillSetup extends React.Component {
   constructor() {
     super();
 
     this.getDrills = this.getDrills.bind(this);
     this.setDrill = this.setDrill.bind(this);
 
-    this.saveAction = this.saveAction.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
 
     this.state = {
@@ -42,29 +41,23 @@ class DrillDetail extends React.Component {
     this.setState({ drill });
   }
 
-  saveAction() {
-    let id = this.props.params.id;
-    this.context.router.transitionTo(`/score/${id}`);
-  }
-
   cancelAction() {
     history.back();
   }
 
   render() {
     return (
-        <DrillDetailRender
+        <DrillSetupRender
           drill={this.state.drill}
-          saveAction={this.saveAction}
           cancelAction={this.cancelAction}
         />
     )
   }
 }
 
-DrillDetail.contextTypes = {
+DrillSetup.contextTypes = {
   router: React.PropTypes.object
 }
 
 
-export default DrillDetail;
+export default DrillSetup;

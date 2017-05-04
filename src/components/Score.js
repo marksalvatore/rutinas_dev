@@ -18,6 +18,7 @@ class Score extends React.Component {
     this.storeDrillScoreObj = this.storeDrillScoreObj.bind(this);
 
     this.cancelAction = this.cancelAction.bind(this);
+    this.miscAction = this.miscAction.bind(this);
     this.saveAction = this.saveAction.bind(this);
 
     this.state = {
@@ -128,6 +129,11 @@ class Score extends React.Component {
     history.back();
   }
 
+  miscAction() {
+    let drillId = this.props.params.id;
+    this.context.router.transitionTo(`/setup/${drillId}`);
+  }
+
   saveAction(e) {
     e.preventDefault();
     let points = document.querySelector('[placeholder="points"]').value;
@@ -147,6 +153,7 @@ class Score extends React.Component {
       <ScoreRender 
         drillTitle={this.state.drill.title} 
         saveAction={this.saveAction}
+        miscAction={this.miscAction}
         cancelAction={this.cancelAction}
       />
     )

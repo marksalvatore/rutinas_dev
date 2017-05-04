@@ -1,18 +1,18 @@
 /*----------------
-  DrillDetail
+  DrillSetup
  */
 
  @import 'helpers.css';
 
- .DrillDetail {
+ .DrillSetup {
  	text-align: center;
  }
 
- .DrillDetail h2 {
+ .DrillSetup h2 {
  	font-size: 3rem;
  }
 
- .DrillDetail h3 {
+ .DrillSetup h3 {
  	color: #497ADB;
  	font-family: 'Jura', sans-serif;
  	font-size: 2.5rem;
@@ -20,11 +20,11 @@
  	margin: 0;
  }
 
- .DrillDetail .text-left {
+ .DrillSetup .text-left {
  	width: 30rem;
  }
 
- .DrillDetail .diagram {
+ .DrillSetup .diagram {
    margin: 2rem 0;
    width: 90%;
  }

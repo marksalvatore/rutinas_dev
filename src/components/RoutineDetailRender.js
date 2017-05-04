@@ -6,12 +6,15 @@ import Nav from './Nav';
 class RoutineDetailRender extends React.Component {
 
   render() {
+
+    let title = this.props.getRoutineValue('title');
+
     return (
       <section className="RoutineDetail">
 
         <Nav />
         
-        <h2>{this.props.getRoutineValue('title')}</h2>
+        <h2>{title}</h2>
         
           <ul className="text-center anim-pullDown">
           { Object
@@ -20,7 +23,7 @@ class RoutineDetailRender extends React.Component {
               <DrillListItem 
                 key={key} 
                 details={this.props.routineDrills[key]} 
-                goToDrill={this.props.goToDrill}
+                goToScore={this.props.goToScore}
                 deleteDrill={this.props.deleteDrill}
                 getHistory={this.props.getHistory}
                 params={this.props.params}

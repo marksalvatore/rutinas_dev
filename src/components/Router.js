@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Match, Miss } from 'react-router';
 
 import App from './App';
-import DrillDetail from './DrillDetail';
+import DrillSetup from './DrillSetup';
 import History from './History';
 import Info from './Info';
 import NewRoutine from './NewRoutine';
@@ -18,7 +18,6 @@ const Router = () => {
     <BrowserRouter>
       <div>
         <Match exactly pattern="/" component={App} />
-        <Match pattern="/drill/:id" component={DrillDetail} />
         <Match pattern="/history/:id" component={History} />
         <Match pattern="/info" component={Info} />
         <Match pattern="/new" component={NewRoutine} />
@@ -27,6 +26,7 @@ const Router = () => {
         <Match pattern="/routine/:id" component={RoutineDetail} />
         <Match pattern="/save/:id" component={Save} />
         <Match pattern="/score/:id" component={Score} />
+        <Match pattern="/setup/:id" component={DrillSetup} />
         <Match pattern="/stats" component={Stats} />
         <Miss component={NotFound} />
       </div>

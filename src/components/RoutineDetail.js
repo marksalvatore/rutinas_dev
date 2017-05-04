@@ -15,7 +15,7 @@ class RoutineDetail extends React.Component {
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.getHistory = this.getHistory.bind(this);
     this.getRoutineValue = this.getRoutineValue.bind(this);
-    this.goToDrill = this.goToDrill.bind(this);
+    this.goToScore = this.goToScore.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.loadRoutines = this.loadRoutines.bind(this);
     this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
@@ -101,10 +101,10 @@ class RoutineDetail extends React.Component {
     return routineObj[objProp];
   }
 
-  goToDrill(e) {
+  goToScore(e) {
     const id = e.target.dataset.id
-    this.context.router.transitionTo(`/drill/${id}`);
-    console.log('Displaying drill id: ', id);
+    this.context.router.transitionTo(`/score/${id}`);
+    console.log('Displaying score form for id: ', id);
   }
 
   loadDrills() {
@@ -154,7 +154,7 @@ class RoutineDetail extends React.Component {
       <RoutineDetailRender 
       getRoutineValue={this.getRoutineValue}
       routineDrills={[...this.state.routineDrills]}
-      goToDrill={this.goToDrill}
+      goToScore={this.goToScore}
       deleteDrill={this.deleteDrill}
       getHistory={this.getHistory}
       params={this.props.params}
