@@ -1,9 +1,14 @@
 /*----------------
   NotFound
  */
-
+ @import 'base.css';
  @import 'helpers.css';
 
  .NotFound {
 	text-align: center;
+ }
+
+ .NotFound h2 {
+ 	font-size: 3rem;
+ 	margin-top: 6rem;
  }

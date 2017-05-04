@@ -1,5 +1,6 @@
 import React from 'react';
 
+import '../css/NotFound.css';
 import Nav from './Nav';
 
 class NotFound extends React.Component {
@@ -10,7 +11,7 @@ class NotFound extends React.Component {
     	  <Nav />
           
           <h2>Page not found</h2>
-          <div className="text-left">
+          <div className="text-center">
             <p>Whoops!<br /> Ball in hand!</p>
           </div>
 
