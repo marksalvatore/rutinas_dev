@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
@@ -6,6 +7,10 @@ import RoutineListItem from './RoutineListItem';
 class Routines extends React.Component {
 
   render() {
+    let messageIfNoRoutines = null;
+    if(!this.props.routines.length) {
+      messageIfNoRoutines = <p>Click <Link to="/new">+New</Link> to create a routine.</p>
+    }
     return (
         <section className="Routines">
 
@@ -25,6 +30,7 @@ class Routines extends React.Component {
                     />)
                 }
             </ul>
+            {messageIfNoRoutines}
       </section>
     )
   }
