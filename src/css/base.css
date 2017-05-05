@@ -61,12 +61,13 @@ button {
 	font-size: 100%;
 	line-height: 1.5;
 }
-button.btn-primary {
+button.btn-primary, button.btn-extra {
 	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
 button.btn-secondary {
 	background: #aaa linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
+
 button.btn-danger {
 	background: #E62117 linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
@@ -74,6 +75,7 @@ button.btn-danger:hover {
 	color: #ccc;
 }
 button.btn-special {
+	/*used in list of selected drills*/
 	margin: 2rem 0;
 	background: gold linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 	color: #497ADB;

@@ -10,10 +10,10 @@ class DrillListItem extends React.Component {
       const title = <a data-id={details.id} onClick={(e) => this.props.goToScore(e)}>{details.title}</a>
       const deleteButton = <button className="btn-danger" data-id={details.id} onClick={(e) => this.props.deleteDrill(e)}>Delete</button>
       const historyButton = <button className="btn-secondary" data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
-      //const drillButton = <button data-id={details.id} onClick={(e) => this.props.goToScore(e)}>Drill</button>
+      const scoreButton = <button className="btn-primary"data-id={details.id} onClick={(e) => this.props.goToScore(e)}>Score</button>
 
       return (
-        <li key={this.key}><span className="wrapper dropShadow">{title} {historyButton} {deleteButton}</span></li>
+        <li key={this.key}><span className="wrapper dropShadow">{title} {scoreButton} {historyButton} {deleteButton}</span></li>
        );
 
     } else {

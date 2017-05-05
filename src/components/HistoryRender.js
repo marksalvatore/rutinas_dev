@@ -34,7 +34,7 @@ class HistoryRender extends React.Component {
                 /> )
             }
           </ul>
-          <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} />
+          <ButtonGroup extraLabel="Score" extraAction={this.props.extraAction} />
         </section>
       )
     } else {

@@ -6,6 +6,8 @@ class HistoryListItem extends React.Component {
   render() {
   	const score = this.props.score;
 
+  	// add delete function on item
+
     return (
       <li key={this.key}><span className="wrapper">{this.props.date} - <span className="color">{score.toFixed(0)}%</span></span></li>
      );

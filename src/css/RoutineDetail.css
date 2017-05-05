@@ -21,8 +21,9 @@
  .RoutineDetail .wrapper {
  	background: #eee;
  	border: 1px solid #ccc;
- 	padding: 1.3rem;
- 	padding-bottom: 1.5rem;
+ 	padding: 1.5rem 1rem;
+ 	padding-bottom: 1.7rem;
+ 	
  }
 
  .RoutineDetail li {

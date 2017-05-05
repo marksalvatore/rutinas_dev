@@ -5,22 +5,22 @@ import '../css/ButtonGroup.css';
 
 // Composed component function 
 const ButtonGroup = (props) => {
-	let cancelButton, saveButton, miscButton = null;
+	let cancelButton, saveButton, extraButton = null;
 
 	if(props.cancelAction) {
 		cancelButton = <button type="button" className="btn-secondary" onClick={props.cancelAction}>{props.cancelLabel}</button>
 	}
-	if(props.miscAction) {
-		miscButton = <button type="button" onClick={props.miscAction}>{props.miscLabel}</button>
+	if(props.extraAction) {
+		extraButton = <button type="button" className="btn-extra" onClick={props.extraAction}>{props.extraLabel}</button>
 	}
 	if(props.saveAction) {
-		saveButton = <button type="button" onClick={props.saveAction}>{props.saveLabel}</button>
+		saveButton = <button type="button" className="btn-primary" onClick={props.saveAction}>{props.saveLabel}</button>
 	}
 
   return (
 		<div className="button-group">
 			{cancelButton}
-			{miscButton}
+			{extraButton}
 			{saveButton}
 		</div>    
 	)
@@ -29,10 +29,10 @@ const ButtonGroup = (props) => {
 ButtonGroup.propTypes = {
   saveAction: PropTypes.func,
   cancelAction: PropTypes.func,
-  miscButton: PropTypes.func,
+  extraButton: PropTypes.func,
   saveLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
-  miscLabel: PropTypes.string
+  extraLabel: PropTypes.string
 };
 
 export default ButtonGroup;
