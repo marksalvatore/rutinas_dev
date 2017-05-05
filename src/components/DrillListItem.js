@@ -7,7 +7,7 @@ class DrillListItem extends React.Component {
     const { details } = this.props;
 
     if( details ) {
-      const title = <a href="#"  data-id={details.id} onClick={(e) => this.props.goToScore(e)}>{details.title}</a>
+      const title = <a data-id={details.id} onClick={(e) => this.props.goToScore(e)}>{details.title}</a>
       const deleteButton = <button className="btn-danger" data-id={details.id} onClick={(e) => this.props.deleteDrill(e)}>Delete</button>
       const historyButton = <button className="btn-secondary" data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
       //const drillButton = <button data-id={details.id} onClick={(e) => this.props.goToScore(e)}>Drill</button>
