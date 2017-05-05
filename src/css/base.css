@@ -69,7 +69,7 @@ button.btn-secondary {
 }
 
 button.btn-danger {
-	background: #E62117 linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+	background: #d31913 linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
 button.btn-danger:hover {
 	color: gold;
