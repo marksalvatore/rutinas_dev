@@ -102,7 +102,7 @@ class RoutineDetail extends React.Component {
   }
 
   goToScore(e) {
-    const id = e.target.dataset.id
+    const id = e.target.dataset.id;
     this.context.router.transitionTo(`/score/${id}`);
     console.log('Displaying score form for id: ', id);
   }
