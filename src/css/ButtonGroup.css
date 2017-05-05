@@ -6,9 +6,11 @@
  @import 'helpers.css';
 
  .button-group {
+ 	text-align: center;
    margin: 2rem auto 0 auto; 
  }
  
  .button-group button:not(:first-child) {
-   margin-left: 1em;
+   margin-left: 1rem;
  }
+

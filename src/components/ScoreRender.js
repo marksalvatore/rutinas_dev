@@ -17,9 +17,11 @@ class ScoreRender extends React.Component {
           <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
           <div className="button-group">
             <button className="btn-secondary" onClick={this.props.cancelAction}>Back</button>
-            <button className="btn-miscellaneous" onClick={this.props.miscAction}>Drill Setup</button>
             <button type="submit">Save Score</button>
            </div>
+
+           <button className="btn-special" onClick={this.props.specialAction}>Drill Setup</button>
+           
         </form>
 
       </section>    

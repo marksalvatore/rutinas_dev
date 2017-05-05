@@ -54,7 +54,6 @@ body {
 button {
 	padding: .8rem .8rem;
 	border: 1px solid rgba(0,0,0, .1);
-	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 	border-radius: .5rem;
 	box-shadow: 0 .05rem .25rem rgba(0, 0, 0, .5);
 	text-shadow: 0 -.05rem .05rem rgba(0, 0, 0, .5);
@@ -62,10 +61,30 @@ button {
 	font-size: 100%;
 	line-height: 1.5;
 }
+button.btn-primary {
+	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
 button.btn-secondary {
 	background: #aaa linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
-
+button.btn-danger {
+	background: #E62117 linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+button.btn-danger:hover {
+	color: #ccc;
+}
+button.btn-special {
+	margin: 2rem 0;
+	background: gold linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+	color: #497ADB;
+	width: 20rem;
+}
+button.btn-special:hover {
+	color: #999;
+}
+button[type=submit] {
+	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
 button:hover {
 	color: gold;
 }

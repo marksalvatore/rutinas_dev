@@ -1,0 +1,30 @@
+/*----------------
+  Setup
+ */
+
+ @import 'helpers.css';
+
+ .Setup {
+ 	text-align: center;
+ }
+
+ .Setup h2 {
+ 	font-size: 3rem;
+ }
+
+ .Setup h3 {
+ 	color: #497ADB;
+ 	font-family: 'Jura', sans-serif;
+ 	font-size: 2.5rem;
+ 	font-weight: normal;
+ 	margin: 0;
+ }
+
+ .Setup .text-left {
+ 	width: 30rem;
+ }
+
+ .Setup .diagram {
+   margin: 2rem 0;
+   width: 90%;
+ }

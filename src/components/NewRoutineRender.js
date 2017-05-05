@@ -40,7 +40,7 @@ class NewRoutineRender extends React.Component {
                      />)
                  }
                  <div className="wrapper">
-                   <button className="save" onClick={this.props.saveAction}>Save Routine</button>
+                   <button className="btn-primary" onClick={this.props.saveAction}>Save Routine</button>
                  </div>
              </ul>
           </div>
