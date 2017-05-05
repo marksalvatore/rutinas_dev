@@ -25,7 +25,7 @@ class StatsListItem extends React.Component {
     const historyButton = <button data-id={details.id} onClick={(e) => this.props.getHistory(e)}>History</button>
 
     return (
-      <li><span className="wrapper">{details.title} - <span className="color">{average.toFixed(0)}%</span> {historyButton}</span></li>
+      <li key={this.key}><span className="wrapper">{details.title} - <span className="color">{average.toFixed(0)}%</span> {historyButton}</span></li>
      );
    }
 }

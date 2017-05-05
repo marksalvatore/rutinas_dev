@@ -5,7 +5,7 @@ class Drill extends React.Component {
     const { details, index } = this.props;
     const buttonText = details.selected === true ? 'Selected' : 'Select this drill';
     return (
-      <li className="item">
+      <li key={this.key} className="item">
           <div className="item-title">
               {details.title}
           </div>

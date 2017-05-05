@@ -13,7 +13,7 @@ class DrillListItem extends React.Component {
       //const drillButton = <button data-id={details.id} onClick={(e) => this.props.goToScore(e)}>Drill</button>
 
       return (
-        <li><span className="wrapper dropShadow">{title} {historyButton} {deleteButton}</span></li>
+        <li key={this.key}><span className="wrapper dropShadow">{title} {historyButton} {deleteButton}</span></li>
        );
 
     } else {
