@@ -1,11 +1,11 @@
 import React from 'react';
 
 import drillsData from '../../data-drills.json';
-import '../css/DrillSetup.css';
-import DrillSetupRender from './DrillSetupRender';
+import '../css/Setup.css';
+import SetupRender from './SetupRender';
 import { getStoredObject, storeObject } from '../helpers';
 
-class DrillSetup extends React.Component {
+class Setup extends React.Component {
   constructor() {
     super();
 
@@ -47,7 +47,7 @@ class DrillSetup extends React.Component {
 
   render() {
     return (
-        <DrillSetupRender
+        <SetupRender
           drill={this.state.drill}
           cancelAction={this.cancelAction}
         />
@@ -55,9 +55,9 @@ class DrillSetup extends React.Component {
   }
 }
 
-DrillSetup.contextTypes = {
+Setup.contextTypes = {
   router: React.PropTypes.object
 }
 
 
-export default DrillSetup;
+export default Setup;

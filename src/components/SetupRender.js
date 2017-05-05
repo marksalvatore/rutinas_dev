@@ -3,12 +3,12 @@ import React from 'react';
 import ButtonGroup from './ButtonGroup';
 import Nav from './Nav';
 
-class DrillSetupRender extends React.Component {
+class SetupRender extends React.Component {
   render() {
     const { drill } = this.props;
 
     return (
-      <section className="DrillSetup">
+      <section className="Setup">
 
         <Nav />
 
@@ -31,9 +31,9 @@ class DrillSetupRender extends React.Component {
   }
 }
 
-DrillSetupRender.contextTypes = {
+SetupRender.contextTypes = {
   router: React.PropTypes.object
 }
 
 
-export default DrillSetupRender;
+export default SetupRender;
