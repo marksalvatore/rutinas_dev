@@ -2,6 +2,14 @@
   Base styles
 */
 
+
+/*
+* {
+ filter: saturate(0%);
+}
+*/
+
+
 @-webkit-viewport { width: device-width }
 @-moz-viewport { width: device-width }
 @-ms-viewport { width: device-width }
@@ -61,11 +69,17 @@ button {
 	font-size: 100%;
 	line-height: 1.5;
 }
-button.btn-primary, button.btn-extra {
+button.btn-primary{
 	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
 button.btn-secondary {
 	background: #aaa linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+button.btn-extra {
+	background: goldenrod linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+button.btn-extra:hover {
+	color: #d31913;
 }
 
 button.btn-danger {

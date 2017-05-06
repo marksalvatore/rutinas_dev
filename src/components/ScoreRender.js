@@ -18,9 +18,11 @@ class ScoreRender extends React.Component {
           <div className="button-group">
             <button type="button" className="btn-secondary" onClick={this.props.cancelAction}>Back</button>
             <button type="submit">Save Score</button>
-           </div>
+          </div>
 
-           <button type="button" className="btn-special" onClick={this.props.specialAction}>Drill Setup</button>
+ 
+            <button type="button" className="btn-extra" onClick={this.props.extraAction}>Drill Setup</button>
+     
            
         </form>
 

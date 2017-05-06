@@ -25,3 +25,10 @@
 	width: 20rem;
  }
 
+ .Score .btn-extra {
+ 	font-size: 1.3rem;
+ 	padding: .3rem;
+ 	margin: .5rem auto;
+ 	width: 18rem;
+ }
+

@@ -19,7 +19,7 @@ class Score extends React.Component {
 
     this.cancelAction = this.cancelAction.bind(this);
     this.saveAction = this.saveAction.bind(this);
-    this.specialAction = this.specialAction.bind(this);
+    this.extraAction = this.extraAction.bind(this);
 
     this.state = {
       drill: {},
@@ -129,7 +129,7 @@ class Score extends React.Component {
     history.back();
   }
 
-  specialAction() {
+  extraAction() {
     let drillId = this.props.params.id;
     this.context.router.transitionTo(`/setup/${drillId}`);
   }
@@ -153,7 +153,7 @@ class Score extends React.Component {
       <ScoreRender 
         drillTitle={this.state.drill.title} 
         saveAction={this.saveAction}
-        specialAction={this.specialAction}
+        extraAction={this.extraAction}
         cancelAction={this.cancelAction}
       />
     )

@@ -9,8 +9,8 @@ const DrillListItem = (props) => {
     const title = <a data-id={details.id} onClick={(e) => props.goToScore(e)}>{details.title}</a>
 
     const deleteButton = <button className="btn-danger" data-id={details.id} onClick={(e) => props.deleteDrill(e)}>Delete</button>
-    const historyButton = <button className="btn-secondary" data-id={details.id} onClick={(e) => props.goToHistory(e)}>History</button>
-    const setupButton = <button className="btn-secondary" data-id={details.id} onClick={(e) => props.goToSetup(e)}>Setup</button>
+    const historyButton = <button className="btn-extra" data-id={details.id} onClick={(e) => props.goToHistory(e)}>History</button>
+    const setupButton = <button className="btn-extra" data-id={details.id} onClick={(e) => props.goToSetup(e)}>Setup</button>
     const scoreButton = <button className="btn-primary"data-id={details.id} onClick={(e) => props.goToScore(e)}>Score</button>
 
     return (
