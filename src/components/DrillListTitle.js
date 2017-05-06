@@ -1,12 +1,10 @@
 import React from 'react';
 
-class DrillListTitle extends React.Component {
-  // child of: NewRoutine
-  render() {
-      return (
-        <li key={this.key}>+ {this.props.title}</li> 
-       );
-  }
+const DrillListTitle = (props) => {
+  // child of: NewRoutineRender
+  return (
+    <li key={props.id}>+ {props.title}</li> 
+   );
 }
 
 export default DrillListTitle;

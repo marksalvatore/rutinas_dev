@@ -4,36 +4,38 @@ import { Link } from 'react-router';
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
 
-class Routines extends React.Component {
+const Routines = (props) => {
 
-  render() {
     let messageIfNoRoutines = null;
-    if(!this.props.routines.length) {
+    if(!props.routines.length) {
       messageIfNoRoutines = <p>Click <Link to="/new">+New</Link> to create a routine.</p>
     }
+    
     return (
-        <section className="Routines">
+      <section className="Routines">
 
-          <Nav />
+        <Nav />
 
-          <h2>All Routines</h2>
+        <h2>All Routines</h2>
 
-            <ul className="text-center">
-                { Object
-                    .keys(this.props.routines)
-                    .map(key => 
-                      
-                    <RoutineListItem 
-                      key={key} 
-                      details={this.props.routines[key]}
-                      deleteRoutine={this.props.deleteRoutine}
-                    />)
-                }
-            </ul>
-            {messageIfNoRoutines}
-      </section>
-    )
-  }
+          <ul className="text-center">
+              { Object
+                  .keys(props.routines)
+                  .map(key => 
+                    
+                  <RoutineListItem 
+                    key={props.routines[key].id} 
+                    id={props.routines[key].id} 
+                    details={props.routines[key]}
+                    deleteRoutine={props.deleteRoutine}
+                    goToRoutine={props.goToRoutine}
+                  />)
+              }
+          </ul>
+          {messageIfNoRoutines}
+    </section>
+   );
+  
 }
 
 export default Routines;

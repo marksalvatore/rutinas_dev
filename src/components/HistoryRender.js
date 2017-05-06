@@ -29,6 +29,7 @@ class HistoryRender extends React.Component {
             { drillScoreObj.scores.map( (key) => 
                 <HistoryListItem 
                   key={key.id}
+                  id={key.id}
                   date={key.date}
                   score={ key.points / key.attempts * 100 }
                 /> )

@@ -3,11 +3,9 @@ import React from 'react';
 import DrillListItem from './DrillListItem';
 import Nav from './Nav';
 
-class RoutineDetailRender extends React.Component {
+const RoutineDetailRender = (props) => {
 
-  render() {
-
-    let title = this.props.getRoutineValue('title');
+    let title = props.getRoutineValue('title');
 
     return (
       <section className="RoutineDetail">
@@ -18,24 +16,24 @@ class RoutineDetailRender extends React.Component {
         
           <ul className="text-center anim-pullDown">
           { Object
-              .keys(this.props.routineDrills)
+              .keys(props.routineDrills)
               .map(key => 
               <DrillListItem 
-                key={key} 
-                details={this.props.routineDrills[key]} 
-                goToScore={this.props.goToScore}
-                deleteDrill={this.props.deleteDrill}
-                goToHistory={this.props.goToHistory}
-                goToSetup={this.props.goToSetup}
-                params={this.props.params}
+                key={props.routineDrills[key].id} 
+                id={props.routineDrills[key].id}
+                details={props.routineDrills[key]} 
+                goToScore={props.goToScore}
+                deleteDrill={props.deleteDrill}
+                goToHistory={props.goToHistory}
+                goToSetup={props.goToSetup}
+                params={props.params}
               />)
           }
           </ul>
           <br />
 
     	</section>
-    )
-  }
+    ); 
 }
 
 export default RoutineDetailRender;

@@ -12,7 +12,7 @@ class ScoreRender extends React.Component {
 
         <h2>{this.props.drillTitle}</h2>
         
-        <form ref={(input) => this.scoreForm = input} onSubmit={(e) => this.props.saveAction(e)}>
+        <form onSubmit={(e) => this.props.saveAction(e)}>
           <input type="number" ref={(input) => this.points = input} placeholder="points" autoFocus={true} />
           <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
           <div className="button-group">

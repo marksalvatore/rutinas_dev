@@ -1,17 +1,15 @@
 import React from 'react';
 
-class HistoryListItem extends React.Component {
+const HistoryListItem = (props) => {
   // child of: History
 
-  render() {
-  	const score = this.props.score;
+	const score = props.score;
 
-  	// add delete function on item
+	// add delete function on item
 
-    return (
-      <li key={this.key}><span className="wrapper">{this.props.date} - <span className="color">{score.toFixed(0)}%</span></span></li>
-     );
-   }
+  return (
+    <li key={props.id}><span className="wrapper">{props.date} - <span className="color">{score.toFixed(0)}%</span></span></li>
+   );
 }
 
 export default HistoryListItem;

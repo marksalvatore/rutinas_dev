@@ -4,50 +4,49 @@ import Drill from './Drill';
 import DrillListTitle from './DrillListTitle';
 import Nav from './Nav';
 
-class NewRoutineRender extends React.Component {
-
-  render() {
+const NewRoutineRender = (props) => {
  
-    return (
-        <section className="NewRoutine">
+  return (
+      <section className="NewRoutine">
 
-          <Nav />
+        <Nav />
 
-          <h2>New Routine</h2>
+        <h2>New Routine</h2>
 
-          <div className="wrapper">
+        <div className="wrapper">
 
-            <ul className="frame dropShadow anim-slideUpExpand">
-               { Object
-                 .keys(this.props.drills)
-                 .map(key => 
-                   <Drill 
-                     key={key} 
-                     index={key}
-                     details={this.props.drills[key]}
-                     toggleSelectItem={this.props.toggleSelectItem}
-                     />)
+          <ul className="frame dropShadow anim-slideUpExpand">
+             { Object
+               .keys(props.drills)
+               .map(key => 
+                 <Drill  
+                   key={props.drills[key].id}
+                   id={props.drills[key].id}
+                   index={key}
+                   details={props.drills[key]}
+                   toggleSelectItem={props.toggleSelectItem}
+                   />)
+             }
+           </ul>
+
+           <ul className="frame-list">
+               <div className="frame-list-title">Selected Drills</div>
+               {props.selectedDrills.map( key => 
+                   <DrillListTitle 
+                     key={key.id}
+                     id={key.id}
+                     title={key.title}
+                   />)
                }
-             </ul>
+               <div className="wrapper">
+                 <button className="btn-primary" onClick={props.saveAction}>Save Routine</button>
+               </div>
+           </ul>
+        </div>
 
-             <ul className="frame-list">
-                 <div className="frame-list-title">Selected Drills</div>
-                 {this.props.selectedDrills.map( key => 
-                     <DrillListTitle 
-                       key={key.id}
-                       id={key.id}
-                       title={key.title}
-                     />)
-                 }
-                 <div className="wrapper">
-                   <button className="btn-primary" onClick={this.props.saveAction}>Save Routine</button>
-                 </div>
-             </ul>
-          </div>
+      </section> 
+  );
 
-        </section> 
-    )
-  }
 }
 
 

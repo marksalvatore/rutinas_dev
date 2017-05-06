@@ -10,7 +10,8 @@ class Stats extends React.Component {
     super();
 
     this.getAverageAllScores = this.getAverageAllScores.bind(this);
-    this.getHistory = this.getHistory.bind(this);
+    this.getAverageOfScores = this.getAverageOfScores.bind(this);
+    this.goToHistory = this.goToHistory.bind(this);
   }
 
   getAverageAllScores() {
@@ -26,7 +27,17 @@ class Stats extends React.Component {
     return totalPoints / totalAttempts * 100;
   }
 
-  getHistory(e) {
+  getAverageOfScores(scoresArr) {
+    let totalPoints = 0;
+    let totalAttempts = 0;
+    scoresArr.map( s => {
+      totalPoints += s.points;
+      totalAttempts += s.attempts;
+     });
+    return totalPoints / totalAttempts * 100;
+  }
+
+  goToHistory(e) {
     let id = e.target.dataset.id;
     this.context.router.transitionTo(`/history/${id}`);
   }
@@ -36,9 +47,10 @@ class Stats extends React.Component {
       <StatsRender 
         getAllScores={getAllScores}
         getAverageAllScores={this.getAverageAllScores}
-        getHistory={this.getHistory}
+        getAverageOfScores={this.getAverageOfScores}
+        goToHistory={this.goToHistory}
       />
-    ) 
+    );
   }
 }
 

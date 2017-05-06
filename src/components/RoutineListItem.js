@@ -1,30 +1,16 @@
 import React from 'react';
 
-class RoutineListItem extends React.Component {
-  // child of: Routines
-  constructor() {
-    super();
+const RoutineListItem = (props) => {
+  // child of: RoutinesRender
 
-    this.goToRoutine = this.goToRoutine.bind(this);
-  }
+  const { details } = props;
+  const title = <a data-id={details.id} data-title={details.title} onClick={ (e) => props.goToRoutine(e)}>{details.title}</a>
+  const deleteButton = <button className="btn-danger" data-id={details.id} onClick={(e) => props.deleteRoutine(e)}>Delete</button>
+  //const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => goToRoutine(e)}>View</button>
 
-  goToRoutine(e) {
-    e.preventDefault();
-    const id = e.target.dataset.id
-    this.context.router.transitionTo(`/routine/${id}`);
-  }
-
-
-  render() {
-    const { details } = this.props;
-    const title = <a href="#" data-id={details.id} data-title={details.title} onClick={this.goToRoutine}>{details.title}</a>
-    const deleteButton = <button className="btn-danger" data-id={details.id} onClick={(e) => this.props.deleteRoutine(e)}>Delete</button>
-    //const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => this.goToRoutine(e)}>View</button>
-
-    return (
-      <li key={this.key}><span className="wrapper dropShadow">{title} {deleteButton}</span></li>
-     );
-  }
+  return (
+    <li key={props.id}><span className="wrapper dropShadow">{title} {deleteButton}</span></li>
+   );
 }
 
 RoutineListItem.contextTypes = {

@@ -3,8 +3,7 @@ import { Link } from 'react-router';
 
 import '../css/Nav.css';
 
-class Nav extends React.Component {
-  render() {
+const Nav = () => {
     return (
         <nav className="Nav">
             <Link to="/info"><div>Info</div></Link>
@@ -12,8 +11,8 @@ class Nav extends React.Component {
             <Link to="/routines"><div>Routines</div></Link>
             <Link to="/new"><div>+ New</div></Link>
         </nav>
-    )
-  }
+    );
+
 }
 
 export default Nav;

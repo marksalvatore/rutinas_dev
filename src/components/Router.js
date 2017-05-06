@@ -31,7 +31,7 @@ const Router = () => {
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>
-  )
+  );
 }
 
 export default Router;
