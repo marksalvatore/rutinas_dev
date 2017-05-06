@@ -63,11 +63,11 @@ class NewRoutine extends React.Component {
 
     let selectedDrillsCopy = [...this.state.selectedDrills];
     let drills = [...this.state.drills];
-    let currentlySelected = selectedDrillsCopy.filter(obj => obj.id === id);
+    let currentlySelectedSet = selectedDrillsCopy.filter(obj => obj.id === id);
     let drillItem = null;
     let selectedDrills = [];
 
-    if ( currentlySelected.length  ) {
+    if ( currentlySelectedSet.length  ) {
       // remove "active" css class by setting selected to false
       drills[index].selected = false;
       this.setState({ drills });
