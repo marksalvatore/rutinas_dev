@@ -13,9 +13,10 @@ class RoutineDetail extends React.Component {
 
     this.deleteDrill = this.deleteDrill.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
-    this.getHistory = this.getHistory.bind(this);
     this.getRoutineValue = this.getRoutineValue.bind(this);
+    this.goToHistory = this.goToHistory.bind(this);
     this.goToScore = this.goToScore.bind(this);
+    this.goToSetup = this.goToSetup.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.loadRoutines = this.loadRoutines.bind(this);
     this.loadRoutineDrills = this.loadRoutineDrills.bind(this);
@@ -88,11 +89,6 @@ class RoutineDetail extends React.Component {
     console.log("Deleted Routine: ", id);
   }
 
-  getHistory(e) {
-    let id = e.target.dataset.id;
-    this.context.router.transitionTo(`/history/${id}`);
-  }
-
   getRoutineValue(objProp='id') {
     // used only to get title of routine
     let routines = this.state.routines;
@@ -101,10 +97,21 @@ class RoutineDetail extends React.Component {
     return routineObj[objProp];
   }
 
+  goToHistory(e) {
+    let id = e.target.dataset.id;
+    this.context.router.transitionTo(`/history/${id}`);
+  }
+
   goToScore(e) {
     const id = e.target.dataset.id;
     this.context.router.transitionTo(`/score/${id}`);
     console.log('Displaying score form for id: ', id);
+  }
+
+  goToSetup(e) {
+    const id = e.target.dataset.id;
+    this.context.router.transitionTo(`/setup/${id}`);
+    console.log('Displaying setup diagram for id: ', id);
   }
 
   loadDrills() {
@@ -156,7 +163,8 @@ class RoutineDetail extends React.Component {
       routineDrills={[...this.state.routineDrills]}
       goToScore={this.goToScore}
       deleteDrill={this.deleteDrill}
-      getHistory={this.getHistory}
+      goToHistory={this.goToHistory}
+      goToSetup={this.goToSetup}
       params={this.props.params}
       />
     )

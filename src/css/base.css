@@ -97,8 +97,8 @@ button:active {
 
 /*crud action buttons (delete)*/
 button[data-id] {
-	font-size: .8em;
-	margin-left: .5rem;
+	font-size: .7em;
+	margin-left: .3rem;
 }
 
 em {

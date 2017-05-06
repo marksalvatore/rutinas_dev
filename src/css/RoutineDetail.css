@@ -18,20 +18,6 @@
  	width: 30rem;
  }
 
-/* .RoutineDetail .wrapper {
- 	background: #eee;
- 	border: 1px solid #ccc;
- 	padding: 1.5rem 1rem;
- 	padding-bottom: 1.7rem;
- 	
- }
-
- .RoutineDetail li {
- 	font-size: 1.4rem;
- 	margin-bottom: 3rem;
- }
-*/
-
 .RoutineDetail .wrapper {
 	display: flex;
 	align-items: center;
@@ -41,13 +27,13 @@
  .RoutineDetail .container {
 	 	background: #eee;
 	 	border: 1px solid #ccc;
-	 	margin-bottom: 3rem;
-	 	padding: 0 1rem;
+	 	margin-bottom: 2rem;
+	 	padding: 0 .8rem;
 	 	padding-bottom: 1rem;
  }
 
  .RoutineDetail li .title {
- 		font-size: 1.5rem;
+ 		font-size: 1.4rem;
  		margin: 1rem;
  	
  }

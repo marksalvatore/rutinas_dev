@@ -25,7 +25,8 @@ class RoutineDetailRender extends React.Component {
                 details={this.props.routineDrills[key]} 
                 goToScore={this.props.goToScore}
                 deleteDrill={this.props.deleteDrill}
-                getHistory={this.props.getHistory}
+                goToHistory={this.props.goToHistory}
+                goToSetup={this.props.goToSetup}
                 params={this.props.params}
               />)
           }
