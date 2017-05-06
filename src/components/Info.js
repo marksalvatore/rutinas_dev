@@ -26,9 +26,8 @@ class Info extends React.Component {
 
           <h2>Tips</h2>
           <div className="text-left">
-            <p>The app asks for the number of points you scored and the number of attempts it took you. A simple way to keep score in your head while playing, is to start with some number of balls on the table (say ten), then just count the number of attempts it took to make them all.</p>
+            <p>The app asks for the number of points you scored and the number of attempts it took you. A simple way to keep track of these for some drills, is to start with some set number of balls (say ten), then you need only count the number of attempts it took to make them.</p>
           </div>
- 
 
           <h2>About</h2>
           <div className="text-left">
