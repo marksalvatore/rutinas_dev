@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const DrillListItem = (props) => {
   // child of: RoutineDetails
@@ -30,6 +31,15 @@ const DrillListItem = (props) => {
      );
   }
 
+}
+
+DrillListItem.propTypes = {
+  deleteDrill: PropTypes.func,
+  details: PropTypes.object.isRequired,
+  goToHistory: PropTypes.func,
+  goToScore: PropTypes.func,
+  goToSetup: PropTypes.func,
+  id: PropTypes.string
 }
 
 export default DrillListItem;

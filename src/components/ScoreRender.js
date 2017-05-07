@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Nav from './Nav';
 
@@ -20,15 +21,20 @@ class ScoreRender extends React.Component {
             <button type="submit">Save Score</button>
           </div>
 
- 
-            <button type="button" className="btn-extra" onClick={this.props.extraAction}>Drill Setup</button>
-     
            
         </form>
+           <button type="button" className="btn-extra" onClick={this.props.extraAction}>Drill Setup</button>     
 
       </section>    
     )
   }
+}
+
+ScoreRender.propTypes = {
+  cancelAction: PropTypes.func.isRequired,
+  drillTitle: PropTypes.string.isRequired,
+  extraAction: PropTypes.func.isRequired,
+  saveAction: PropTypes.func.isRequired
 }
 
 export default ScoreRender;

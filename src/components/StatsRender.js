@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Nav from './Nav';
 import NoItems from './NoItems';
@@ -50,6 +51,13 @@ const StatsRender = (props) => {
       </section>
     );
   }
+}
+
+StatsRender.propTypes = {
+  getAverageAllScores: PropTypes.func.isRequired,
+  getAverageOfScores: PropTypes.func.isRequired,
+  getAllScores: PropTypes.func.isRequired,
+  goToHistory: PropTypes.func.isRequired
 }
 
 export default StatsRender;

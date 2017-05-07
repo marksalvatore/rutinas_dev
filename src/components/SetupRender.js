@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ButtonGroup from './ButtonGroup';
 import Nav from './Nav';
@@ -33,6 +34,11 @@ const SetupRender = (props) => {
 
 SetupRender.contextTypes = {
   router: React.PropTypes.object
+}
+
+SetupRender.propTypes = {
+  cancelAction: PropTypes.func.isRequired,
+  drill: PropTypes.object.isRequired
 }
 
 

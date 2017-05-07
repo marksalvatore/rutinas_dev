@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import '../css/History.css';
 import ButtonGroup from './ButtonGroup';
@@ -55,6 +56,13 @@ class HistoryRender extends React.Component {
       )
     }
   }
+}
+
+HistoryRender.propTypes = {
+  cancelAction: PropTypes.func.isRequired,
+  extraAction: PropTypes.func.isRequired,
+  getDrillScoreAverage: PropTypes.func.isRequired,
+  getDrillScoreObj: PropTypes.func.isRequired
 }
 
 export default HistoryRender;

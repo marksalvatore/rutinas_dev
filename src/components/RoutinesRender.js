@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 
 import Nav from './Nav';
 import RoutineListItem from './RoutineListItem';
@@ -36,6 +37,12 @@ const Routines = (props) => {
     </section>
    );
   
+}
+
+Routines.propTypes = {
+  deleteRoutine: PropTypes.func.isRequired,
+  goToRoutine: PropTypes.func.isRequired,
+  routines: PropTypes.array.isRequired
 }
 
 export default Routines;

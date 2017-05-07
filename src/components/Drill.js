@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Drill = (props) => {
 
@@ -22,6 +23,14 @@ const Drill = (props) => {
     </li>
   );
 
+}
+
+Drill.propTypes = {
+  details: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired,
+  index: PropTypes.string.isRequired,
+  isDrillSelected: PropTypes.func.isRequired,
+  toggleSelectItem: PropTypes.func.isRequired,
 }
 
 export default Drill;

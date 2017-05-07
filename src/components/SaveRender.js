@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ButtonGroup from './ButtonGroup';
 import Nav from './Nav';
@@ -17,11 +18,18 @@ const SaveRender = (props) => {
         <p>Your running average score for this drill so far is <strong>{Math.floor(props.averageScore * 100)}%</strong>.</p>
       </div>
 
-      <ButtonGroup saveLabel="History" saveAction={props.saveAction} cancelLabel="Back" cancelAction={props.cancelAction} />
+      <ButtonGroup extraLabel="History" extraAction={props.extraAction} cancelLabel="Back" cancelAction={props.cancelAction} />
 
   	</section>
   );
   
+}
+
+SaveRender.propTypes = {
+  averageScore: PropTypes.number.isRequired,
+  cancelAction: PropTypes.func.isRequired,
+  recentScore: PropTypes.number.isRequired,
+  extraAction: PropTypes.func.isRequired
 }
 
 export default SaveRender;

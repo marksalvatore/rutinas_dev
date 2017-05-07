@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Drill from './Drill';
 import DrillListTitle from './DrillListTitle';
@@ -51,9 +52,16 @@ const NewRoutineRender = (props) => {
 
 }
 
-
 NewRoutineRender.contextTypes = {
   router: React.PropTypes.object
+}
+
+NewRoutineRender.propTypes = {
+  drills: PropTypes.array.isRequired,
+  isDrillSelected: PropTypes.func.isRequired,
+  saveAction: PropTypes.func.isRequired,
+  selectedDrills: PropTypes.array.isRequired,
+  toggleSelectItem: PropTypes.func.isRequired
 }
 
 export default NewRoutineRender;

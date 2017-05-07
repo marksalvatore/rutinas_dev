@@ -14,7 +14,7 @@ class Save extends React.Component {
     this.getRecentDrillScore = this.getRecentDrillScore.bind(this);
     
     this.cancelAction = this.cancelAction.bind(this);
-    this.saveAction = this.saveAction.bind(this);
+    this.extraAction = this.extraAction.bind(this);
 
     this.state = {
       recentScore: 0,
@@ -76,7 +76,7 @@ class Save extends React.Component {
     history.back();
   }
 
-  saveAction() {
+  extraAction() {
     let id = this.props.params.id;
     this.context.router.transitionTo(`/history/${id}`);
   }
@@ -86,7 +86,7 @@ class Save extends React.Component {
       <SaveRender 
       recentScore={this.state.recentScore}
       averageScore={this.state.averageScore}
-      saveAction={this.saveAction}
+      extraAction={this.extraAction}
       cancelAction={this.cancelAction}
       />
     )

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RoutineListItem = (props) => {
   // child of: RoutinesRender
@@ -15,6 +16,13 @@ const RoutineListItem = (props) => {
 
 RoutineListItem.contextTypes = {
   router: React.PropTypes.object
+}
+
+RoutineListItem.propTypes = {
+	deleteRoutine: PropTypes.func.isRequired,
+  details: PropTypes.object.isRequired,
+	goToRoutine: PropTypes.func.isRequired,
+	id: PropTypes.string.isRequired
 }
 
 export default RoutineListItem;

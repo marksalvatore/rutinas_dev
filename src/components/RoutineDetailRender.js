@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import DrillListItem from './DrillListItem';
 import Nav from './Nav';
@@ -34,6 +35,15 @@ const RoutineDetailRender = (props) => {
 
     	</section>
     ); 
+}
+
+RoutineDetailRender.propTypes = {
+  deleteDrill: PropTypes.func.isRequired,
+  getRoutineValue: PropTypes.func.isRequired,
+  goToHistory: PropTypes.func.isRequired,
+  goToScore: PropTypes.func.isRequired,
+  goToSetup: PropTypes.func.isRequired,
+  routineDrills: PropTypes.array.isRequired
 }
 
 export default RoutineDetailRender;

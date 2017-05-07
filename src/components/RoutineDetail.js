@@ -159,13 +159,13 @@ class RoutineDetail extends React.Component {
   render() {
     return (
       <RoutineDetailRender 
-      getRoutineValue={this.getRoutineValue}
-      routineDrills={[...this.state.routineDrills]}
-      goToScore={this.goToScore}
       deleteDrill={this.deleteDrill}
+      getRoutineValue={this.getRoutineValue}
       goToHistory={this.goToHistory}
+      goToScore={this.goToScore}
       goToSetup={this.goToSetup}
       params={this.props.params}
+      routineDrills={[...this.state.routineDrills]}
       />
     )
   }
