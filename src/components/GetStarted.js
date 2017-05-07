@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import '../css/GetStarted.css';
-import logo from '../../public/images/safe-3.svg';
 
 const GetStarted = () => {
+
+  const logo = "https://pad.chalkysticks.com/dbcb7.svg";
+  
   return (
     <section className="GetStarted">
 
