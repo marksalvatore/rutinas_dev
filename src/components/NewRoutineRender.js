@@ -22,8 +22,10 @@ const NewRoutineRender = (props) => {
                  <Drill  
                    key={props.drills[key].id}
                    id={props.drills[key].id}
-                   index={key}
+
                    details={props.drills[key]}
+                   isDrillSelected={props.isDrillSelected}
+                   index={key}
                    toggleSelectItem={props.toggleSelectItem}
                    />)
              }

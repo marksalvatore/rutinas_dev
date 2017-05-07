@@ -4,12 +4,13 @@ import '../css/NewRoutine.css';
 import drillsData from '../../data-drills.json';
 import NewRoutineRender from './NewRoutineRender';
 
-import { storeObject, getStoredObject } from '../helpers';
+import { storeObject } from '../helpers';
 
 class NewRoutine extends React.Component {
   constructor() {
     super();
 
+    this.isDrillSelected = this.isDrillSelected.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
@@ -26,12 +27,24 @@ class NewRoutine extends React.Component {
     this.loadDrills();
   }
 
+  isDrillSelected(id) {
+    const drillExists = this.state.selectedDrills.filter( obj => obj.id === id);
+    
+    if(drillExists.length) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   loadDrills() {
     storeObject('drills', drillsData);
     this.setState({drills: drillsData});
     console.log('Drills loaded from json file');
 
-/*    if(!localStorage.getItem('drills')) {
+    /*REMOVED TEMPORARILY*/
+
+    /*if(!localStorage.getItem('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
       console.log('Drills loaded from json file');
@@ -40,6 +53,8 @@ class NewRoutine extends React.Component {
       this.setState({drills: getStoredObject('drills')});
       console.log('Drills loaded from localStorage');
     }*/
+
+
     return true;
   }
 
@@ -59,60 +74,30 @@ class NewRoutine extends React.Component {
 
   toggleSelectItem(e) {
     const id = e.target.dataset.id;
-    const index = e.target.dataset.index;
+    const index = e.target.dataset.index; // index in drills
 
-    let selectedDrillsCopy = [...this.state.selectedDrills];
-    let drills = [...this.state.drills];
-    let currentlySelectedSet = selectedDrillsCopy.filter(obj => obj.id === id);
+    const drills = this.state.drills;
     let drillItem = null;
-    let selectedDrills = [];
+    let selectedDrills = null;
+    let selectedDrillsCurrent = [...this.state.selectedDrills];
 
-    if ( currentlySelectedSet.length  ) {
-      // remove "active" css class by setting selected to false
-      drills[index].selected = false;
-      this.setState({ drills });
+    const alreadySelected = this.isDrillSelected(id);
 
-      // remove item from state
-      selectedDrills = selectedDrillsCopy.filter(obj => obj.id !== id);
+    // if drill exists, remove it, else prepare its id and title for push
+    if(alreadySelected) {
+      selectedDrills = selectedDrillsCurrent.filter(obj => obj.id !== id);
 
     } else {
 
-      // add "active" css class by setting selected to true
-      drills[index].selected = true;
-      this.setState({ drills });
-
-      // add item
       drillItem = {
         id: id,
         title: drills[index].title
       }
-      selectedDrillsCopy.push(drillItem);
-      selectedDrills = [...selectedDrillsCopy];
+      selectedDrillsCurrent.push(drillItem);
+      selectedDrills = [...selectedDrillsCurrent];
     }
-    
-    // Set state and console array in callback, after state gets updated
-    this.setState({ selectedDrills }, function(){
-      console.log("selectedDrills", selectedDrills);
-    }); 
- 
-  }
 
-  storeNewRoutine(newRoutine) {
-    // get routines from storage
-    let storedRoutines = getStoredObject("routines");
-
-    if (storedRoutines !== null) {
-      // Add new Routine to array
-      storedRoutines.push(newRoutine);
-      // store the updated set of Routines
-      storeObject("routines", storedRoutines);
-
-    } else {
-      // Just need to put newRoutine into a one element array before storing
-      let arr = [];
-      arr[0] = newRoutine;
-      storeObject("routines", arr);
-    }
+    this.setState({ selectedDrills });
   }
 
   saveAction() {
@@ -128,10 +113,11 @@ class NewRoutine extends React.Component {
   render() {
     return (
       <NewRoutineRender 
-        selectedDrills={[...this.state.selectedDrills]}
         drills={[...this.state.drills]}
-        toggleSelectItem={this.toggleSelectItem}
+        isDrillSelected={this.isDrillSelected}
         saveAction={this.saveAction}
+        selectedDrills={[...this.state.selectedDrills]}
+        toggleSelectItem={this.toggleSelectItem}
       />
     )
   }
