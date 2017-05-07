@@ -72,14 +72,18 @@ button {
 button.btn-primary{
 	background: #497ADB linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
+
 button.btn-secondary {
-	background: #aaa linear-gradient(hsla(0, 0%, 100%, .2), transparent);
-}
-button.btn-extra {
 	background: goldenrod linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
-button.btn-extra:hover {
+button.btn-secondary:hover {
 	color: #d31913;
+}
+button.btn-cancel {
+	background: #aaa linear-gradient(hsla(0, 0%, 100%, .2), transparent);
+}
+button.btn-cancel:hover {
+	color: #666;
 }
 
 button.btn-danger {

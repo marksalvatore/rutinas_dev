@@ -18,7 +18,7 @@ const SaveRender = (props) => {
         <p>Your running average score for this drill so far is <strong>{Math.floor(props.averageScore * 100)}%</strong>.</p>
       </div>
 
-      <ButtonGroup extraLabel="History" extraAction={props.extraAction} cancelLabel="Back" cancelAction={props.cancelAction} />
+      <ButtonGroup extraLabel="History" secondaryAction={props.secondaryAction} cancelLabel="Back" cancelAction={props.cancelAction} />
 
   	</section>
   );
@@ -29,7 +29,7 @@ SaveRender.propTypes = {
   averageScore: PropTypes.number.isRequired,
   cancelAction: PropTypes.func.isRequired,
   recentScore: PropTypes.number.isRequired,
-  extraAction: PropTypes.func.isRequired
+  secondaryAction: PropTypes.func.isRequired
 }
 
 export default SaveRender;

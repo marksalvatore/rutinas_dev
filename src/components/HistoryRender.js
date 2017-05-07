@@ -36,7 +36,7 @@ class HistoryRender extends React.Component {
                 /> )
             }
           </ul>
-          <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} extraLabel="Score" extraAction={this.props.extraAction} />
+          <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} extraLabel="Score" secondaryAction={this.props.secondaryAction} />
         </section>
       )
     } else {
@@ -60,7 +60,7 @@ class HistoryRender extends React.Component {
 
 HistoryRender.propTypes = {
   cancelAction: PropTypes.func.isRequired,
-  extraAction: PropTypes.func.isRequired,
+  secondaryAction: PropTypes.func.isRequired,
   getDrillScoreAverage: PropTypes.func.isRequired,
   getDrillScoreObj: PropTypes.func.isRequired
 }

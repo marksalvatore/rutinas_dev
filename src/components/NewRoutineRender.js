@@ -42,7 +42,7 @@ const NewRoutineRender = (props) => {
                    />)
                }
                <div className="wrapper">
-                 <button className="btn-primary" onClick={props.saveAction}>Save Routine</button>
+                 <button className="btn-primary" onClick={props.primaryAction}>Save Routine</button>
                </div>
            </ul>
         </div>
@@ -59,7 +59,7 @@ NewRoutineRender.contextTypes = {
 NewRoutineRender.propTypes = {
   drills: PropTypes.array.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
-  saveAction: PropTypes.func.isRequired,
+  primaryAction: PropTypes.func.isRequired,
   selectedDrills: PropTypes.array.isRequired,
   toggleSelectItem: PropTypes.func.isRequired
 }

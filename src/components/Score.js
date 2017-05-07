@@ -18,8 +18,8 @@ class Score extends React.Component {
     this.storeDrillScoreObj = this.storeDrillScoreObj.bind(this);
 
     this.cancelAction = this.cancelAction.bind(this);
-    this.saveAction = this.saveAction.bind(this);
-    this.extraAction = this.extraAction.bind(this);
+    this.primaryAction = this.primaryAction.bind(this);
+    this.secondaryAction = this.secondaryAction.bind(this);
 
     this.state = {
       drill: {},
@@ -129,12 +129,12 @@ class Score extends React.Component {
     history.back();
   }
 
-  extraAction() {
+  secondaryAction() {
     let drillId = this.props.params.id;
     this.context.router.transitionTo(`/setup/${drillId}`);
   }
 
-  saveAction(e) {
+  primaryAction(e) {
     e.preventDefault();
     let points = document.querySelector('[placeholder="points"]').value;
     let attempts = document.querySelector('[placeholder="attempts"]').value;
@@ -152,8 +152,8 @@ class Score extends React.Component {
     return (
       <ScoreRender 
         drillTitle={this.state.drill.title} 
-        saveAction={this.saveAction}
-        extraAction={this.extraAction}
+        primaryAction={this.primaryAction}
+        secondaryAction={this.secondaryAction}
         cancelAction={this.cancelAction}
       />
     )

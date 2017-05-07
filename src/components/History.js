@@ -17,7 +17,7 @@ class History extends React.Component {
     this.getDrillScoreObj = this.getDrillScoreObj.bind(this);
     this.getDrillScoreAverage = this.getDrillScoreAverage.bind(this);
     this.cancelAction = this.cancelAction.bind(this);
-    this.extraAction = this.extraAction.bind(this);
+    this.secondaryAction = this.secondaryAction.bind(this);
   }
 
   getDrillScoreObj() {
@@ -56,7 +56,7 @@ class History extends React.Component {
     history.back();
   }
 
-  extraAction() {
+  secondaryAction() {
     const drillId = this.props.params.id;
     this.context.router.transitionTo(`/score/${drillId}`);
   }
@@ -67,7 +67,7 @@ class History extends React.Component {
         getDrillScoreObj = {this.getDrillScoreObj}
         getDrillScoreAverage = {this.getDrillScoreAverage}
         cancelAction = {this.cancelAction}
-        extraAction = {this.extraAction}
+        secondaryAction = {this.secondaryAction}
       /> 
     )
   }

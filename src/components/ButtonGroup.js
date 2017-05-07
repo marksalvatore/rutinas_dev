@@ -5,31 +5,31 @@ import '../css/ButtonGroup.css';
 
 // Composed component function 
 const ButtonGroup = (props) => {
-	let cancelButton, saveButton, extraButton = null;
+	let cancelButton, primaryButton, secondaryButton = null;
 
 	if(props.cancelAction) {
-		cancelButton = <button type="button" className="btn-secondary" onClick={props.cancelAction}>{props.cancelLabel}</button>
+		cancelButton = <button type="button" className="btn-cancel" onClick={props.cancelAction}>{props.cancelLabel}</button>
 	}
-	if(props.extraAction) {
-		extraButton = <button type="button" className="btn-extra" onClick={props.extraAction}>{props.extraLabel}</button>
+	if(props.primaryAction) {
+		primaryButton = <button type="button" className="btn-primary" onClick={props.primaryAction}>{props.saveLabel}</button>
 	}
-	if(props.saveAction) {
-		saveButton = <button type="button" className="btn-primary" onClick={props.saveAction}>{props.saveLabel}</button>
+	if(props.secondaryAction) {
+		secondaryButton = <button type="button" className="btn-secondary" onClick={props.secondaryAction}>{props.extraLabel}</button>
 	}
 
   return (
 		<div className="button-group">
 			{cancelButton}
-			{extraButton}
-			{saveButton}
+			{secondaryButton}
+			{primaryButton}
 		</div>    
 	)
 }
 
 ButtonGroup.propTypes = {
-  saveAction: PropTypes.func,
+  primaryAction: PropTypes.func,
   cancelAction: PropTypes.func,
-  extraButton: PropTypes.func,
+  secondaryButton: PropTypes.func,
   saveLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
   extraLabel: PropTypes.string

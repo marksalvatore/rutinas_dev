@@ -13,18 +13,16 @@ class ScoreRender extends React.Component {
 
         <h2>{this.props.drillTitle}</h2>
         
-        <form onSubmit={(e) => this.props.saveAction(e)}>
+        <form onSubmit={(e) => this.props.primaryAction(e)}>
           <input type="number" ref={(input) => this.points = input} placeholder="points" autoFocus={true} />
           <input type="number" ref={(input) => this.attempts = input} placeholder="attempts"/>
           <div className="button-group">
-            <button type="button" className="btn-secondary" onClick={this.props.cancelAction}>Back</button>
+            <button type="button" className="btn-cancel" onClick={this.props.cancelAction}>Back</button>
             <button type="submit">Save Score</button>
-          </div>
-
-           
+          </div>           
         </form>
-           <button type="button" className="btn-extra" onClick={this.props.extraAction}>Drill Setup</button>     
-
+        
+        <button type="button" className="btn-secondary" onClick={this.props.secondaryAction}>Drill Setup</button>     
       </section>    
     )
   }
@@ -33,8 +31,8 @@ class ScoreRender extends React.Component {
 ScoreRender.propTypes = {
   cancelAction: PropTypes.func.isRequired,
   drillTitle: PropTypes.string.isRequired,
-  extraAction: PropTypes.func.isRequired,
-  saveAction: PropTypes.func.isRequired
+  secondaryAction: PropTypes.func.isRequired,
+  primaryAction: PropTypes.func.isRequired
 }
 
 export default ScoreRender;

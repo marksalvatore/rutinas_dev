@@ -14,7 +14,7 @@ class NewRoutine extends React.Component {
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
-    this.saveAction = this.saveAction.bind(this);
+    this.primaryAction = this.primaryAction.bind(this);
 
     this.state = {
       drills: {},
@@ -100,7 +100,7 @@ class NewRoutine extends React.Component {
     this.setState({ selectedDrills });
   }
 
-  saveAction() {
+  primaryAction() {
     if ( this.state.selectedDrills.length > 0 ) {
       const newRoutineObj = this.makeNewRoutineObj();
       this.storeNewRoutine(newRoutineObj);
@@ -115,7 +115,7 @@ class NewRoutine extends React.Component {
       <NewRoutineRender 
         drills={[...this.state.drills]}
         isDrillSelected={this.isDrillSelected}
-        saveAction={this.saveAction}
+        primaryAction={this.primaryAction}
         selectedDrills={[...this.state.selectedDrills]}
         toggleSelectItem={this.toggleSelectItem}
       />
