@@ -1,17 +1,3 @@
-export function storeObject(key, obj) {
-  if( storageAvailable('localStorage') ) {
-  	localStorage.setItem(key, JSON.stringify(obj));
-  } 
-  return false;
-}
-
-export function getStoredObject(key) {
-	if( storageAvailable('localStorage') ) {
-		return JSON.parse(localStorage.getItem(key));
-	}
-	return false; 
-}
-
 export function storageAvailable(type='localStorage') {
 	try {
 		var storage = window[type],
@@ -25,9 +11,25 @@ export function storageAvailable(type='localStorage') {
 	}
 }
 
+export function storeObject(key, obj) {
+  if(storageAvailable('localStorage') ) {
+  	localStorage.setItem(key, JSON.stringify(obj));
+  } 
+  return false;
+}
+
+export function getStoredObject(key) {
+	if(storageAvailable('localStorage') ) {
+		return JSON.parse(localStorage.getItem(key));
+	}
+	return false; 
+}
+
 export function getAllScores() {
-  if(localStorage.getItem('scores')) {
-    return getStoredObject('scores'); 
-  }
+  if(storageAvailable('localStorage') ) {
+  	if(localStorage.getItem('scores')) {
+    	return getStoredObject('scores'); 
+ 		}
+ 	}
   return false;
 }
