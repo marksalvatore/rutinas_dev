@@ -8,23 +8,58 @@ import HistoryRender from './HistoryRender';
 import Nav from './Nav';
 import NoItems from './NoItems';
 
-import { getStoredObject, getAllScores } from '../helpers';
+import { getStoredObject, storeObject } from '../helpers';
 
 class History extends React.Component {
   constructor() {
     super();
 
+    this.cancelAction = this.cancelAction.bind(this);
+    this.deleteScore = this.deleteScore.bind(this);
+    this.formatDate = this.formatDate.bind(this);
     this.getDrillScoreObj = this.getDrillScoreObj.bind(this);
     this.getDrillScoreAverage = this.getDrillScoreAverage.bind(this);
-    this.cancelAction = this.cancelAction.bind(this);
     this.primaryAction = this.primaryAction.bind(this);
+  }
+
+  deleteScore(e) {
+    const drillId = e.target.dataset.drillid;
+    const scoreId = e.target.dataset.id;
+
+    const allScores = getStoredObject('scores');
+    let allScoresLite = allScores.filter(obj => obj.id !== drillId);
+    let targetDrill = allScores.filter(obj => obj.id === drillId);
+    const targetDrillScoresArray = targetDrill[0].scores;
+    const targetDrillScoresArrayLite = targetDrillScoresArray.filter(obj => obj.id !== scoreId);
+
+    delete targetDrill[0].scores;
+
+    targetDrill[0].scores = targetDrillScoresArrayLite;
+    allScoresLite.push(targetDrill[0]);
+
+    storeObject('scores', allScores);
+    this.context.router.transitionTo(`/history/${drillId}`);
+  }
+
+  formatDate(date) {
+    const monthNames = [
+      "Jan", "Feb", "Mar",
+      "Apr", "May", "Jun", 
+      "Jul", "Aug", "Sep", 
+      "Oct", "Nov", "Dec"
+    ];
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    return monthNames[monthIndex] + ' ' + day + ', ' + year;
   }
 
   getDrillScoreObj() {
     const drillId = this.props.params.id;
     let drillScoreObj = null;
     
-    const allScores = getAllScores();
+    const allScores = getStoredObject('scores');
 
     // Get drillScoreObj from allScores if exists
     if( allScores ) {
@@ -64,6 +99,9 @@ class History extends React.Component {
   render() {
     return ( 
       <HistoryRender 
+        deleteScore = {this.deleteScore}
+        drillId={this.props.params.id}
+        formatDate = {this.formatDate}
         getDrillScoreObj = {this.getDrillScoreObj}
         getDrillScoreAverage = {this.getDrillScoreAverage}
         cancelAction = {this.cancelAction}

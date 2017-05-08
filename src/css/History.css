@@ -11,18 +11,41 @@
  }
 
  .History  h2 + div {
- 	font-size: 2.3rem;
+ 	font-size: 1.5rem;
 	margin: 1rem 0 3rem 0;
  }
 
+ .History .button-group {
+	margin-bottom: 2rem;
+ }
+
  .History .wrapper {
- 	background: #eee;
- 	border: 1px solid #ccc;
- 	padding: 1.3rem;
- 	padding-bottom: 1.5rem;
+ 	display: flex;
+ 	align-items: center;
+ 	flex-direction: column;
+  }
+
+ .History .container {
+  	background: #eee;
+  	border: 1px solid #ccc;
+  	margin-bottom: 1.5rem;
+  	padding: 0 .8rem;
+  	padding-bottom: 1rem;
  }
 
- .History li {
- 	margin-bottom: 3rem;
+ .History li .title {
+ 	font-size: 1.6rem;
+ 	margin: 1rem;
+ 	text-align: center;
  }
 
+ .History li .average {
+ 	color: #497ADB;
+ 	font-size: 2rem;
+ 	margin: 1rem;
+ }
+
+ .History li .controls {
+ 	font-size: 1rem;
+ 	float: right;
+ }

@@ -10,10 +10,6 @@ const StatsListItem = (props) => {
   const historyButton = <button className="btn-secondary" data-id={details.id} onClick={(e) => props.goToHistory(e)}>History</button>
 
   return (
- 		/*
- 		<li key={details.id}><span className="wrapper">{details.title} - <span className="color">{average.toFixed(0)}%</span> {historyButton}</span></li>
-		*/
-
     <li key={details.id}>
       <span className="wrapper">
         <div className="container dropShadow">
@@ -25,7 +21,6 @@ const StatsListItem = (props) => {
         </div>
       </span>
     </li>
-
    );
 
 

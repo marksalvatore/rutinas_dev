@@ -8,7 +8,7 @@ import HistoryListItem from './HistoryListItem';
 import Nav from './Nav';
 import NoItems from './NoItems';
 
-import { getStoredObject, getAllScores } from '../helpers';
+import { getStoredObject } from '../helpers';
 
 class HistoryRender extends React.Component {
 
@@ -24,19 +24,25 @@ class HistoryRender extends React.Component {
           <Nav />
 
           <h2>{drillScoreObj.title}</h2>
-          <div>History: <span className="big color">{ average ? average.toFixed(0) : '0'}%</span></div>
-  
+          <div>Combined History: <span className="color">{ average ? average.toFixed(0) : '0'}%</span>
+          </div>
+
+          <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} primaryLabel="Score" primaryAction={this.props.primaryAction} />
+
           <ul className="text-center anim-pullDown">
             { drillScoreObj.scores.map( (key) => 
                 <HistoryListItem 
                   key={key.id}
                   id={key.id}
                   date={key.date}
+                  deleteScore={this.props.deleteScore}
+                  drillId={this.props.drillId}
+                  formatDate={this.props.formatDate}
                   score={ key.points / key.attempts * 100 }
                 /> )
             }
           </ul>
-          <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} primaryLabel="Score" primaryAction={this.props.primaryAction} />
+
         </section>
       )
     } else {
@@ -61,6 +67,8 @@ class HistoryRender extends React.Component {
 
 HistoryRender.propTypes = {
   cancelAction: PropTypes.func.isRequired,
+  deleteScore: PropTypes.func.isRequired,
+  drillId: PropTypes.string.isRequired,
   primaryAction: PropTypes.func.isRequired,
   getDrillScoreAverage: PropTypes.func.isRequired,
   getDrillScoreObj: PropTypes.func.isRequired

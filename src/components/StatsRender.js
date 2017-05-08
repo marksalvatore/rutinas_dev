@@ -8,7 +8,7 @@ import StatsListItem from './StatsListItem';
 
 const StatsRender = (props) => {
 
-  const allScores = props.getAllScores();
+  const allScores = props.allScores;
 
   if( allScores ) {
     const averageAll = props.getAverageAllScores();
@@ -53,9 +53,9 @@ const StatsRender = (props) => {
 }
 
 StatsRender.propTypes = {
+  allScores: PropTypes.array,
   getAverageAllScores: PropTypes.func.isRequired,
   getAverageOfScores: PropTypes.func.isRequired,
-  getAllScores: PropTypes.func.isRequired,
   goToHistory: PropTypes.func.isRequired
 }
 
