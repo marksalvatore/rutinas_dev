@@ -50,6 +50,7 @@ class HistoryRender extends React.Component {
           <div className="text-left">
              <NoItems 
                message={`Items will display here as scores are entered for this drill.`}/>
+             <ButtonGroup cancelLabel="Back" cancelAction={this.props.cancelAction} />
           </div>
 
         </section>
