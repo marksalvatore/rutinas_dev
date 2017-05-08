@@ -3,7 +3,7 @@ import React from 'react';
 
 import '../css/Stats.css';
 import StatsRender from './StatsRender';
-import { getStoredObject, getAllScores } from '../helpers';
+import { getStoredObject } from '../helpers';
 
 class Stats extends React.Component {
   constructor() {
@@ -15,7 +15,7 @@ class Stats extends React.Component {
   }
 
   getAverageAllScores() {
-    const allScores = getAllScores();
+    const allScores = getStoredObject('scores');
     let totalPoints = 0;
     let totalAttempts = 0;
     allScores.map( obj => {
@@ -45,7 +45,7 @@ class Stats extends React.Component {
   render() {
     return(
       <StatsRender 
-        getAllScores={getAllScores}
+        allScores={getStoredObject('scores')}
         getAverageAllScores={this.getAverageAllScores}
         getAverageOfScores={this.getAverageOfScores}
         goToHistory={this.goToHistory}
