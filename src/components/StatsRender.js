@@ -26,7 +26,6 @@ const StatsRender = (props) => {
               allScores.map( (key) => 
                 <StatsListItem 
                   key={key.id}
-                  id={key.id}
                   details={key}
                   getAverageOfScores={props.getAverageOfScores}
                   goToHistory={props.goToHistory}
