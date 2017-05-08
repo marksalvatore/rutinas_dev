@@ -24,12 +24,3 @@ export function getStoredObject(key) {
 	}
 	return false; 
 }
-
-export function getAllScores() {
-  if(storageAvailable('localStorage') ) {
-  	if(localStorage.getItem('scores')) {
-    	return getStoredObject('scores'); 
- 		}
- 	}
-  return false;
-}

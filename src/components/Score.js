@@ -5,7 +5,7 @@ import drillsData from '../../data-drills.json';
 import '../css/Score.css';
 import ScoreRender from './ScoreRender';
 
-import { getStoredObject, storeObject, getAllScores } from '../helpers';
+import { getStoredObject, storeObject } from '../helpers';
 
 class Score extends React.Component {
   constructor() {
@@ -39,7 +39,7 @@ class Score extends React.Component {
     date = this.getStringDate(date);
     points = parseInt(points, 10);
     attempts = parseInt(attempts, 10);
-    const allScores = getAllScores();
+    const allScores = getStoredObject('scores');
 
     // Get drillScoreObj from allScores if exists
     if( allScores ) {

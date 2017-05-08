@@ -3,7 +3,7 @@ import React from 'react';
 
 import '../css/Save.css';
 import SaveRender from './SaveRender';
-import { getAllScores } from '../helpers';
+import { getStoredObject } from '../helpers';
 
 class Save extends React.Component {
   constructor() {
@@ -53,7 +53,7 @@ class Save extends React.Component {
   getDrillScores() {
     let id = this.props.params.id;
     let scoresForDrill = [];
-    let allScores = getAllScores();
+    let allScores = getStoredObject('scores');
     // find all all Scores for this drill
     if( allScores ) {
       allScores.map((obj) => {

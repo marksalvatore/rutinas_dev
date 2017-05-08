@@ -19,7 +19,7 @@ const StatsRender = (props) => {
         <Nav />
 
           <h2>Stats</h2>
-          <div>Combined Drills: <span className="big color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
+          <div>Combined Drills: <span className="color">{ averageAll ? averageAll.toFixed(0) : '0'}%</span></div>
           <ul className="text-left anim-pullDown">
             <br />
             {
