@@ -15,15 +15,33 @@
 }
 
 .Stats .wrapper {
-	background: #eee;
-	border: 1px solid #ccc;
-	padding: 1.3rem;
-	padding-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+ }
+
+.Stats .container {
+ 	background: #eee;
+ 	border: 1px solid #ccc;
+ 	margin-bottom: 1.5rem;
+ 	padding: 0 .8rem;
+ 	padding-bottom: 1rem;
 }
 
-.Stats li {
-	margin-bottom: 2rem;
-	font-size: 1.2rem;
+.Stats li .title {
+	font-size: 1.6rem;
+	margin: 1rem;
+	text-align: center;
 }
 
+.Stats li .average {
+	color: #497ADB;
+	font-size: 2rem;
+	margin: 1rem;
+}
+
+.Stats li .controls {
+	font-size: 1rem;
+	float: right;
+}
 

@@ -19,7 +19,7 @@ const DrillListItem = (props) => {
         <span className="wrapper">
           <div className="container dropShadow">
             <div className="title">{title}</div>
-            <div className="controls">{scoreButton} {setupButton} {historyButton} {deleteButton}</div>
+            <div>{scoreButton} {setupButton} {historyButton} {deleteButton}</div>
           </div>
         </span>
       </li>
