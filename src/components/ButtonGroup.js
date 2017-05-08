@@ -11,7 +11,7 @@ const ButtonGroup = (props) => {
 		cancelButton = <button type="button" className="btn-cancel" onClick={props.cancelAction}>{props.cancelLabel}</button>
 	}
 	if(props.primaryAction) {
-		primaryButton = <button type="button" className="btn-primary" onClick={props.primaryAction}>{props.saveLabel}</button>
+		primaryButton = <button type="button" className="btn-primary" onClick={props.primaryAction}>{props.primaryLabel}</button>
 	}
 	if(props.secondaryAction) {
 		secondaryButton = <button type="button" className="btn-secondary" onClick={props.secondaryAction}>{props.extraLabel}</button>
