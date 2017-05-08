@@ -44,7 +44,7 @@ class RoutineDetail extends React.Component {
     const targetRoutineArr = storedRoutines.filter(obj => obj.id === routineId);
     const targetRoutineObj = targetRoutineArr[0];
 
-    // storedRoutinesLite will contain all routines except our target. We'll the target back after deleting the drill from its rDrills array, if it it has any left.
+    // storedRoutinesLite will contain all routines except the target. We'll put the target back after deleting the drill from its rDrills array, if it it has any left.
     let storedRoutinesLite = storedRoutines.filter(obj => obj.id !== routineId);
 
     // Delete the target drill from the rDrills array in the targetRoutineObj

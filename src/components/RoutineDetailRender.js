@@ -21,7 +21,6 @@ const RoutineDetailRender = (props) => {
               .map(key => 
               <DrillListItem 
                 key={props.routineDrills[key].id} 
-                id={props.routineDrills[key].id}
                 details={props.routineDrills[key]} 
                 goToScore={props.goToScore}
                 deleteDrill={props.deleteDrill}

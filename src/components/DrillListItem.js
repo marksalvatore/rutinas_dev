@@ -15,7 +15,7 @@ const DrillListItem = (props) => {
     const scoreButton = <button className="btn-primary"data-id={details.id} onClick={(e) => props.goToScore(e)}>Score</button>
 
     return (
-      <li key={props.id}>
+      <li key={details.id}>
         <span className="wrapper">
           <div className="container dropShadow">
             <div className="title">{title}</div>
@@ -38,8 +38,7 @@ DrillListItem.propTypes = {
   details: PropTypes.object.isRequired,
   goToHistory: PropTypes.func,
   goToScore: PropTypes.func,
-  goToSetup: PropTypes.func,
-  id: PropTypes.string
+  goToSetup: PropTypes.func
 }
 
 export default DrillListItem;
