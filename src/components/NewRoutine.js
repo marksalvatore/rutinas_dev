@@ -204,7 +204,7 @@ class NewRoutine extends React.Component {
   render() {
 
     let titles = this.getTitlesForSelect();
-    let routinesCount = this.routinesCount().sort();
+    let routinesCount = this.routinesCount();
 
     return (
       <NewRoutineRender 
