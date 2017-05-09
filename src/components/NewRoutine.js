@@ -10,22 +10,59 @@ class NewRoutine extends React.Component {
   constructor() {
     super();
 
+    this.getRemainingRoutineTitles = this.getRemainingRoutineTitles.bind(this);
     this.isDrillSelected = this.isDrillSelected.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
     this.storeNewRoutine = this.storeNewRoutine.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
     this.primaryAction = this.primaryAction.bind(this);
+    this.updateDefaultRoutineTitle = this.updateDefaultRoutineTitle.bind(this);
+    this.updateRoutineTitle = this.updateRoutineTitle.bind(this);
+
+    this.daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
     this.state = {
       drills: {},
       routines: {},
-      selectedDrills: []
+      selectedDrills: [],
+      routineTitle: 'Monday'
     };
   }
 
   componentWillMount() {
     this.loadDrills();
+    this.updateDefaultRoutineTitle();
+  }
+
+  getRemainingRoutineTitles() {
+    // Returns array of days of week not yet selected for the title of a routine
+    const allRoutines = getStoredObject('routines');
+    let usedTitles = [];
+    let remainingRoutineTitles = [];
+
+    if(allRoutines) {
+
+      for(let routine of allRoutines) {
+        usedTitles.push(routine.title);
+      }
+
+      for(let day of this.daysOfWeek) {
+        let foundDay = null;
+        foundDay = usedTitles.filter(used => used === day);
+        if(!foundDay.length) {
+          remainingRoutineTitles.push(day);
+        }
+      }
+    }
+
+    if(!remainingRoutineTitles.length) {
+      remainingRoutineTitles = this.daysOfWeek;
+    }
+    console.log('usedTitles', usedTitles);
+    console.log('remainingRoutineTitles', remainingRoutineTitles);
+
+    return remainingRoutineTitles;
   }
 
   isDrillSelected(id) {
@@ -60,14 +97,10 @@ class NewRoutine extends React.Component {
   }
 
   makeNewRoutineObj() {
-    // use timestamp for unique id
-    const timestamp = Date.now();
-    const id = `${timestamp}`;
-    const substring = id.substr(id.length - 4);
-
+    const timestampId = Date.now();
     const newRoutine = {
-      "id": `${id}`,
-      "title" : `Routine::${substring}`,
+      id: `routine-${timestampId}`,
+      "title" : this.state.routineTitle,
       "rDrills": this.state.selectedDrills
     }
     return newRoutine;
@@ -129,14 +162,37 @@ class NewRoutine extends React.Component {
     }
   }
 
+  updateRoutineTitle(e) {
+    e.preventDefault();
+    const routineTitle = e.target.value;
+    this.setState({ routineTitle });
+  }
+
+  updateDefaultRoutineTitle() {
+    let defaultTitle = '';
+    const remainingDays = this.getRemainingRoutineTitles();
+    if(remainingDays.length) {
+      defaultTitle = remainingDays[0];
+    } else {
+      defaultTitle = 'Monday';
+    }
+    
+    console.log('defaultTitle', defaultTitle);
+    this.setState({ routineTitle: defaultTitle});
+  }
+
   render() {
     return (
       <NewRoutineRender 
+        daysOfWeek={this.daysOfWeek}
         drills={[...this.state.drills]}
+        getRemainingRoutineTitles={this.getRemainingRoutineTitles}
         isDrillSelected={this.isDrillSelected}
         primaryAction={this.primaryAction}
         selectedDrills={[...this.state.selectedDrills]}
+        routineTitle={this.state.routineTitle}
         toggleSelectItem={this.toggleSelectItem}
+        updateRoutineTitle={this.updateRoutineTitle}
       />
     )
   }

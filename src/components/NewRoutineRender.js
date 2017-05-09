@@ -4,52 +4,71 @@ import PropTypes from 'prop-types';
 import Drill from './Drill';
 import DrillListTitle from './DrillListTitle';
 import Nav from './Nav';
+//import NoItems from './NoItems';
+//import RoutineTitleForm from './RoutineTitleForm';
 
 const NewRoutineRender = (props) => {
- 
-  return (
-      <section className="NewRoutine">
 
-        <Nav />
+  const remainingTitles = props.getRemainingRoutineTitles();
+  let titles = [];
 
-        <h2>New Routine</h2>
+  if(remainingTitles.length) {
+    titles = remainingTitles;
+  } else {
+    titles = props.daysOfWeek;
+  }
 
-        <div className="wrapper">
+    return (
+        <section className="NewRoutine">
 
-          <ul className="frame dropShadow anim-slideUpExpand">
-             { Object
-               .keys(props.drills)
-               .map(key => 
-                 <Drill  
-                   key={props.drills[key].id}
-                   id={props.drills[key].id}
+          <Nav />
 
-                   details={props.drills[key]}
-                   isDrillSelected={props.isDrillSelected}
-                   index={key}
-                   toggleSelectItem={props.toggleSelectItem}
-                   />)
-             }
-           </ul>
+          <h2>New Routine</h2>
 
-           <ul className="frame-list">
-               <div className="frame-list-title">Selected Drills</div>
-               {props.selectedDrills.map( key => 
-                   <DrillListTitle 
-                     key={key.id}
-                     id={key.id}
-                     title={key.title}
-                   />)
+          <form>
+          <select value={props.routineTitle} onChange={(e) => props.updateRoutineTitle(e)}>
+          { titles.map((title, index) => {
+            return <option key={index} value={title}>{title}</option>
+          }) }
+          </select>
+          </form>
+
+          <div className="wrapper">
+
+            <ul className="frame dropShadow anim-slideUpExpand">
+               { Object
+                 .keys(props.drills)
+                 .map(key => 
+                   <Drill  
+                     key={props.drills[key].id}
+                     id={props.drills[key].id}
+
+                     details={props.drills[key]}
+                     isDrillSelected={props.isDrillSelected}
+                     index={key}
+                     toggleSelectItem={props.toggleSelectItem}
+                     />)
                }
-               <div className="wrapper">
-                 <button className="btn-primary" onClick={props.primaryAction}>Save Routine</button>
-               </div>
-           </ul>
-        </div>
+             </ul>
 
-      </section> 
-  );
+             <ul className="frame-list">
+                 <div className="frame-list-title">Selected Drills</div>
+                 {props.selectedDrills.map( key => 
+                     <DrillListTitle 
+                       key={key.id}
+                       id={key.id}
+                       title={key.title}
+                     />)
+                 }
+                 <div className="wrapper">
+                   <button className="btn-primary" onClick={props.primaryAction}>Save Routine</button>
+                 </div>
+             </ul>
+          </div>
 
+        </section> 
+    );
+  
 }
 
 NewRoutineRender.contextTypes = {
@@ -57,11 +76,13 @@ NewRoutineRender.contextTypes = {
 }
 
 NewRoutineRender.propTypes = {
+  daysOfWeek: PropTypes.array.isRequired,
   drills: PropTypes.array.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
   primaryAction: PropTypes.func.isRequired,
   selectedDrills: PropTypes.array.isRequired,
-  toggleSelectItem: PropTypes.func.isRequired
+  toggleSelectItem: PropTypes.func.isRequired,
+  updateRoutineTitle: PropTypes.func.isRequired
 }
 
 export default NewRoutineRender;

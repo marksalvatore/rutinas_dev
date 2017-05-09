@@ -105,3 +105,8 @@
 .NewRoutine .btn-primary {
 	margin: 1rem auto;
 }
+
+.NewRoutine select {
+	font-size: 2rem;
+	margin-bottom: 2rem;
+}
