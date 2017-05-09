@@ -73,7 +73,10 @@ const NewRoutineRender = (props) => {
 
          <h2>New Routine</h2>
 
-         <p>Rutinas support 7 routines, one for each day of the week. If you'd like to change a routine, go to <strong>Routines</strong> to delete if first, then click <strong>New+</strong> again to create it.</p>
+         <div className="text-left">
+           <p><strong className="color">Rutinas</strong> support 7 routines, one for each day of the week. If you'd like to change a routine, first go to the <strong>Routines</strong> tab to delete it, then click the <strong>New+</strong> tab again to create it.</p>
+         </div>
+
       </section>   
 
     );

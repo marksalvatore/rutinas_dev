@@ -15,11 +15,16 @@
 .Routines .wrapper {
 	background: #eee;
 	border: 1px solid #ccc;
-	padding: 1.8rem 1em;
-	padding-bottom: 2rem;
+	padding: .75rem;
+	padding-bottom: 1rem;
 }
 
 .Routines li {
-	margin-bottom: 4.5rem;
+	font-size: 1.5rem;
+	margin-bottom: 2.5rem;
 }
 
+.Routines button[data-id] {
+	padding: .3rem;
+	margin-left: 5rem;
+}
