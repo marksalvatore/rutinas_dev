@@ -2,10 +2,19 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import '../css/GetStarted.css';
+import { getStoredObject, storeObject } from '../helpers';
 
 const GetStarted = () => {
 
   const logo = "https://pad.chalkysticks.com/dbcb7.svg";
+  // Mechanism to clear localStorage on devices, during testing.
+  if(getStoredObject('flag')) {
+    console.log('flag exists');
+  } else {
+    localStorage.clear();
+    console.log('no flag, so storage was cleared');
+    storeObject('flag', 1);
+  }
   
   return (
     <section className="GetStarted">
