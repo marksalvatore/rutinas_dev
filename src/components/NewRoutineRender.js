@@ -9,15 +9,6 @@ import Nav from './Nav';
 
 const NewRoutineRender = (props) => {
 
-  const remainingTitles = props.getRemainingRoutineTitles();
-  let titles = [];
-
-  if(remainingTitles.length) {
-    titles = remainingTitles;
-  } else {
-    titles = props.daysOfWeek;
-  }
-
     return (
         <section className="NewRoutine">
 
@@ -27,7 +18,7 @@ const NewRoutineRender = (props) => {
 
           <form>
           <select value={props.routineTitle} onChange={(e) => props.updateRoutineTitle(e)}>
-          { titles.map((title, index) => {
+          { props.titlesForSelect.map((title, index) => {
             return <option key={index} value={title}>{title}</option>
           }) }
           </select>
@@ -76,11 +67,11 @@ NewRoutineRender.contextTypes = {
 }
 
 NewRoutineRender.propTypes = {
-  daysOfWeek: PropTypes.array.isRequired,
   drills: PropTypes.array.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
   primaryAction: PropTypes.func.isRequired,
   selectedDrills: PropTypes.array.isRequired,
+  titlesForSelect: PropTypes.array.isRequired,
   toggleSelectItem: PropTypes.func.isRequired,
   updateRoutineTitle: PropTypes.func.isRequired
 }

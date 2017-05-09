@@ -11,6 +11,7 @@ class NewRoutine extends React.Component {
     super();
 
     this.getRemainingRoutineTitles = this.getRemainingRoutineTitles.bind(this);
+    this.getTitlesForSelect = this.getTitlesForSelect.bind(this);
     this.isDrillSelected = this.isDrillSelected.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
@@ -63,6 +64,18 @@ class NewRoutine extends React.Component {
     console.log('remainingRoutineTitles', remainingRoutineTitles);
 
     return remainingRoutineTitles;
+  }
+
+  getTitlesForSelect() {
+    const remainingTitles = this.getRemainingRoutineTitles();
+    let titles = [];
+
+    if(remainingTitles.length) {
+      titles = remainingTitles;
+    } else {
+      titles = this.daysOfWeek;
+    }
+    return titles;
   }
 
   isDrillSelected(id) {
@@ -179,15 +192,16 @@ class NewRoutine extends React.Component {
   }
 
   render() {
+
+    let titles = this.getTitlesForSelect();
     return (
       <NewRoutineRender 
-        daysOfWeek={this.daysOfWeek}
         drills={[...this.state.drills]}
-        getRemainingRoutineTitles={this.getRemainingRoutineTitles}
         isDrillSelected={this.isDrillSelected}
         primaryAction={this.primaryAction}
         selectedDrills={[...this.state.selectedDrills]}
         routineTitle={this.state.routineTitle}
+        titlesForSelect={titles}
         toggleSelectItem={this.toggleSelectItem}
         updateRoutineTitle={this.updateRoutineTitle}
       />
