@@ -9,6 +9,9 @@ import Nav from './Nav';
 
 const NewRoutineRender = (props) => {
 
+  if(props.routinesCount < 7) {
+    // Don't allow more than 7 routines (one for each day of the week)
+
     return (
         <section className="NewRoutine">
 
@@ -59,6 +62,23 @@ const NewRoutineRender = (props) => {
 
         </section> 
     );
+
+
+  } else {
+
+    return (
+       <section className="NewRoutine">
+
+         <Nav />
+
+         <h2>New Routine</h2>
+
+         <p>Rutinas support 7 routines, one for each day of the week. If you'd like to change a routine, go to <strong>Routines</strong> to delete if first, then click <strong>New+</strong> again to create it.</p>
+      </section>   
+
+    );
+  }
+
   
 }
 
@@ -70,6 +90,7 @@ NewRoutineRender.propTypes = {
   drills: PropTypes.array.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
   primaryAction: PropTypes.func.isRequired,
+  routinesCount: PropTypes.number.isRequired,
   selectedDrills: PropTypes.array.isRequired,
   titlesForSelect: PropTypes.array.isRequired,
   toggleSelectItem: PropTypes.func.isRequired,

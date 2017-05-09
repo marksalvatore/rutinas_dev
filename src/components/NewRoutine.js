@@ -15,6 +15,7 @@ class NewRoutine extends React.Component {
     this.isDrillSelected = this.isDrillSelected.bind(this);
     this.loadDrills = this.loadDrills.bind(this);
     this.makeNewRoutineObj = this.makeNewRoutineObj.bind(this);
+    this.routinesCount = this.routinesCount.bind(this);
     this.storeNewRoutine = this.storeNewRoutine.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
     this.primaryAction = this.primaryAction.bind(this);
@@ -119,6 +120,15 @@ class NewRoutine extends React.Component {
     return newRoutine;
   }
 
+  routinesCount() {
+    const allRoutines = getStoredObject('routines');
+    if(allRoutines !== null && allRoutines.length) {
+      return allRoutines.length;
+    } else {
+      return 0;
+    }
+  }
+
   toggleSelectItem(e) {
     const id = e.target.dataset.id;
     const index = e.target.dataset.index; // index in drills
@@ -194,6 +204,8 @@ class NewRoutine extends React.Component {
   render() {
 
     let titles = this.getTitlesForSelect();
+    let routinesCount = this.routinesCount();
+
     return (
       <NewRoutineRender 
         drills={[...this.state.drills]}
@@ -201,6 +213,7 @@ class NewRoutine extends React.Component {
         primaryAction={this.primaryAction}
         selectedDrills={[...this.state.selectedDrills]}
         routineTitle={this.state.routineTitle}
+        routinesCount={routinesCount}
         titlesForSelect={titles}
         toggleSelectItem={this.toggleSelectItem}
         updateRoutineTitle={this.updateRoutineTitle}
