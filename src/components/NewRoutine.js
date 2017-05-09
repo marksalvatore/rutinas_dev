@@ -169,16 +169,13 @@ class NewRoutine extends React.Component {
   }
 
   updateDefaultRoutineTitle() {
-    let defaultTitle = '';
     const remainingDays = this.getRemainingRoutineTitles();
     if(remainingDays.length) {
-      defaultTitle = remainingDays[0];
+      this.setState({ routineTitle: remainingDays[0]});
+      console.log('defaultTitle', remainingDays[0]);
     } else {
-      defaultTitle = 'Monday';
+      console.log('defaultTitle', this.state.routineTitle);
     }
-    
-    console.log('defaultTitle', defaultTitle);
-    this.setState({ routineTitle: defaultTitle});
   }
 
   render() {
