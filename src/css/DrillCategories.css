@@ -11,6 +11,8 @@
 }
 
 .DrillCategories button {
+	background: #eee;
+	color: #333;
 	font-size: 1rem;
 	padding: .6em;
 }
