@@ -6,6 +6,7 @@ const Drill = (props) => {
 
   const { details, index } = props;
   const isSelected = props.isDrillSelected(props.id);
+  const diagram = <img onClick={props.toggleSelectItem} src={details.url} alt={details.title} data-id={details.id} data-index={index} />
   const buttonText = isSelected === true ? 'Selected' : 'Select this drill';
   const button = 
           <div className={`button ${isSelected === true ? 'item-button active' : 'item-button'}`} 
@@ -21,7 +22,7 @@ const Drill = (props) => {
         <div className="item-title">
             {details.title}
         </div>
-        <img src={details.url} alt={details.title} />
+        {diagram}
         {button}
         <hr />
     </li>
