@@ -25,7 +25,7 @@ class Setup extends React.Component {
 
   getDrills() {
     // load from json, or storage if already loaded
-    if(!localStorage.getItem('drills')) {
+    if(!getStoredObject('drills')) {
       storeObject('drills', drillsData);
       return drillsData;
 

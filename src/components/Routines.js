@@ -42,7 +42,7 @@ class Routines extends React.Component {
   }
 
   loadRoutines() {
-    if(localStorage.getItem('routines')) {
+    if(getStoredObject('routines')) {
       let routines = getStoredObject('routines');
       this.setState({ routines });
     }

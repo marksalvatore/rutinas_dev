@@ -116,7 +116,7 @@ class RoutineDetail extends React.Component {
 
   loadDrills() {
     // load from localStorage, else from json
-    if(!localStorage.getItem('drills')) {
+    if(!getStoredObject('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
     } 
@@ -126,7 +126,7 @@ class RoutineDetail extends React.Component {
   }
 
   loadRoutines() {
-    if(localStorage.getItem('routines')) {
+    if(getStoredObject('routines')) {
       this.setState({routines: getStoredObject('routines')}, function(){
         this.loadRoutineDrills(); // load after routines, because required
         console.log("Routine drills loaded.");
