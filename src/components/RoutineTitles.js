@@ -5,7 +5,7 @@ const RoutineTitles = (props) => {
   /* called by NewRoutineRender */
 
   return (
-  	<form>
+  	<form className="wrapper">
   	<select value={props.routineTitle} onChange={(e) => props.updateRoutineTitle(e)}>
 	  	{ props.titlesForSelect.map((title, index) => {
 	  	  return <option key={index} value={title}>{title}</option>
@@ -21,7 +21,8 @@ RoutineTitles.contextTypes = {
 
 RoutineTitles.propTypes = {
   routineTitle: PropTypes.string.isRequired,
-  titlesForSelect: PropTypes.array.isRequired
+  titlesForSelect: PropTypes.array.isRequired,
+  updateRoutineTitle: PropTypes.func.isRequired
 }
 
 export default RoutineTitles;

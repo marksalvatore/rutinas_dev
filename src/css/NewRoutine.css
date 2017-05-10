@@ -31,9 +31,9 @@
 	white-space: nowrap;
 }
 
-.NewRoutine .frame-list {
+.NewRoutine .frame-list-column {
 	align-self: flex-start;
-	border: 1px solid #ccc;
+
 	flex-basis: 45%;
 	flex-grow: 1;
 	font-family: 'Jura', sans-serif;
@@ -43,6 +43,14 @@
 	padding: 0;
 	padding-left: 1rem;
 	text-align: left;
+}
+
+.NewRoutine .frame-list {
+	border: 1px solid #ccc;
+}
+
+.NewRoutine .frame-list li {
+	margin-left: 1rem;
 }
 
 .NewRoutine .frame-list-title {
@@ -108,8 +116,8 @@
 
 .NewRoutine select {
 	font-size: 1.5rem;
-	margin-right: 1rem;
-	margin-bottom: 2rem;
+	text-align: center;
+	margin-bottom: 1rem;
 }
 
 .NewRoutine .controls {

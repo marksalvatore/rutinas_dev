@@ -90,7 +90,7 @@ button.btn-danger {
 	background: #d31913 linear-gradient(hsla(0, 0%, 100%, .2), transparent);
 }
 button.btn-danger:hover {
-	color: gold;
+	color: #ccc;
 }
 button.btn-special {
 	/*used in list of selected drills*/

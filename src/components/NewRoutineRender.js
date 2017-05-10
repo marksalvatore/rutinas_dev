@@ -21,10 +21,6 @@ const NewRoutineRender = (props) => {
 
           <div className="controls">
 
-            <RoutineTitles 
-                routineTitle={props.routineTitle} 
-                titlesForSelect={props.titlesForSelect} />
-
             <DrillCategories 
                 categories={props.categories} 
                 selectedCategory={props.selectedCategory} 
@@ -51,19 +47,28 @@ const NewRoutineRender = (props) => {
                }
              </ul>
 
-             <ul className="frame-list">
-                 <div className="frame-list-title">Selected Drills</div>
-                 {props.selectedDrills.map( key => 
-                     <DrillListTitle 
-                       key={key.id}
-                       id={key.id}
-                       title={key.title}
-                     />)
-                 }
-                 <div className="wrapper">
-                   <button className="btn-primary" onClick={props.primaryAction}>Save Routine</button>
-                 </div>
-             </ul>
+
+            <div className="frame-list-column">
+
+             <RoutineTitles 
+                 routineTitle={props.routineTitle} 
+                 titlesForSelect={props.titlesForSelect}
+                 updateRoutineTitle={props.updateRoutineTitle} />
+
+              <ul className="frame-list">
+                  <div className="frame-list-title">Selected Drills</div>
+                  {props.selectedDrills.map( key => 
+                      <DrillListTitle 
+                        key={key.id}
+                        id={key.id}
+                        title={key.title}
+                      />)
+                  }
+                  <div className="wrapper">
+                    <button className="btn-primary" onClick={props.primaryAction}>Save Routine</button>
+                  </div>
+              </ul>
+            </div>
           </div>
 
         </section> 
