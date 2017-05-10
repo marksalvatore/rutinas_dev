@@ -107,6 +107,16 @@
 }
 
 .NewRoutine select {
-	font-size: 1.8rem;
+	font-size: 1.5rem;
+	margin-right: 1rem;
 	margin-bottom: 2rem;
+}
+
+.NewRoutine .controls {
+	display: flex;
+	align-items: center;
+	flex-wrap: no-wrap;
+	justify-content: center;
+	width: 100vw;
+	border: 0px solid red;
 }

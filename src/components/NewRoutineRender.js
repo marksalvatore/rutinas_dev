@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Drill from './Drill';
-import DrillFilter from './DrillFilter';
+import DrillCategories from './DrillCategories';
 import DrillListTitle from './DrillListTitle';
 import Nav from './Nav';
-import RoutinesTitleSelect from './RoutinesTitleSelect';
+import RoutineTitles from './RoutineTitles';
 
 const NewRoutineRender = (props) => {
-
 
   if(props.routinesCount < 7) {
     // Don't allow more than 7 routines (one for each day of the week)
@@ -20,9 +19,18 @@ const NewRoutineRender = (props) => {
 
           <h2>New Routine</h2>
 
-          <RoutinesTitleSelect routineTitle={props.routineTitle} titlesForSelect={props.titlesForSelect} />
+          <div className="controls">
 
-          <DrillFilter categories={props.categories} />
+            <RoutineTitles 
+                routineTitle={props.routineTitle} 
+                titlesForSelect={props.titlesForSelect} />
+
+            <DrillCategories 
+                categories={props.categories} 
+                selectedCategory={props.selectedCategory} 
+                updateCategory={props.updateCategory} />
+
+          </div>
 
           <div className="wrapper">
 
@@ -37,6 +45,7 @@ const NewRoutineRender = (props) => {
                      details={props.drills[key]}
                      isDrillSelected={props.isDrillSelected}
                      index={key}
+                     selectedCategory={props.selectedCategory}
                      toggleSelectItem={props.toggleSelectItem}
                     />)
                }
@@ -92,9 +101,11 @@ NewRoutineRender.propTypes = {
   isDrillSelected: PropTypes.func.isRequired,
   primaryAction: PropTypes.func.isRequired,
   routinesCount: PropTypes.number.isRequired,
+  selectedCategory: PropTypes.string.isRequired,
   selectedDrills: PropTypes.array.isRequired,
   titlesForSelect: PropTypes.array.isRequired,
   toggleSelectItem: PropTypes.func.isRequired,
+  updateCategory: PropTypes.func.isRequired,
   updateRoutineTitle: PropTypes.func.isRequired
 }
 

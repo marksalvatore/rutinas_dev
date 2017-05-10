@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const RoutinesTitleSelect = (props) => {
+const RoutineTitles = (props) => {
+  /* called by NewRoutineRender */
 
   return (
-
   	<form>
   	<select value={props.routineTitle} onChange={(e) => props.updateRoutineTitle(e)}>
 	  	{ props.titlesForSelect.map((title, index) => {
@@ -12,17 +12,16 @@ const RoutinesTitleSelect = (props) => {
 	  	}) }
   	</select>
   	</form>
-
   );
 }
 
-RoutinesTitleSelect.contextTypes = {
+RoutineTitles.contextTypes = {
   router: React.PropTypes.object
 }
 
-RoutinesTitleSelect.propTypes = {
+RoutineTitles.propTypes = {
   routineTitle: PropTypes.string.isRequired,
   titlesForSelect: PropTypes.array.isRequired
 }
 
-export default RoutinesTitleSelect;
+export default RoutineTitles;

@@ -20,6 +20,7 @@ class NewRoutine extends React.Component {
     this.storeNewRoutine = this.storeNewRoutine.bind(this);
     this.toggleSelectItem = this.toggleSelectItem.bind(this);
     this.primaryAction = this.primaryAction.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
     this.updateDefaultRoutineTitle = this.updateDefaultRoutineTitle.bind(this);
     this.updateRoutineTitle = this.updateRoutineTitle.bind(this);
 
@@ -112,7 +113,7 @@ class NewRoutine extends React.Component {
 
     /*REMOVED TEMPORARILY*/
 
-    /*if(!localStorage.getItem('drills')) {
+    /*if(!getStoredObject('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
       console.log('Drills loaded from json file');
@@ -121,7 +122,6 @@ class NewRoutine extends React.Component {
       this.setState({drills: getStoredObject('drills')});
       console.log('Drills loaded from localStorage');
     }*/
-
 
     return true;
   }
@@ -169,7 +169,6 @@ class NewRoutine extends React.Component {
       selectedDrillsCurrent.push(drillItem);
       selectedDrills = [...selectedDrillsCurrent];
     }
-
     this.setState({ selectedDrills });
   }
 
@@ -201,6 +200,11 @@ class NewRoutine extends React.Component {
     }
   }
 
+  updateCategory(e) {
+    let selectedCategory = e.target.dataset.category;
+    this.setState({ selectedCategory });
+  }
+
   updateRoutineTitle(e) {
     e.preventDefault();
     const routineTitle = e.target.value;
@@ -218,7 +222,6 @@ class NewRoutine extends React.Component {
   }
 
   render() {
-
     let titlesForSelect = this.getTitlesForSelect();
     let routinesCount = this.routinesCount();
     let categories = this.getCategories();
@@ -229,11 +232,13 @@ class NewRoutine extends React.Component {
         drills={[...this.state.drills]}
         isDrillSelected={this.isDrillSelected}
         primaryAction={this.primaryAction}
-        selectedDrills={[...this.state.selectedDrills]}
         routineTitle={this.state.routineTitle}
         routinesCount={routinesCount}
+        selectedCategory={this.state.selectedCategory}
+        selectedDrills={[...this.state.selectedDrills]}
         titlesForSelect={titlesForSelect}
         toggleSelectItem={this.toggleSelectItem}
+        updateCategory={this.updateCategory}
         updateRoutineTitle={this.updateRoutineTitle}
       />
     )

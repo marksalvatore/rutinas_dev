@@ -2,18 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Drill = (props) => {
+  /* called by NewRoutineRender */
 
   const { details, index } = props;
   const isSelected = props.isDrillSelected(props.id);
   const buttonText = isSelected === true ? 'Selected' : 'Select this drill';
-  const button = <div className={`button ${isSelected === true ? 'item-button active' : 'item-button'}`} 
-                       onClick={props.toggleSelectItem} 
-                       data-id={details.id}
-                       data-index={index}
-                 >{buttonText}</div>
+  const button = 
+          <div className={`button ${isSelected === true ? 'item-button active' : 'item-button'}`} 
+               onClick={props.toggleSelectItem} 
+               data-id={details.id}
+               data-index={index}>
+
+              {buttonText}
+          </div>
 
   return (
-    <li key={props.id} className="item">
+    <li key={props.id} className={(props.selectedCategory === 'all' || props.selectedCategory === details.category) ? null : 'hide'}>
         <div className="item-title">
             {details.title}
         </div>
@@ -22,7 +26,6 @@ const Drill = (props) => {
         <hr />
     </li>
   );
-
 }
 
 Drill.propTypes = {
@@ -30,6 +33,7 @@ Drill.propTypes = {
   id: PropTypes.string.isRequired,
   index: PropTypes.string.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.string.isRequired,
   toggleSelectItem: PropTypes.func.isRequired,
 }
 
