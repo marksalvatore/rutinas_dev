@@ -1,15 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const DrillFilter = () => {
+const DrillFilter = (props) => {
+
   return (
-  	<div className="Nav">
-        <div className="Nav-item active">ALL</div>
-    	  <div className="Nav-item">Safeties</div>
-    	  <div className="Nav-item">Cuts</div>
-    	  <div className="Nav-item">Fundamentals</div>
-    	  <div className="Nav-item">Classics</div>
-  	</div>
+
+		<div className="categories">
+		  { props.categories.map((cat, index) => {
+		    return <div key={index}>{cat}</div>
+		  }) }
+		</div>
+
   );
+}
+
+DrillFilter.contextTypes = {
+  router: React.PropTypes.object
+}
+
+DrillFilter.propTypes = {
+  categories: PropTypes.array.isRequired,
 }
 
 export default DrillFilter;

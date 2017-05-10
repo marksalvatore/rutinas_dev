@@ -10,6 +10,7 @@ class NewRoutine extends React.Component {
   constructor() {
     super();
 
+    this.getCategories = this.getCategories.bind(this);
     this.getRemainingRoutineTitles = this.getRemainingRoutineTitles.bind(this);
     this.getTitlesForSelect = this.getTitlesForSelect.bind(this);
     this.isDrillSelected = this.isDrillSelected.bind(this);
@@ -28,13 +29,28 @@ class NewRoutine extends React.Component {
       drills: {},
       routines: {},
       selectedDrills: [],
-      routineTitle: 'Monday'
+      routineTitle: 'Monday',
+      selectedCategory: 'all'
     };
   }
 
   componentWillMount() {
     this.loadDrills();
     this.updateDefaultRoutineTitle();
+    console.log('this.getCategories()', this.getCategories());
+  }
+
+  getCategories() {
+    const allDrills = getStoredObject('drills');
+    let categories = [];
+    if(allDrills) {
+       for(let d of allDrills){
+         categories.push(d.category);
+       }
+    }
+    // Strip out dupes and sort
+    categories = [...new Set(categories)].sort();
+    return categories;
   }
 
   getRemainingRoutineTitles() {
@@ -203,18 +219,20 @@ class NewRoutine extends React.Component {
 
   render() {
 
-    let titles = this.getTitlesForSelect();
+    let titlesForSelect = this.getTitlesForSelect();
     let routinesCount = this.routinesCount();
+    let categories = this.getCategories();
 
     return (
       <NewRoutineRender 
+        categories={categories}
         drills={[...this.state.drills]}
         isDrillSelected={this.isDrillSelected}
         primaryAction={this.primaryAction}
         selectedDrills={[...this.state.selectedDrills]}
         routineTitle={this.state.routineTitle}
         routinesCount={routinesCount}
-        titlesForSelect={titles}
+        titlesForSelect={titlesForSelect}
         toggleSelectItem={this.toggleSelectItem}
         updateRoutineTitle={this.updateRoutineTitle}
       />

@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Drill from './Drill';
+import DrillFilter from './DrillFilter';
 import DrillListTitle from './DrillListTitle';
 import Nav from './Nav';
-//import NoItems from './NoItems';
-//import RoutineTitleForm from './RoutineTitleForm';
+import RoutinesTitleSelect from './RoutinesTitleSelect';
 
 const NewRoutineRender = (props) => {
+
 
   if(props.routinesCount < 7) {
     // Don't allow more than 7 routines (one for each day of the week)
@@ -19,13 +20,9 @@ const NewRoutineRender = (props) => {
 
           <h2>New Routine</h2>
 
-          <form>
-          <select value={props.routineTitle} onChange={(e) => props.updateRoutineTitle(e)}>
-          { props.titlesForSelect.map((title, index) => {
-            return <option key={index} value={title}>{title}</option>
-          }) }
-          </select>
-          </form>
+          <RoutinesTitleSelect routineTitle={props.routineTitle} titlesForSelect={props.titlesForSelect} />
+
+          <DrillFilter categories={props.categories} />
 
           <div className="wrapper">
 
@@ -41,7 +38,7 @@ const NewRoutineRender = (props) => {
                      isDrillSelected={props.isDrillSelected}
                      index={key}
                      toggleSelectItem={props.toggleSelectItem}
-                     />)
+                    />)
                }
              </ul>
 
@@ -90,6 +87,7 @@ NewRoutineRender.contextTypes = {
 }
 
 NewRoutineRender.propTypes = {
+  categories: PropTypes.array.isRequired,
   drills: PropTypes.array.isRequired,
   isDrillSelected: PropTypes.func.isRequired,
   primaryAction: PropTypes.func.isRequired,
