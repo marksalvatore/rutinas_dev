@@ -6,7 +6,8 @@ import { getStoredObject, storeObject } from '../helpers';
 
 const GetStarted = () => {
 
-  const logo = "https://pad.chalkysticks.com/dbcb7.svg";
+  //const logo = "https://pad.chalkysticks.com/d41f6.svg";
+  const logo = "https://pad.chalkysticks.com/583a0.svg";
   // Mechanism to clear localStorage on devices, during testing.
   if(getStoredObject('flag')) {
     console.log('flag exists');
