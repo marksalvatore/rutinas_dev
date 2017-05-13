@@ -18,7 +18,7 @@ const Drill = (props) => {
           </div>
 
   return (
-    <li key={props.id} className={(props.selectedCategory === 'all' || props.selectedCategory === details.category) ? null : 'hide'}>
+    <li className={(props.selectedCategory === 'all' || props.selectedCategory === details.category) ? null : 'hide'}>
         <div className="item-title">
             {details.title}
         </div>

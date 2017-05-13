@@ -137,6 +137,7 @@ class RoutineDetail extends React.Component {
   loadRoutineDrills() {
     let id = this.props.params.id; // routineId
     let routines = this.state.routines;
+    console.log('routines', routines);
     // find this routine from routines
     let routineObj = routines.find(obj => obj.id === id);
     // extract rDrillsArray from that routine
@@ -152,6 +153,7 @@ class RoutineDetail extends React.Component {
       }
       routineDrills.push(drillObj);
     }
+
     this.setState({ routineDrills }); 
     return true;
   }

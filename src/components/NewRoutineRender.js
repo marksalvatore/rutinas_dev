@@ -60,7 +60,6 @@ const NewRoutineRender = (props) => {
                   {props.selectedDrills.map( key => 
                       <DrillListTitle 
                         key={key.id}
-                        id={key.id}
                         title={key.title}
                       />)
                   }
