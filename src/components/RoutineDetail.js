@@ -71,7 +71,6 @@ class RoutineDetail extends React.Component {
         // because routineDrills depends on data from routines.
         this.loadRoutineDrills();
       });
-      console.log("Deleted Drill: ", drillId, " from Routine: ", routineId);
 
     } else {
       this.deleteRoutine();
@@ -86,7 +85,6 @@ class RoutineDetail extends React.Component {
     storeObject("routines", remainingStoredRoutines);
     this.setState({ routines : remainingStoredRoutines });
     this.context.router.transitionTo(`/routines`);
-    console.log("Deleted Routine: ", id);
   }
 
   getRoutineValue(objProp='id') {
@@ -105,13 +103,11 @@ class RoutineDetail extends React.Component {
   goToScore(e) {
     const id = e.target.dataset.id;
     this.context.router.transitionTo(`/score/${id}`);
-    console.log('Displaying score form for id: ', id);
   }
 
   goToSetup(e) {
     const id = e.target.dataset.id;
     this.context.router.transitionTo(`/setup/${id}`);
-    console.log('Displaying setup diagram for id: ', id);
   }
 
   loadDrills() {

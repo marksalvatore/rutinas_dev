@@ -22,6 +22,10 @@ class History extends React.Component {
     this.primaryAction = this.primaryAction.bind(this);
   }
 
+  cancelAction() {
+    history.back();
+  }
+
   deleteScore(e) {
     const drillId = e.target.dataset.drillid;
     const scoreId = e.target.dataset.id;
@@ -32,12 +36,16 @@ class History extends React.Component {
     const targetDrillScoresArray = targetDrill[0].scores;
     const targetDrillScoresArrayLite = targetDrillScoresArray.filter(obj => obj.id !== scoreId);
 
-    delete targetDrill[0].scores;
+    
 
-    targetDrill[0].scores = targetDrillScoresArrayLite;
-    allScoresLite.push(targetDrill[0]);
+    // Add scores array back to the drill, and the drill back to allScoresLite, but only if the drill has a score left to store
+    if(targetDrillScoresArrayLite.length) {
+      delete targetDrill[0].scores;
+      targetDrill[0].scores = targetDrillScoresArrayLite;
+      allScoresLite.push(targetDrill[0]);
+    } 
 
-    storeObject('scores', allScores);
+    storeObject('scores', allScoresLite);
     this.context.router.transitionTo(`/history/${drillId}`);
   }
 
@@ -85,10 +93,6 @@ class History extends React.Component {
       totalAttempts = totalAttempts + s.attempts;
     }); 
     return totalPoints / totalAttempts * 100;
-  }
-
-  cancelAction() {
-    history.back();
   }
 
   primaryAction() {
