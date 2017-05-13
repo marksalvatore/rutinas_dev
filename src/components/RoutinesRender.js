@@ -26,7 +26,6 @@ const Routines = (props) => {
                     
                   <RoutineListItem 
                     key={props.routines[key].id} 
-                    id={props.routines[key].id} 
                     details={props.routines[key]}
                     deleteRoutine={props.deleteRoutine}
                     goToRoutine={props.goToRoutine}

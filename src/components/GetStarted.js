@@ -10,10 +10,10 @@ const GetStarted = () => {
   const logo = "https://pad.chalkysticks.com/583a0.svg";
   // Mechanism to clear localStorage on devices, during testing.
   if(getStoredObject('flag')) {
-    console.log('flag exists');
+    console.log('Flag exists');
   } else {
     localStorage.clear();
-    console.log('no flag, so storage was cleared');
+    console.log('No flag, so storage was cleared');
     storeObject('flag', 1);
   }
   

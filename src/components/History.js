@@ -99,12 +99,12 @@ class History extends React.Component {
   render() {
     return ( 
       <HistoryRender 
+        cancelAction = {this.cancelAction}
         deleteScore = {this.deleteScore}
         drillId={this.props.params.id}
         formatDate = {this.formatDate}
         getDrillScoreObj = {this.getDrillScoreObj}
         getDrillScoreAverage = {this.getDrillScoreAverage}
-        cancelAction = {this.cancelAction}
         primaryAction = {this.primaryAction}
       /> 
     )

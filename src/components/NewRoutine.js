@@ -38,7 +38,6 @@ class NewRoutine extends React.Component {
   componentWillMount() {
     this.loadDrills();
     this.updateDefaultRoutineTitle();
-    console.log('this.getCategories()', this.getCategories());
   }
 
   getCategories() {
@@ -78,8 +77,6 @@ class NewRoutine extends React.Component {
     if(!remainingRoutineTitles.length) {
       remainingRoutineTitles = this.daysOfWeek;
     }
-    console.log('usedTitles', usedTitles);
-    console.log('remainingRoutineTitles', remainingRoutineTitles);
 
     return remainingRoutineTitles;
   }
@@ -107,13 +104,7 @@ class NewRoutine extends React.Component {
   }
 
   loadDrills() {
-    storeObject('drills', drillsData);
-    this.setState({drills: drillsData});
-    console.log('Drills loaded from json file');
-
-    /*REMOVED TEMPORARILY*/
-
-    /*if(!getStoredObject('drills')) {
+    if(!getStoredObject('drills')) {
       storeObject('drills', drillsData);
       this.setState({drills: drillsData});
       console.log('Drills loaded from json file');
@@ -121,8 +112,7 @@ class NewRoutine extends React.Component {
     else {
       this.setState({drills: getStoredObject('drills')});
       console.log('Drills loaded from localStorage');
-    }*/
-
+    }
     return true;
   }
 
@@ -215,10 +205,7 @@ class NewRoutine extends React.Component {
     const remainingDays = this.getRemainingRoutineTitles();
     if(remainingDays.length) {
       this.setState({ routineTitle: remainingDays[0]});
-      console.log('defaultTitle', remainingDays[0]);
-    } else {
-      console.log('defaultTitle', this.state.routineTitle);
-    }
+    } 
   }
 
   render() {

@@ -10,7 +10,7 @@ const RoutineListItem = (props) => {
   //const viewButton = <button data-id={details.id} data-title={details.title} onClick={(e) => goToRoutine(e)}>View</button>
 
   return (
-    <li key={props.id}><span className="wrapper dropShadow">{title} {deleteButton}</span></li>
+    <li><span className="wrapper dropShadow">{title} {deleteButton}</span></li>
    );
 }
 
@@ -21,8 +21,7 @@ RoutineListItem.contextTypes = {
 RoutineListItem.propTypes = {
 	deleteRoutine: PropTypes.func.isRequired,
   details: PropTypes.object.isRequired,
-	goToRoutine: PropTypes.func.isRequired,
-	id: PropTypes.string.isRequired
+	goToRoutine: PropTypes.func.isRequired
 }
 
 export default RoutineListItem;
