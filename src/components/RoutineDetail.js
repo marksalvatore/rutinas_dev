@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../css/RoutineDetail.css';
-import drillsData from '../../data-drills.json';
+import drillsData from '../data-drills.json';
 import RoutineDetailRender from './RoutineDetailRender';
 
 import { getStoredObject, storeObject } from '../helpers';

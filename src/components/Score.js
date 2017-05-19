@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 
-import drillsData from '../../data-drills.json';
+import drillsData from '../data-drills.json';
 import '../css/Score.css';
 import ScoreRender from './ScoreRender';
 

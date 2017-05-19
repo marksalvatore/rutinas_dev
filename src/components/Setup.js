@@ -1,6 +1,6 @@
 import React from 'react';
 
-import drillsData from '../../data-drills.json';
+import drillsData from '../data-drills.json';
 import '../css/Setup.css';
 import SetupRender from './SetupRender';
 import { getStoredObject, storeObject } from '../helpers';
@@ -42,7 +42,7 @@ class Setup extends React.Component {
   }
 
   cancelAction() {
-    history.back();
+    window.history.back();
   }
 
   render() {
