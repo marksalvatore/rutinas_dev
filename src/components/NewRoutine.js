@@ -45,7 +45,11 @@ class NewRoutine extends React.Component {
     let categories = [];
     if(allDrills) {
        for(let d of allDrills){
-         categories.push(d.category);
+         // filter out categories you don't want right now
+         if( d.category !== 'cut' && d.category !== 'classic') {
+           console.log(d.category);
+           categories.push(d.category);
+         }
        }
     }
     // Strip out dupes and sort
