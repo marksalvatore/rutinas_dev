@@ -13,11 +13,27 @@
  }
 
  .Setup h3 {
- 	color: #497ADB;
+ 	color: #4A98D8;
  	font-family: 'Jura', sans-serif;
  	font-size: 2.5rem;
  	font-weight: normal;
  	margin: 0;
+ }
+
+ .Setup ul {
+	margin-top: 1rem;
+ }
+
+ .Setup li {
+	list-style-type: none;
+	margin-bottom: 1.5rem;
+	margin-left: 0rem;
+	padding-left: 1rem;
+	text-indent: -1.3rem;
+ }
+
+ .Setup li:before {
+ 	 content: "\0BB \020";
  }
 
  .Setup .text-left {

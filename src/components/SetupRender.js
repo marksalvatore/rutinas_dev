@@ -18,12 +18,12 @@ const SetupRender = (props) => {
 
       <h3>Rules</h3>
       <div className="text-left">
-      <p>{drill.rules}</p>
+        <p dangerouslySetInnerHTML={{__html: drill.rules}}></p>
       </div>
 
       <h3>Scoring</h3>
       <div className="text-left">
-      <p>{drill.scoring}</p>
+        <p dangerouslySetInnerHTML={{__html: drill.scoring}}></p>
       </div>
       
       <ButtonGroup cancelLabel="Back" cancelAction={props.cancelAction} />
